@@ -30,6 +30,10 @@ import { defaultPromiseErrorHandler } from '@/lib/DefaultPromiseErrorHandler.ts'
 import { getErrorMessage } from '@/lib/HelperFunctions.ts';
 import { useAppTitle } from '@/features/navigation-bar/hooks/useAppTitle.ts';
 import { BackupFlagInclusionDialog } from '@/features/backup/component/BackupFlagInclusionDialog.tsx';
+import {
+    BackupBootstrapOptionsDialog,
+    type BackupBootstrapOptions,
+} from '@/features/backup/component/BackupBootstrapOptionsDialog.tsx';
 import { BackupValidationDialog } from '@/features/backup/component/BackupValidationDialog.tsx';
 import {
     convertToAutoBackupFlags,
@@ -177,15 +181,48 @@ export function Backup() {
         return false;
     };
 
+    /**
+     * Resolves the two restore dialogs.
+     *
+     * Returns null when the user dismissed either one: `AwaitableComponent.show` rejects on dismiss,
+     * and a dismissal is a deliberate cancellation, not a restore failure.
+     */
+    const askForRestoreOptions = async () => {
+        try {
+            const flags = await AwaitableComponent.show(BackupFlagInclusionDialog, {
+                title: t`Restore Backup`,
+            });
+            const bootstrap: BackupBootstrapOptions = await AwaitableComponent.show(
+                BackupBootstrapOptionsDialog,
+                {},
+                { id: 'backup-restore-bootstrap-options' },
+            );
+
+            return { flags, bootstrap };
+        } catch {
+            return null;
+        }
+    };
+
     const restoreBackup = async (backup: File) => {
-        const flags = await AwaitableComponent.show(BackupFlagInclusionDialog, {
-            title: t`Restore Backup`,
-        });
+        const options = await askForRestoreOptions();
+        if (!options) {
+            // cancelling before the upload must not report an error and must release the file input,
+            // so the very same file can be picked again
+            resetBackupState();
+            return;
+        }
 
         try {
             makeToast(t`Restoring backup…`, 'info');
 
-            const response = await requestManager.restoreBackupFile({ backup, flags }).response;
+            const response = await requestManager.restoreBackupFile({
+                backup,
+                flags: options.flags,
+                // a disabled bootstrap sends neither input, so the restore keeps its old behaviour
+                bootstrapDefaultPolicy: options.bootstrap.enabled ? options.bootstrap.defaultPolicy : undefined,
+                bootstrapCategoryOverrides: options.bootstrap.enabled ? options.bootstrap.categoryOverrides : undefined,
+            }).response;
             backupRestoreId = response.data?.restoreBackup.id;
             setTriggerReRender(Date.now());
         } catch (e) {
