@@ -26,6 +26,15 @@ export type AboutWebUIFieldPolicy = {
     tag?: FieldPolicy<any> | FieldReadFunction<any>;
     updateTimestamp?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type AcceptChapterRevisionCandidatesPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | AcceptChapterRevisionCandidatesPayloadKeySpecifier
+)[];
+export type AcceptChapterRevisionCandidatesPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type AddExtensionStorePayloadKeySpecifier = (
     | 'clientMutationId'
     | 'extensionStore'
@@ -34,6 +43,270 @@ export type AddExtensionStorePayloadKeySpecifier = (
 export type AddExtensionStorePayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     extensionStore?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ApproveChapterRevisionsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | ApproveChapterRevisionsPayloadKeySpecifier
+)[];
+export type ApproveChapterRevisionsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapCategoryPolicyTypeKeySpecifier = (
+    | 'categoryId'
+    | 'policy'
+    | ArchiveBootstrapCategoryPolicyTypeKeySpecifier
+)[];
+export type ArchiveBootstrapCategoryPolicyTypeFieldPolicy = {
+    categoryId?: FieldPolicy<any> | FieldReadFunction<any>;
+    policy?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapItemEdgeKeySpecifier = ('cursor' | 'node' | ArchiveBootstrapItemEdgeKeySpecifier)[];
+export type ArchiveBootstrapItemEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapItemNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ArchiveBootstrapItemNodeListKeySpecifier
+)[];
+export type ArchiveBootstrapItemNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapItemTypeKeySpecifier = (
+    | 'attempts'
+    | 'candidateCount'
+    | 'categoryIds'
+    | 'dueAt'
+    | 'finishedAt'
+    | 'id'
+    | 'lastError'
+    | 'mangaId'
+    | 'mangaUrl'
+    | 'policy'
+    | 'sessionId'
+    | 'sourceId'
+    | 'startedAt'
+    | 'state'
+    | 'title'
+    | 'updatedAt'
+    | ArchiveBootstrapItemTypeKeySpecifier
+)[];
+export type ArchiveBootstrapItemTypeFieldPolicy = {
+    attempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidateCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    categoryIds?: FieldPolicy<any> | FieldReadFunction<any>;
+    dueAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    finishedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaId?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    policy?: FieldPolicy<any> | FieldReadFunction<any>;
+    sessionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceId?: FieldPolicy<any> | FieldReadFunction<any>;
+    startedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
+    title?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapProgressTypeKeySpecifier = (
+    | 'cancelled'
+    | 'complete'
+    | 'failed'
+    | 'pending'
+    | 'processing'
+    | 'remaining'
+    | 'retryWait'
+    | 'skipped'
+    | 'total'
+    | 'unresolvedSource'
+    | ArchiveBootstrapProgressTypeKeySpecifier
+)[];
+export type ArchiveBootstrapProgressTypeFieldPolicy = {
+    cancelled?: FieldPolicy<any> | FieldReadFunction<any>;
+    complete?: FieldPolicy<any> | FieldReadFunction<any>;
+    failed?: FieldPolicy<any> | FieldReadFunction<any>;
+    pending?: FieldPolicy<any> | FieldReadFunction<any>;
+    processing?: FieldPolicy<any> | FieldReadFunction<any>;
+    remaining?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryWait?: FieldPolicy<any> | FieldReadFunction<any>;
+    skipped?: FieldPolicy<any> | FieldReadFunction<any>;
+    total?: FieldPolicy<any> | FieldReadFunction<any>;
+    unresolvedSource?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapSessionEdgeKeySpecifier = ('cursor' | 'node' | ArchiveBootstrapSessionEdgeKeySpecifier)[];
+export type ArchiveBootstrapSessionEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapSessionNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ArchiveBootstrapSessionNodeListKeySpecifier
+)[];
+export type ArchiveBootstrapSessionNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapSessionPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'itemCount'
+    | 'session'
+    | ArchiveBootstrapSessionPayloadKeySpecifier
+)[];
+export type ArchiveBootstrapSessionPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapSessionTypeKeySpecifier = (
+    | 'cancelledAt'
+    | 'categoryPolicies'
+    | 'defaultPolicy'
+    | 'finishedAt'
+    | 'id'
+    | 'interItemDelaySeconds'
+    | 'lastItemAt'
+    | 'maxAttempts'
+    | 'nextItemAt'
+    | 'pausedAt'
+    | 'retrySeconds'
+    | 'startedAt'
+    | 'state'
+    | 'updatedAt'
+    | ArchiveBootstrapSessionTypeKeySpecifier
+)[];
+export type ArchiveBootstrapSessionTypeFieldPolicy = {
+    cancelledAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    categoryPolicies?: FieldPolicy<any> | FieldReadFunction<any>;
+    defaultPolicy?: FieldPolicy<any> | FieldReadFunction<any>;
+    finishedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    interItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastItemAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    maxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    nextItemAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    pausedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    retrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    startedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ArchiveBootstrapUnresolvedSourceTypeKeySpecifier = (
+    | 'mangaCount'
+    | 'sampleTitles'
+    | 'sourceId'
+    | ArchiveBootstrapUnresolvedSourceTypeKeySpecifier
+)[];
+export type ArchiveBootstrapUnresolvedSourceTypeFieldPolicy = {
+    mangaCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    sampleTitles?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type AttachMangaToCanonicalWorkPayloadKeySpecifier = (
+    | 'binding'
+    | 'clientMutationId'
+    | 'outcome'
+    | AttachMangaToCanonicalWorkPayloadKeySpecifier
+)[];
+export type AttachMangaToCanonicalWorkPayloadFieldPolicy = {
+    binding?: FieldPolicy<any> | FieldReadFunction<any>;
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    outcome?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type BackupRestoreAuditTypeKeySpecifier = (
+    | 'createdAt'
+    | 'id'
+    | 'level'
+    | 'mangaIndex'
+    | 'message'
+    | 'phase'
+    | 'sourceId'
+    | 'sourceName'
+    | BackupRestoreAuditTypeKeySpecifier
+)[];
+export type BackupRestoreAuditTypeFieldPolicy = {
+    createdAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    level?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaIndex?: FieldPolicy<any> | FieldReadFunction<any>;
+    message?: FieldPolicy<any> | FieldReadFunction<any>;
+    phase?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceId?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceName?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type BackupRestoreErrorCountsTypeKeySpecifier = (
+    | 'mangaErrors'
+    | 'missingSources'
+    | BackupRestoreErrorCountsTypeKeySpecifier
+)[];
+export type BackupRestoreErrorCountsTypeFieldPolicy = {
+    mangaErrors?: FieldPolicy<any> | FieldReadFunction<any>;
+    missingSources?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type BackupRestoreJobPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'job'
+    | BackupRestoreJobPayloadKeySpecifier
+)[];
+export type BackupRestoreJobPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    job?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type BackupRestoreJobTypeKeySpecifier = (
+    | 'cancelledAt'
+    | 'createdAt'
+    | 'errorCount'
+    | 'finishedAt'
+    | 'handoffError'
+    | 'handoffSessionId'
+    | 'handoffState'
+    | 'id'
+    | 'lastError'
+    | 'phase'
+    | 'progress'
+    | 'restoreId'
+    | 'stagedPayloadRetained'
+    | 'startedAt'
+    | 'state'
+    | 'total'
+    | 'updatedAt'
+    | BackupRestoreJobTypeKeySpecifier
+)[];
+export type BackupRestoreJobTypeFieldPolicy = {
+    cancelledAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    createdAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    errorCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    finishedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    handoffError?: FieldPolicy<any> | FieldReadFunction<any>;
+    handoffSessionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    handoffState?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    phase?: FieldPolicy<any> | FieldReadFunction<any>;
+    progress?: FieldPolicy<any> | FieldReadFunction<any>;
+    restoreId?: FieldPolicy<any> | FieldReadFunction<any>;
+    stagedPayloadRetained?: FieldPolicy<any> | FieldReadFunction<any>;
+    startedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
+    total?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type BackupRestoreStatusKeySpecifier = (
     | 'mangaProgress'
@@ -59,6 +332,157 @@ export type BindTrackRecordPayloadKeySpecifier = (
 export type BindTrackRecordPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     trackRecord?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalIdentityExportTypeKeySpecifier = (
+    | 'bindingCount'
+    | 'payload'
+    | 'schemaVersion'
+    | 'workCount'
+    | CanonicalIdentityExportTypeKeySpecifier
+)[];
+export type CanonicalIdentityExportTypeFieldPolicy = {
+    bindingCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    payload?: FieldPolicy<any> | FieldReadFunction<any>;
+    schemaVersion?: FieldPolicy<any> | FieldReadFunction<any>;
+    workCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalIdentityImportTypeKeySpecifier = (
+    | 'bindingsBound'
+    | 'bindingsRebound'
+    | 'bindingsUnresolved'
+    | 'worksCreated'
+    | 'worksUpdated'
+    | CanonicalIdentityImportTypeKeySpecifier
+)[];
+export type CanonicalIdentityImportTypeFieldPolicy = {
+    bindingsBound?: FieldPolicy<any> | FieldReadFunction<any>;
+    bindingsRebound?: FieldPolicy<any> | FieldReadFunction<any>;
+    bindingsUnresolved?: FieldPolicy<any> | FieldReadFunction<any>;
+    worksCreated?: FieldPolicy<any> | FieldReadFunction<any>;
+    worksUpdated?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalIdentityStatusTypeKeySpecifier = (
+    | 'activeBindingCount'
+    | 'bindingCount'
+    | 'detachedBindingCount'
+    | 'disabledBindingCount'
+    | 'duplicatePolicyApplied'
+    | 'fallbackBindingCount'
+    | 'primaryBindingCount'
+    | 'workCount'
+    | CanonicalIdentityStatusTypeKeySpecifier
+)[];
+export type CanonicalIdentityStatusTypeFieldPolicy = {
+    activeBindingCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    bindingCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    detachedBindingCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    disabledBindingCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    duplicatePolicyApplied?: FieldPolicy<any> | FieldReadFunction<any>;
+    fallbackBindingCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    primaryBindingCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    workCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalSourceBindingEdgeKeySpecifier = ('cursor' | 'node' | CanonicalSourceBindingEdgeKeySpecifier)[];
+export type CanonicalSourceBindingEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalSourceBindingNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | CanonicalSourceBindingNodeListKeySpecifier
+)[];
+export type CanonicalSourceBindingNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalSourceBindingTypeKeySpecifier = (
+    | 'acquisitionEligible'
+    | 'boundAt'
+    | 'id'
+    | 'isPrimary'
+    | 'manga'
+    | 'mangaAvailable'
+    | 'mangaId'
+    | 'mangaTitle'
+    | 'mangaUrl'
+    | 'priority'
+    | 'role'
+    | 'sourceId'
+    | 'sourceName'
+    | 'updatedAt'
+    | 'work'
+    | 'workId'
+    | 'workKey'
+    | CanonicalSourceBindingTypeKeySpecifier
+)[];
+export type CanonicalSourceBindingTypeFieldPolicy = {
+    acquisitionEligible?: FieldPolicy<any> | FieldReadFunction<any>;
+    boundAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    isPrimary?: FieldPolicy<any> | FieldReadFunction<any>;
+    manga?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaAvailable?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaId?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaTitle?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    priority?: FieldPolicy<any> | FieldReadFunction<any>;
+    role?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceId?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceName?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    work?: FieldPolicy<any> | FieldReadFunction<any>;
+    workId?: FieldPolicy<any> | FieldReadFunction<any>;
+    workKey?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalWorkEdgeKeySpecifier = ('cursor' | 'node' | CanonicalWorkEdgeKeySpecifier)[];
+export type CanonicalWorkEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalWorkNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | CanonicalWorkNodeListKeySpecifier
+)[];
+export type CanonicalWorkNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CanonicalWorkTypeKeySpecifier = (
+    | 'bindingCount'
+    | 'bindings'
+    | 'createdAt'
+    | 'duplicatePolicyApplied'
+    | 'duplicateStrategy'
+    | 'id'
+    | 'preferredScanlator'
+    | 'primaryBinding'
+    | 'title'
+    | 'updatedAt'
+    | 'workKey'
+    | CanonicalWorkTypeKeySpecifier
+)[];
+export type CanonicalWorkTypeFieldPolicy = {
+    bindingCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    bindings?: FieldPolicy<any> | FieldReadFunction<any>;
+    createdAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    duplicatePolicyApplied?: FieldPolicy<any> | FieldReadFunction<any>;
+    duplicateStrategy?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    preferredScanlator?: FieldPolicy<any> | FieldReadFunction<any>;
+    primaryBinding?: FieldPolicy<any> | FieldReadFunction<any>;
+    title?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    workKey?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type CategoryEdgeKeySpecifier = ('cursor' | 'node' | CategoryEdgeKeySpecifier)[];
 export type CategoryEdgeFieldPolicy = {
@@ -96,6 +520,7 @@ export type CategoryTypeKeySpecifier = (
     | 'id'
     | 'includeInDownload'
     | 'includeInUpdate'
+    | 'isDefaultCategory'
     | 'mangas'
     | 'meta'
     | 'name'
@@ -107,6 +532,7 @@ export type CategoryTypeFieldPolicy = {
     id?: FieldPolicy<any> | FieldReadFunction<any>;
     includeInDownload?: FieldPolicy<any> | FieldReadFunction<any>;
     includeInUpdate?: FieldPolicy<any> | FieldReadFunction<any>;
+    isDefaultCategory?: FieldPolicy<any> | FieldReadFunction<any>;
     mangas?: FieldPolicy<any> | FieldReadFunction<any>;
     meta?: FieldPolicy<any> | FieldReadFunction<any>;
     name?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -117,10 +543,186 @@ export type CategoryUpdateTypeFieldPolicy = {
     category?: FieldPolicy<any> | FieldReadFunction<any>;
     status?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type ChangeCanonicalBindingPayloadKeySpecifier = (
+    | 'binding'
+    | 'clientMutationId'
+    | 'outcome'
+    | ChangeCanonicalBindingPayloadKeySpecifier
+)[];
+export type ChangeCanonicalBindingPayloadFieldPolicy = {
+    binding?: FieldPolicy<any> | FieldReadFunction<any>;
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    outcome?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type ChapterEdgeKeySpecifier = ('cursor' | 'node' | ChapterEdgeKeySpecifier)[];
 export type ChapterEdgeFieldPolicy = {
     cursor?: FieldPolicy<any> | FieldReadFunction<any>;
     node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditItemEdgeKeySpecifier = (
+    | 'cursor'
+    | 'node'
+    | ChapterIntegrityAuditItemEdgeKeySpecifier
+)[];
+export type ChapterIntegrityAuditItemEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditItemNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ChapterIntegrityAuditItemNodeListKeySpecifier
+)[];
+export type ChapterIntegrityAuditItemNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditItemTypeKeySpecifier = (
+    | 'attempts'
+    | 'candidateKey'
+    | 'chapterId'
+    | 'chapterKey'
+    | 'chapterName'
+    | 'dueAt'
+    | 'finishedAt'
+    | 'id'
+    | 'lastError'
+    | 'mangaId'
+    | 'revisionId'
+    | 'seriesTitle'
+    | 'sessionId'
+    | 'startedAt'
+    | 'state'
+    | 'updatedAt'
+    | ChapterIntegrityAuditItemTypeKeySpecifier
+)[];
+export type ChapterIntegrityAuditItemTypeFieldPolicy = {
+    attempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidateKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterId?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterName?: FieldPolicy<any> | FieldReadFunction<any>;
+    dueAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    finishedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    seriesTitle?: FieldPolicy<any> | FieldReadFunction<any>;
+    sessionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    startedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditProgressTypeKeySpecifier = (
+    | 'checking'
+    | 'corrupt'
+    | 'failed'
+    | 'findings'
+    | 'missing'
+    | 'pending'
+    | 'remaining'
+    | 'retryWait'
+    | 'skipped'
+    | 'total'
+    | 'verified'
+    | ChapterIntegrityAuditProgressTypeKeySpecifier
+)[];
+export type ChapterIntegrityAuditProgressTypeFieldPolicy = {
+    checking?: FieldPolicy<any> | FieldReadFunction<any>;
+    corrupt?: FieldPolicy<any> | FieldReadFunction<any>;
+    failed?: FieldPolicy<any> | FieldReadFunction<any>;
+    findings?: FieldPolicy<any> | FieldReadFunction<any>;
+    missing?: FieldPolicy<any> | FieldReadFunction<any>;
+    pending?: FieldPolicy<any> | FieldReadFunction<any>;
+    remaining?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryWait?: FieldPolicy<any> | FieldReadFunction<any>;
+    skipped?: FieldPolicy<any> | FieldReadFunction<any>;
+    total?: FieldPolicy<any> | FieldReadFunction<any>;
+    verified?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditScheduleTypeKeySpecifier = (
+    | 'lastRunAt'
+    | 'lastSessionId'
+    | 'nextDueAt'
+    | 'updatedAt'
+    | ChapterIntegrityAuditScheduleTypeKeySpecifier
+)[];
+export type ChapterIntegrityAuditScheduleTypeFieldPolicy = {
+    lastRunAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastSessionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    nextDueAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditSessionEdgeKeySpecifier = (
+    | 'cursor'
+    | 'node'
+    | ChapterIntegrityAuditSessionEdgeKeySpecifier
+)[];
+export type ChapterIntegrityAuditSessionEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditSessionNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ChapterIntegrityAuditSessionNodeListKeySpecifier
+)[];
+export type ChapterIntegrityAuditSessionNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditSessionPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'session'
+    | ChapterIntegrityAuditSessionPayloadKeySpecifier
+)[];
+export type ChapterIntegrityAuditSessionPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterIntegrityAuditSessionTypeKeySpecifier = (
+    | 'cancelledAt'
+    | 'finishedAt'
+    | 'id'
+    | 'itemDelaySeconds'
+    | 'kind'
+    | 'lastItemAt'
+    | 'maxAttempts'
+    | 'newestPerManga'
+    | 'nextItemAt'
+    | 'pausedAt'
+    | 'retrySeconds'
+    | 'startedAt'
+    | 'state'
+    | 'updatedAt'
+    | ChapterIntegrityAuditSessionTypeKeySpecifier
+)[];
+export type ChapterIntegrityAuditSessionTypeFieldPolicy = {
+    cancelledAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    finishedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    kind?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastItemAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    maxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    newestPerManga?: FieldPolicy<any> | FieldReadFunction<any>;
+    nextItemAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    pausedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    retrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    startedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type ChapterMetaTypeKeySpecifier = ('chapter' | 'chapterId' | 'key' | 'value' | ChapterMetaTypeKeySpecifier)[];
 export type ChapterMetaTypeFieldPolicy = {
@@ -141,6 +743,488 @@ export type ChapterNodeListFieldPolicy = {
     nodes?: FieldPolicy<any> | FieldReadFunction<any>;
     pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
     totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionComparisonPageEdgeKeySpecifier = (
+    | 'cursor'
+    | 'node'
+    | ChapterRevisionComparisonPageEdgeKeySpecifier
+)[];
+export type ChapterRevisionComparisonPageEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionComparisonPageNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ChapterRevisionComparisonPageNodeListKeySpecifier
+)[];
+export type ChapterRevisionComparisonPageNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionComparisonPageTypeKeySpecifier = (
+    | 'baselineHeight'
+    | 'baselinePageIndex'
+    | 'baselinePageUrl'
+    | 'baselinePreviewAvailable'
+    | 'baselineSize'
+    | 'baselineThumbnailUrl'
+    | 'baselineWidth'
+    | 'candidateHeight'
+    | 'candidatePageIndex'
+    | 'candidatePageUrl'
+    | 'candidatePreviewAvailable'
+    | 'candidateSize'
+    | 'candidateThumbnailUrl'
+    | 'candidateWidth'
+    | 'hammingDistance'
+    | 'ordinal'
+    | 'state'
+    | ChapterRevisionComparisonPageTypeKeySpecifier
+)[];
+export type ChapterRevisionComparisonPageTypeFieldPolicy = {
+    baselineHeight?: FieldPolicy<any> | FieldReadFunction<any>;
+    baselinePageIndex?: FieldPolicy<any> | FieldReadFunction<any>;
+    baselinePageUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    baselinePreviewAvailable?: FieldPolicy<any> | FieldReadFunction<any>;
+    baselineSize?: FieldPolicy<any> | FieldReadFunction<any>;
+    baselineThumbnailUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    baselineWidth?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidateHeight?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidatePageIndex?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidatePageUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidatePreviewAvailable?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidateSize?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidateThumbnailUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidateWidth?: FieldPolicy<any> | FieldReadFunction<any>;
+    hammingDistance?: FieldPolicy<any> | FieldReadFunction<any>;
+    ordinal?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionComparisonTypeKeySpecifier = (
+    | 'addedCount'
+    | 'algorithmVersion'
+    | 'alignedCount'
+    | 'allPagesVisuallyEquivalent'
+    | 'baselinePageCount'
+    | 'baselineRevisionId'
+    | 'candidatePageCount'
+    | 'createdAt'
+    | 'exactCount'
+    | 'hammingThreshold'
+    | 'hasLimitations'
+    | 'limitations'
+    | 'modifiedCount'
+    | 'removedCount'
+    | 'revisionId'
+    | 'updatedAt'
+    | 'visuallyEquivalentCount'
+    | ChapterRevisionComparisonTypeKeySpecifier
+)[];
+export type ChapterRevisionComparisonTypeFieldPolicy = {
+    addedCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    algorithmVersion?: FieldPolicy<any> | FieldReadFunction<any>;
+    alignedCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    allPagesVisuallyEquivalent?: FieldPolicy<any> | FieldReadFunction<any>;
+    baselinePageCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    baselineRevisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidatePageCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    createdAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    exactCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    hammingThreshold?: FieldPolicy<any> | FieldReadFunction<any>;
+    hasLimitations?: FieldPolicy<any> | FieldReadFunction<any>;
+    limitations?: FieldPolicy<any> | FieldReadFunction<any>;
+    modifiedCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    removedCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    visuallyEquivalentCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionEdgeKeySpecifier = ('cursor' | 'node' | ChapterRevisionEdgeKeySpecifier)[];
+export type ChapterRevisionEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ChapterRevisionNodeListKeySpecifier
+)[];
+export type ChapterRevisionNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionRollbackEdgeKeySpecifier = ('cursor' | 'node' | ChapterRevisionRollbackEdgeKeySpecifier)[];
+export type ChapterRevisionRollbackEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionRollbackNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ChapterRevisionRollbackNodeListKeySpecifier
+)[];
+export type ChapterRevisionRollbackNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionRollbackTypeKeySpecifier = (
+    | 'chapterKey'
+    | 'fromRevisionId'
+    | 'id'
+    | 'rolledBackAt'
+    | 'toRevisionId'
+    | ChapterRevisionRollbackTypeKeySpecifier
+)[];
+export type ChapterRevisionRollbackTypeFieldPolicy = {
+    chapterKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    fromRevisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    rolledBackAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    toRevisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepItemEdgeKeySpecifier = ('cursor' | 'node' | ChapterRevisionSweepItemEdgeKeySpecifier)[];
+export type ChapterRevisionSweepItemEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepItemNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ChapterRevisionSweepItemNodeListKeySpecifier
+)[];
+export type ChapterRevisionSweepItemNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepItemTypeKeySpecifier = (
+    | 'attempts'
+    | 'candidateCount'
+    | 'chapterId'
+    | 'chapterKey'
+    | 'chapterName'
+    | 'dueAt'
+    | 'finishedAt'
+    | 'id'
+    | 'lastError'
+    | 'mangaId'
+    | 'policy'
+    | 'seriesTitle'
+    | 'sessionId'
+    | 'sourceChapterUrl'
+    | 'sourceId'
+    | 'startedAt'
+    | 'state'
+    | 'updatedAt'
+    | ChapterRevisionSweepItemTypeKeySpecifier
+)[];
+export type ChapterRevisionSweepItemTypeFieldPolicy = {
+    attempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidateCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterId?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterName?: FieldPolicy<any> | FieldReadFunction<any>;
+    dueAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    finishedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaId?: FieldPolicy<any> | FieldReadFunction<any>;
+    policy?: FieldPolicy<any> | FieldReadFunction<any>;
+    seriesTitle?: FieldPolicy<any> | FieldReadFunction<any>;
+    sessionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceChapterUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceId?: FieldPolicy<any> | FieldReadFunction<any>;
+    startedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepProgressTypeKeySpecifier = (
+    | 'cancelled'
+    | 'complete'
+    | 'failed'
+    | 'pending'
+    | 'processing'
+    | 'remaining'
+    | 'retryWait'
+    | 'skipped'
+    | 'total'
+    | ChapterRevisionSweepProgressTypeKeySpecifier
+)[];
+export type ChapterRevisionSweepProgressTypeFieldPolicy = {
+    cancelled?: FieldPolicy<any> | FieldReadFunction<any>;
+    complete?: FieldPolicy<any> | FieldReadFunction<any>;
+    failed?: FieldPolicy<any> | FieldReadFunction<any>;
+    pending?: FieldPolicy<any> | FieldReadFunction<any>;
+    processing?: FieldPolicy<any> | FieldReadFunction<any>;
+    remaining?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryWait?: FieldPolicy<any> | FieldReadFunction<any>;
+    skipped?: FieldPolicy<any> | FieldReadFunction<any>;
+    total?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepScheduleTypeKeySpecifier = (
+    | 'lastRunAt'
+    | 'lastSessionId'
+    | 'nextDueAt'
+    | 'updatedAt'
+    | ChapterRevisionSweepScheduleTypeKeySpecifier
+)[];
+export type ChapterRevisionSweepScheduleTypeFieldPolicy = {
+    lastRunAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastSessionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    nextDueAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepSessionEdgeKeySpecifier = (
+    | 'cursor'
+    | 'node'
+    | ChapterRevisionSweepSessionEdgeKeySpecifier
+)[];
+export type ChapterRevisionSweepSessionEdgeFieldPolicy = {
+    cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+    node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepSessionNodeListKeySpecifier = (
+    | 'edges'
+    | 'nodes'
+    | 'pageInfo'
+    | 'totalCount'
+    | ChapterRevisionSweepSessionNodeListKeySpecifier
+)[];
+export type ChapterRevisionSweepSessionNodeListFieldPolicy = {
+    edges?: FieldPolicy<any> | FieldReadFunction<any>;
+    nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+    totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepSessionPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'itemCount'
+    | 'session'
+    | ChapterRevisionSweepSessionPayloadKeySpecifier
+)[];
+export type ChapterRevisionSweepSessionPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionSweepSessionTypeKeySpecifier = (
+    | 'cancelledAt'
+    | 'finishedAt'
+    | 'id'
+    | 'itemDelaySeconds'
+    | 'kind'
+    | 'lastItemAt'
+    | 'maxAttempts'
+    | 'newestPerSeries'
+    | 'nextItemAt'
+    | 'pausedAt'
+    | 'retrySeconds'
+    | 'startedAt'
+    | 'state'
+    | 'updatedAt'
+    | ChapterRevisionSweepSessionTypeKeySpecifier
+)[];
+export type ChapterRevisionSweepSessionTypeFieldPolicy = {
+    cancelledAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    finishedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    kind?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastItemAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    maxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    newestPerSeries?: FieldPolicy<any> | FieldReadFunction<any>;
+    nextItemAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    pausedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    retrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    startedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionTypeKeySpecifier = (
+    | 'acceptedAt'
+    | 'acquisitionState'
+    | 'activatedAt'
+    | 'activeCbzHash'
+    | 'activeCbzPath'
+    | 'activeCbzSize'
+    | 'approvedAt'
+    | 'archiveAttempts'
+    | 'archiveCbzHash'
+    | 'archiveCbzPath'
+    | 'archiveCbzSize'
+    | 'archiveLastAttemptAt'
+    | 'archiveLastError'
+    | 'archiveLastVerificationAt'
+    | 'archiveManifestHash'
+    | 'archiveManifestPath'
+    | 'archiveManifestSize'
+    | 'archiveNextVerificationAt'
+    | 'archiveState'
+    | 'archiveVerificationAttempts'
+    | 'archivedAt'
+    | 'attempts'
+    | 'candidateKey'
+    | 'candidatePath'
+    | 'changedMetadataFields'
+    | 'chapter'
+    | 'chapterId'
+    | 'chapterKey'
+    | 'chapterNumber'
+    | 'contentHash'
+    | 'deletedAt'
+    | 'discoveredAt'
+    | 'discoveryReason'
+    | 'disposition'
+    | 'downloadUrl'
+    | 'id'
+    | 'integrityLastAuditSessionId'
+    | 'integrityLastAuditedAt'
+    | 'integrityLastError'
+    | 'integrityState'
+    | 'isActiveRevision'
+    | 'lastAttemptAt'
+    | 'lastError'
+    | 'manga'
+    | 'mangaId'
+    | 'name'
+    | 'pageCount'
+    | 'prunedAt'
+    | 'publicationAttempts'
+    | 'publicationLastAttemptAt'
+    | 'publicationLastError'
+    | 'publicationState'
+    | 'publishedAt'
+    | 'retentionAttempts'
+    | 'retentionLastAttemptAt'
+    | 'retentionLastError'
+    | 'retentionNextVerificationAt'
+    | 'retentionQueuedAt'
+    | 'retentionState'
+    | 'scanlator'
+    | 'signalConfidence'
+    | 'sourceChapterUrl'
+    | 'sourceId'
+    | 'sourceMangaUrl'
+    | 'supersededAt'
+    | 'updatedAt'
+    | 'uploadDate'
+    | 'visualAnalysisAttempts'
+    | 'visualAnalysisCompletedAt'
+    | 'visualAnalysisLastAttemptAt'
+    | 'visualAnalysisLastError'
+    | 'visualAnalysisNextAttemptAt'
+    | 'visualAnalysisState'
+    | ChapterRevisionTypeKeySpecifier
+)[];
+export type ChapterRevisionTypeFieldPolicy = {
+    acceptedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    acquisitionState?: FieldPolicy<any> | FieldReadFunction<any>;
+    activatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    activeCbzHash?: FieldPolicy<any> | FieldReadFunction<any>;
+    activeCbzPath?: FieldPolicy<any> | FieldReadFunction<any>;
+    activeCbzSize?: FieldPolicy<any> | FieldReadFunction<any>;
+    approvedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveCbzHash?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveCbzPath?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveCbzSize?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveLastAttemptAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveLastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveLastVerificationAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveManifestHash?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveManifestPath?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveManifestSize?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveNextVerificationAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveState?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveVerificationAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    archivedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    attempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidateKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    candidatePath?: FieldPolicy<any> | FieldReadFunction<any>;
+    changedMetadataFields?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapter?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterId?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterNumber?: FieldPolicy<any> | FieldReadFunction<any>;
+    contentHash?: FieldPolicy<any> | FieldReadFunction<any>;
+    deletedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    discoveredAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    discoveryReason?: FieldPolicy<any> | FieldReadFunction<any>;
+    disposition?: FieldPolicy<any> | FieldReadFunction<any>;
+    downloadUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    integrityLastAuditSessionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    integrityLastAuditedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    integrityLastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    integrityState?: FieldPolicy<any> | FieldReadFunction<any>;
+    isActiveRevision?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastAttemptAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    manga?: FieldPolicy<any> | FieldReadFunction<any>;
+    mangaId?: FieldPolicy<any> | FieldReadFunction<any>;
+    name?: FieldPolicy<any> | FieldReadFunction<any>;
+    pageCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    prunedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    publicationAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    publicationLastAttemptAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    publicationLastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    publicationState?: FieldPolicy<any> | FieldReadFunction<any>;
+    publishedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    retentionAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    retentionLastAttemptAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    retentionLastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    retentionNextVerificationAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    retentionQueuedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    retentionState?: FieldPolicy<any> | FieldReadFunction<any>;
+    scanlator?: FieldPolicy<any> | FieldReadFunction<any>;
+    signalConfidence?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceChapterUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceId?: FieldPolicy<any> | FieldReadFunction<any>;
+    sourceMangaUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    supersededAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    updatedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    uploadDate?: FieldPolicy<any> | FieldReadFunction<any>;
+    visualAnalysisAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    visualAnalysisCompletedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    visualAnalysisLastAttemptAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    visualAnalysisLastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    visualAnalysisNextAttemptAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    visualAnalysisState?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ChapterRevisionVisualAnalysisStatusKeySpecifier = (
+    | 'analyzing'
+    | 'complete'
+    | 'completeWithLimitations'
+    | 'failed'
+    | 'notRequired'
+    | 'queued'
+    | ChapterRevisionVisualAnalysisStatusKeySpecifier
+)[];
+export type ChapterRevisionVisualAnalysisStatusFieldPolicy = {
+    analyzing?: FieldPolicy<any> | FieldReadFunction<any>;
+    complete?: FieldPolicy<any> | FieldReadFunction<any>;
+    completeWithLimitations?: FieldPolicy<any> | FieldReadFunction<any>;
+    failed?: FieldPolicy<any> | FieldReadFunction<any>;
+    notRequired?: FieldPolicy<any> | FieldReadFunction<any>;
+    queued?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type ChapterTypeKeySpecifier = (
     | 'chapterNumber'
@@ -249,10 +1333,30 @@ export type CreateBackupPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     url?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type CreateCanonicalWorkPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'outcome'
+    | 'work'
+    | CreateCanonicalWorkPayloadKeySpecifier
+)[];
+export type CreateCanonicalWorkPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    outcome?: FieldPolicy<any> | FieldReadFunction<any>;
+    work?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type CreateCategoryPayloadKeySpecifier = ('category' | 'clientMutationId' | CreateCategoryPayloadKeySpecifier)[];
 export type CreateCategoryPayloadFieldPolicy = {
     category?: FieldPolicy<any> | FieldReadFunction<any>;
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeleteCanonicalWorkPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'outcome'
+    | DeleteCanonicalWorkPayloadKeySpecifier
+)[];
+export type DeleteCanonicalWorkPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    outcome?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type DeleteCategoryMetaPayloadKeySpecifier = (
     | 'category'
@@ -403,6 +1507,17 @@ export type DequeueChapterDownloadsPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     downloadStatus?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type DetachCanonicalBindingPayloadKeySpecifier = (
+    | 'binding'
+    | 'clientMutationId'
+    | 'outcome'
+    | DetachCanonicalBindingPayloadKeySpecifier
+)[];
+export type DetachCanonicalBindingPayloadFieldPolicy = {
+    binding?: FieldPolicy<any> | FieldReadFunction<any>;
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    outcome?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type DownloadEdgeKeySpecifier = ('cursor' | 'node' | DownloadEdgeKeySpecifier)[];
 export type DownloadEdgeFieldPolicy = {
     cursor?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -509,6 +1624,15 @@ export type EnqueueChapterDownloadsPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     downloadStatus?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type ExportCanonicalIdentityPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'export'
+    | ExportCanonicalIdentityPayloadKeySpecifier
+)[];
+export type ExportCanonicalIdentityPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    export?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type ExtensionEdgeKeySpecifier = ('cursor' | 'node' | ExtensionEdgeKeySpecifier)[];
 export type ExtensionEdgeFieldPolicy = {
     cursor?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -613,6 +1737,17 @@ export type ExtensionTypeFieldPolicy = {
     versionCodeLong?: FieldPolicy<any> | FieldReadFunction<any>;
     versionName?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type FailoverCanonicalWorkPayloadKeySpecifier = (
+    | 'binding'
+    | 'clientMutationId'
+    | 'outcome'
+    | FailoverCanonicalWorkPayloadKeySpecifier
+)[];
+export type FailoverCanonicalWorkPayloadFieldPolicy = {
+    binding?: FieldPolicy<any> | FieldReadFunction<any>;
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    outcome?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type FetchChapterPagesPayloadKeySpecifier = (
     | 'chapter'
     | 'clientMutationId'
@@ -701,6 +1836,15 @@ export type HeaderFilterKeySpecifier = ('name' | HeaderFilterKeySpecifier)[];
 export type HeaderFilterFieldPolicy = {
     name?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type ImportCanonicalIdentityPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'import'
+    | ImportCanonicalIdentityPayloadKeySpecifier
+)[];
+export type ImportCanonicalIdentityPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    import?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type InstallExternalExtensionPayloadKeySpecifier = (
     | 'clientMutationId'
     | 'extension'
@@ -716,6 +1860,24 @@ export type JvmInfoFieldPolicy = {
     vmName?: FieldPolicy<any> | FieldReadFunction<any>;
     vmVendor?: FieldPolicy<any> | FieldReadFunction<any>;
     vmVersion?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type KeepBothChapterRevisionsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | KeepBothChapterRevisionsPayloadKeySpecifier
+)[];
+export type KeepBothChapterRevisionsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type KeepCurrentChapterRevisionsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | KeepCurrentChapterRevisionsPayloadKeySpecifier
+)[];
+export type KeepCurrentChapterRevisionsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type KoSyncConnectPayloadKeySpecifier = (
     | 'clientMutationId'
@@ -738,6 +1900,31 @@ export type KoSyncStatusPayloadFieldPolicy = {
     isLoggedIn?: FieldPolicy<any> | FieldReadFunction<any>;
     serverAddress?: FieldPolicy<any> | FieldReadFunction<any>;
     username?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type KomgaRescanStatusTypeKeySpecifier = (
+    | 'attempts'
+    | 'configurationError'
+    | 'configured'
+    | 'generation'
+    | 'lastAttemptAt'
+    | 'lastCompletedAt'
+    | 'lastError'
+    | 'notBeforeAt'
+    | 'requestedAt'
+    | 'state'
+    | KomgaRescanStatusTypeKeySpecifier
+)[];
+export type KomgaRescanStatusTypeFieldPolicy = {
+    attempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    configurationError?: FieldPolicy<any> | FieldReadFunction<any>;
+    configured?: FieldPolicy<any> | FieldReadFunction<any>;
+    generation?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastAttemptAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastCompletedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    lastError?: FieldPolicy<any> | FieldReadFunction<any>;
+    notBeforeAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    requestedAt?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type LastUpdateTimestampPayloadKeySpecifier = ('timestamp' | LastUpdateTimestampPayloadKeySpecifier)[];
 export type LastUpdateTimestampPayloadFieldPolicy = {
@@ -850,16 +2037,21 @@ export type MangaNodeListFieldPolicy = {
     totalCount?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type MangaTypeKeySpecifier = (
+    | 'acceptedRevisionRetention'
+    | 'acquisitionPolicy'
     | 'age'
     | 'artist'
     | 'author'
     | 'bookmarkCount'
+    | 'canonicalAcquisitionEligible'
+    | 'canonicalBinding'
     | 'categories'
     | 'chapters'
     | 'chaptersAge'
     | 'chaptersLastFetchedAt'
     | 'description'
     | 'downloadCount'
+    | 'effectiveAcceptedRevisionRetention'
     | 'firstUnreadChapter'
     | 'genre'
     | 'hasDuplicateChapters'
@@ -888,16 +2080,21 @@ export type MangaTypeKeySpecifier = (
     | MangaTypeKeySpecifier
 )[];
 export type MangaTypeFieldPolicy = {
+    acceptedRevisionRetention?: FieldPolicy<any> | FieldReadFunction<any>;
+    acquisitionPolicy?: FieldPolicy<any> | FieldReadFunction<any>;
     age?: FieldPolicy<any> | FieldReadFunction<any>;
     artist?: FieldPolicy<any> | FieldReadFunction<any>;
     author?: FieldPolicy<any> | FieldReadFunction<any>;
     bookmarkCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    canonicalAcquisitionEligible?: FieldPolicy<any> | FieldReadFunction<any>;
+    canonicalBinding?: FieldPolicy<any> | FieldReadFunction<any>;
     categories?: FieldPolicy<any> | FieldReadFunction<any>;
     chapters?: FieldPolicy<any> | FieldReadFunction<any>;
     chaptersAge?: FieldPolicy<any> | FieldReadFunction<any>;
     chaptersLastFetchedAt?: FieldPolicy<any> | FieldReadFunction<any>;
     description?: FieldPolicy<any> | FieldReadFunction<any>;
     downloadCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    effectiveAcceptedRevisionRetention?: FieldPolicy<any> | FieldReadFunction<any>;
     firstUnreadChapter?: FieldPolicy<any> | FieldReadFunction<any>;
     genre?: FieldPolicy<any> | FieldReadFunction<any>;
     hasDuplicateChapters?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -967,15 +2164,26 @@ export type MultiSelectListPreferenceFieldPolicy = {
     visible?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type MutationKeySpecifier = (
+    | 'acceptChapterRevisionCandidates'
     | 'addExtensionStore'
+    | 'approveChapterRevisions'
+    | 'attachMangaToCanonicalWork'
     | 'bindTrack'
     | 'bindTrackRecord'
+    | 'cancelArchiveBootstrap'
+    | 'cancelBackupRestore'
+    | 'cancelChapterIntegrityAudit'
+    | 'cancelChapterRevisionSweep'
+    | 'changeCanonicalBinding'
+    | 'cleanupBackupRestore'
     | 'clearCachedImages'
     | 'clearCookiesAndCache'
     | 'clearDownloader'
     | 'connectKoSyncAccount'
     | 'createBackup'
+    | 'createCanonicalWork'
     | 'createCategory'
+    | 'deleteCanonicalWork'
     | 'deleteCategory'
     | 'deleteCategoryMeta'
     | 'deleteCategoryMetas'
@@ -991,8 +2199,11 @@ export type MutationKeySpecifier = (
     | 'deleteSourceMetas'
     | 'dequeueChapterDownload'
     | 'dequeueChapterDownloads'
+    | 'detachCanonicalBinding'
     | 'enqueueChapterDownload'
     | 'enqueueChapterDownloads'
+    | 'exportCanonicalIdentity'
+    | 'failoverCanonicalWork'
     | 'fetchChapterPages'
     | 'fetchChapters'
     | 'fetchExtensions'
@@ -1000,21 +2211,46 @@ export type MutationKeySpecifier = (
     | 'fetchMangaAndChapters'
     | 'fetchSourceManga'
     | 'fetchTrack'
+    | 'importCanonicalIdentity'
     | 'installExternalExtension'
+    | 'keepBothChapterRevisions'
+    | 'keepCurrentChapterRevisions'
     | 'login'
     | 'loginTrackerCredentials'
     | 'loginTrackerOAuth'
     | 'logoutKoSyncAccount'
     | 'logoutTracker'
+    | 'pauseArchiveBootstrap'
+    | 'pauseChapterIntegrityAudit'
+    | 'pauseChapterRevisionSweep'
+    | 'promoteCanonicalBinding'
     | 'pullKoSyncProgress'
     | 'pushKoSyncProgress'
     | 'refreshToken'
+    | 'rejectChapterRevisionCandidates'
+    | 'rejectChapterRevisions'
     | 'removeExtensionStore'
     | 'reorderChapterDownload'
     | 'reorderChapterDownloads'
+    | 'requestKomgaRescan'
     | 'resetSettings'
     | 'resetWebUIUpdateStatus'
     | 'restoreBackup'
+    | 'resumeArchiveBootstrap'
+    | 'resumeChapterIntegrityAudit'
+    | 'resumeChapterRevisionSweep'
+    | 'retryArchiveBootstrapItems'
+    | 'retryBackupRestore'
+    | 'retryBackupRestoreHandoff'
+    | 'retryChapterIntegrityAuditItems'
+    | 'retryChapterRevisionArchives'
+    | 'retryChapterRevisionPrunings'
+    | 'retryChapterRevisionPublications'
+    | 'retryChapterRevisionSweepItems'
+    | 'retryChapterRevisionVisualAnalyses'
+    | 'retryChapterRevisions'
+    | 'retryKomgaRescan'
+    | 'rollbackChapterRevision'
     | 'setCategoryMeta'
     | 'setCategoryMetas'
     | 'setChapterMeta'
@@ -1026,11 +2262,15 @@ export type MutationKeySpecifier = (
     | 'setSettings'
     | 'setSourceMeta'
     | 'setSourceMetas'
+    | 'startArchiveBootstrap'
+    | 'startChapterIntegrityAudit'
+    | 'startChapterRevisionSweep'
     | 'startDownloader'
     | 'startSync'
     | 'stopDownloader'
     | 'trackProgress'
     | 'unbindTrack'
+    | 'updateCanonicalWork'
     | 'updateCategories'
     | 'updateCategory'
     | 'updateCategoryManga'
@@ -1052,15 +2292,26 @@ export type MutationKeySpecifier = (
     | MutationKeySpecifier
 )[];
 export type MutationFieldPolicy = {
+    acceptChapterRevisionCandidates?: FieldPolicy<any> | FieldReadFunction<any>;
     addExtensionStore?: FieldPolicy<any> | FieldReadFunction<any>;
+    approveChapterRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
+    attachMangaToCanonicalWork?: FieldPolicy<any> | FieldReadFunction<any>;
     bindTrack?: FieldPolicy<any> | FieldReadFunction<any>;
     bindTrackRecord?: FieldPolicy<any> | FieldReadFunction<any>;
+    cancelArchiveBootstrap?: FieldPolicy<any> | FieldReadFunction<any>;
+    cancelBackupRestore?: FieldPolicy<any> | FieldReadFunction<any>;
+    cancelChapterIntegrityAudit?: FieldPolicy<any> | FieldReadFunction<any>;
+    cancelChapterRevisionSweep?: FieldPolicy<any> | FieldReadFunction<any>;
+    changeCanonicalBinding?: FieldPolicy<any> | FieldReadFunction<any>;
+    cleanupBackupRestore?: FieldPolicy<any> | FieldReadFunction<any>;
     clearCachedImages?: FieldPolicy<any> | FieldReadFunction<any>;
     clearCookiesAndCache?: FieldPolicy<any> | FieldReadFunction<any>;
     clearDownloader?: FieldPolicy<any> | FieldReadFunction<any>;
     connectKoSyncAccount?: FieldPolicy<any> | FieldReadFunction<any>;
     createBackup?: FieldPolicy<any> | FieldReadFunction<any>;
+    createCanonicalWork?: FieldPolicy<any> | FieldReadFunction<any>;
     createCategory?: FieldPolicy<any> | FieldReadFunction<any>;
+    deleteCanonicalWork?: FieldPolicy<any> | FieldReadFunction<any>;
     deleteCategory?: FieldPolicy<any> | FieldReadFunction<any>;
     deleteCategoryMeta?: FieldPolicy<any> | FieldReadFunction<any>;
     deleteCategoryMetas?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1076,8 +2327,11 @@ export type MutationFieldPolicy = {
     deleteSourceMetas?: FieldPolicy<any> | FieldReadFunction<any>;
     dequeueChapterDownload?: FieldPolicy<any> | FieldReadFunction<any>;
     dequeueChapterDownloads?: FieldPolicy<any> | FieldReadFunction<any>;
+    detachCanonicalBinding?: FieldPolicy<any> | FieldReadFunction<any>;
     enqueueChapterDownload?: FieldPolicy<any> | FieldReadFunction<any>;
     enqueueChapterDownloads?: FieldPolicy<any> | FieldReadFunction<any>;
+    exportCanonicalIdentity?: FieldPolicy<any> | FieldReadFunction<any>;
+    failoverCanonicalWork?: FieldPolicy<any> | FieldReadFunction<any>;
     fetchChapterPages?: FieldPolicy<any> | FieldReadFunction<any>;
     fetchChapters?: FieldPolicy<any> | FieldReadFunction<any>;
     fetchExtensions?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1085,21 +2339,46 @@ export type MutationFieldPolicy = {
     fetchMangaAndChapters?: FieldPolicy<any> | FieldReadFunction<any>;
     fetchSourceManga?: FieldPolicy<any> | FieldReadFunction<any>;
     fetchTrack?: FieldPolicy<any> | FieldReadFunction<any>;
+    importCanonicalIdentity?: FieldPolicy<any> | FieldReadFunction<any>;
     installExternalExtension?: FieldPolicy<any> | FieldReadFunction<any>;
+    keepBothChapterRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
+    keepCurrentChapterRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
     login?: FieldPolicy<any> | FieldReadFunction<any>;
     loginTrackerCredentials?: FieldPolicy<any> | FieldReadFunction<any>;
     loginTrackerOAuth?: FieldPolicy<any> | FieldReadFunction<any>;
     logoutKoSyncAccount?: FieldPolicy<any> | FieldReadFunction<any>;
     logoutTracker?: FieldPolicy<any> | FieldReadFunction<any>;
+    pauseArchiveBootstrap?: FieldPolicy<any> | FieldReadFunction<any>;
+    pauseChapterIntegrityAudit?: FieldPolicy<any> | FieldReadFunction<any>;
+    pauseChapterRevisionSweep?: FieldPolicy<any> | FieldReadFunction<any>;
+    promoteCanonicalBinding?: FieldPolicy<any> | FieldReadFunction<any>;
     pullKoSyncProgress?: FieldPolicy<any> | FieldReadFunction<any>;
     pushKoSyncProgress?: FieldPolicy<any> | FieldReadFunction<any>;
     refreshToken?: FieldPolicy<any> | FieldReadFunction<any>;
+    rejectChapterRevisionCandidates?: FieldPolicy<any> | FieldReadFunction<any>;
+    rejectChapterRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
     removeExtensionStore?: FieldPolicy<any> | FieldReadFunction<any>;
     reorderChapterDownload?: FieldPolicy<any> | FieldReadFunction<any>;
     reorderChapterDownloads?: FieldPolicy<any> | FieldReadFunction<any>;
+    requestKomgaRescan?: FieldPolicy<any> | FieldReadFunction<any>;
     resetSettings?: FieldPolicy<any> | FieldReadFunction<any>;
     resetWebUIUpdateStatus?: FieldPolicy<any> | FieldReadFunction<any>;
     restoreBackup?: FieldPolicy<any> | FieldReadFunction<any>;
+    resumeArchiveBootstrap?: FieldPolicy<any> | FieldReadFunction<any>;
+    resumeChapterIntegrityAudit?: FieldPolicy<any> | FieldReadFunction<any>;
+    resumeChapterRevisionSweep?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryArchiveBootstrapItems?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryBackupRestore?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryBackupRestoreHandoff?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryChapterIntegrityAuditItems?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryChapterRevisionArchives?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryChapterRevisionPrunings?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryChapterRevisionPublications?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryChapterRevisionSweepItems?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryChapterRevisionVisualAnalyses?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryChapterRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
+    retryKomgaRescan?: FieldPolicy<any> | FieldReadFunction<any>;
+    rollbackChapterRevision?: FieldPolicy<any> | FieldReadFunction<any>;
     setCategoryMeta?: FieldPolicy<any> | FieldReadFunction<any>;
     setCategoryMetas?: FieldPolicy<any> | FieldReadFunction<any>;
     setChapterMeta?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1111,11 +2390,15 @@ export type MutationFieldPolicy = {
     setSettings?: FieldPolicy<any> | FieldReadFunction<any>;
     setSourceMeta?: FieldPolicy<any> | FieldReadFunction<any>;
     setSourceMetas?: FieldPolicy<any> | FieldReadFunction<any>;
+    startArchiveBootstrap?: FieldPolicy<any> | FieldReadFunction<any>;
+    startChapterIntegrityAudit?: FieldPolicy<any> | FieldReadFunction<any>;
+    startChapterRevisionSweep?: FieldPolicy<any> | FieldReadFunction<any>;
     startDownloader?: FieldPolicy<any> | FieldReadFunction<any>;
     startSync?: FieldPolicy<any> | FieldReadFunction<any>;
     stopDownloader?: FieldPolicy<any> | FieldReadFunction<any>;
     trackProgress?: FieldPolicy<any> | FieldReadFunction<any>;
     unbindTrack?: FieldPolicy<any> | FieldReadFunction<any>;
+    updateCanonicalWork?: FieldPolicy<any> | FieldReadFunction<any>;
     updateCategories?: FieldPolicy<any> | FieldReadFunction<any>;
     updateCategory?: FieldPolicy<any> | FieldReadFunction<any>;
     updateCategoryManga?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1162,6 +2445,16 @@ export type PageInfoFieldPolicy = {
     startCursor?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type PartialSettingsTypeKeySpecifier = (
+    | 'acceptedRevisionRetention'
+    | 'archiveBootstrapInterItemDelaySeconds'
+    | 'archiveBootstrapMaxAttempts'
+    | 'archiveBootstrapRetrySeconds'
+    | 'archiveDirectDeliveryEnabled'
+    | 'archiveDirectDeliveryExpirySeconds'
+    | 'archiveDirectDeliveryFallbackToLocal'
+    | 'archiveDirectDeliveryRequireExpiryEvidence'
+    | 'archiveVerificationRetrySeconds'
+    | 'archiveVerificationTimeoutSeconds'
     | 'authMode'
     | 'authPassword'
     | 'authUsername'
@@ -1183,6 +2476,23 @@ export type PartialSettingsTypeKeySpecifier = (
     | 'basicAuthEnabled'
     | 'basicAuthPassword'
     | 'basicAuthUsername'
+    | 'chapterIntegrityAuditEnabled'
+    | 'chapterIntegrityAuditIntervalDays'
+    | 'chapterIntegrityAuditItemDelaySeconds'
+    | 'chapterIntegrityAuditMaxAttempts'
+    | 'chapterIntegrityAuditRecentRevisions'
+    | 'chapterIntegrityAuditRetrySeconds'
+    | 'chapterRevisionAutoDismissVisuallyEquivalent'
+    | 'chapterRevisionSweepEnabled'
+    | 'chapterRevisionSweepIntervalDays'
+    | 'chapterRevisionSweepItemDelaySeconds'
+    | 'chapterRevisionSweepMaxAttempts'
+    | 'chapterRevisionSweepNewestChapters'
+    | 'chapterRevisionSweepRetrySeconds'
+    | 'chapterRevisionThumbnailMaxDimension'
+    | 'chapterRevisionVisualAnalysisMaxAttempts'
+    | 'chapterRevisionVisualAnalysisRetrySeconds'
+    | 'chapterRevisionVisualHashThreshold'
     | 'databasePassword'
     | 'databaseType'
     | 'databaseUrl'
@@ -1211,6 +2521,12 @@ export type PartialSettingsTypeKeySpecifier = (
     | 'jwtRefreshExpiry'
     | 'jwtTokenExpiry'
     | 'kcefEnabled'
+    | 'komgaApiKey'
+    | 'komgaBaseUrl'
+    | 'komgaLibraryId'
+    | 'komgaRequestTimeoutSeconds'
+    | 'komgaRescanDebounceSeconds'
+    | 'komgaRescanRetrySeconds'
     | 'koreaderSyncChecksumMethod'
     | 'koreaderSyncDeviceId'
     | 'koreaderSyncPercentageTolerance'
@@ -1261,6 +2577,16 @@ export type PartialSettingsTypeKeySpecifier = (
     | PartialSettingsTypeKeySpecifier
 )[];
 export type PartialSettingsTypeFieldPolicy = {
+    acceptedRevisionRetention?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapInterItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryExpirySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryFallbackToLocal?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryRequireExpiryEvidence?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveVerificationRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveVerificationTimeoutSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     authMode?: FieldPolicy<any> | FieldReadFunction<any>;
     authPassword?: FieldPolicy<any> | FieldReadFunction<any>;
     authUsername?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1282,6 +2608,23 @@ export type PartialSettingsTypeFieldPolicy = {
     basicAuthEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
     basicAuthPassword?: FieldPolicy<any> | FieldReadFunction<any>;
     basicAuthUsername?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditIntervalDays?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditRecentRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepIntervalDays?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepNewestChapters?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionThumbnailMaxDimension?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualAnalysisMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualAnalysisRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualHashThreshold?: FieldPolicy<any> | FieldReadFunction<any>;
     databasePassword?: FieldPolicy<any> | FieldReadFunction<any>;
     databaseType?: FieldPolicy<any> | FieldReadFunction<any>;
     databaseUrl?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1310,6 +2653,12 @@ export type PartialSettingsTypeFieldPolicy = {
     jwtRefreshExpiry?: FieldPolicy<any> | FieldReadFunction<any>;
     jwtTokenExpiry?: FieldPolicy<any> | FieldReadFunction<any>;
     kcefEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaApiKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaBaseUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaLibraryId?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRequestTimeoutSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRescanDebounceSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRescanRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncChecksumMethod?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncDeviceId?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncPercentageTolerance?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1365,6 +2714,17 @@ export type PlatformInfoFieldPolicy = {
     jvm?: FieldPolicy<any> | FieldReadFunction<any>;
     os?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type PromoteCanonicalBindingPayloadKeySpecifier = (
+    | 'binding'
+    | 'clientMutationId'
+    | 'outcome'
+    | PromoteCanonicalBindingPayloadKeySpecifier
+)[];
+export type PromoteCanonicalBindingPayloadFieldPolicy = {
+    binding?: FieldPolicy<any> | FieldReadFunction<any>;
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    outcome?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type PullKoSyncProgressPayloadKeySpecifier = (
     | 'chapter'
     | 'clientMutationId'
@@ -1390,9 +2750,50 @@ export type PushKoSyncProgressPayloadFieldPolicy = {
 export type QueryKeySpecifier = (
     | 'aboutServer'
     | 'aboutWebUI'
+    | 'activeChapterRevision'
+    | 'approvalBacklog'
+    | 'archiveBootstrapActiveSession'
+    | 'archiveBootstrapEffectivePolicy'
+    | 'archiveBootstrapItems'
+    | 'archiveBootstrapLatestSession'
+    | 'archiveBootstrapProgress'
+    | 'archiveBootstrapSession'
+    | 'archiveBootstrapSessions'
+    | 'archiveBootstrapUnresolvedSources'
+    | 'backupRestoreAudits'
+    | 'backupRestoreErrorCounts'
+    | 'backupRestoreJob'
+    | 'backupRestoreJobs'
+    | 'canonicalBindingForManga'
+    | 'canonicalBindingsForWork'
+    | 'canonicalIdentityStatus'
+    | 'canonicalWork'
+    | 'canonicalWorkForManga'
+    | 'canonicalWorks'
     | 'categories'
     | 'category'
     | 'chapter'
+    | 'chapterIntegrityAuditActiveSession'
+    | 'chapterIntegrityAuditItems'
+    | 'chapterIntegrityAuditLatestSession'
+    | 'chapterIntegrityAuditProgress'
+    | 'chapterIntegrityAuditSchedule'
+    | 'chapterIntegrityAuditSession'
+    | 'chapterIntegrityAuditSessions'
+    | 'chapterRevision'
+    | 'chapterRevisionComparison'
+    | 'chapterRevisionComparisonPages'
+    | 'chapterRevisionHistory'
+    | 'chapterRevisionRollbacks'
+    | 'chapterRevisionSweepActiveSession'
+    | 'chapterRevisionSweepItems'
+    | 'chapterRevisionSweepLatestSession'
+    | 'chapterRevisionSweepProgress'
+    | 'chapterRevisionSweepSchedule'
+    | 'chapterRevisionSweepSession'
+    | 'chapterRevisionSweepSessions'
+    | 'chapterRevisionVisualAnalysisStatus'
+    | 'chapterRevisions'
     | 'chapters'
     | 'checkForServerUpdates'
     | 'checkForWebUIUpdate'
@@ -1403,6 +2804,7 @@ export type QueryKeySpecifier = (
     | 'extensions'
     | 'getWebUIUpdateStatus'
     | 'koSyncStatus'
+    | 'komgaRescanStatus'
     | 'lastSyncStatus'
     | 'lastUpdateTimestamp'
     | 'libraryUpdateStatus'
@@ -1410,6 +2812,9 @@ export type QueryKeySpecifier = (
     | 'mangas'
     | 'meta'
     | 'metas'
+    | 'pruningBacklog'
+    | 'publicationBacklog'
+    | 'queuedBacklog'
     | 'restoreStatus'
     | 'searchTracker'
     | 'settings'
@@ -1421,14 +2826,56 @@ export type QueryKeySpecifier = (
     | 'trackers'
     | 'updateStatus'
     | 'validateBackup'
+    | 'visualAnalysisBacklog'
     | QueryKeySpecifier
 )[];
 export type QueryFieldPolicy = {
     aboutServer?: FieldPolicy<any> | FieldReadFunction<any>;
     aboutWebUI?: FieldPolicy<any> | FieldReadFunction<any>;
+    activeChapterRevision?: FieldPolicy<any> | FieldReadFunction<any>;
+    approvalBacklog?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapActiveSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapEffectivePolicy?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapItems?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapLatestSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapProgress?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapSessions?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapUnresolvedSources?: FieldPolicy<any> | FieldReadFunction<any>;
+    backupRestoreAudits?: FieldPolicy<any> | FieldReadFunction<any>;
+    backupRestoreErrorCounts?: FieldPolicy<any> | FieldReadFunction<any>;
+    backupRestoreJob?: FieldPolicy<any> | FieldReadFunction<any>;
+    backupRestoreJobs?: FieldPolicy<any> | FieldReadFunction<any>;
+    canonicalBindingForManga?: FieldPolicy<any> | FieldReadFunction<any>;
+    canonicalBindingsForWork?: FieldPolicy<any> | FieldReadFunction<any>;
+    canonicalIdentityStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+    canonicalWork?: FieldPolicy<any> | FieldReadFunction<any>;
+    canonicalWorkForManga?: FieldPolicy<any> | FieldReadFunction<any>;
+    canonicalWorks?: FieldPolicy<any> | FieldReadFunction<any>;
     categories?: FieldPolicy<any> | FieldReadFunction<any>;
     category?: FieldPolicy<any> | FieldReadFunction<any>;
     chapter?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditActiveSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditItems?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditLatestSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditProgress?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditSchedule?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditSessions?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevision?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionComparison?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionComparisonPages?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionHistory?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionRollbacks?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepActiveSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepItems?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepLatestSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepProgress?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepSchedule?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepSession?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepSessions?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualAnalysisStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
     chapters?: FieldPolicy<any> | FieldReadFunction<any>;
     checkForServerUpdates?: FieldPolicy<any> | FieldReadFunction<any>;
     checkForWebUIUpdate?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1439,6 +2886,7 @@ export type QueryFieldPolicy = {
     extensions?: FieldPolicy<any> | FieldReadFunction<any>;
     getWebUIUpdateStatus?: FieldPolicy<any> | FieldReadFunction<any>;
     koSyncStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRescanStatus?: FieldPolicy<any> | FieldReadFunction<any>;
     lastSyncStatus?: FieldPolicy<any> | FieldReadFunction<any>;
     lastUpdateTimestamp?: FieldPolicy<any> | FieldReadFunction<any>;
     libraryUpdateStatus?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1446,6 +2894,9 @@ export type QueryFieldPolicy = {
     mangas?: FieldPolicy<any> | FieldReadFunction<any>;
     meta?: FieldPolicy<any> | FieldReadFunction<any>;
     metas?: FieldPolicy<any> | FieldReadFunction<any>;
+    pruningBacklog?: FieldPolicy<any> | FieldReadFunction<any>;
+    publicationBacklog?: FieldPolicy<any> | FieldReadFunction<any>;
+    queuedBacklog?: FieldPolicy<any> | FieldReadFunction<any>;
     restoreStatus?: FieldPolicy<any> | FieldReadFunction<any>;
     searchTracker?: FieldPolicy<any> | FieldReadFunction<any>;
     settings?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1457,11 +2908,30 @@ export type QueryFieldPolicy = {
     trackers?: FieldPolicy<any> | FieldReadFunction<any>;
     updateStatus?: FieldPolicy<any> | FieldReadFunction<any>;
     validateBackup?: FieldPolicy<any> | FieldReadFunction<any>;
+    visualAnalysisBacklog?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type RefreshTokenPayloadKeySpecifier = ('accessToken' | 'clientMutationId' | RefreshTokenPayloadKeySpecifier)[];
 export type RefreshTokenPayloadFieldPolicy = {
     accessToken?: FieldPolicy<any> | FieldReadFunction<any>;
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RejectChapterRevisionCandidatesPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | RejectChapterRevisionCandidatesPayloadKeySpecifier
+)[];
+export type RejectChapterRevisionCandidatesPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RejectChapterRevisionsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | RejectChapterRevisionsPayloadKeySpecifier
+)[];
+export type RejectChapterRevisionsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type RemoveExtensionStorePayloadKeySpecifier = (
     | 'clientMutationId'
@@ -1481,6 +2951,15 @@ export type ReorderChapterDownloadPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     downloadStatus?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type RequestKomgaRescanPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'rescan'
+    | RequestKomgaRescanPayloadKeySpecifier
+)[];
+export type RequestKomgaRescanPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    rescan?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type ResetSettingsPayloadKeySpecifier = ('clientMutationId' | 'settings' | ResetSettingsPayloadKeySpecifier)[];
 export type ResetSettingsPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1496,6 +2975,114 @@ export type RestoreBackupPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     id?: FieldPolicy<any> | FieldReadFunction<any>;
     status?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryArchiveBootstrapItemsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'itemCount'
+    | 'session'
+    | RetryArchiveBootstrapItemsPayloadKeySpecifier
+)[];
+export type RetryArchiveBootstrapItemsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryChapterIntegrityAuditItemsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'itemCount'
+    | 'session'
+    | RetryChapterIntegrityAuditItemsPayloadKeySpecifier
+)[];
+export type RetryChapterIntegrityAuditItemsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryChapterRevisionArchivesPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | RetryChapterRevisionArchivesPayloadKeySpecifier
+)[];
+export type RetryChapterRevisionArchivesPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryChapterRevisionPruningsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | RetryChapterRevisionPruningsPayloadKeySpecifier
+)[];
+export type RetryChapterRevisionPruningsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryChapterRevisionPublicationsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | RetryChapterRevisionPublicationsPayloadKeySpecifier
+)[];
+export type RetryChapterRevisionPublicationsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryChapterRevisionSweepItemsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'itemCount'
+    | 'session'
+    | RetryChapterRevisionSweepItemsPayloadKeySpecifier
+)[];
+export type RetryChapterRevisionSweepItemsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryChapterRevisionVisualAnalysesPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | RetryChapterRevisionVisualAnalysesPayloadKeySpecifier
+)[];
+export type RetryChapterRevisionVisualAnalysesPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryChapterRevisionsPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'revisions'
+    | RetryChapterRevisionsPayloadKeySpecifier
+)[];
+export type RetryChapterRevisionsPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RetryKomgaRescanPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'rescan'
+    | 'retried'
+    | RetryKomgaRescanPayloadKeySpecifier
+)[];
+export type RetryKomgaRescanPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    rescan?: FieldPolicy<any> | FieldReadFunction<any>;
+    retried?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RollbackChapterRevisionPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'replacedRevisionId'
+    | 'revision'
+    | RollbackChapterRevisionPayloadKeySpecifier
+)[];
+export type RollbackChapterRevisionPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    replacedRevisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+    revision?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type SearchTrackerPayloadKeySpecifier = ('trackSearches' | SearchTrackerPayloadKeySpecifier)[];
 export type SearchTrackerPayloadFieldPolicy = {
@@ -1591,6 +3178,16 @@ export type SetSourceMetasPayloadFieldPolicy = {
     sources?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type SettingsKeySpecifier = (
+    | 'acceptedRevisionRetention'
+    | 'archiveBootstrapInterItemDelaySeconds'
+    | 'archiveBootstrapMaxAttempts'
+    | 'archiveBootstrapRetrySeconds'
+    | 'archiveDirectDeliveryEnabled'
+    | 'archiveDirectDeliveryExpirySeconds'
+    | 'archiveDirectDeliveryFallbackToLocal'
+    | 'archiveDirectDeliveryRequireExpiryEvidence'
+    | 'archiveVerificationRetrySeconds'
+    | 'archiveVerificationTimeoutSeconds'
     | 'authMode'
     | 'authPassword'
     | 'authUsername'
@@ -1612,6 +3209,23 @@ export type SettingsKeySpecifier = (
     | 'basicAuthEnabled'
     | 'basicAuthPassword'
     | 'basicAuthUsername'
+    | 'chapterIntegrityAuditEnabled'
+    | 'chapterIntegrityAuditIntervalDays'
+    | 'chapterIntegrityAuditItemDelaySeconds'
+    | 'chapterIntegrityAuditMaxAttempts'
+    | 'chapterIntegrityAuditRecentRevisions'
+    | 'chapterIntegrityAuditRetrySeconds'
+    | 'chapterRevisionAutoDismissVisuallyEquivalent'
+    | 'chapterRevisionSweepEnabled'
+    | 'chapterRevisionSweepIntervalDays'
+    | 'chapterRevisionSweepItemDelaySeconds'
+    | 'chapterRevisionSweepMaxAttempts'
+    | 'chapterRevisionSweepNewestChapters'
+    | 'chapterRevisionSweepRetrySeconds'
+    | 'chapterRevisionThumbnailMaxDimension'
+    | 'chapterRevisionVisualAnalysisMaxAttempts'
+    | 'chapterRevisionVisualAnalysisRetrySeconds'
+    | 'chapterRevisionVisualHashThreshold'
     | 'databasePassword'
     | 'databaseType'
     | 'databaseUrl'
@@ -1640,6 +3254,12 @@ export type SettingsKeySpecifier = (
     | 'jwtRefreshExpiry'
     | 'jwtTokenExpiry'
     | 'kcefEnabled'
+    | 'komgaApiKey'
+    | 'komgaBaseUrl'
+    | 'komgaLibraryId'
+    | 'komgaRequestTimeoutSeconds'
+    | 'komgaRescanDebounceSeconds'
+    | 'komgaRescanRetrySeconds'
     | 'koreaderSyncChecksumMethod'
     | 'koreaderSyncDeviceId'
     | 'koreaderSyncPercentageTolerance'
@@ -1690,6 +3310,16 @@ export type SettingsKeySpecifier = (
     | SettingsKeySpecifier
 )[];
 export type SettingsFieldPolicy = {
+    acceptedRevisionRetention?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapInterItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryExpirySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryFallbackToLocal?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryRequireExpiryEvidence?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveVerificationRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveVerificationTimeoutSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     authMode?: FieldPolicy<any> | FieldReadFunction<any>;
     authPassword?: FieldPolicy<any> | FieldReadFunction<any>;
     authUsername?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1711,6 +3341,23 @@ export type SettingsFieldPolicy = {
     basicAuthEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
     basicAuthPassword?: FieldPolicy<any> | FieldReadFunction<any>;
     basicAuthUsername?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditIntervalDays?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditRecentRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepIntervalDays?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepNewestChapters?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionThumbnailMaxDimension?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualAnalysisMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualAnalysisRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualHashThreshold?: FieldPolicy<any> | FieldReadFunction<any>;
     databasePassword?: FieldPolicy<any> | FieldReadFunction<any>;
     databaseType?: FieldPolicy<any> | FieldReadFunction<any>;
     databaseUrl?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1739,6 +3386,12 @@ export type SettingsFieldPolicy = {
     jwtRefreshExpiry?: FieldPolicy<any> | FieldReadFunction<any>;
     jwtTokenExpiry?: FieldPolicy<any> | FieldReadFunction<any>;
     kcefEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaApiKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaBaseUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaLibraryId?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRequestTimeoutSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRescanDebounceSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRescanRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncChecksumMethod?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncDeviceId?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncPercentageTolerance?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1840,6 +3493,16 @@ export type SettingsDownloadConversionTypeFieldPolicy = {
     target?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type SettingsTypeKeySpecifier = (
+    | 'acceptedRevisionRetention'
+    | 'archiveBootstrapInterItemDelaySeconds'
+    | 'archiveBootstrapMaxAttempts'
+    | 'archiveBootstrapRetrySeconds'
+    | 'archiveDirectDeliveryEnabled'
+    | 'archiveDirectDeliveryExpirySeconds'
+    | 'archiveDirectDeliveryFallbackToLocal'
+    | 'archiveDirectDeliveryRequireExpiryEvidence'
+    | 'archiveVerificationRetrySeconds'
+    | 'archiveVerificationTimeoutSeconds'
     | 'authMode'
     | 'authPassword'
     | 'authUsername'
@@ -1861,6 +3524,23 @@ export type SettingsTypeKeySpecifier = (
     | 'basicAuthEnabled'
     | 'basicAuthPassword'
     | 'basicAuthUsername'
+    | 'chapterIntegrityAuditEnabled'
+    | 'chapterIntegrityAuditIntervalDays'
+    | 'chapterIntegrityAuditItemDelaySeconds'
+    | 'chapterIntegrityAuditMaxAttempts'
+    | 'chapterIntegrityAuditRecentRevisions'
+    | 'chapterIntegrityAuditRetrySeconds'
+    | 'chapterRevisionAutoDismissVisuallyEquivalent'
+    | 'chapterRevisionSweepEnabled'
+    | 'chapterRevisionSweepIntervalDays'
+    | 'chapterRevisionSweepItemDelaySeconds'
+    | 'chapterRevisionSweepMaxAttempts'
+    | 'chapterRevisionSweepNewestChapters'
+    | 'chapterRevisionSweepRetrySeconds'
+    | 'chapterRevisionThumbnailMaxDimension'
+    | 'chapterRevisionVisualAnalysisMaxAttempts'
+    | 'chapterRevisionVisualAnalysisRetrySeconds'
+    | 'chapterRevisionVisualHashThreshold'
     | 'databasePassword'
     | 'databaseType'
     | 'databaseUrl'
@@ -1889,6 +3569,12 @@ export type SettingsTypeKeySpecifier = (
     | 'jwtRefreshExpiry'
     | 'jwtTokenExpiry'
     | 'kcefEnabled'
+    | 'komgaApiKey'
+    | 'komgaBaseUrl'
+    | 'komgaLibraryId'
+    | 'komgaRequestTimeoutSeconds'
+    | 'komgaRescanDebounceSeconds'
+    | 'komgaRescanRetrySeconds'
     | 'koreaderSyncChecksumMethod'
     | 'koreaderSyncDeviceId'
     | 'koreaderSyncPercentageTolerance'
@@ -1939,6 +3625,16 @@ export type SettingsTypeKeySpecifier = (
     | SettingsTypeKeySpecifier
 )[];
 export type SettingsTypeFieldPolicy = {
+    acceptedRevisionRetention?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapInterItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveBootstrapRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryExpirySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryFallbackToLocal?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDirectDeliveryRequireExpiryEvidence?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveVerificationRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveVerificationTimeoutSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     authMode?: FieldPolicy<any> | FieldReadFunction<any>;
     authPassword?: FieldPolicy<any> | FieldReadFunction<any>;
     authUsername?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1960,6 +3656,23 @@ export type SettingsTypeFieldPolicy = {
     basicAuthEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
     basicAuthPassword?: FieldPolicy<any> | FieldReadFunction<any>;
     basicAuthUsername?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditIntervalDays?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditRecentRevisions?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterIntegrityAuditRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepIntervalDays?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepNewestChapters?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionSweepRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionThumbnailMaxDimension?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualAnalysisMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualAnalysisRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    chapterRevisionVisualHashThreshold?: FieldPolicy<any> | FieldReadFunction<any>;
     databasePassword?: FieldPolicy<any> | FieldReadFunction<any>;
     databaseType?: FieldPolicy<any> | FieldReadFunction<any>;
     databaseUrl?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -1988,6 +3701,12 @@ export type SettingsTypeFieldPolicy = {
     jwtRefreshExpiry?: FieldPolicy<any> | FieldReadFunction<any>;
     jwtTokenExpiry?: FieldPolicy<any> | FieldReadFunction<any>;
     kcefEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaApiKey?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaBaseUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaLibraryId?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRequestTimeoutSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRescanDebounceSeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    komgaRescanRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncChecksumMethod?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncDeviceId?: FieldPolicy<any> | FieldReadFunction<any>;
     koreaderSyncPercentageTolerance?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2102,6 +3821,45 @@ export type SourceTypeFieldPolicy = {
     name?: FieldPolicy<any> | FieldReadFunction<any>;
     preferences?: FieldPolicy<any> | FieldReadFunction<any>;
     supportsLatest?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type StartArchiveBootstrapPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'itemCount'
+    | 'session'
+    | StartArchiveBootstrapPayloadKeySpecifier
+)[];
+export type StartArchiveBootstrapPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type StartChapterIntegrityAuditPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'itemCount'
+    | 'session'
+    | StartChapterIntegrityAuditPayloadKeySpecifier
+)[];
+export type StartChapterIntegrityAuditPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type StartChapterRevisionSweepPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'error'
+    | 'itemCount'
+    | 'session'
+    | StartChapterRevisionSweepPayloadKeySpecifier
+)[];
+export type StartChapterRevisionSweepPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    error?: FieldPolicy<any> | FieldReadFunction<any>;
+    itemCount?: FieldPolicy<any> | FieldReadFunction<any>;
+    session?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type StartDownloaderPayloadKeySpecifier = (
     | 'clientMutationId'
@@ -2360,6 +4118,17 @@ export type UnbindTrackPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     trackRecord?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type UpdateCanonicalWorkPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'outcome'
+    | 'work'
+    | UpdateCanonicalWorkPayloadKeySpecifier
+)[];
+export type UpdateCanonicalWorkPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    outcome?: FieldPolicy<any> | FieldReadFunction<any>;
+    work?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type UpdateCategoriesPayloadKeySpecifier = (
     | 'categories'
     | 'clientMutationId'
@@ -2594,12 +4363,125 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | AboutWebUIKeySpecifier | (() => undefined | AboutWebUIKeySpecifier);
         fields?: AboutWebUIFieldPolicy;
     };
+    AcceptChapterRevisionCandidatesPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | AcceptChapterRevisionCandidatesPayloadKeySpecifier
+            | (() => undefined | AcceptChapterRevisionCandidatesPayloadKeySpecifier);
+        fields?: AcceptChapterRevisionCandidatesPayloadFieldPolicy;
+    };
     AddExtensionStorePayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?:
             | false
             | AddExtensionStorePayloadKeySpecifier
             | (() => undefined | AddExtensionStorePayloadKeySpecifier);
         fields?: AddExtensionStorePayloadFieldPolicy;
+    };
+    ApproveChapterRevisionsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ApproveChapterRevisionsPayloadKeySpecifier
+            | (() => undefined | ApproveChapterRevisionsPayloadKeySpecifier);
+        fields?: ApproveChapterRevisionsPayloadFieldPolicy;
+    };
+    ArchiveBootstrapCategoryPolicyType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapCategoryPolicyTypeKeySpecifier
+            | (() => undefined | ArchiveBootstrapCategoryPolicyTypeKeySpecifier);
+        fields?: ArchiveBootstrapCategoryPolicyTypeFieldPolicy;
+    };
+    ArchiveBootstrapItemEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapItemEdgeKeySpecifier
+            | (() => undefined | ArchiveBootstrapItemEdgeKeySpecifier);
+        fields?: ArchiveBootstrapItemEdgeFieldPolicy;
+    };
+    ArchiveBootstrapItemNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapItemNodeListKeySpecifier
+            | (() => undefined | ArchiveBootstrapItemNodeListKeySpecifier);
+        fields?: ArchiveBootstrapItemNodeListFieldPolicy;
+    };
+    ArchiveBootstrapItemType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapItemTypeKeySpecifier
+            | (() => undefined | ArchiveBootstrapItemTypeKeySpecifier);
+        fields?: ArchiveBootstrapItemTypeFieldPolicy;
+    };
+    ArchiveBootstrapProgressType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapProgressTypeKeySpecifier
+            | (() => undefined | ArchiveBootstrapProgressTypeKeySpecifier);
+        fields?: ArchiveBootstrapProgressTypeFieldPolicy;
+    };
+    ArchiveBootstrapSessionEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapSessionEdgeKeySpecifier
+            | (() => undefined | ArchiveBootstrapSessionEdgeKeySpecifier);
+        fields?: ArchiveBootstrapSessionEdgeFieldPolicy;
+    };
+    ArchiveBootstrapSessionNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapSessionNodeListKeySpecifier
+            | (() => undefined | ArchiveBootstrapSessionNodeListKeySpecifier);
+        fields?: ArchiveBootstrapSessionNodeListFieldPolicy;
+    };
+    ArchiveBootstrapSessionPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapSessionPayloadKeySpecifier
+            | (() => undefined | ArchiveBootstrapSessionPayloadKeySpecifier);
+        fields?: ArchiveBootstrapSessionPayloadFieldPolicy;
+    };
+    ArchiveBootstrapSessionType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapSessionTypeKeySpecifier
+            | (() => undefined | ArchiveBootstrapSessionTypeKeySpecifier);
+        fields?: ArchiveBootstrapSessionTypeFieldPolicy;
+    };
+    ArchiveBootstrapUnresolvedSourceType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ArchiveBootstrapUnresolvedSourceTypeKeySpecifier
+            | (() => undefined | ArchiveBootstrapUnresolvedSourceTypeKeySpecifier);
+        fields?: ArchiveBootstrapUnresolvedSourceTypeFieldPolicy;
+    };
+    AttachMangaToCanonicalWorkPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | AttachMangaToCanonicalWorkPayloadKeySpecifier
+            | (() => undefined | AttachMangaToCanonicalWorkPayloadKeySpecifier);
+        fields?: AttachMangaToCanonicalWorkPayloadFieldPolicy;
+    };
+    BackupRestoreAuditType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | BackupRestoreAuditTypeKeySpecifier | (() => undefined | BackupRestoreAuditTypeKeySpecifier);
+        fields?: BackupRestoreAuditTypeFieldPolicy;
+    };
+    BackupRestoreErrorCountsType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | BackupRestoreErrorCountsTypeKeySpecifier
+            | (() => undefined | BackupRestoreErrorCountsTypeKeySpecifier);
+        fields?: BackupRestoreErrorCountsTypeFieldPolicy;
+    };
+    BackupRestoreJobPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | BackupRestoreJobPayloadKeySpecifier
+            | (() => undefined | BackupRestoreJobPayloadKeySpecifier);
+        fields?: BackupRestoreJobPayloadFieldPolicy;
+    };
+    BackupRestoreJobType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | BackupRestoreJobTypeKeySpecifier | (() => undefined | BackupRestoreJobTypeKeySpecifier);
+        fields?: BackupRestoreJobTypeFieldPolicy;
     };
     BackupRestoreStatus?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | BackupRestoreStatusKeySpecifier | (() => undefined | BackupRestoreStatusKeySpecifier);
@@ -2612,6 +4494,60 @@ export type StrictTypedTypePolicies = {
     BindTrackRecordPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | BindTrackRecordPayloadKeySpecifier | (() => undefined | BindTrackRecordPayloadKeySpecifier);
         fields?: BindTrackRecordPayloadFieldPolicy;
+    };
+    CanonicalIdentityExportType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | CanonicalIdentityExportTypeKeySpecifier
+            | (() => undefined | CanonicalIdentityExportTypeKeySpecifier);
+        fields?: CanonicalIdentityExportTypeFieldPolicy;
+    };
+    CanonicalIdentityImportType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | CanonicalIdentityImportTypeKeySpecifier
+            | (() => undefined | CanonicalIdentityImportTypeKeySpecifier);
+        fields?: CanonicalIdentityImportTypeFieldPolicy;
+    };
+    CanonicalIdentityStatusType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | CanonicalIdentityStatusTypeKeySpecifier
+            | (() => undefined | CanonicalIdentityStatusTypeKeySpecifier);
+        fields?: CanonicalIdentityStatusTypeFieldPolicy;
+    };
+    CanonicalSourceBindingEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | CanonicalSourceBindingEdgeKeySpecifier
+            | (() => undefined | CanonicalSourceBindingEdgeKeySpecifier);
+        fields?: CanonicalSourceBindingEdgeFieldPolicy;
+    };
+    CanonicalSourceBindingNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | CanonicalSourceBindingNodeListKeySpecifier
+            | (() => undefined | CanonicalSourceBindingNodeListKeySpecifier);
+        fields?: CanonicalSourceBindingNodeListFieldPolicy;
+    };
+    CanonicalSourceBindingType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | CanonicalSourceBindingTypeKeySpecifier
+            | (() => undefined | CanonicalSourceBindingTypeKeySpecifier);
+        fields?: CanonicalSourceBindingTypeFieldPolicy;
+    };
+    CanonicalWorkEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | CanonicalWorkEdgeKeySpecifier | (() => undefined | CanonicalWorkEdgeKeySpecifier);
+        fields?: CanonicalWorkEdgeFieldPolicy;
+    };
+    CanonicalWorkNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | CanonicalWorkNodeListKeySpecifier | (() => undefined | CanonicalWorkNodeListKeySpecifier);
+        fields?: CanonicalWorkNodeListFieldPolicy;
+    };
+    CanonicalWorkType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | CanonicalWorkTypeKeySpecifier | (() => undefined | CanonicalWorkTypeKeySpecifier);
+        fields?: CanonicalWorkTypeFieldPolicy;
     };
     CategoryEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | CategoryEdgeKeySpecifier | (() => undefined | CategoryEdgeKeySpecifier);
@@ -2633,9 +4569,79 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | CategoryUpdateTypeKeySpecifier | (() => undefined | CategoryUpdateTypeKeySpecifier);
         fields?: CategoryUpdateTypeFieldPolicy;
     };
+    ChangeCanonicalBindingPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChangeCanonicalBindingPayloadKeySpecifier
+            | (() => undefined | ChangeCanonicalBindingPayloadKeySpecifier);
+        fields?: ChangeCanonicalBindingPayloadFieldPolicy;
+    };
     ChapterEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | ChapterEdgeKeySpecifier | (() => undefined | ChapterEdgeKeySpecifier);
         fields?: ChapterEdgeFieldPolicy;
+    };
+    ChapterIntegrityAuditItemEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditItemEdgeKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditItemEdgeKeySpecifier);
+        fields?: ChapterIntegrityAuditItemEdgeFieldPolicy;
+    };
+    ChapterIntegrityAuditItemNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditItemNodeListKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditItemNodeListKeySpecifier);
+        fields?: ChapterIntegrityAuditItemNodeListFieldPolicy;
+    };
+    ChapterIntegrityAuditItemType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditItemTypeKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditItemTypeKeySpecifier);
+        fields?: ChapterIntegrityAuditItemTypeFieldPolicy;
+    };
+    ChapterIntegrityAuditProgressType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditProgressTypeKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditProgressTypeKeySpecifier);
+        fields?: ChapterIntegrityAuditProgressTypeFieldPolicy;
+    };
+    ChapterIntegrityAuditScheduleType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditScheduleTypeKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditScheduleTypeKeySpecifier);
+        fields?: ChapterIntegrityAuditScheduleTypeFieldPolicy;
+    };
+    ChapterIntegrityAuditSessionEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditSessionEdgeKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditSessionEdgeKeySpecifier);
+        fields?: ChapterIntegrityAuditSessionEdgeFieldPolicy;
+    };
+    ChapterIntegrityAuditSessionNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditSessionNodeListKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditSessionNodeListKeySpecifier);
+        fields?: ChapterIntegrityAuditSessionNodeListFieldPolicy;
+    };
+    ChapterIntegrityAuditSessionPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditSessionPayloadKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditSessionPayloadKeySpecifier);
+        fields?: ChapterIntegrityAuditSessionPayloadFieldPolicy;
+    };
+    ChapterIntegrityAuditSessionType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterIntegrityAuditSessionTypeKeySpecifier
+            | (() => undefined | ChapterIntegrityAuditSessionTypeKeySpecifier);
+        fields?: ChapterIntegrityAuditSessionTypeFieldPolicy;
     };
     ChapterMetaType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | ChapterMetaTypeKeySpecifier | (() => undefined | ChapterMetaTypeKeySpecifier);
@@ -2644,6 +4650,140 @@ export type StrictTypedTypePolicies = {
     ChapterNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | ChapterNodeListKeySpecifier | (() => undefined | ChapterNodeListKeySpecifier);
         fields?: ChapterNodeListFieldPolicy;
+    };
+    ChapterRevisionComparisonPageEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionComparisonPageEdgeKeySpecifier
+            | (() => undefined | ChapterRevisionComparisonPageEdgeKeySpecifier);
+        fields?: ChapterRevisionComparisonPageEdgeFieldPolicy;
+    };
+    ChapterRevisionComparisonPageNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionComparisonPageNodeListKeySpecifier
+            | (() => undefined | ChapterRevisionComparisonPageNodeListKeySpecifier);
+        fields?: ChapterRevisionComparisonPageNodeListFieldPolicy;
+    };
+    ChapterRevisionComparisonPageType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionComparisonPageTypeKeySpecifier
+            | (() => undefined | ChapterRevisionComparisonPageTypeKeySpecifier);
+        fields?: ChapterRevisionComparisonPageTypeFieldPolicy;
+    };
+    ChapterRevisionComparisonType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionComparisonTypeKeySpecifier
+            | (() => undefined | ChapterRevisionComparisonTypeKeySpecifier);
+        fields?: ChapterRevisionComparisonTypeFieldPolicy;
+    };
+    ChapterRevisionEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | ChapterRevisionEdgeKeySpecifier | (() => undefined | ChapterRevisionEdgeKeySpecifier);
+        fields?: ChapterRevisionEdgeFieldPolicy;
+    };
+    ChapterRevisionNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionNodeListKeySpecifier
+            | (() => undefined | ChapterRevisionNodeListKeySpecifier);
+        fields?: ChapterRevisionNodeListFieldPolicy;
+    };
+    ChapterRevisionRollbackEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionRollbackEdgeKeySpecifier
+            | (() => undefined | ChapterRevisionRollbackEdgeKeySpecifier);
+        fields?: ChapterRevisionRollbackEdgeFieldPolicy;
+    };
+    ChapterRevisionRollbackNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionRollbackNodeListKeySpecifier
+            | (() => undefined | ChapterRevisionRollbackNodeListKeySpecifier);
+        fields?: ChapterRevisionRollbackNodeListFieldPolicy;
+    };
+    ChapterRevisionRollbackType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionRollbackTypeKeySpecifier
+            | (() => undefined | ChapterRevisionRollbackTypeKeySpecifier);
+        fields?: ChapterRevisionRollbackTypeFieldPolicy;
+    };
+    ChapterRevisionSweepItemEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepItemEdgeKeySpecifier
+            | (() => undefined | ChapterRevisionSweepItemEdgeKeySpecifier);
+        fields?: ChapterRevisionSweepItemEdgeFieldPolicy;
+    };
+    ChapterRevisionSweepItemNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepItemNodeListKeySpecifier
+            | (() => undefined | ChapterRevisionSweepItemNodeListKeySpecifier);
+        fields?: ChapterRevisionSweepItemNodeListFieldPolicy;
+    };
+    ChapterRevisionSweepItemType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepItemTypeKeySpecifier
+            | (() => undefined | ChapterRevisionSweepItemTypeKeySpecifier);
+        fields?: ChapterRevisionSweepItemTypeFieldPolicy;
+    };
+    ChapterRevisionSweepProgressType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepProgressTypeKeySpecifier
+            | (() => undefined | ChapterRevisionSweepProgressTypeKeySpecifier);
+        fields?: ChapterRevisionSweepProgressTypeFieldPolicy;
+    };
+    ChapterRevisionSweepScheduleType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepScheduleTypeKeySpecifier
+            | (() => undefined | ChapterRevisionSweepScheduleTypeKeySpecifier);
+        fields?: ChapterRevisionSweepScheduleTypeFieldPolicy;
+    };
+    ChapterRevisionSweepSessionEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepSessionEdgeKeySpecifier
+            | (() => undefined | ChapterRevisionSweepSessionEdgeKeySpecifier);
+        fields?: ChapterRevisionSweepSessionEdgeFieldPolicy;
+    };
+    ChapterRevisionSweepSessionNodeList?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepSessionNodeListKeySpecifier
+            | (() => undefined | ChapterRevisionSweepSessionNodeListKeySpecifier);
+        fields?: ChapterRevisionSweepSessionNodeListFieldPolicy;
+    };
+    ChapterRevisionSweepSessionPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepSessionPayloadKeySpecifier
+            | (() => undefined | ChapterRevisionSweepSessionPayloadKeySpecifier);
+        fields?: ChapterRevisionSweepSessionPayloadFieldPolicy;
+    };
+    ChapterRevisionSweepSessionType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionSweepSessionTypeKeySpecifier
+            | (() => undefined | ChapterRevisionSweepSessionTypeKeySpecifier);
+        fields?: ChapterRevisionSweepSessionTypeFieldPolicy;
+    };
+    ChapterRevisionType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | ChapterRevisionTypeKeySpecifier | (() => undefined | ChapterRevisionTypeKeySpecifier);
+        fields?: ChapterRevisionTypeFieldPolicy;
+    };
+    ChapterRevisionVisualAnalysisStatus?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ChapterRevisionVisualAnalysisStatusKeySpecifier
+            | (() => undefined | ChapterRevisionVisualAnalysisStatusKeySpecifier);
+        fields?: ChapterRevisionVisualAnalysisStatusFieldPolicy;
     };
     ChapterType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | ChapterTypeKeySpecifier | (() => undefined | ChapterTypeKeySpecifier);
@@ -2686,9 +4826,23 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | CreateBackupPayloadKeySpecifier | (() => undefined | CreateBackupPayloadKeySpecifier);
         fields?: CreateBackupPayloadFieldPolicy;
     };
+    CreateCanonicalWorkPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | CreateCanonicalWorkPayloadKeySpecifier
+            | (() => undefined | CreateCanonicalWorkPayloadKeySpecifier);
+        fields?: CreateCanonicalWorkPayloadFieldPolicy;
+    };
     CreateCategoryPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | CreateCategoryPayloadKeySpecifier | (() => undefined | CreateCategoryPayloadKeySpecifier);
         fields?: CreateCategoryPayloadFieldPolicy;
+    };
+    DeleteCanonicalWorkPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | DeleteCanonicalWorkPayloadKeySpecifier
+            | (() => undefined | DeleteCanonicalWorkPayloadKeySpecifier);
+        fields?: DeleteCanonicalWorkPayloadFieldPolicy;
     };
     DeleteCategoryMetaPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?:
@@ -2789,6 +4943,13 @@ export type StrictTypedTypePolicies = {
             | (() => undefined | DequeueChapterDownloadsPayloadKeySpecifier);
         fields?: DequeueChapterDownloadsPayloadFieldPolicy;
     };
+    DetachCanonicalBindingPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | DetachCanonicalBindingPayloadKeySpecifier
+            | (() => undefined | DetachCanonicalBindingPayloadKeySpecifier);
+        fields?: DetachCanonicalBindingPayloadFieldPolicy;
+    };
     DownloadEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | DownloadEdgeKeySpecifier | (() => undefined | DownloadEdgeKeySpecifier);
         fields?: DownloadEdgeFieldPolicy;
@@ -2835,6 +4996,13 @@ export type StrictTypedTypePolicies = {
             | (() => undefined | EnqueueChapterDownloadsPayloadKeySpecifier);
         fields?: EnqueueChapterDownloadsPayloadFieldPolicy;
     };
+    ExportCanonicalIdentityPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ExportCanonicalIdentityPayloadKeySpecifier
+            | (() => undefined | ExportCanonicalIdentityPayloadKeySpecifier);
+        fields?: ExportCanonicalIdentityPayloadFieldPolicy;
+    };
     ExtensionEdge?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | ExtensionEdgeKeySpecifier | (() => undefined | ExtensionEdgeKeySpecifier);
         fields?: ExtensionEdgeFieldPolicy;
@@ -2858,6 +5026,13 @@ export type StrictTypedTypePolicies = {
     ExtensionType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | ExtensionTypeKeySpecifier | (() => undefined | ExtensionTypeKeySpecifier);
         fields?: ExtensionTypeFieldPolicy;
+    };
+    FailoverCanonicalWorkPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | FailoverCanonicalWorkPayloadKeySpecifier
+            | (() => undefined | FailoverCanonicalWorkPayloadKeySpecifier);
+        fields?: FailoverCanonicalWorkPayloadFieldPolicy;
     };
     FetchChapterPagesPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?:
@@ -2912,6 +5087,13 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | HeaderFilterKeySpecifier | (() => undefined | HeaderFilterKeySpecifier);
         fields?: HeaderFilterFieldPolicy;
     };
+    ImportCanonicalIdentityPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | ImportCanonicalIdentityPayloadKeySpecifier
+            | (() => undefined | ImportCanonicalIdentityPayloadKeySpecifier);
+        fields?: ImportCanonicalIdentityPayloadFieldPolicy;
+    };
     InstallExternalExtensionPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?:
             | false
@@ -2923,6 +5105,20 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | JvmInfoKeySpecifier | (() => undefined | JvmInfoKeySpecifier);
         fields?: JvmInfoFieldPolicy;
     };
+    KeepBothChapterRevisionsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | KeepBothChapterRevisionsPayloadKeySpecifier
+            | (() => undefined | KeepBothChapterRevisionsPayloadKeySpecifier);
+        fields?: KeepBothChapterRevisionsPayloadFieldPolicy;
+    };
+    KeepCurrentChapterRevisionsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | KeepCurrentChapterRevisionsPayloadKeySpecifier
+            | (() => undefined | KeepCurrentChapterRevisionsPayloadKeySpecifier);
+        fields?: KeepCurrentChapterRevisionsPayloadFieldPolicy;
+    };
     KoSyncConnectPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | KoSyncConnectPayloadKeySpecifier | (() => undefined | KoSyncConnectPayloadKeySpecifier);
         fields?: KoSyncConnectPayloadFieldPolicy;
@@ -2930,6 +5126,10 @@ export type StrictTypedTypePolicies = {
     KoSyncStatusPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | KoSyncStatusPayloadKeySpecifier | (() => undefined | KoSyncStatusPayloadKeySpecifier);
         fields?: KoSyncStatusPayloadFieldPolicy;
+    };
+    KomgaRescanStatusType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | KomgaRescanStatusTypeKeySpecifier | (() => undefined | KomgaRescanStatusTypeKeySpecifier);
+        fields?: KomgaRescanStatusTypeFieldPolicy;
     };
     LastUpdateTimestampPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?:
@@ -3034,6 +5234,13 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | PlatformInfoKeySpecifier | (() => undefined | PlatformInfoKeySpecifier);
         fields?: PlatformInfoFieldPolicy;
     };
+    PromoteCanonicalBindingPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | PromoteCanonicalBindingPayloadKeySpecifier
+            | (() => undefined | PromoteCanonicalBindingPayloadKeySpecifier);
+        fields?: PromoteCanonicalBindingPayloadFieldPolicy;
+    };
     PullKoSyncProgressPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?:
             | false
@@ -3056,6 +5263,20 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | RefreshTokenPayloadKeySpecifier | (() => undefined | RefreshTokenPayloadKeySpecifier);
         fields?: RefreshTokenPayloadFieldPolicy;
     };
+    RejectChapterRevisionCandidatesPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RejectChapterRevisionCandidatesPayloadKeySpecifier
+            | (() => undefined | RejectChapterRevisionCandidatesPayloadKeySpecifier);
+        fields?: RejectChapterRevisionCandidatesPayloadFieldPolicy;
+    };
+    RejectChapterRevisionsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RejectChapterRevisionsPayloadKeySpecifier
+            | (() => undefined | RejectChapterRevisionsPayloadKeySpecifier);
+        fields?: RejectChapterRevisionsPayloadFieldPolicy;
+    };
     RemoveExtensionStorePayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?:
             | false
@@ -3070,6 +5291,13 @@ export type StrictTypedTypePolicies = {
             | (() => undefined | ReorderChapterDownloadPayloadKeySpecifier);
         fields?: ReorderChapterDownloadPayloadFieldPolicy;
     };
+    RequestKomgaRescanPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RequestKomgaRescanPayloadKeySpecifier
+            | (() => undefined | RequestKomgaRescanPayloadKeySpecifier);
+        fields?: RequestKomgaRescanPayloadFieldPolicy;
+    };
     ResetSettingsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | ResetSettingsPayloadKeySpecifier | (() => undefined | ResetSettingsPayloadKeySpecifier);
         fields?: ResetSettingsPayloadFieldPolicy;
@@ -3077,6 +5305,76 @@ export type StrictTypedTypePolicies = {
     RestoreBackupPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | RestoreBackupPayloadKeySpecifier | (() => undefined | RestoreBackupPayloadKeySpecifier);
         fields?: RestoreBackupPayloadFieldPolicy;
+    };
+    RetryArchiveBootstrapItemsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryArchiveBootstrapItemsPayloadKeySpecifier
+            | (() => undefined | RetryArchiveBootstrapItemsPayloadKeySpecifier);
+        fields?: RetryArchiveBootstrapItemsPayloadFieldPolicy;
+    };
+    RetryChapterIntegrityAuditItemsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryChapterIntegrityAuditItemsPayloadKeySpecifier
+            | (() => undefined | RetryChapterIntegrityAuditItemsPayloadKeySpecifier);
+        fields?: RetryChapterIntegrityAuditItemsPayloadFieldPolicy;
+    };
+    RetryChapterRevisionArchivesPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryChapterRevisionArchivesPayloadKeySpecifier
+            | (() => undefined | RetryChapterRevisionArchivesPayloadKeySpecifier);
+        fields?: RetryChapterRevisionArchivesPayloadFieldPolicy;
+    };
+    RetryChapterRevisionPruningsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryChapterRevisionPruningsPayloadKeySpecifier
+            | (() => undefined | RetryChapterRevisionPruningsPayloadKeySpecifier);
+        fields?: RetryChapterRevisionPruningsPayloadFieldPolicy;
+    };
+    RetryChapterRevisionPublicationsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryChapterRevisionPublicationsPayloadKeySpecifier
+            | (() => undefined | RetryChapterRevisionPublicationsPayloadKeySpecifier);
+        fields?: RetryChapterRevisionPublicationsPayloadFieldPolicy;
+    };
+    RetryChapterRevisionSweepItemsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryChapterRevisionSweepItemsPayloadKeySpecifier
+            | (() => undefined | RetryChapterRevisionSweepItemsPayloadKeySpecifier);
+        fields?: RetryChapterRevisionSweepItemsPayloadFieldPolicy;
+    };
+    RetryChapterRevisionVisualAnalysesPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryChapterRevisionVisualAnalysesPayloadKeySpecifier
+            | (() => undefined | RetryChapterRevisionVisualAnalysesPayloadKeySpecifier);
+        fields?: RetryChapterRevisionVisualAnalysesPayloadFieldPolicy;
+    };
+    RetryChapterRevisionsPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryChapterRevisionsPayloadKeySpecifier
+            | (() => undefined | RetryChapterRevisionsPayloadKeySpecifier);
+        fields?: RetryChapterRevisionsPayloadFieldPolicy;
+    };
+    RetryKomgaRescanPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RetryKomgaRescanPayloadKeySpecifier
+            | (() => undefined | RetryKomgaRescanPayloadKeySpecifier);
+        fields?: RetryKomgaRescanPayloadFieldPolicy;
+    };
+    RollbackChapterRevisionPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | RollbackChapterRevisionPayloadKeySpecifier
+            | (() => undefined | RollbackChapterRevisionPayloadKeySpecifier);
+        fields?: RollbackChapterRevisionPayloadFieldPolicy;
     };
     SearchTrackerPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | SearchTrackerPayloadKeySpecifier | (() => undefined | SearchTrackerPayloadKeySpecifier);
@@ -3197,6 +5495,27 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | SourceTypeKeySpecifier | (() => undefined | SourceTypeKeySpecifier);
         fields?: SourceTypeFieldPolicy;
     };
+    StartArchiveBootstrapPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | StartArchiveBootstrapPayloadKeySpecifier
+            | (() => undefined | StartArchiveBootstrapPayloadKeySpecifier);
+        fields?: StartArchiveBootstrapPayloadFieldPolicy;
+    };
+    StartChapterIntegrityAuditPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | StartChapterIntegrityAuditPayloadKeySpecifier
+            | (() => undefined | StartChapterIntegrityAuditPayloadKeySpecifier);
+        fields?: StartChapterIntegrityAuditPayloadFieldPolicy;
+    };
+    StartChapterRevisionSweepPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | StartChapterRevisionSweepPayloadKeySpecifier
+            | (() => undefined | StartChapterRevisionSweepPayloadKeySpecifier);
+        fields?: StartChapterRevisionSweepPayloadFieldPolicy;
+    };
     StartDownloaderPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | StartDownloaderPayloadKeySpecifier | (() => undefined | StartDownloaderPayloadKeySpecifier);
         fields?: StartDownloaderPayloadFieldPolicy;
@@ -3272,6 +5591,13 @@ export type StrictTypedTypePolicies = {
     UnbindTrackPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | UnbindTrackPayloadKeySpecifier | (() => undefined | UnbindTrackPayloadKeySpecifier);
         fields?: UnbindTrackPayloadFieldPolicy;
+    };
+    UpdateCanonicalWorkPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?:
+            | false
+            | UpdateCanonicalWorkPayloadKeySpecifier
+            | (() => undefined | UpdateCanonicalWorkPayloadKeySpecifier);
+        fields?: UpdateCanonicalWorkPayloadFieldPolicy;
     };
     UpdateCategoriesPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?:

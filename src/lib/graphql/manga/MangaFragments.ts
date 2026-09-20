@@ -204,6 +204,17 @@ export const MANGA_SCREEN_FIELDS = gql`
     }
 `;
 
+/** The per-series archival intent and the effective retention it resolves to. */
+export const MANGA_ARCHIVE_SETTINGS_FIELDS = gql`
+    fragment MANGA_ARCHIVE_SETTINGS_FIELDS on MangaType {
+        id
+        title
+        acquisitionPolicy
+        acceptedRevisionRetention
+        effectiveAcceptedRevisionRetention
+    }
+`;
+
 export const MANGA_LIBRARY_DUPLICATE_SCREEN_FIELDS = gql`
     ${MANGA_BASE_FIELDS}
     ${MANGA_CHAPTER_STAT_FIELDS}
