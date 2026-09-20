@@ -67,8 +67,8 @@ export const WebUIUpdateChecker = () => {
 
     const changelogUrl =
         updateStatus.info?.channel === WebUiChannel.Stable
-            ? 'https://github.com/Suwayomi/Suwayomi-WebUI/releases/latest'
-            : 'https://github.com/Suwayomi/Suwayomi-WebUI/blob/master/CHANGELOG.md';
+            ? 'https://github.com/IMXEren/Suwayomi-WebUI/releases'
+            : 'https://github.com/IMXEren/Suwayomi-WebUI/blob/dev/RELEASES.md';
 
     const newVersion = aboutWebUI?.tag;
     // A stored version round-trips through JSON, so an all-numeric tag comes back as a number
