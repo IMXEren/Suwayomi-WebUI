@@ -7,6 +7,7 @@
  */
 
 import Label from '@mui/icons-material/Label';
+import ArchiveIcon from '@mui/icons-material/Archive';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import Refresh from '@mui/icons-material/Refresh';
 import IconButton from '@mui/material/IconButton';
@@ -27,6 +28,7 @@ import { AppRoutes } from '@/base/AppRoute.constants.ts';
 import { CategorySelect } from '@/features/category/components/CategorySelect.tsx';
 import { useMetadataServerSettings } from '@/features/settings/services/ServerSettingsMetadata.ts';
 import { ThemeCreationDialog } from '@/features/theme/components/CreateThemeDialog.tsx';
+import { MangaArchiveSettingsDialog } from '@/features/archive/components/MangaArchiveSettingsDialog.tsx';
 import type {
     MangaIdInfo,
     MangaInLibraryInfo,
@@ -59,6 +61,11 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
 
     const openCategorySelection = () => {
         AwaitableComponent.show(CategorySelect, { mangaId: manga.id });
+    };
+
+    // the policy only applies to library series, which are the only ones that get revision candidates
+    const openArchiveSettings = () => {
+        AwaitableComponent.show(MangaArchiveSettingsDialog, { mangaId: manga.id });
     };
 
     // oxlint-disable-next-line unicorn/consistent-function-scoping
@@ -136,6 +143,16 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
                                     color="inherit"
                                 >
                                     <Label />
+                                </IconButton>
+                            </CustomTooltip>
+                            <CustomTooltip title={t`Archival settings`}>
+                                <IconButton
+                                    onClick={() => {
+                                        openArchiveSettings();
+                                    }}
+                                    color="inherit"
+                                >
+                                    <ArchiveIcon />
                                 </IconButton>
                             </CustomTooltip>
                         </>
@@ -216,6 +233,18 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
                                     <Label fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText>{t`Edit manga categories`}</ListItemText>
+                            </MenuItem>,
+                            <MenuItem
+                                key="archive-settings"
+                                onClick={() => {
+                                    openArchiveSettings();
+                                    handleClose();
+                                }}
+                            >
+                                <ListItemIcon>
+                                    <ArchiveIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText>{t`Archival settings`}</ListItemText>
                             </MenuItem>,
                         ]}
                         <ShareGuard>

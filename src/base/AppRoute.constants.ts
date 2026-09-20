@@ -194,6 +194,10 @@ export const AppRoutes = {
         match: 'updates',
         path: '/updates',
     },
+    archive: {
+        match: 'archive',
+        path: '/archive',
+    },
     history: {
         match: 'history',
         path: '/history',

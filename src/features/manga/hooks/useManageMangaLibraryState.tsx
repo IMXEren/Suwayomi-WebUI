@@ -40,7 +40,7 @@ export const useManageMangaLibraryState = (
         (addToCategories: number[] = [], removeFromCategories: number[] = []) => {
             requestManager
                 .updateManga(manga.id, {
-                    updateManga: { inLibrary: true },
+                    updateManga: { inLibrary: true, inheritAcceptedRevisionRetention: false },
                     updateMangaCategories: { addToCategories, removeFromCategories },
                 })
                 .response.then(() => makeToast(t`Added manga to library!`, 'success'))
