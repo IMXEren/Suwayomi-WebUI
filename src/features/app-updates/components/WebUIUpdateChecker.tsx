@@ -71,7 +71,11 @@ export const WebUIUpdateChecker = () => {
             : 'https://github.com/Suwayomi/Suwayomi-WebUI/blob/master/CHANGELOG.md';
 
     const newVersion = aboutWebUI?.tag;
-    const isSameAsCurrent = !newVersion || !webUIVersion || webUIVersion === newVersion;
+    // A stored version round-trips through JSON, so an all-numeric tag comes back as a number
+    // while the server always reports it as a string. Compare stringified values, otherwise the
+    // check never matches for numeric tags and the dialog below cannot be dismissed.
+    const storedVersion = webUIVersion === undefined || webUIVersion === null ? undefined : String(webUIVersion);
+    const isSameAsCurrent = !newVersion || !storedVersion || storedVersion === newVersion;
 
     const shouldForceRefresh = AppSession.STARTUP_TIMESTAMP < Number(aboutWebUI?.updateTimestamp);
 
