@@ -11,6 +11,7 @@ import {
     ChapterArchiveState,
     ChapterPublicationState,
     ChapterRetentionState,
+    type MangaAcquisitionPolicy,
 } from '@/lib/graphql/generated/graphql-base.types.ts';
 
 export enum ArchiveTab {
@@ -184,3 +185,14 @@ export enum ArchiveRetentionMode {
 
 /** The server sentinel for "keep every accepted revision" in the nullable per-series override. */
 export const ARCHIVE_RETENTION_UNLIMITED = -1;
+
+/**
+ * The per-series policy select value that keeps following the global archival default.
+ *
+ * The other select values are the server's own `MangaAcquisitionPolicy` values, so the inherit case is
+ * the only one that needs a value of its own.
+ */
+export const ARCHIVE_ACQUISITION_POLICY_INHERIT = 'INHERIT';
+
+/** The per-series acquisition-policy select: an explicit policy, or the global default. */
+export type ArchiveAcquisitionPolicySelection = MangaAcquisitionPolicy | typeof ARCHIVE_ACQUISITION_POLICY_INHERIT;

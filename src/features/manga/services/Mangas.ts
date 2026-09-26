@@ -399,7 +399,11 @@ export class Mangas {
             mangaIds.length,
             () =>
                 requestManager.updateMangas(mangaIds, {
-                    updateMangas: { inLibrary: false, inheritAcceptedRevisionRetention: false },
+                    updateMangas: {
+                        inLibrary: false,
+                        inheritAcceptedRevisionRetention: false,
+                        inheritAcquisitionPolicy: false,
+                    },
                     updateMangasCategories: removeMangaFromCategories ? { clearCategories: true } : undefined,
                 }).response,
             disableConfirmation,

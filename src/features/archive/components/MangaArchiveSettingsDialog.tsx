@@ -35,7 +35,12 @@ import {
     MangaAcquisitionPolicy,
     type UpdateMangaPatchInput,
 } from '@/lib/graphql/generated/graphql-base.types.ts';
-import { ARCHIVE_RETENTION_UNLIMITED, ArchiveRetentionMode } from '@/features/archive/Archive.constants.ts';
+import {
+    ARCHIVE_ACQUISITION_POLICY_INHERIT,
+    ARCHIVE_RETENTION_UNLIMITED,
+    ArchiveRetentionMode,
+    type ArchiveAcquisitionPolicySelection,
+} from '@/features/archive/Archive.constants.ts';
 
 const formatRetention = (retention: number, unlimitedLabel: string): string =>
     retention === ARCHIVE_RETENTION_UNLIMITED ? unlimitedLabel : String(retention);
@@ -60,7 +65,7 @@ export const MangaArchiveSettingsDialog = ({
         { fetchPolicy: 'cache-and-network' },
     );
 
-    const [policy, setPolicy] = useState<MangaAcquisitionPolicy>(MangaAcquisitionPolicy.Manual);
+    const [policy, setPolicy] = useState<ArchiveAcquisitionPolicySelection>(ARCHIVE_ACQUISITION_POLICY_INHERIT);
     const [retentionMode, setRetentionMode] = useState<ArchiveRetentionMode>(ArchiveRetentionMode.INHERIT);
     const [retentionCount, setRetentionCount] = useState(0);
     const [isSaving, setIsSaving] = useState(false);
@@ -92,7 +97,7 @@ export const MangaArchiveSettingsDialog = ({
         }
 
         initializedRef.current = true;
-        setPolicy(manga.acquisitionPolicy);
+        setPolicy(manga.acquisitionPolicyOverride ?? ARCHIVE_ACQUISITION_POLICY_INHERIT);
 
         const retention = manga.acceptedRevisionRetention;
         if (retention == null) {
@@ -117,6 +122,13 @@ export const MangaArchiveSettingsDialog = ({
     }, [canonicalBinding]);
 
     const manga = data?.manga;
+
+    // localized here rather than at module scope, so the policy names go through Lingui
+    const policyLabels: Record<MangaAcquisitionPolicy, string> = {
+        [MangaAcquisitionPolicy.Auto]: t`Automatic`,
+        [MangaAcquisitionPolicy.Manual]: t`Wait for approval`,
+        [MangaAcquisitionPolicy.Paused]: t`Paused`,
+    };
 
     /**
      * Starts a revision sweep for this series only.
@@ -308,8 +320,13 @@ export const MangaArchiveSettingsDialog = ({
     };
 
     const save = async () => {
-        // Only the retention fields differ per mode; the inherit flag is always sent because the mutation
-        // requires it, and it is what makes the server clear an override the series no longer wants.
+        // The inherit flags are always sent because the mutation requires them, and they are what makes the
+        // server clear an override the series no longer wants; only the value fields differ per mode.
+        const policyPatch: Pick<UpdateMangaPatchInput, 'inheritAcquisitionPolicy' | 'acquisitionPolicy'> =
+            policy === ARCHIVE_ACQUISITION_POLICY_INHERIT
+                ? { inheritAcquisitionPolicy: true }
+                : { inheritAcquisitionPolicy: false, acquisitionPolicy: policy };
+
         const retention: Pick<UpdateMangaPatchInput, 'inheritAcceptedRevisionRetention' | 'acceptedRevisionRetention'> =
             retentionMode === ArchiveRetentionMode.INHERIT
                 ? { inheritAcceptedRevisionRetention: true }
@@ -324,7 +341,7 @@ export const MangaArchiveSettingsDialog = ({
         setIsSaving(true);
         try {
             const response = await requestManager.updateManga(mangaId, {
-                updateManga: { acquisitionPolicy: policy, ...retention },
+                updateManga: { ...policyPatch, ...retention },
             }).response;
 
             if (response.error) {
@@ -362,15 +379,21 @@ export const MangaArchiveSettingsDialog = ({
                                 labelId="manga-archive-policy-label"
                                 label={t`Acquisition policy`}
                                 value={policy}
-                                onChange={(event) => setPolicy(event.target.value as MangaAcquisitionPolicy)}
+                                onChange={(event) => setPolicy(event.target.value as ArchiveAcquisitionPolicySelection)}
                             >
-                                <MenuItem value={MangaAcquisitionPolicy.Auto}>{t`Automatic`}</MenuItem>
-                                <MenuItem value={MangaAcquisitionPolicy.Manual}>{t`Wait for approval`}</MenuItem>
-                                <MenuItem value={MangaAcquisitionPolicy.Paused}>{t`Paused`}</MenuItem>
+                                <MenuItem value={ARCHIVE_ACQUISITION_POLICY_INHERIT}>{t`Use global default`}</MenuItem>
+                                {Object.values(MangaAcquisitionPolicy).map((value) => (
+                                    <MenuItem key={value} value={value}>
+                                        {policyLabels[value]}
+                                    </MenuItem>
+                                ))}
                             </Select>
                         </FormControl>
                         <Typography variant="caption" color="text.secondary">
                             {t`Automatic queues new revisions right away, manual waits for approval, paused only records them.`}
+                        </Typography>
+                        <Typography variant="body2">
+                            {t`Currently applied: ${policyLabels[manga.acquisitionPolicy]}`}
                         </Typography>
                         <FormControl size="small" fullWidth>
                             <InputLabel id="manga-archive-retention-label">{t`Kept revisions`}</InputLabel>
