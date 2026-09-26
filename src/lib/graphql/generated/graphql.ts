@@ -4814,6 +4814,7 @@ export type MangaArchiveSettingsFieldsFragment = {
     id: number;
     title: string;
     acquisitionPolicy: Types.MangaAcquisitionPolicy;
+    acquisitionPolicyOverride: Types.MangaAcquisitionPolicy | null;
     acceptedRevisionRetention: number | null;
     effectiveAcceptedRevisionRetention: number;
 };
@@ -5119,6 +5120,7 @@ export type GetMangaArchiveSettingsQuery = {
         id: number;
         title: string;
         acquisitionPolicy: Types.MangaAcquisitionPolicy;
+        acquisitionPolicyOverride: Types.MangaAcquisitionPolicy | null;
         acceptedRevisionRetention: number | null;
         effectiveAcceptedRevisionRetention: number;
     };
@@ -5809,6 +5811,8 @@ export type ServerSettingsFragment = {
     databasePassword: string;
     useHikariConnectionPool: boolean;
     kcefEnabled: boolean;
+    webViewProvider: Types.WebViewProvider;
+    archiveDefaultAcquisitionPolicy: string;
     syncDataCategories: boolean;
     syncDataChapters: boolean;
     syncDataHistory: boolean;
@@ -5922,6 +5926,8 @@ export type ResetServerSettingsMutation = {
             databasePassword: string;
             useHikariConnectionPool: boolean;
             kcefEnabled: boolean;
+            webViewProvider: Types.WebViewProvider;
+            archiveDefaultAcquisitionPolicy: string;
             syncDataCategories: boolean;
             syncDataChapters: boolean;
             syncDataHistory: boolean;
@@ -6045,6 +6051,8 @@ export type UpdateServerSettingsMutation = {
             databasePassword: string;
             useHikariConnectionPool: boolean;
             kcefEnabled: boolean;
+            webViewProvider: Types.WebViewProvider;
+            archiveDefaultAcquisitionPolicy: string;
             syncDataCategories: boolean;
             syncDataChapters: boolean;
             syncDataHistory: boolean;
@@ -6164,6 +6172,8 @@ export type GetServerSettingsQuery = {
         databasePassword: string;
         useHikariConnectionPool: boolean;
         kcefEnabled: boolean;
+        webViewProvider: Types.WebViewProvider;
+        archiveDefaultAcquisitionPolicy: string;
         syncDataCategories: boolean;
         syncDataChapters: boolean;
         syncDataHistory: boolean;
@@ -7801,4 +7811,31 @@ export type WebviewClearCacheCookiesMutationVariables = Exact<{ [key: string]: n
 export type WebviewClearCacheCookiesMutation = {
     __typename: 'Mutation';
     clearCookiesAndCache: { __typename: 'ClearCookiesAndCachePayload'; clientMutationId: string | null };
+};
+
+export type OpenWebViewMutationVariables = Exact<{
+    input: Types.OpenWebViewInput;
+}>;
+
+export type OpenWebViewMutation = {
+    __typename: 'Mutation';
+    openWebView: { __typename: 'OpenWebViewPayload'; tab: string; url: string; title: string; status: number };
+};
+
+export type CloseWebViewMutationVariables = Exact<{
+    input: Types.CloseWebViewInput;
+}>;
+
+export type CloseWebViewMutation = {
+    __typename: 'Mutation';
+    closeWebView: { __typename: 'CloseWebViewPayload'; closed: Array<string> };
+};
+
+export type GetWebViewTabsQueryVariables = Exact<{
+    tab?: string | null | undefined;
+}>;
+
+export type GetWebViewTabsQuery = {
+    __typename: 'Query';
+    webViewTabs: Array<{ __typename: 'WebViewTabType'; id: string; title: string; url: string }>;
 };

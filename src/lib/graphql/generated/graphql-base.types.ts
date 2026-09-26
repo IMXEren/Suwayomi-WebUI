@@ -7,13 +7,9 @@ export type Scalars = {
     Boolean: { input: boolean; output: boolean };
     Int: { input: number; output: number };
     Float: { input: number; output: number };
-    /** A location in a connection that can be used for resuming pagination. */
     Cursor: { input: string; output: string };
-    /** An ISO-8601 encoded duration string */
     Duration: { input: string; output: string };
-    /** A 64-bit signed integer as a String */
     LongString: { input: string; output: string };
-    /** A file part in a multipart request */
     Upload: { input: unknown; output: unknown };
 };
 
@@ -1365,6 +1361,17 @@ export type ClearDownloaderPayload = {
     downloadStatus: DownloadStatus;
 };
 
+export type CloseWebViewInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    tab?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CloseWebViewPayload = {
+    __typename?: 'CloseWebViewPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    closed: Array<Scalars['String']['output']>;
+};
+
 export type ConnectKoSyncAccountInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     password: Scalars['String']['input'];
@@ -2480,6 +2487,7 @@ export type MangaType = {
     __typename?: 'MangaType';
     acceptedRevisionRetention?: Maybe<Scalars['Int']['output']>;
     acquisitionPolicy: MangaAcquisitionPolicy;
+    acquisitionPolicyOverride?: Maybe<MangaAcquisitionPolicy>;
     age?: Maybe<Scalars['LongString']['output']>;
     artist?: Maybe<Scalars['String']['output']>;
     author?: Maybe<Scalars['String']['output']>;
@@ -2597,6 +2605,7 @@ export type Mutation = {
     clearCachedImages: ClearCachedImagesPayload;
     clearCookiesAndCache: ClearCookiesAndCachePayload;
     clearDownloader?: Maybe<ClearDownloaderPayload>;
+    closeWebView: CloseWebViewPayload;
     connectKoSyncAccount: KoSyncConnectPayload;
     createBackup: CreateBackupPayload;
     createCanonicalWork: CreateCanonicalWorkPayload;
@@ -2640,6 +2649,7 @@ export type Mutation = {
     loginTrackerOAuth: LoginTrackerOAuthPayload;
     logoutKoSyncAccount: LogoutKoSyncAccountPayload;
     logoutTracker: LogoutTrackerPayload;
+    openWebView: OpenWebViewPayload;
     pauseArchiveBootstrap: ArchiveBootstrapSessionPayload;
     pauseChapterIntegrityAudit: ChapterIntegrityAuditSessionPayload;
     pauseChapterRevisionSweep: ChapterRevisionSweepSessionPayload;
@@ -2769,6 +2779,10 @@ export type MutationClearCookiesAndCacheArgs = {
 
 export type MutationClearDownloaderArgs = {
     input: ClearDownloaderInput;
+};
+
+export type MutationCloseWebViewArgs = {
+    input?: InputMaybe<CloseWebViewInput>;
 };
 
 export type MutationConnectKoSyncAccountArgs = {
@@ -2933,6 +2947,10 @@ export type MutationLogoutKoSyncAccountArgs = {
 
 export type MutationLogoutTrackerArgs = {
     input: LogoutTrackerInput;
+};
+
+export type MutationOpenWebViewArgs = {
+    input: OpenWebViewInput;
 };
 
 export type MutationPauseArchiveBootstrapArgs = {
@@ -3248,6 +3266,20 @@ export type OsInfo = {
     version: Scalars['String']['output'];
 };
 
+export type OpenWebViewInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    url: Scalars['String']['input'];
+};
+
+export type OpenWebViewPayload = {
+    __typename?: 'OpenWebViewPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    status: Scalars['Int']['output'];
+    tab: Scalars['String']['output'];
+    title: Scalars['String']['output'];
+    url: Scalars['String']['output'];
+};
+
 export type PageInfo = {
     __typename?: 'PageInfo';
     /** When paginating forwards, the cursor to continue. */
@@ -3276,6 +3308,7 @@ export type PartialSettingsType = Settings & {
     archiveBootstrapInterItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
     archiveBootstrapMaxAttempts?: Maybe<Scalars['Int']['output']>;
     archiveBootstrapRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDefaultAcquisitionPolicy?: Maybe<Scalars['String']['output']>;
     archiveDirectDeliveryEnabled?: Maybe<Scalars['Boolean']['output']>;
     archiveDirectDeliveryExpirySeconds?: Maybe<Scalars['Int']['output']>;
     archiveDirectDeliveryFallbackToLocal?: Maybe<Scalars['Boolean']['output']>;
@@ -3412,6 +3445,9 @@ export type PartialSettingsType = Settings & {
     webUIFlavor?: Maybe<WebUiFlavor>;
     webUIInterface?: Maybe<WebUiInterface>;
     webUIUpdateCheckInterval?: Maybe<Scalars['Float']['output']>;
+    webViewOpenTimeout?: Maybe<Scalars['Int']['output']>;
+    webViewProvider?: Maybe<WebViewProvider>;
+    webViewVncUrl?: Maybe<Scalars['String']['output']>;
 };
 
 export type PartialSettingsTypeInput = {
@@ -3419,6 +3455,7 @@ export type PartialSettingsTypeInput = {
     archiveBootstrapInterItemDelaySeconds?: InputMaybe<Scalars['Int']['input']>;
     archiveBootstrapMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
     archiveBootstrapRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveDefaultAcquisitionPolicy?: InputMaybe<Scalars['String']['input']>;
     archiveDirectDeliveryEnabled?: InputMaybe<Scalars['Boolean']['input']>;
     archiveDirectDeliveryExpirySeconds?: InputMaybe<Scalars['Int']['input']>;
     archiveDirectDeliveryFallbackToLocal?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3533,6 +3570,9 @@ export type PartialSettingsTypeInput = {
     webUIFlavor?: InputMaybe<WebUiFlavor>;
     webUIInterface?: InputMaybe<WebUiInterface>;
     webUIUpdateCheckInterval?: InputMaybe<Scalars['Float']['input']>;
+    webViewOpenTimeout?: InputMaybe<Scalars['Int']['input']>;
+    webViewProvider?: InputMaybe<WebViewProvider>;
+    webViewVncUrl?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PlatformInfo = {
@@ -3668,6 +3708,7 @@ export type Query = {
     updateStatus: UpdateStatus;
     validateBackup: ValidateBackupResult;
     visualAnalysisBacklog: ChapterRevisionNodeList;
+    webViewTabs: Array<WebViewTabType>;
 };
 
 export type QueryActiveChapterRevisionArgs = {
@@ -4062,6 +4103,10 @@ export type QueryVisualAnalysisBacklogArgs = {
     order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
 };
 
+export type QueryWebViewTabsArgs = {
+    tab?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type RefreshTokenInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     refreshToken: Scalars['String']['input'];
@@ -4451,6 +4496,7 @@ export type Settings = {
     archiveBootstrapInterItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
     archiveBootstrapMaxAttempts?: Maybe<Scalars['Int']['output']>;
     archiveBootstrapRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDefaultAcquisitionPolicy?: Maybe<Scalars['String']['output']>;
     archiveDirectDeliveryEnabled?: Maybe<Scalars['Boolean']['output']>;
     archiveDirectDeliveryExpirySeconds?: Maybe<Scalars['Int']['output']>;
     archiveDirectDeliveryFallbackToLocal?: Maybe<Scalars['Boolean']['output']>;
@@ -4587,6 +4633,9 @@ export type Settings = {
     webUIFlavor?: Maybe<WebUiFlavor>;
     webUIInterface?: Maybe<WebUiInterface>;
     webUIUpdateCheckInterval?: Maybe<Scalars['Float']['output']>;
+    webViewOpenTimeout?: Maybe<Scalars['Int']['output']>;
+    webViewProvider?: Maybe<WebViewProvider>;
+    webViewVncUrl?: Maybe<Scalars['String']['output']>;
 };
 
 export type SettingsDownloadConversion = {
@@ -4639,6 +4688,7 @@ export type SettingsType = Settings & {
     archiveBootstrapInterItemDelaySeconds: Scalars['Int']['output'];
     archiveBootstrapMaxAttempts: Scalars['Int']['output'];
     archiveBootstrapRetrySeconds: Scalars['Int']['output'];
+    archiveDefaultAcquisitionPolicy: Scalars['String']['output'];
     archiveDirectDeliveryEnabled: Scalars['Boolean']['output'];
     archiveDirectDeliveryExpirySeconds: Scalars['Int']['output'];
     archiveDirectDeliveryFallbackToLocal: Scalars['Boolean']['output'];
@@ -4775,6 +4825,9 @@ export type SettingsType = Settings & {
     webUIFlavor: WebUiFlavor;
     webUIInterface: WebUiInterface;
     webUIUpdateCheckInterval: Scalars['Float']['output'];
+    webViewOpenTimeout: Scalars['Int']['output'];
+    webViewProvider: WebViewProvider;
+    webViewVncUrl: Scalars['String']['output'];
 };
 
 export type SortFilter = {
@@ -5494,6 +5547,7 @@ export type UpdateMangaPatchInput = {
     acquisitionPolicy?: InputMaybe<MangaAcquisitionPolicy>;
     inLibrary?: InputMaybe<Scalars['Boolean']['input']>;
     inheritAcceptedRevisionRetention: Scalars['Boolean']['input'];
+    inheritAcquisitionPolicy: Scalars['Boolean']['input'];
 };
 
 export type UpdateMangaPayload = {
@@ -5688,4 +5742,16 @@ export type WebUiUpdateStatus = {
     info: WebUiUpdateInfo;
     progress: Scalars['Int']['output'];
     state: UpdateState;
+};
+
+export enum WebViewProvider {
+    Cef = 'CEF',
+    ProwlVnc = 'PROWL_VNC',
+}
+
+export type WebViewTabType = {
+    __typename?: 'WebViewTabType';
+    id: Scalars['String']['output'];
+    title: Scalars['String']['output'];
+    url: Scalars['String']['output'];
 };

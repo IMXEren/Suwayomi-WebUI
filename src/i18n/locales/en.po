@@ -830,6 +830,10 @@ msgstr "Approved {approvedTotal} candidates, then stopped at the batch limit; ca
 msgid "Approved {approvedTotal} pending candidates"
 msgstr "Approved {approvedTotal} pending candidates"
 
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Archival"
+msgstr "Archival"
+
 #: src/features/archive/components/ArchiveOverview.tsx
 msgid "Archival queues"
 msgstr "Archival queues"
@@ -964,6 +968,7 @@ msgstr "Automated backup"
 
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
 #: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+#: src/features/settings/screens/ServerSettings.tsx
 msgid "Automatic"
 msgstr "Automatic"
 
@@ -1557,6 +1562,7 @@ msgstr "Client data"
 #: src/base/components/feedback/SnackbarWithDescription.tsx
 #: src/features/app-updates/components/VersionUpdateInfoDialog.tsx
 #: src/features/migration/components/migration-entry/MigrationDestinationEntry.tsx
+#: src/features/web-view/screens/WebView.tsx
 msgid "Close"
 msgstr "Close"
 
@@ -1910,6 +1916,10 @@ msgstr "Could not migrate manga"
 msgid "Could not open random entry"
 msgstr "Could not open random entry"
 
+#: src/features/web-view/screens/WebView.tsx
+msgid "Could not open the WebView"
+msgstr "Could not open the WebView"
+
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
 msgid "Could not promote the source copy"
 msgstr "Could not promote the source copy"
@@ -2037,12 +2047,14 @@ msgstr "Could not start the audit: {0}"
 
 #: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
 msgid "Could not start the sweep"
 msgstr "Could not start the sweep"
 
 #. placeholder {0}: payload.error
 #: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
 msgid "Could not start the sweep: {0}"
 msgstr "Could not start the sweep: {0}"
 
@@ -2130,6 +2142,11 @@ msgstr "Current source"
 #: src/features/reader/viewer/components/ReaderTransitionPage.tsx
 msgid "Current:"
 msgstr "Current:"
+
+#. placeholder {0}: policyLabels[manga.acquisitionPolicy]
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Currently applied: {0}"
+msgstr "Currently applied: {0}"
 
 #. placeholder {0}: formatRetention(manga.effectiveAcceptedRevisionRetention, t`Unlimited`)
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
@@ -2240,6 +2257,10 @@ msgstr "Decrease auto scroll speed"
 #: src/features/theme/Themes.ts
 msgid "Default"
 msgstr "Default"
+
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Default acquisition policy"
+msgstr "Default acquisition policy"
 
 #: src/features/category/components/CreateOrEditCategoryDialog.tsx
 msgid "Default category when adding new manga to the library"
@@ -2673,6 +2694,10 @@ msgstr "Every chapter is re-downloaded to compare its content, which can take a 
 #: src/features/archive/components/ArchiveSweepPanel.tsx
 msgid "Every chapter of every tracked series is re-downloaded to compare its content. This is the most expensive operation of the archive and can take a long time."
 msgstr "Every chapter of every tracked series is re-downloaded to compare its content. This is the most expensive operation of the archive and can take a long time."
+
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Every chapter of the selected series is re-downloaded to compare its content, which can take a long time."
+msgstr "Every chapter of the selected series is re-downloaded to compare its content, which can take a long time."
 
 #: src/features/settings/Settings.constants.ts
 msgid "Every hour"
@@ -4216,6 +4241,10 @@ msgstr "OPDS"
 msgid "Open"
 msgstr "Open"
 
+#: src/features/web-view/screens/WebView.tsx
+msgid "Open again"
+msgstr "Open again"
+
 #: src/features/archive/components/ArchiveOverview.tsx
 msgid "Open approval queue"
 msgstr "Open approval queue"
@@ -4255,6 +4284,10 @@ msgstr "Open the WebUI when starting the server"
 #: src/features/extension/store/screens/ExtensionStores.tsx
 msgid "Open website"
 msgstr "Open website"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "Opening the browser"
+msgstr "Opening the browser"
 
 #: src/features/chapter/components/cards/ChapterCard.tsx
 #: src/features/manga/components/MangaOptionButton.tsx
@@ -4328,6 +4361,7 @@ msgstr "Pause"
 #: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
 #: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+#: src/features/settings/screens/ServerSettings.tsx
 msgid "Paused"
 msgstr "Paused"
 
@@ -4364,6 +4398,10 @@ msgstr "Pinned"
 #: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
 msgid "Policy"
 msgstr "Policy"
+
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Policy a series applies while it has no per-series override. It is what the archival settings of a series pick up when set to \"Use global default\"."
+msgstr "Policy a series applies while it has no per-series override. It is what the archival settings of a series pick up when set to \"Use global default\"."
 
 #: src/features/source/browse/screens/SourceMangas.tsx
 msgid "Popular"
@@ -4791,6 +4829,7 @@ msgstr "Retried {0} revisions"
 #: src/features/chapter/components/buttons/ChapterDownloadRetryButton.tsx
 #: src/features/manga/hooks/useManageMangaLibraryState.tsx
 #: src/features/migration/components/migration-entry/MigrationDestinationEntry.tsx
+#: src/features/web-view/screens/WebView.tsx
 msgid "Retry"
 msgstr "Retry"
 
@@ -5476,6 +5515,7 @@ msgid "Start"
 msgstr "Start"
 
 #: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
 msgid "Start a full history sweep?"
 msgstr "Start a full history sweep?"
 
@@ -5485,6 +5525,7 @@ msgstr "Start date"
 
 #: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
 msgid "Start full sweep"
 msgstr "Start full sweep"
 
@@ -5587,8 +5628,14 @@ msgstr "Sweep settings saved"
 msgid "Sweep started for {0} chapters"
 msgstr "Sweep started for {0} chapters"
 
+#. placeholder {0}: payload.itemCount ?? 0
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Sweep started for {0} chapters. Whether a revision is queued, held for approval or only recorded follows its series' acquisition policy."
+msgstr "Sweep started for {0} chapters. Whether a revision is queued, held for approval or only recorded follows its series' acquisition policy."
+
 #: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
 msgid "Sweep the full history"
 msgstr "Sweep the full history"
 
@@ -5598,6 +5645,7 @@ msgstr "Sweep the full history of this series?"
 
 #: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
 msgid "Sweep the newest chapters"
 msgstr "Sweep the newest chapters"
 
@@ -5725,6 +5773,18 @@ msgstr "The audit settings could not be read, so they are not shown and cannot b
 #: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
 msgid "The bindings could not be read: {0}"
 msgstr "The bindings could not be read: {0}"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "The browser did not open within {OPEN_TIMEOUT_SECONDS} seconds"
+msgstr "The browser did not open within {OPEN_TIMEOUT_SECONDS} seconds"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "The browser is no longer open"
+msgstr "The browser is no longer open"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "The browser service is not reachable"
+msgstr "The browser service is not reachable"
 
 #: src/features/settings/screens/ImagesSettings.tsx
 msgid "The cache of the client (browser, electron) should get cleared alongside it, otherwise, the client cache will keep getting used"
@@ -5929,6 +5989,10 @@ msgstr "The visual comparison is still running. It is written before the candida
 #: src/features/archive/components/ArchiveReviewQueue.tsx
 msgid "The visual comparison of this candidate failed, so its previews may be missing or incomplete. The decision is still available."
 msgstr "The visual comparison of this candidate failed, so its previews may be missing or incomplete. The decision is still available."
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "The WebView url is not valid"
+msgstr "The WebView url is not valid"
 
 #: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
 msgid "The work and its bindings are removed. The series themselves, their chapters and everything archived stay exactly where they are."
@@ -6355,6 +6419,10 @@ msgid "Use a custom WebUI.\n"
 msgstr "Use a custom WebUI.\n"
 "To use a custom WebUI replace the content of the \"webUI\" directory in the root directory on the server with the files of the custom WebUI"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Use global default"
+msgstr "Use global default"
+
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Use SOCKS proxy"
 msgstr "Use SOCKS proxy"
@@ -6432,6 +6500,7 @@ msgstr "VUI"
 
 #: src/features/archive/components/MangaArchiveSettingsDialog.tsx
 #: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+#: src/features/settings/screens/ServerSettings.tsx
 msgid "Wait for approval"
 msgstr "Wait for approval"
 
@@ -6484,6 +6553,7 @@ msgid "WebUI was updated to version {newVersion} ({0})"
 msgstr "WebUI was updated to version {newVersion} ({0})"
 
 #: src/features/settings/screens/ServerSettings.tsx
+#: src/features/web-view/screens/WebView.tsx
 msgid "WebView"
 msgstr "WebView"
 

@@ -1328,6 +1328,11 @@ export type ClearDownloaderPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
     downloadStatus?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type CloseWebViewPayloadKeySpecifier = ('clientMutationId' | 'closed' | CloseWebViewPayloadKeySpecifier)[];
+export type CloseWebViewPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    closed?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type CreateBackupPayloadKeySpecifier = ('clientMutationId' | 'url' | CreateBackupPayloadKeySpecifier)[];
 export type CreateBackupPayloadFieldPolicy = {
     clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2039,6 +2044,7 @@ export type MangaNodeListFieldPolicy = {
 export type MangaTypeKeySpecifier = (
     | 'acceptedRevisionRetention'
     | 'acquisitionPolicy'
+    | 'acquisitionPolicyOverride'
     | 'age'
     | 'artist'
     | 'author'
@@ -2082,6 +2088,7 @@ export type MangaTypeKeySpecifier = (
 export type MangaTypeFieldPolicy = {
     acceptedRevisionRetention?: FieldPolicy<any> | FieldReadFunction<any>;
     acquisitionPolicy?: FieldPolicy<any> | FieldReadFunction<any>;
+    acquisitionPolicyOverride?: FieldPolicy<any> | FieldReadFunction<any>;
     age?: FieldPolicy<any> | FieldReadFunction<any>;
     artist?: FieldPolicy<any> | FieldReadFunction<any>;
     author?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2179,6 +2186,7 @@ export type MutationKeySpecifier = (
     | 'clearCachedImages'
     | 'clearCookiesAndCache'
     | 'clearDownloader'
+    | 'closeWebView'
     | 'connectKoSyncAccount'
     | 'createBackup'
     | 'createCanonicalWork'
@@ -2220,6 +2228,7 @@ export type MutationKeySpecifier = (
     | 'loginTrackerOAuth'
     | 'logoutKoSyncAccount'
     | 'logoutTracker'
+    | 'openWebView'
     | 'pauseArchiveBootstrap'
     | 'pauseChapterIntegrityAudit'
     | 'pauseChapterRevisionSweep'
@@ -2307,6 +2316,7 @@ export type MutationFieldPolicy = {
     clearCachedImages?: FieldPolicy<any> | FieldReadFunction<any>;
     clearCookiesAndCache?: FieldPolicy<any> | FieldReadFunction<any>;
     clearDownloader?: FieldPolicy<any> | FieldReadFunction<any>;
+    closeWebView?: FieldPolicy<any> | FieldReadFunction<any>;
     connectKoSyncAccount?: FieldPolicy<any> | FieldReadFunction<any>;
     createBackup?: FieldPolicy<any> | FieldReadFunction<any>;
     createCanonicalWork?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2348,6 +2358,7 @@ export type MutationFieldPolicy = {
     loginTrackerOAuth?: FieldPolicy<any> | FieldReadFunction<any>;
     logoutKoSyncAccount?: FieldPolicy<any> | FieldReadFunction<any>;
     logoutTracker?: FieldPolicy<any> | FieldReadFunction<any>;
+    openWebView?: FieldPolicy<any> | FieldReadFunction<any>;
     pauseArchiveBootstrap?: FieldPolicy<any> | FieldReadFunction<any>;
     pauseChapterIntegrityAudit?: FieldPolicy<any> | FieldReadFunction<any>;
     pauseChapterRevisionSweep?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2431,6 +2442,21 @@ export type OSInfoFieldPolicy = {
     name?: FieldPolicy<any> | FieldReadFunction<any>;
     version?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type OpenWebViewPayloadKeySpecifier = (
+    | 'clientMutationId'
+    | 'status'
+    | 'tab'
+    | 'title'
+    | 'url'
+    | OpenWebViewPayloadKeySpecifier
+)[];
+export type OpenWebViewPayloadFieldPolicy = {
+    clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+    status?: FieldPolicy<any> | FieldReadFunction<any>;
+    tab?: FieldPolicy<any> | FieldReadFunction<any>;
+    title?: FieldPolicy<any> | FieldReadFunction<any>;
+    url?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type PageInfoKeySpecifier = (
     | 'endCursor'
     | 'hasNextPage'
@@ -2449,6 +2475,7 @@ export type PartialSettingsTypeKeySpecifier = (
     | 'archiveBootstrapInterItemDelaySeconds'
     | 'archiveBootstrapMaxAttempts'
     | 'archiveBootstrapRetrySeconds'
+    | 'archiveDefaultAcquisitionPolicy'
     | 'archiveDirectDeliveryEnabled'
     | 'archiveDirectDeliveryExpirySeconds'
     | 'archiveDirectDeliveryFallbackToLocal'
@@ -2574,6 +2601,9 @@ export type PartialSettingsTypeKeySpecifier = (
     | 'webUIFlavor'
     | 'webUIInterface'
     | 'webUIUpdateCheckInterval'
+    | 'webViewOpenTimeout'
+    | 'webViewProvider'
+    | 'webViewVncUrl'
     | PartialSettingsTypeKeySpecifier
 )[];
 export type PartialSettingsTypeFieldPolicy = {
@@ -2581,6 +2611,7 @@ export type PartialSettingsTypeFieldPolicy = {
     archiveBootstrapInterItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveBootstrapMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveBootstrapRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDefaultAcquisitionPolicy?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveDirectDeliveryEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveDirectDeliveryExpirySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveDirectDeliveryFallbackToLocal?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2706,6 +2737,9 @@ export type PartialSettingsTypeFieldPolicy = {
     webUIFlavor?: FieldPolicy<any> | FieldReadFunction<any>;
     webUIInterface?: FieldPolicy<any> | FieldReadFunction<any>;
     webUIUpdateCheckInterval?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewOpenTimeout?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewProvider?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewVncUrl?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type PlatformInfoKeySpecifier = ('arch' | 'headless' | 'jvm' | 'os' | PlatformInfoKeySpecifier)[];
 export type PlatformInfoFieldPolicy = {
@@ -2827,6 +2861,7 @@ export type QueryKeySpecifier = (
     | 'updateStatus'
     | 'validateBackup'
     | 'visualAnalysisBacklog'
+    | 'webViewTabs'
     | QueryKeySpecifier
 )[];
 export type QueryFieldPolicy = {
@@ -2909,6 +2944,7 @@ export type QueryFieldPolicy = {
     updateStatus?: FieldPolicy<any> | FieldReadFunction<any>;
     validateBackup?: FieldPolicy<any> | FieldReadFunction<any>;
     visualAnalysisBacklog?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewTabs?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type RefreshTokenPayloadKeySpecifier = ('accessToken' | 'clientMutationId' | RefreshTokenPayloadKeySpecifier)[];
 export type RefreshTokenPayloadFieldPolicy = {
@@ -3307,6 +3343,9 @@ export type SettingsKeySpecifier = (
     | 'webUIFlavor'
     | 'webUIInterface'
     | 'webUIUpdateCheckInterval'
+    | 'webViewOpenTimeout'
+    | 'webViewProvider'
+    | 'webViewVncUrl'
     | SettingsKeySpecifier
 )[];
 export type SettingsFieldPolicy = {
@@ -3439,6 +3478,9 @@ export type SettingsFieldPolicy = {
     webUIFlavor?: FieldPolicy<any> | FieldReadFunction<any>;
     webUIInterface?: FieldPolicy<any> | FieldReadFunction<any>;
     webUIUpdateCheckInterval?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewOpenTimeout?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewProvider?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewVncUrl?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type SettingsDownloadConversionKeySpecifier = (
     | 'callTimeout'
@@ -3497,6 +3539,7 @@ export type SettingsTypeKeySpecifier = (
     | 'archiveBootstrapInterItemDelaySeconds'
     | 'archiveBootstrapMaxAttempts'
     | 'archiveBootstrapRetrySeconds'
+    | 'archiveDefaultAcquisitionPolicy'
     | 'archiveDirectDeliveryEnabled'
     | 'archiveDirectDeliveryExpirySeconds'
     | 'archiveDirectDeliveryFallbackToLocal'
@@ -3622,6 +3665,9 @@ export type SettingsTypeKeySpecifier = (
     | 'webUIFlavor'
     | 'webUIInterface'
     | 'webUIUpdateCheckInterval'
+    | 'webViewOpenTimeout'
+    | 'webViewProvider'
+    | 'webViewVncUrl'
     | SettingsTypeKeySpecifier
 )[];
 export type SettingsTypeFieldPolicy = {
@@ -3629,6 +3675,7 @@ export type SettingsTypeFieldPolicy = {
     archiveBootstrapInterItemDelaySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveBootstrapMaxAttempts?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveBootstrapRetrySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
+    archiveDefaultAcquisitionPolicy?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveDirectDeliveryEnabled?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveDirectDeliveryExpirySeconds?: FieldPolicy<any> | FieldReadFunction<any>;
     archiveDirectDeliveryFallbackToLocal?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -3754,6 +3801,9 @@ export type SettingsTypeFieldPolicy = {
     webUIFlavor?: FieldPolicy<any> | FieldReadFunction<any>;
     webUIInterface?: FieldPolicy<any> | FieldReadFunction<any>;
     webUIUpdateCheckInterval?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewOpenTimeout?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewProvider?: FieldPolicy<any> | FieldReadFunction<any>;
+    webViewVncUrl?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type SortFilterKeySpecifier = ('default' | 'name' | 'values' | SortFilterKeySpecifier)[];
 export type SortFilterFieldPolicy = {
@@ -4354,6 +4404,12 @@ export type WebUIUpdateStatusFieldPolicy = {
     progress?: FieldPolicy<any> | FieldReadFunction<any>;
     state?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type WebViewTabTypeKeySpecifier = ('id' | 'title' | 'url' | WebViewTabTypeKeySpecifier)[];
+export type WebViewTabTypeFieldPolicy = {
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    title?: FieldPolicy<any> | FieldReadFunction<any>;
+    url?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type StrictTypedTypePolicies = {
     AboutServerPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | AboutServerPayloadKeySpecifier | (() => undefined | AboutServerPayloadKeySpecifier);
@@ -4822,6 +4878,10 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | ClearDownloaderPayloadKeySpecifier | (() => undefined | ClearDownloaderPayloadKeySpecifier);
         fields?: ClearDownloaderPayloadFieldPolicy;
     };
+    CloseWebViewPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | CloseWebViewPayloadKeySpecifier | (() => undefined | CloseWebViewPayloadKeySpecifier);
+        fields?: CloseWebViewPayloadFieldPolicy;
+    };
     CreateBackupPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | CreateBackupPayloadKeySpecifier | (() => undefined | CreateBackupPayloadKeySpecifier);
         fields?: CreateBackupPayloadFieldPolicy;
@@ -5221,6 +5281,10 @@ export type StrictTypedTypePolicies = {
     OSInfo?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | OSInfoKeySpecifier | (() => undefined | OSInfoKeySpecifier);
         fields?: OSInfoFieldPolicy;
+    };
+    OpenWebViewPayload?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | OpenWebViewPayloadKeySpecifier | (() => undefined | OpenWebViewPayloadKeySpecifier);
+        fields?: OpenWebViewPayloadFieldPolicy;
     };
     PageInfo?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | PageInfoKeySpecifier | (() => undefined | PageInfoKeySpecifier);
@@ -5741,6 +5805,10 @@ export type StrictTypedTypePolicies = {
     WebUIUpdateStatus?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
         keyFields?: false | WebUIUpdateStatusKeySpecifier | (() => undefined | WebUIUpdateStatusKeySpecifier);
         fields?: WebUIUpdateStatusFieldPolicy;
+    };
+    WebViewTabType?: Omit<TypePolicy, 'fields' | 'keyFields'> & {
+        keyFields?: false | WebViewTabTypeKeySpecifier | (() => undefined | WebViewTabTypeKeySpecifier);
+        fields?: WebViewTabTypeFieldPolicy;
     };
 };
 export type TypedTypePolicies = StrictTypedTypePolicies & TypePolicies;

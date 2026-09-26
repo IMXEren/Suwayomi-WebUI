@@ -210,6 +210,7 @@ export const MANGA_ARCHIVE_SETTINGS_FIELDS = gql`
         id
         title
         acquisitionPolicy
+        acquisitionPolicyOverride
         acceptedRevisionRetention
         effectiveAcceptedRevisionRetention
     }
