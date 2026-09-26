@@ -45,6 +45,7 @@ import type {
 import { IconWebView } from '@/assets/icons/IconWebView.tsx';
 import { IconBrowser } from '@/assets/icons/IconBrowser.tsx';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { useWebViewUrl } from '@/features/web-view/hooks/useWebViewUrl.ts';
 
 type BaseProps = { onClose: () => void; selectable?: boolean };
 
@@ -78,6 +79,7 @@ export const ChapterActionMenuItems = ({
     selectable = true,
 }: Props) => {
     const { t } = useLingui();
+    const getWebViewUrl = useWebViewUrl();
 
     const isSingleMode = !!chapter;
     const { isDownloaded, isRead, isBookmarked } = chapter ?? STABLE_EMPTY_OBJECT;
@@ -195,11 +197,7 @@ export const ChapterActionMenuItems = ({
                         Icon={IconWebView}
                         disabled={!chapter!.realUrl}
                         onClick={() => {
-                            window.open(
-                                requestManager.getWebviewUrl(chapter!.realUrl!),
-                                '_blank',
-                                'noopener,noreferrer',
-                            );
+                            window.open(getWebViewUrl(chapter!.realUrl!), '_blank', 'noopener,noreferrer');
                             onClose();
                         }}
                         title={t`Open in WebView`}

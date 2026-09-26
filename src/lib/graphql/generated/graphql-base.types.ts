@@ -33,6 +33,17 @@ export type AboutWebUi = {
     updateTimestamp: Scalars['LongString']['output'];
 };
 
+export type AcceptChapterRevisionCandidatesInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type AcceptChapterRevisionCandidatesPayload = {
+    __typename?: 'AcceptChapterRevisionCandidatesPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
 export type AddExtensionStoreInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     indexUrl: Scalars['String']['input'];
@@ -44,11 +55,268 @@ export type AddExtensionStorePayload = {
     extensionStore: ExtensionStoreType;
 };
 
+export type ApproveChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type ApproveChapterRevisionsPayload = {
+    __typename?: 'ApproveChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type ArchiveBootstrapCategoryPolicyInput = {
+    categoryId: Scalars['Int']['input'];
+    policy: MangaAcquisitionPolicy;
+};
+
+export type ArchiveBootstrapCategoryPolicyType = {
+    __typename?: 'ArchiveBootstrapCategoryPolicyType';
+    categoryId: Scalars['Int']['output'];
+    policy: MangaAcquisitionPolicy;
+};
+
+export type ArchiveBootstrapItemEdge = {
+    __typename?: 'ArchiveBootstrapItemEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ArchiveBootstrapItemType;
+};
+
+export type ArchiveBootstrapItemNodeList = {
+    __typename?: 'ArchiveBootstrapItemNodeList';
+    edges: Array<ArchiveBootstrapItemEdge>;
+    nodes: Array<ArchiveBootstrapItemType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ArchiveBootstrapItemOrderBy {
+    Id = 'ID',
+}
+
+export type ArchiveBootstrapItemOrderInput = {
+    by: ArchiveBootstrapItemOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum ArchiveBootstrapItemState {
+    Cancelled = 'CANCELLED',
+    Complete = 'COMPLETE',
+    Failed = 'FAILED',
+    Pending = 'PENDING',
+    Processing = 'PROCESSING',
+    RetryWait = 'RETRY_WAIT',
+    Skipped = 'SKIPPED',
+    UnresolvedSource = 'UNRESOLVED_SOURCE',
+}
+
+export type ArchiveBootstrapItemType = {
+    __typename?: 'ArchiveBootstrapItemType';
+    attempts: Scalars['Int']['output'];
+    candidateCount?: Maybe<Scalars['Int']['output']>;
+    categoryIds: Array<Scalars['Int']['output']>;
+    dueAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    lastError?: Maybe<Scalars['String']['output']>;
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    mangaUrl?: Maybe<Scalars['String']['output']>;
+    policy: MangaAcquisitionPolicy;
+    sessionId: Scalars['Int']['output'];
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    startedAt?: Maybe<Scalars['LongString']['output']>;
+    state: ArchiveBootstrapItemState;
+    title: Scalars['String']['output'];
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export type ArchiveBootstrapProgressType = {
+    __typename?: 'ArchiveBootstrapProgressType';
+    cancelled: Scalars['Int']['output'];
+    complete: Scalars['Int']['output'];
+    failed: Scalars['Int']['output'];
+    pending: Scalars['Int']['output'];
+    processing: Scalars['Int']['output'];
+    remaining: Scalars['Int']['output'];
+    retryWait: Scalars['Int']['output'];
+    skipped: Scalars['Int']['output'];
+    total: Scalars['Int']['output'];
+    unresolvedSource: Scalars['Int']['output'];
+};
+
+export type ArchiveBootstrapSessionEdge = {
+    __typename?: 'ArchiveBootstrapSessionEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ArchiveBootstrapSessionType;
+};
+
+export type ArchiveBootstrapSessionInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type ArchiveBootstrapSessionNodeList = {
+    __typename?: 'ArchiveBootstrapSessionNodeList';
+    edges: Array<ArchiveBootstrapSessionEdge>;
+    nodes: Array<ArchiveBootstrapSessionType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ArchiveBootstrapSessionOrderBy {
+    Id = 'ID',
+    StartedAt = 'STARTED_AT',
+}
+
+export type ArchiveBootstrapSessionOrderInput = {
+    by: ArchiveBootstrapSessionOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type ArchiveBootstrapSessionPayload = {
+    __typename?: 'ArchiveBootstrapSessionPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ArchiveBootstrapSessionType>;
+};
+
+export type ArchiveBootstrapSessionType = {
+    __typename?: 'ArchiveBootstrapSessionType';
+    cancelledAt?: Maybe<Scalars['LongString']['output']>;
+    categoryPolicies: Array<ArchiveBootstrapCategoryPolicyType>;
+    defaultPolicy: MangaAcquisitionPolicy;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    interItemDelaySeconds: Scalars['LongString']['output'];
+    lastItemAt?: Maybe<Scalars['LongString']['output']>;
+    maxAttempts: Scalars['Int']['output'];
+    nextItemAt?: Maybe<Scalars['LongString']['output']>;
+    pausedAt?: Maybe<Scalars['LongString']['output']>;
+    retrySeconds: Scalars['LongString']['output'];
+    startedAt: Scalars['LongString']['output'];
+    state: ArchiveBootstrapState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export enum ArchiveBootstrapState {
+    Cancelled = 'CANCELLED',
+    Completed = 'COMPLETED',
+    CompletedWithErrors = 'COMPLETED_WITH_ERRORS',
+    Paused = 'PAUSED',
+    Running = 'RUNNING',
+}
+
+export type ArchiveBootstrapUnresolvedSourceType = {
+    __typename?: 'ArchiveBootstrapUnresolvedSourceType';
+    mangaCount: Scalars['Int']['output'];
+    sampleTitles: Array<Scalars['String']['output']>;
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+};
+
+export type AttachMangaToCanonicalWorkInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    isPrimary: Scalars['Boolean']['input'];
+    mangaId: Scalars['Int']['input'];
+    priority?: InputMaybe<Scalars['Int']['input']>;
+    role: CanonicalBindingRole;
+    workKey: Scalars['String']['input'];
+};
+
+export type AttachMangaToCanonicalWorkPayload = {
+    __typename?: 'AttachMangaToCanonicalWorkPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
+
 export enum AuthMode {
     BasicAuth = 'BASIC_AUTH',
     None = 'NONE',
     SimpleLogin = 'SIMPLE_LOGIN',
     UiLogin = 'UI_LOGIN',
+}
+
+export enum BackupRestoreAuditLevel {
+    MangaError = 'MANGA_ERROR',
+    MissingSource = 'MISSING_SOURCE',
+}
+
+export type BackupRestoreAuditType = {
+    __typename?: 'BackupRestoreAuditType';
+    createdAt: Scalars['LongString']['output'];
+    id: Scalars['Int']['output'];
+    level: BackupRestoreAuditLevel;
+    mangaIndex?: Maybe<Scalars['Int']['output']>;
+    message: Scalars['String']['output'];
+    phase: BackupRestorePhase;
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    sourceName?: Maybe<Scalars['String']['output']>;
+};
+
+export type BackupRestoreErrorCountsType = {
+    __typename?: 'BackupRestoreErrorCountsType';
+    mangaErrors: Scalars['Int']['output'];
+    missingSources: Scalars['Int']['output'];
+};
+
+export enum BackupRestoreHandoffState {
+    Blocked = 'BLOCKED',
+    Failed = 'FAILED',
+    None = 'NONE',
+    Pending = 'PENDING',
+    Started = 'STARTED',
+}
+
+export type BackupRestoreJobInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    restoreId: Scalars['String']['input'];
+};
+
+export type BackupRestoreJobPayload = {
+    __typename?: 'BackupRestoreJobPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    job?: Maybe<BackupRestoreJobType>;
+};
+
+export enum BackupRestoreJobState {
+    Cancelled = 'CANCELLED',
+    Failure = 'FAILURE',
+    Queued = 'QUEUED',
+    Running = 'RUNNING',
+    Success = 'SUCCESS',
+}
+
+export type BackupRestoreJobType = {
+    __typename?: 'BackupRestoreJobType';
+    cancelledAt?: Maybe<Scalars['LongString']['output']>;
+    createdAt: Scalars['LongString']['output'];
+    errorCount: Scalars['Int']['output'];
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    handoffError?: Maybe<Scalars['String']['output']>;
+    handoffSessionId?: Maybe<Scalars['Int']['output']>;
+    handoffState: BackupRestoreHandoffState;
+    id: Scalars['Int']['output'];
+    lastError?: Maybe<Scalars['String']['output']>;
+    phase: BackupRestorePhase;
+    progress: Scalars['Int']['output'];
+    restoreId: Scalars['String']['output'];
+    stagedPayloadRetained: Scalars['Boolean']['output'];
+    startedAt?: Maybe<Scalars['LongString']['output']>;
+    state: BackupRestoreJobState;
+    total: Scalars['Int']['output'];
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export enum BackupRestorePhase {
+    Categories = 'CATEGORIES',
+    Completed = 'COMPLETED',
+    Manga = 'MANGA',
+    Meta = 'META',
+    Pending = 'PENDING',
+    Settings = 'SETTINGS',
 }
 
 export enum BackupRestoreState {
@@ -112,6 +380,133 @@ export type BooleanFilterInput = {
     notEqualToAny?: InputMaybe<Array<Scalars['Boolean']['input']>>;
     notIn?: InputMaybe<Array<Scalars['Boolean']['input']>>;
 };
+
+export type BootstrapCategoryPolicyInput = {
+    categoryName: Scalars['String']['input'];
+    policy: MangaAcquisitionPolicy;
+};
+
+export enum CanonicalBindingRole {
+    Active = 'ACTIVE',
+    Disabled = 'DISABLED',
+    Fallback = 'FALLBACK',
+}
+
+export enum CanonicalDuplicateStrategy {
+    KeepAll = 'KEEP_ALL',
+    PreferPrimarySource = 'PREFER_PRIMARY_SOURCE',
+    PreferScanlator = 'PREFER_SCANLATOR',
+}
+
+export type CanonicalIdentityExportType = {
+    __typename?: 'CanonicalIdentityExportType';
+    bindingCount: Scalars['Int']['output'];
+    payload: Scalars['String']['output'];
+    schemaVersion: Scalars['Int']['output'];
+    workCount: Scalars['Int']['output'];
+};
+
+export type CanonicalIdentityImportType = {
+    __typename?: 'CanonicalIdentityImportType';
+    bindingsBound: Scalars['Int']['output'];
+    bindingsRebound: Scalars['Int']['output'];
+    bindingsUnresolved: Scalars['Int']['output'];
+    worksCreated: Scalars['Int']['output'];
+    worksUpdated: Scalars['Int']['output'];
+};
+
+export type CanonicalIdentityStatusType = {
+    __typename?: 'CanonicalIdentityStatusType';
+    activeBindingCount: Scalars['Int']['output'];
+    bindingCount: Scalars['Int']['output'];
+    detachedBindingCount: Scalars['Int']['output'];
+    disabledBindingCount: Scalars['Int']['output'];
+    duplicatePolicyApplied: Scalars['Boolean']['output'];
+    fallbackBindingCount: Scalars['Int']['output'];
+    primaryBindingCount: Scalars['Int']['output'];
+    workCount: Scalars['Int']['output'];
+};
+
+export type CanonicalSourceBindingEdge = Edge & {
+    __typename?: 'CanonicalSourceBindingEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: CanonicalSourceBindingType;
+};
+
+export type CanonicalSourceBindingNodeList = NodeList & {
+    __typename?: 'CanonicalSourceBindingNodeList';
+    edges: Array<CanonicalSourceBindingEdge>;
+    nodes: Array<CanonicalSourceBindingType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export type CanonicalSourceBindingType = {
+    __typename?: 'CanonicalSourceBindingType';
+    acquisitionEligible: Scalars['Boolean']['output'];
+    boundAt: Scalars['LongString']['output'];
+    id: Scalars['Int']['output'];
+    isPrimary: Scalars['Boolean']['output'];
+    manga?: Maybe<MangaType>;
+    mangaAvailable: Scalars['Boolean']['output'];
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    mangaTitle?: Maybe<Scalars['String']['output']>;
+    mangaUrl?: Maybe<Scalars['String']['output']>;
+    priority: Scalars['Int']['output'];
+    role: CanonicalBindingRole;
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    sourceName?: Maybe<Scalars['String']['output']>;
+    updatedAt: Scalars['LongString']['output'];
+    work?: Maybe<CanonicalWorkType>;
+    workId: Scalars['Int']['output'];
+    workKey: Scalars['String']['output'];
+};
+
+export type CanonicalWorkEdge = Edge & {
+    __typename?: 'CanonicalWorkEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: CanonicalWorkType;
+};
+
+export type CanonicalWorkNodeList = NodeList & {
+    __typename?: 'CanonicalWorkNodeList';
+    edges: Array<CanonicalWorkEdge>;
+    nodes: Array<CanonicalWorkType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum CanonicalWorkOrderBy {
+    CreatedAt = 'CREATED_AT',
+    Id = 'ID',
+    UpdatedAt = 'UPDATED_AT',
+}
+
+export type CanonicalWorkOrderInput = {
+    by: CanonicalWorkOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type CanonicalWorkType = {
+    __typename?: 'CanonicalWorkType';
+    bindingCount: Scalars['Int']['output'];
+    bindings: CanonicalSourceBindingNodeList;
+    createdAt: Scalars['LongString']['output'];
+    duplicatePolicyApplied: Scalars['Boolean']['output'];
+    duplicateStrategy: CanonicalDuplicateStrategy;
+    id: Scalars['Int']['output'];
+    preferredScanlator?: Maybe<Scalars['String']['output']>;
+    primaryBinding?: Maybe<CanonicalSourceBindingType>;
+    title: Scalars['String']['output'];
+    updatedAt: Scalars['LongString']['output'];
+    workKey: Scalars['String']['output'];
+};
+
+export enum CanonicalWriteOutcome {
+    Applied = 'APPLIED',
+    Conflict = 'CONFLICT',
+    NotFound = 'NOT_FOUND',
+}
 
 export type CategoryConditionInput = {
     default?: InputMaybe<Scalars['Boolean']['input']>;
@@ -180,6 +575,7 @@ export type CategoryType = {
     id: Scalars['Int']['output'];
     includeInDownload: IncludeOrExclude;
     includeInUpdate: IncludeOrExclude;
+    isDefaultCategory: Scalars['Boolean']['output'];
     mangas: MangaNodeList;
     meta: Array<CategoryMetaType>;
     name: Scalars['String']['output'];
@@ -196,6 +592,42 @@ export enum CbzMediaType {
     Compatible = 'COMPATIBLE',
     Legacy = 'LEGACY',
     Modern = 'MODERN',
+}
+
+export type ChangeCanonicalBindingInput = {
+    bindingId: Scalars['Int']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    priority?: InputMaybe<Scalars['Int']['input']>;
+    role?: InputMaybe<CanonicalBindingRole>;
+};
+
+export type ChangeCanonicalBindingPayload = {
+    __typename?: 'ChangeCanonicalBindingPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
+
+export enum ChapterAcquisitionState {
+    Approved = 'APPROVED',
+    Complete = 'COMPLETE',
+    Discovered = 'DISCOVERED',
+    DownloadedLocal = 'DOWNLOADED_LOCAL',
+    Downloading = 'DOWNLOADING',
+    DownloadFailed = 'DOWNLOAD_FAILED',
+    PendingApproval = 'PENDING_APPROVAL',
+    Queued = 'QUEUED',
+    Validating = 'VALIDATING',
+    ValidationFailed = 'VALIDATION_FAILED',
+}
+
+export enum ChapterArchiveState {
+    ArchiveUnconfirmed = 'ARCHIVE_UNCONFIRMED',
+    Committing = 'COMMITTING',
+    CommitFailed = 'COMMIT_FAILED',
+    NotCommitted = 'NOT_COMMITTED',
+    RemoteConfirmed = 'REMOTE_CONFIRMED',
+    RemotePending = 'REMOTE_PENDING',
 }
 
 export type ChapterConditionInput = {
@@ -251,6 +683,151 @@ export type ChapterFilterInput = {
     url?: InputMaybe<StringFilterInput>;
 };
 
+export type ChapterIntegrityAuditItemEdge = {
+    __typename?: 'ChapterIntegrityAuditItemEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterIntegrityAuditItemType;
+};
+
+export type ChapterIntegrityAuditItemNodeList = {
+    __typename?: 'ChapterIntegrityAuditItemNodeList';
+    edges: Array<ChapterIntegrityAuditItemEdge>;
+    nodes: Array<ChapterIntegrityAuditItemType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterIntegrityAuditItemOrderBy {
+    Id = 'ID',
+}
+
+export type ChapterIntegrityAuditItemOrderInput = {
+    by: ChapterIntegrityAuditItemOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum ChapterIntegrityAuditItemState {
+    Checking = 'CHECKING',
+    Corrupt = 'CORRUPT',
+    Failed = 'FAILED',
+    Missing = 'MISSING',
+    Pending = 'PENDING',
+    RetryWait = 'RETRY_WAIT',
+    Skipped = 'SKIPPED',
+    Verified = 'VERIFIED',
+}
+
+export type ChapterIntegrityAuditItemType = {
+    __typename?: 'ChapterIntegrityAuditItemType';
+    attempts: Scalars['Int']['output'];
+    candidateKey: Scalars['String']['output'];
+    chapterId?: Maybe<Scalars['Int']['output']>;
+    chapterKey: Scalars['String']['output'];
+    chapterName: Scalars['String']['output'];
+    dueAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    lastError?: Maybe<Scalars['String']['output']>;
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    revisionId?: Maybe<Scalars['Int']['output']>;
+    seriesTitle?: Maybe<Scalars['String']['output']>;
+    sessionId: Scalars['Int']['output'];
+    startedAt?: Maybe<Scalars['LongString']['output']>;
+    state: ChapterIntegrityAuditItemState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export enum ChapterIntegrityAuditKind {
+    ManualFull = 'MANUAL_FULL',
+    ManualRecent = 'MANUAL_RECENT',
+    Scheduled = 'SCHEDULED',
+}
+
+export type ChapterIntegrityAuditProgressType = {
+    __typename?: 'ChapterIntegrityAuditProgressType';
+    checking: Scalars['Int']['output'];
+    corrupt: Scalars['Int']['output'];
+    failed: Scalars['Int']['output'];
+    findings: Scalars['Int']['output'];
+    missing: Scalars['Int']['output'];
+    pending: Scalars['Int']['output'];
+    remaining: Scalars['Int']['output'];
+    retryWait: Scalars['Int']['output'];
+    skipped: Scalars['Int']['output'];
+    total: Scalars['Int']['output'];
+    verified: Scalars['Int']['output'];
+};
+
+export type ChapterIntegrityAuditScheduleType = {
+    __typename?: 'ChapterIntegrityAuditScheduleType';
+    lastRunAt?: Maybe<Scalars['LongString']['output']>;
+    lastSessionId?: Maybe<Scalars['Int']['output']>;
+    nextDueAt: Scalars['LongString']['output'];
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export type ChapterIntegrityAuditSessionEdge = {
+    __typename?: 'ChapterIntegrityAuditSessionEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterIntegrityAuditSessionType;
+};
+
+export type ChapterIntegrityAuditSessionInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type ChapterIntegrityAuditSessionNodeList = {
+    __typename?: 'ChapterIntegrityAuditSessionNodeList';
+    edges: Array<ChapterIntegrityAuditSessionEdge>;
+    nodes: Array<ChapterIntegrityAuditSessionType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterIntegrityAuditSessionOrderBy {
+    Id = 'ID',
+    StartedAt = 'STARTED_AT',
+}
+
+export type ChapterIntegrityAuditSessionOrderInput = {
+    by: ChapterIntegrityAuditSessionOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type ChapterIntegrityAuditSessionPayload = {
+    __typename?: 'ChapterIntegrityAuditSessionPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    session?: Maybe<ChapterIntegrityAuditSessionType>;
+};
+
+export enum ChapterIntegrityAuditSessionState {
+    Cancelled = 'CANCELLED',
+    Completed = 'COMPLETED',
+    CompletedWithErrors = 'COMPLETED_WITH_ERRORS',
+    Paused = 'PAUSED',
+    Running = 'RUNNING',
+}
+
+export type ChapterIntegrityAuditSessionType = {
+    __typename?: 'ChapterIntegrityAuditSessionType';
+    cancelledAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    itemDelaySeconds: Scalars['LongString']['output'];
+    kind: ChapterIntegrityAuditKind;
+    lastItemAt?: Maybe<Scalars['LongString']['output']>;
+    maxAttempts: Scalars['Int']['output'];
+    newestPerManga?: Maybe<Scalars['Int']['output']>;
+    nextItemAt?: Maybe<Scalars['LongString']['output']>;
+    pausedAt?: Maybe<Scalars['LongString']['output']>;
+    retrySeconds: Scalars['LongString']['output'];
+    startedAt: Scalars['LongString']['output'];
+    state: ChapterIntegrityAuditSessionState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
 export type ChapterMetaType = MetaType & {
     __typename?: 'ChapterMetaType';
     chapter: ChapterType;
@@ -288,6 +865,413 @@ export type ChapterOrderInput = {
     byType?: InputMaybe<SortOrder>;
 };
 
+export enum ChapterPublicationState {
+    NotPublished = 'NOT_PUBLISHED',
+    PublicationFailed = 'PUBLICATION_FAILED',
+    Published = 'PUBLISHED',
+    Publishing = 'PUBLISHING',
+}
+
+export enum ChapterRetentionState {
+    Deleting = 'DELETING',
+    Pruned = 'PRUNED',
+    PruneFailed = 'PRUNE_FAILED',
+    PruneQueued = 'PRUNE_QUEUED',
+    RemoteDeletePending = 'REMOTE_DELETE_PENDING',
+    Retained = 'RETAINED',
+}
+
+export type ChapterRevisionComparisonPageEdge = Edge & {
+    __typename?: 'ChapterRevisionComparisonPageEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionComparisonPageType;
+};
+
+export type ChapterRevisionComparisonPageNodeList = NodeList & {
+    __typename?: 'ChapterRevisionComparisonPageNodeList';
+    edges: Array<ChapterRevisionComparisonPageEdge>;
+    nodes: Array<ChapterRevisionComparisonPageType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export type ChapterRevisionComparisonPageType = {
+    __typename?: 'ChapterRevisionComparisonPageType';
+    baselineHeight?: Maybe<Scalars['Int']['output']>;
+    baselinePageIndex?: Maybe<Scalars['Int']['output']>;
+    baselinePageUrl?: Maybe<Scalars['String']['output']>;
+    baselinePreviewAvailable: Scalars['Boolean']['output'];
+    baselineSize?: Maybe<Scalars['LongString']['output']>;
+    baselineThumbnailUrl?: Maybe<Scalars['String']['output']>;
+    baselineWidth?: Maybe<Scalars['Int']['output']>;
+    candidateHeight?: Maybe<Scalars['Int']['output']>;
+    candidatePageIndex?: Maybe<Scalars['Int']['output']>;
+    candidatePageUrl?: Maybe<Scalars['String']['output']>;
+    candidatePreviewAvailable: Scalars['Boolean']['output'];
+    candidateSize?: Maybe<Scalars['LongString']['output']>;
+    candidateThumbnailUrl?: Maybe<Scalars['String']['output']>;
+    candidateWidth?: Maybe<Scalars['Int']['output']>;
+    hammingDistance?: Maybe<Scalars['Int']['output']>;
+    ordinal: Scalars['Int']['output'];
+    state: ChapterRevisionPageAlignmentState;
+};
+
+export type ChapterRevisionComparisonType = {
+    __typename?: 'ChapterRevisionComparisonType';
+    addedCount: Scalars['Int']['output'];
+    algorithmVersion: Scalars['String']['output'];
+    alignedCount: Scalars['Int']['output'];
+    allPagesVisuallyEquivalent: Scalars['Boolean']['output'];
+    baselinePageCount: Scalars['Int']['output'];
+    baselineRevisionId?: Maybe<Scalars['Int']['output']>;
+    candidatePageCount: Scalars['Int']['output'];
+    createdAt: Scalars['LongString']['output'];
+    exactCount: Scalars['Int']['output'];
+    hammingThreshold: Scalars['Int']['output'];
+    hasLimitations: Scalars['Boolean']['output'];
+    limitations?: Maybe<Scalars['String']['output']>;
+    modifiedCount: Scalars['Int']['output'];
+    removedCount: Scalars['Int']['output'];
+    revisionId: Scalars['Int']['output'];
+    updatedAt: Scalars['LongString']['output'];
+    visuallyEquivalentCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionDiscoveryReason {
+    BootstrapImport = 'BOOTSTRAP_IMPORT',
+    ManualSweep = 'MANUAL_SWEEP',
+    MetadataChange = 'METADATA_CHANGE',
+    NewChapter = 'NEW_CHAPTER',
+    PeriodicSweep = 'PERIODIC_SWEEP',
+}
+
+export enum ChapterRevisionDisposition {
+    Accepted = 'ACCEPTED',
+    Candidate = 'CANDIDATE',
+    Rejected = 'REJECTED',
+    Superseded = 'SUPERSEDED',
+    Unchanged = 'UNCHANGED',
+}
+
+export type ChapterRevisionEdge = Edge & {
+    __typename?: 'ChapterRevisionEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionType;
+};
+
+export enum ChapterRevisionIntegrityState {
+    AuditFailed = 'AUDIT_FAILED',
+    Corrupt = 'CORRUPT',
+    Missing = 'MISSING',
+    NeverAudited = 'NEVER_AUDITED',
+    Verified = 'VERIFIED',
+}
+
+export enum ChapterRevisionMetadataField {
+    ChapterNumber = 'CHAPTER_NUMBER',
+    Memo = 'MEMO',
+    Name = 'NAME',
+    Scanlator = 'SCANLATOR',
+    UploadDate = 'UPLOAD_DATE',
+}
+
+export type ChapterRevisionNodeList = NodeList & {
+    __typename?: 'ChapterRevisionNodeList';
+    edges: Array<ChapterRevisionEdge>;
+    nodes: Array<ChapterRevisionType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionOrderBy {
+    DiscoveredAt = 'DISCOVERED_AT',
+    Id = 'ID',
+    UpdatedAt = 'UPDATED_AT',
+}
+
+export type ChapterRevisionOrderInput = {
+    by: ChapterRevisionOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum ChapterRevisionPageAlignmentState {
+    Added = 'ADDED',
+    Exact = 'EXACT',
+    Modified = 'MODIFIED',
+    Removed = 'REMOVED',
+    VisuallyEquivalent = 'VISUALLY_EQUIVALENT',
+}
+
+export type ChapterRevisionRollbackEdge = {
+    __typename?: 'ChapterRevisionRollbackEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionRollbackType;
+};
+
+export type ChapterRevisionRollbackNodeList = {
+    __typename?: 'ChapterRevisionRollbackNodeList';
+    edges: Array<ChapterRevisionRollbackEdge>;
+    nodes: Array<ChapterRevisionRollbackType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionRollbackOrderBy {
+    Id = 'ID',
+}
+
+export type ChapterRevisionRollbackOrderInput = {
+    by: ChapterRevisionRollbackOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type ChapterRevisionRollbackType = {
+    __typename?: 'ChapterRevisionRollbackType';
+    chapterKey: Scalars['String']['output'];
+    fromRevisionId?: Maybe<Scalars['Int']['output']>;
+    id: Scalars['Int']['output'];
+    rolledBackAt: Scalars['LongString']['output'];
+    toRevisionId?: Maybe<Scalars['Int']['output']>;
+};
+
+export enum ChapterRevisionSignalConfidence {
+    ContentProof = 'CONTENT_PROOF',
+    ManifestHint = 'MANIFEST_HINT',
+    MetadataHint = 'METADATA_HINT',
+}
+
+export type ChapterRevisionSweepItemEdge = {
+    __typename?: 'ChapterRevisionSweepItemEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionSweepItemType;
+};
+
+export type ChapterRevisionSweepItemNodeList = {
+    __typename?: 'ChapterRevisionSweepItemNodeList';
+    edges: Array<ChapterRevisionSweepItemEdge>;
+    nodes: Array<ChapterRevisionSweepItemType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionSweepItemOrderBy {
+    Id = 'ID',
+}
+
+export type ChapterRevisionSweepItemOrderInput = {
+    by: ChapterRevisionSweepItemOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum ChapterRevisionSweepItemState {
+    Cancelled = 'CANCELLED',
+    Complete = 'COMPLETE',
+    Failed = 'FAILED',
+    Pending = 'PENDING',
+    Processing = 'PROCESSING',
+    RetryWait = 'RETRY_WAIT',
+    Skipped = 'SKIPPED',
+}
+
+export type ChapterRevisionSweepItemType = {
+    __typename?: 'ChapterRevisionSweepItemType';
+    attempts: Scalars['Int']['output'];
+    candidateCount?: Maybe<Scalars['Int']['output']>;
+    chapterId?: Maybe<Scalars['Int']['output']>;
+    chapterKey: Scalars['String']['output'];
+    chapterName: Scalars['String']['output'];
+    dueAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    lastError?: Maybe<Scalars['String']['output']>;
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    policy: MangaAcquisitionPolicy;
+    seriesTitle: Scalars['String']['output'];
+    sessionId: Scalars['Int']['output'];
+    sourceChapterUrl: Scalars['String']['output'];
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    startedAt?: Maybe<Scalars['LongString']['output']>;
+    state: ChapterRevisionSweepItemState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export enum ChapterRevisionSweepKind {
+    ManualFull = 'MANUAL_FULL',
+    ManualRecent = 'MANUAL_RECENT',
+    Scheduled = 'SCHEDULED',
+}
+
+export type ChapterRevisionSweepProgressType = {
+    __typename?: 'ChapterRevisionSweepProgressType';
+    cancelled: Scalars['Int']['output'];
+    complete: Scalars['Int']['output'];
+    failed: Scalars['Int']['output'];
+    pending: Scalars['Int']['output'];
+    processing: Scalars['Int']['output'];
+    remaining: Scalars['Int']['output'];
+    retryWait: Scalars['Int']['output'];
+    skipped: Scalars['Int']['output'];
+    total: Scalars['Int']['output'];
+};
+
+export type ChapterRevisionSweepScheduleType = {
+    __typename?: 'ChapterRevisionSweepScheduleType';
+    lastRunAt?: Maybe<Scalars['LongString']['output']>;
+    lastSessionId?: Maybe<Scalars['Int']['output']>;
+    nextDueAt: Scalars['LongString']['output'];
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export type ChapterRevisionSweepSessionEdge = {
+    __typename?: 'ChapterRevisionSweepSessionEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionSweepSessionType;
+};
+
+export type ChapterRevisionSweepSessionInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type ChapterRevisionSweepSessionNodeList = {
+    __typename?: 'ChapterRevisionSweepSessionNodeList';
+    edges: Array<ChapterRevisionSweepSessionEdge>;
+    nodes: Array<ChapterRevisionSweepSessionType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionSweepSessionOrderBy {
+    Id = 'ID',
+    StartedAt = 'STARTED_AT',
+}
+
+export type ChapterRevisionSweepSessionOrderInput = {
+    by: ChapterRevisionSweepSessionOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type ChapterRevisionSweepSessionPayload = {
+    __typename?: 'ChapterRevisionSweepSessionPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterRevisionSweepSessionType>;
+};
+
+export enum ChapterRevisionSweepSessionState {
+    Cancelled = 'CANCELLED',
+    Completed = 'COMPLETED',
+    CompletedWithErrors = 'COMPLETED_WITH_ERRORS',
+    Paused = 'PAUSED',
+    Running = 'RUNNING',
+}
+
+export type ChapterRevisionSweepSessionType = {
+    __typename?: 'ChapterRevisionSweepSessionType';
+    cancelledAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    itemDelaySeconds: Scalars['LongString']['output'];
+    kind: ChapterRevisionSweepKind;
+    lastItemAt?: Maybe<Scalars['LongString']['output']>;
+    maxAttempts: Scalars['Int']['output'];
+    newestPerSeries?: Maybe<Scalars['Int']['output']>;
+    nextItemAt?: Maybe<Scalars['LongString']['output']>;
+    pausedAt?: Maybe<Scalars['LongString']['output']>;
+    retrySeconds: Scalars['LongString']['output'];
+    startedAt: Scalars['LongString']['output'];
+    state: ChapterRevisionSweepSessionState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export type ChapterRevisionType = {
+    __typename?: 'ChapterRevisionType';
+    acceptedAt?: Maybe<Scalars['LongString']['output']>;
+    acquisitionState: ChapterAcquisitionState;
+    activatedAt?: Maybe<Scalars['LongString']['output']>;
+    activeCbzHash?: Maybe<Scalars['String']['output']>;
+    activeCbzPath?: Maybe<Scalars['String']['output']>;
+    activeCbzSize?: Maybe<Scalars['LongString']['output']>;
+    approvedAt?: Maybe<Scalars['LongString']['output']>;
+    archiveAttempts: Scalars['Int']['output'];
+    archiveCbzHash?: Maybe<Scalars['String']['output']>;
+    archiveCbzPath?: Maybe<Scalars['String']['output']>;
+    archiveCbzSize?: Maybe<Scalars['LongString']['output']>;
+    archiveLastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    archiveLastError?: Maybe<Scalars['String']['output']>;
+    archiveLastVerificationAt?: Maybe<Scalars['LongString']['output']>;
+    archiveManifestHash?: Maybe<Scalars['String']['output']>;
+    archiveManifestPath?: Maybe<Scalars['String']['output']>;
+    archiveManifestSize?: Maybe<Scalars['LongString']['output']>;
+    archiveNextVerificationAt?: Maybe<Scalars['LongString']['output']>;
+    archiveState: ChapterArchiveState;
+    archiveVerificationAttempts: Scalars['Int']['output'];
+    archivedAt?: Maybe<Scalars['LongString']['output']>;
+    attempts: Scalars['Int']['output'];
+    candidateKey: Scalars['String']['output'];
+    candidatePath?: Maybe<Scalars['String']['output']>;
+    changedMetadataFields: Array<ChapterRevisionMetadataField>;
+    chapter?: Maybe<ChapterType>;
+    chapterId?: Maybe<Scalars['Int']['output']>;
+    chapterKey: Scalars['String']['output'];
+    chapterNumber: Scalars['Float']['output'];
+    contentHash?: Maybe<Scalars['String']['output']>;
+    deletedAt?: Maybe<Scalars['LongString']['output']>;
+    discoveredAt: Scalars['LongString']['output'];
+    discoveryReason: ChapterRevisionDiscoveryReason;
+    disposition: ChapterRevisionDisposition;
+    downloadUrl?: Maybe<Scalars['String']['output']>;
+    id: Scalars['Int']['output'];
+    integrityLastAuditSessionId?: Maybe<Scalars['Int']['output']>;
+    integrityLastAuditedAt?: Maybe<Scalars['LongString']['output']>;
+    integrityLastError?: Maybe<Scalars['String']['output']>;
+    integrityState: ChapterRevisionIntegrityState;
+    isActiveRevision: Scalars['Boolean']['output'];
+    lastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    lastError?: Maybe<Scalars['String']['output']>;
+    manga?: Maybe<MangaType>;
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    name: Scalars['String']['output'];
+    pageCount?: Maybe<Scalars['Int']['output']>;
+    prunedAt?: Maybe<Scalars['LongString']['output']>;
+    publicationAttempts: Scalars['Int']['output'];
+    publicationLastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    publicationLastError?: Maybe<Scalars['String']['output']>;
+    publicationState: ChapterPublicationState;
+    publishedAt?: Maybe<Scalars['LongString']['output']>;
+    retentionAttempts: Scalars['Int']['output'];
+    retentionLastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    retentionLastError?: Maybe<Scalars['String']['output']>;
+    retentionNextVerificationAt?: Maybe<Scalars['LongString']['output']>;
+    retentionQueuedAt?: Maybe<Scalars['LongString']['output']>;
+    retentionState: ChapterRetentionState;
+    scanlator?: Maybe<Scalars['String']['output']>;
+    signalConfidence: ChapterRevisionSignalConfidence;
+    sourceChapterUrl: Scalars['String']['output'];
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    sourceMangaUrl?: Maybe<Scalars['String']['output']>;
+    supersededAt?: Maybe<Scalars['LongString']['output']>;
+    updatedAt: Scalars['LongString']['output'];
+    uploadDate: Scalars['LongString']['output'];
+    visualAnalysisAttempts: Scalars['Int']['output'];
+    visualAnalysisCompletedAt?: Maybe<Scalars['LongString']['output']>;
+    visualAnalysisLastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    visualAnalysisLastError?: Maybe<Scalars['String']['output']>;
+    visualAnalysisNextAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    visualAnalysisState: ChapterVisualAnalysisState;
+};
+
+export type ChapterRevisionVisualAnalysisStatus = {
+    __typename?: 'ChapterRevisionVisualAnalysisStatus';
+    analyzing: Scalars['Int']['output'];
+    complete: Scalars['Int']['output'];
+    completeWithLimitations: Scalars['Int']['output'];
+    failed: Scalars['Int']['output'];
+    notRequired: Scalars['Int']['output'];
+    queued: Scalars['Int']['output'];
+};
+
 export type ChapterType = {
     __typename?: 'ChapterType';
     chapterNumber: Scalars['Float']['output'];
@@ -309,6 +1293,15 @@ export type ChapterType = {
     uploadDate: Scalars['LongString']['output'];
     url: Scalars['String']['output'];
 };
+
+export enum ChapterVisualAnalysisState {
+    Analyzing = 'ANALYZING',
+    Complete = 'COMPLETE',
+    CompleteWithLimitations = 'COMPLETE_WITH_LIMITATIONS',
+    Failed = 'FAILED',
+    NotRequired = 'NOT_REQUIRED',
+    Queued = 'QUEUED',
+}
 
 export type CheckBoxFilter = {
     __typename?: 'CheckBoxFilter';
@@ -368,6 +1361,17 @@ export type ClearDownloaderPayload = {
     downloadStatus: DownloadStatus;
 };
 
+export type CloseWebViewInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    tab?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CloseWebViewPayload = {
+    __typename?: 'CloseWebViewPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    closed: Array<Scalars['String']['output']>;
+};
+
 export type ConnectKoSyncAccountInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     password: Scalars['String']['input'];
@@ -410,6 +1414,20 @@ export type CreateBackupPayload = {
     url: Scalars['String']['output'];
 };
 
+export type CreateCanonicalWorkInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    duplicateStrategy: CanonicalDuplicateStrategy;
+    preferredScanlator?: InputMaybe<Scalars['String']['input']>;
+    title: Scalars['String']['input'];
+};
+
+export type CreateCanonicalWorkPayload = {
+    __typename?: 'CreateCanonicalWorkPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+    work?: Maybe<CanonicalWorkType>;
+};
+
 export type CreateCategoryInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     default?: InputMaybe<Scalars['Boolean']['input']>;
@@ -429,6 +1447,17 @@ export enum DatabaseType {
     H2 = 'H2',
     Postgresql = 'POSTGRESQL',
 }
+
+export type DeleteCanonicalWorkInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    workKey: Scalars['String']['input'];
+};
+
+export type DeleteCanonicalWorkPayload = {
+    __typename?: 'DeleteCanonicalWorkPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
 
 export type DeleteCategoryInput = {
     categoryId: Scalars['Int']['input'];
@@ -633,6 +1662,18 @@ export type DequeueChapterDownloadsPayload = {
     downloadStatus: DownloadStatus;
 };
 
+export type DetachCanonicalBindingInput = {
+    bindingId: Scalars['Int']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DetachCanonicalBindingPayload = {
+    __typename?: 'DetachCanonicalBindingPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
+
 export type DoubleFilterInput = {
     distinctFrom?: InputMaybe<Scalars['Float']['input']>;
     distinctFromAll?: InputMaybe<Array<Scalars['Float']['input']>>;
@@ -766,6 +1807,12 @@ export type EnqueueChapterDownloadsPayload = {
     __typename?: 'EnqueueChapterDownloadsPayload';
     clientMutationId?: Maybe<Scalars['String']['output']>;
     downloadStatus: DownloadStatus;
+};
+
+export type ExportCanonicalIdentityPayload = {
+    __typename?: 'ExportCanonicalIdentityPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    export: CanonicalIdentityExportType;
 };
 
 export type ExtensionConditionInput = {
@@ -913,6 +1960,19 @@ export type ExtensionType = {
     versionName: Scalars['String']['output'];
 };
 
+export type FailoverCanonicalWorkInput = {
+    bindingId: Scalars['Int']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    workKey: Scalars['String']['input'];
+};
+
+export type FailoverCanonicalWorkPayload = {
+    __typename?: 'FailoverCanonicalWorkPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
+
 export type FetchChapterPagesInput = {
     chapterId: Scalars['Int']['input'];
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
@@ -1057,6 +2117,17 @@ export type HeaderFilter = {
     name: Scalars['String']['output'];
 };
 
+export type ImportCanonicalIdentityInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    payload: Scalars['String']['input'];
+};
+
+export type ImportCanonicalIdentityPayload = {
+    __typename?: 'ImportCanonicalIdentityPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    import: CanonicalIdentityImportType;
+};
+
 export enum IncludeOrExclude {
     Exclude = 'EXCLUDE',
     Include = 'INCLUDE',
@@ -1100,6 +2171,28 @@ export type JvmInfo = {
     vmVersion: Scalars['String']['output'];
 };
 
+export type KeepBothChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type KeepBothChapterRevisionsPayload = {
+    __typename?: 'KeepBothChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type KeepCurrentChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type KeepCurrentChapterRevisionsPayload = {
+    __typename?: 'KeepCurrentChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
 export type KoSyncConnectPayload = {
     __typename?: 'KoSyncConnectPayload';
     clientMutationId?: Maybe<Scalars['String']['output']>;
@@ -1113,6 +2206,27 @@ export type KoSyncStatusPayload = {
     serverAddress?: Maybe<Scalars['String']['output']>;
     username?: Maybe<Scalars['String']['output']>;
 };
+
+export type KomgaRescanStatusType = {
+    __typename?: 'KomgaRescanStatusType';
+    attempts?: Maybe<Scalars['Int']['output']>;
+    configurationError?: Maybe<Scalars['String']['output']>;
+    configured: Scalars['Boolean']['output'];
+    generation?: Maybe<Scalars['LongString']['output']>;
+    lastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    lastCompletedAt?: Maybe<Scalars['LongString']['output']>;
+    lastError?: Maybe<Scalars['String']['output']>;
+    notBeforeAt?: Maybe<Scalars['LongString']['output']>;
+    requestedAt?: Maybe<Scalars['LongString']['output']>;
+    state?: Maybe<KomgaScanState>;
+};
+
+export enum KomgaScanState {
+    Complete = 'COMPLETE',
+    Failed = 'FAILED',
+    Pending = 'PENDING',
+    Running = 'RUNNING',
+}
 
 export enum KoreaderSyncChecksumMethod {
     Binary = 'BINARY',
@@ -1244,6 +2358,12 @@ export type LongFilterInput = {
     notIn?: InputMaybe<Array<Scalars['LongString']['input']>>;
 };
 
+export enum MangaAcquisitionPolicy {
+    Auto = 'AUTO',
+    Manual = 'MANUAL',
+    Paused = 'PAUSED',
+}
+
 export type MangaConditionInput = {
     artist?: InputMaybe<Scalars['String']['input']>;
     author?: InputMaybe<Scalars['String']['input']>;
@@ -1365,16 +2485,22 @@ export type MangaStatusFilterInput = {
 
 export type MangaType = {
     __typename?: 'MangaType';
+    acceptedRevisionRetention?: Maybe<Scalars['Int']['output']>;
+    acquisitionPolicy: MangaAcquisitionPolicy;
+    acquisitionPolicyOverride?: Maybe<MangaAcquisitionPolicy>;
     age?: Maybe<Scalars['LongString']['output']>;
     artist?: Maybe<Scalars['String']['output']>;
     author?: Maybe<Scalars['String']['output']>;
     bookmarkCount: Scalars['Int']['output'];
+    canonicalAcquisitionEligible: Scalars['Boolean']['output'];
+    canonicalBinding?: Maybe<CanonicalSourceBindingType>;
     categories: CategoryNodeList;
     chapters: ChapterNodeList;
     chaptersAge?: Maybe<Scalars['LongString']['output']>;
     chaptersLastFetchedAt?: Maybe<Scalars['LongString']['output']>;
     description?: Maybe<Scalars['String']['output']>;
     downloadCount: Scalars['Int']['output'];
+    effectiveAcceptedRevisionRetention: Scalars['Int']['output'];
     firstUnreadChapter?: Maybe<ChapterType>;
     genre: Array<Scalars['String']['output']>;
     hasDuplicateChapters: Scalars['Boolean']['output'];
@@ -1464,15 +2590,27 @@ export type MultiSelectListPreference = {
 
 export type Mutation = {
     __typename?: 'Mutation';
+    acceptChapterRevisionCandidates: AcceptChapterRevisionCandidatesPayload;
     addExtensionStore?: Maybe<AddExtensionStorePayload>;
+    approveChapterRevisions: ApproveChapterRevisionsPayload;
+    attachMangaToCanonicalWork: AttachMangaToCanonicalWorkPayload;
     bindTrack: BindTrackPayload;
     bindTrackRecord?: Maybe<BindTrackRecordPayload>;
+    cancelArchiveBootstrap: ArchiveBootstrapSessionPayload;
+    cancelBackupRestore: BackupRestoreJobPayload;
+    cancelChapterIntegrityAudit: ChapterIntegrityAuditSessionPayload;
+    cancelChapterRevisionSweep: ChapterRevisionSweepSessionPayload;
+    changeCanonicalBinding: ChangeCanonicalBindingPayload;
+    cleanupBackupRestore: BackupRestoreJobPayload;
     clearCachedImages: ClearCachedImagesPayload;
     clearCookiesAndCache: ClearCookiesAndCachePayload;
     clearDownloader?: Maybe<ClearDownloaderPayload>;
+    closeWebView: CloseWebViewPayload;
     connectKoSyncAccount: KoSyncConnectPayload;
     createBackup: CreateBackupPayload;
+    createCanonicalWork: CreateCanonicalWorkPayload;
     createCategory?: Maybe<CreateCategoryPayload>;
+    deleteCanonicalWork: DeleteCanonicalWorkPayload;
     deleteCategory?: Maybe<DeleteCategoryPayload>;
     deleteCategoryMeta?: Maybe<DeleteCategoryMetaPayload>;
     deleteCategoryMetas?: Maybe<DeleteCategoryMetasPayload>;
@@ -1488,8 +2626,11 @@ export type Mutation = {
     deleteSourceMetas?: Maybe<DeleteSourceMetasPayload>;
     dequeueChapterDownload?: Maybe<DequeueChapterDownloadPayload>;
     dequeueChapterDownloads?: Maybe<DequeueChapterDownloadsPayload>;
+    detachCanonicalBinding: DetachCanonicalBindingPayload;
     enqueueChapterDownload?: Maybe<EnqueueChapterDownloadPayload>;
     enqueueChapterDownloads?: Maybe<EnqueueChapterDownloadsPayload>;
+    exportCanonicalIdentity: ExportCanonicalIdentityPayload;
+    failoverCanonicalWork: FailoverCanonicalWorkPayload;
     fetchChapterPages?: Maybe<FetchChapterPagesPayload>;
     /** @deprecated Deprecated in Tachiyomix 1.6, replace with fetchMangaAndChapters */
     fetchChapters?: Maybe<FetchChaptersPayload>;
@@ -1499,21 +2640,47 @@ export type Mutation = {
     fetchMangaAndChapters?: Maybe<FetchMangaAndChaptersPayload>;
     fetchSourceManga?: Maybe<FetchSourceMangaPayload>;
     fetchTrack: FetchTrackPayload;
+    importCanonicalIdentity: ImportCanonicalIdentityPayload;
     installExternalExtension?: Maybe<InstallExternalExtensionPayload>;
+    keepBothChapterRevisions: KeepBothChapterRevisionsPayload;
+    keepCurrentChapterRevisions: KeepCurrentChapterRevisionsPayload;
     login: LoginPayload;
     loginTrackerCredentials: LoginTrackerCredentialsPayload;
     loginTrackerOAuth: LoginTrackerOAuthPayload;
     logoutKoSyncAccount: LogoutKoSyncAccountPayload;
     logoutTracker: LogoutTrackerPayload;
+    openWebView: OpenWebViewPayload;
+    pauseArchiveBootstrap: ArchiveBootstrapSessionPayload;
+    pauseChapterIntegrityAudit: ChapterIntegrityAuditSessionPayload;
+    pauseChapterRevisionSweep: ChapterRevisionSweepSessionPayload;
+    promoteCanonicalBinding: PromoteCanonicalBindingPayload;
     pullKoSyncProgress?: Maybe<PullKoSyncProgressPayload>;
     pushKoSyncProgress?: Maybe<PushKoSyncProgressPayload>;
     refreshToken: RefreshTokenPayload;
+    rejectChapterRevisionCandidates: RejectChapterRevisionCandidatesPayload;
+    rejectChapterRevisions: RejectChapterRevisionsPayload;
     removeExtensionStore?: Maybe<RemoveExtensionStorePayload>;
     reorderChapterDownload?: Maybe<ReorderChapterDownloadPayload>;
     reorderChapterDownloads?: Maybe<ReorderChapterDownloadPayload>;
+    requestKomgaRescan: RequestKomgaRescanPayload;
     resetSettings: ResetSettingsPayload;
     resetWebUIUpdateStatus?: Maybe<WebUiUpdateStatus>;
     restoreBackup: RestoreBackupPayload;
+    resumeArchiveBootstrap: ArchiveBootstrapSessionPayload;
+    resumeChapterIntegrityAudit: ChapterIntegrityAuditSessionPayload;
+    resumeChapterRevisionSweep: ChapterRevisionSweepSessionPayload;
+    retryArchiveBootstrapItems: RetryArchiveBootstrapItemsPayload;
+    retryBackupRestore: BackupRestoreJobPayload;
+    retryBackupRestoreHandoff: BackupRestoreJobPayload;
+    retryChapterIntegrityAuditItems: RetryChapterIntegrityAuditItemsPayload;
+    retryChapterRevisionArchives: RetryChapterRevisionArchivesPayload;
+    retryChapterRevisionPrunings: RetryChapterRevisionPruningsPayload;
+    retryChapterRevisionPublications: RetryChapterRevisionPublicationsPayload;
+    retryChapterRevisionSweepItems: RetryChapterRevisionSweepItemsPayload;
+    retryChapterRevisionVisualAnalyses: RetryChapterRevisionVisualAnalysesPayload;
+    retryChapterRevisions: RetryChapterRevisionsPayload;
+    retryKomgaRescan: RetryKomgaRescanPayload;
+    rollbackChapterRevision: RollbackChapterRevisionPayload;
     setCategoryMeta?: Maybe<SetCategoryMetaPayload>;
     setCategoryMetas?: Maybe<SetCategoryMetasPayload>;
     setChapterMeta?: Maybe<SetChapterMetaPayload>;
@@ -1525,11 +2692,15 @@ export type Mutation = {
     setSettings: SetSettingsPayload;
     setSourceMeta?: Maybe<SetSourceMetaPayload>;
     setSourceMetas?: Maybe<SetSourceMetasPayload>;
+    startArchiveBootstrap: StartArchiveBootstrapPayload;
+    startChapterIntegrityAudit: StartChapterIntegrityAuditPayload;
+    startChapterRevisionSweep: StartChapterRevisionSweepPayload;
     startDownloader?: Maybe<StartDownloaderPayload>;
     startSync: StartSyncPayload;
     stopDownloader?: Maybe<StopDownloaderPayload>;
     trackProgress?: Maybe<TrackProgressPayload>;
     unbindTrack: UnbindTrackPayload;
+    updateCanonicalWork: UpdateCanonicalWorkPayload;
     updateCategories?: Maybe<UpdateCategoriesPayload>;
     updateCategory?: Maybe<UpdateCategoryPayload>;
     updateCategoryManga?: Maybe<UpdateCategoryMangaPayload>;
@@ -1550,8 +2721,20 @@ export type Mutation = {
     updateWebUI?: Maybe<WebUiUpdatePayload>;
 };
 
+export type MutationAcceptChapterRevisionCandidatesArgs = {
+    input: AcceptChapterRevisionCandidatesInput;
+};
+
 export type MutationAddExtensionStoreArgs = {
     input: AddExtensionStoreInput;
+};
+
+export type MutationApproveChapterRevisionsArgs = {
+    input: ApproveChapterRevisionsInput;
+};
+
+export type MutationAttachMangaToCanonicalWorkArgs = {
+    input: AttachMangaToCanonicalWorkInput;
 };
 
 export type MutationBindTrackArgs = {
@@ -1560,6 +2743,30 @@ export type MutationBindTrackArgs = {
 
 export type MutationBindTrackRecordArgs = {
     input: BindTrackRecordInput;
+};
+
+export type MutationCancelArchiveBootstrapArgs = {
+    input: ArchiveBootstrapSessionInput;
+};
+
+export type MutationCancelBackupRestoreArgs = {
+    input: BackupRestoreJobInput;
+};
+
+export type MutationCancelChapterIntegrityAuditArgs = {
+    input: ChapterIntegrityAuditSessionInput;
+};
+
+export type MutationCancelChapterRevisionSweepArgs = {
+    input: ChapterRevisionSweepSessionInput;
+};
+
+export type MutationChangeCanonicalBindingArgs = {
+    input: ChangeCanonicalBindingInput;
+};
+
+export type MutationCleanupBackupRestoreArgs = {
+    input: BackupRestoreJobInput;
 };
 
 export type MutationClearCachedImagesArgs = {
@@ -1574,6 +2781,10 @@ export type MutationClearDownloaderArgs = {
     input: ClearDownloaderInput;
 };
 
+export type MutationCloseWebViewArgs = {
+    input?: InputMaybe<CloseWebViewInput>;
+};
+
 export type MutationConnectKoSyncAccountArgs = {
     input: ConnectKoSyncAccountInput;
 };
@@ -1582,8 +2793,16 @@ export type MutationCreateBackupArgs = {
     input?: InputMaybe<CreateBackupInput>;
 };
 
+export type MutationCreateCanonicalWorkArgs = {
+    input: CreateCanonicalWorkInput;
+};
+
 export type MutationCreateCategoryArgs = {
     input: CreateCategoryInput;
+};
+
+export type MutationDeleteCanonicalWorkArgs = {
+    input: DeleteCanonicalWorkInput;
 };
 
 export type MutationDeleteCategoryArgs = {
@@ -1646,12 +2865,24 @@ export type MutationDequeueChapterDownloadsArgs = {
     input: DequeueChapterDownloadsInput;
 };
 
+export type MutationDetachCanonicalBindingArgs = {
+    input: DetachCanonicalBindingInput;
+};
+
 export type MutationEnqueueChapterDownloadArgs = {
     input: EnqueueChapterDownloadInput;
 };
 
 export type MutationEnqueueChapterDownloadsArgs = {
     input: EnqueueChapterDownloadsInput;
+};
+
+export type MutationExportCanonicalIdentityArgs = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type MutationFailoverCanonicalWorkArgs = {
+    input: FailoverCanonicalWorkInput;
 };
 
 export type MutationFetchChapterPagesArgs = {
@@ -1682,8 +2913,20 @@ export type MutationFetchTrackArgs = {
     input: FetchTrackInput;
 };
 
+export type MutationImportCanonicalIdentityArgs = {
+    input: ImportCanonicalIdentityInput;
+};
+
 export type MutationInstallExternalExtensionArgs = {
     input: InstallExternalExtensionInput;
+};
+
+export type MutationKeepBothChapterRevisionsArgs = {
+    input: KeepBothChapterRevisionsInput;
+};
+
+export type MutationKeepCurrentChapterRevisionsArgs = {
+    input: KeepCurrentChapterRevisionsInput;
 };
 
 export type MutationLoginArgs = {
@@ -1706,6 +2949,26 @@ export type MutationLogoutTrackerArgs = {
     input: LogoutTrackerInput;
 };
 
+export type MutationOpenWebViewArgs = {
+    input: OpenWebViewInput;
+};
+
+export type MutationPauseArchiveBootstrapArgs = {
+    input: ArchiveBootstrapSessionInput;
+};
+
+export type MutationPauseChapterIntegrityAuditArgs = {
+    input: ChapterIntegrityAuditSessionInput;
+};
+
+export type MutationPauseChapterRevisionSweepArgs = {
+    input: ChapterRevisionSweepSessionInput;
+};
+
+export type MutationPromoteCanonicalBindingArgs = {
+    input: PromoteCanonicalBindingInput;
+};
+
 export type MutationPullKoSyncProgressArgs = {
     input: PullKoSyncProgressInput;
 };
@@ -1716,6 +2979,14 @@ export type MutationPushKoSyncProgressArgs = {
 
 export type MutationRefreshTokenArgs = {
     input: RefreshTokenInput;
+};
+
+export type MutationRejectChapterRevisionCandidatesArgs = {
+    input: RejectChapterRevisionCandidatesInput;
+};
+
+export type MutationRejectChapterRevisionsArgs = {
+    input: RejectChapterRevisionsInput;
 };
 
 export type MutationRemoveExtensionStoreArgs = {
@@ -1730,12 +3001,76 @@ export type MutationReorderChapterDownloadsArgs = {
     input: ReorderChapterDownloadsInput;
 };
 
+export type MutationRequestKomgaRescanArgs = {
+    input: RequestKomgaRescanInput;
+};
+
 export type MutationResetSettingsArgs = {
     input: ResetSettingsInput;
 };
 
 export type MutationRestoreBackupArgs = {
     input: RestoreBackupInput;
+};
+
+export type MutationResumeArchiveBootstrapArgs = {
+    input: ArchiveBootstrapSessionInput;
+};
+
+export type MutationResumeChapterIntegrityAuditArgs = {
+    input: ChapterIntegrityAuditSessionInput;
+};
+
+export type MutationResumeChapterRevisionSweepArgs = {
+    input: ChapterRevisionSweepSessionInput;
+};
+
+export type MutationRetryArchiveBootstrapItemsArgs = {
+    input: RetryArchiveBootstrapItemsInput;
+};
+
+export type MutationRetryBackupRestoreArgs = {
+    input: BackupRestoreJobInput;
+};
+
+export type MutationRetryBackupRestoreHandoffArgs = {
+    input: BackupRestoreJobInput;
+};
+
+export type MutationRetryChapterIntegrityAuditItemsArgs = {
+    input: RetryChapterIntegrityAuditItemsInput;
+};
+
+export type MutationRetryChapterRevisionArchivesArgs = {
+    input: RetryChapterRevisionArchivesInput;
+};
+
+export type MutationRetryChapterRevisionPruningsArgs = {
+    input: RetryChapterRevisionPruningsInput;
+};
+
+export type MutationRetryChapterRevisionPublicationsArgs = {
+    input: RetryChapterRevisionPublicationsInput;
+};
+
+export type MutationRetryChapterRevisionSweepItemsArgs = {
+    input: RetryChapterRevisionSweepItemsInput;
+};
+
+export type MutationRetryChapterRevisionVisualAnalysesArgs = {
+    input: RetryChapterRevisionVisualAnalysesInput;
+};
+
+export type MutationRetryChapterRevisionsArgs = {
+    input: RetryChapterRevisionsInput;
+};
+
+export type MutationRetryKomgaRescanArgs = {
+    input: RetryKomgaRescanInput;
+};
+
+export type MutationRollbackChapterRevisionArgs = {
+    input: RollbackChapterRevisionInput;
 };
 
 export type MutationSetCategoryMetaArgs = {
@@ -1782,6 +3117,18 @@ export type MutationSetSourceMetasArgs = {
     input: SetSourceMetasInput;
 };
 
+export type MutationStartArchiveBootstrapArgs = {
+    input: StartArchiveBootstrapInput;
+};
+
+export type MutationStartChapterIntegrityAuditArgs = {
+    input: StartChapterIntegrityAuditInput;
+};
+
+export type MutationStartChapterRevisionSweepArgs = {
+    input: StartChapterRevisionSweepInput;
+};
+
 export type MutationStartDownloaderArgs = {
     input: StartDownloaderInput;
 };
@@ -1800,6 +3147,10 @@ export type MutationTrackProgressArgs = {
 
 export type MutationUnbindTrackArgs = {
     input: UnbindTrackInput;
+};
+
+export type MutationUpdateCanonicalWorkArgs = {
+    input: UpdateCanonicalWorkInput;
 };
 
 export type MutationUpdateCategoriesArgs = {
@@ -1875,9 +3226,13 @@ export type MutationUpdateWebUiArgs = {
 };
 
 export type Node =
+    | CanonicalSourceBindingType
+    | CanonicalWorkType
     | CategoryMetaType
     | CategoryType
     | ChapterMetaType
+    | ChapterRevisionComparisonPageType
+    | ChapterRevisionType
     | ChapterType
     | DownloadType
     | DownloadUpdate
@@ -1911,6 +3266,20 @@ export type OsInfo = {
     version: Scalars['String']['output'];
 };
 
+export type OpenWebViewInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    url: Scalars['String']['input'];
+};
+
+export type OpenWebViewPayload = {
+    __typename?: 'OpenWebViewPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    status: Scalars['Int']['output'];
+    tab: Scalars['String']['output'];
+    title: Scalars['String']['output'];
+    url: Scalars['String']['output'];
+};
+
 export type PageInfo = {
     __typename?: 'PageInfo';
     /** When paginating forwards, the cursor to continue. */
@@ -1935,6 +3304,17 @@ export type PartialBackupFlagsInput = {
 
 export type PartialSettingsType = Settings & {
     __typename?: 'PartialSettingsType';
+    acceptedRevisionRetention?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapInterItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDefaultAcquisitionPolicy?: Maybe<Scalars['String']['output']>;
+    archiveDirectDeliveryEnabled?: Maybe<Scalars['Boolean']['output']>;
+    archiveDirectDeliveryExpirySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDirectDeliveryFallbackToLocal?: Maybe<Scalars['Boolean']['output']>;
+    archiveDirectDeliveryRequireExpiryEvidence?: Maybe<Scalars['Boolean']['output']>;
+    archiveVerificationRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveVerificationTimeoutSeconds?: Maybe<Scalars['Int']['output']>;
     authMode?: Maybe<AuthMode>;
     authPassword?: Maybe<Scalars['String']['output']>;
     authUsername?: Maybe<Scalars['String']['output']>;
@@ -1960,6 +3340,23 @@ export type PartialSettingsType = Settings & {
     basicAuthPassword?: Maybe<Scalars['String']['output']>;
     /** @deprecated Removed - prefer authUsername, replace with authUsername */
     basicAuthUsername?: Maybe<Scalars['String']['output']>;
+    chapterIntegrityAuditEnabled?: Maybe<Scalars['Boolean']['output']>;
+    chapterIntegrityAuditIntervalDays?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditRecentRevisions?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: Maybe<Scalars['Boolean']['output']>;
+    chapterRevisionSweepEnabled?: Maybe<Scalars['Boolean']['output']>;
+    chapterRevisionSweepIntervalDays?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepNewestChapters?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionThumbnailMaxDimension?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualAnalysisMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualAnalysisRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualHashThreshold?: Maybe<Scalars['Int']['output']>;
     databasePassword?: Maybe<Scalars['String']['output']>;
     databaseType?: Maybe<DatabaseType>;
     databaseUrl?: Maybe<Scalars['String']['output']>;
@@ -1973,7 +3370,7 @@ export type PartialSettingsType = Settings & {
     excludeEntryWithUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
     excludeNotStarted?: Maybe<Scalars['Boolean']['output']>;
     excludeUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
-    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations */
+    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations, replace with extensionStores */
     extensionRepos?: Maybe<Array<Scalars['String']['output']>>;
     flareSolverrAsResponseFallback?: Maybe<Scalars['Boolean']['output']>;
     flareSolverrEnabled?: Maybe<Scalars['Boolean']['output']>;
@@ -1990,6 +3387,12 @@ export type PartialSettingsType = Settings & {
     jwtRefreshExpiry?: Maybe<Scalars['Duration']['output']>;
     jwtTokenExpiry?: Maybe<Scalars['Duration']['output']>;
     kcefEnabled?: Maybe<Scalars['Boolean']['output']>;
+    komgaApiKey?: Maybe<Scalars['String']['output']>;
+    komgaBaseUrl?: Maybe<Scalars['String']['output']>;
+    komgaLibraryId?: Maybe<Scalars['String']['output']>;
+    komgaRequestTimeoutSeconds?: Maybe<Scalars['Int']['output']>;
+    komgaRescanDebounceSeconds?: Maybe<Scalars['Int']['output']>;
+    komgaRescanRetrySeconds?: Maybe<Scalars['Int']['output']>;
     koreaderSyncChecksumMethod?: Maybe<KoreaderSyncChecksumMethod>;
     /** @deprecated Moved to preference store. Is supposed to be random and gets auto generated, replace with MOVE TO PREFERENCES */
     koreaderSyncDeviceId?: Maybe<Scalars['String']['output']>;
@@ -2042,9 +3445,23 @@ export type PartialSettingsType = Settings & {
     webUIFlavor?: Maybe<WebUiFlavor>;
     webUIInterface?: Maybe<WebUiInterface>;
     webUIUpdateCheckInterval?: Maybe<Scalars['Float']['output']>;
+    webViewOpenTimeout?: Maybe<Scalars['Int']['output']>;
+    webViewProvider?: Maybe<WebViewProvider>;
+    webViewVncUrl?: Maybe<Scalars['String']['output']>;
 };
 
 export type PartialSettingsTypeInput = {
+    acceptedRevisionRetention?: InputMaybe<Scalars['Int']['input']>;
+    archiveBootstrapInterItemDelaySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveBootstrapMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
+    archiveBootstrapRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveDefaultAcquisitionPolicy?: InputMaybe<Scalars['String']['input']>;
+    archiveDirectDeliveryEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    archiveDirectDeliveryExpirySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveDirectDeliveryFallbackToLocal?: InputMaybe<Scalars['Boolean']['input']>;
+    archiveDirectDeliveryRequireExpiryEvidence?: InputMaybe<Scalars['Boolean']['input']>;
+    archiveVerificationRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveVerificationTimeoutSeconds?: InputMaybe<Scalars['Int']['input']>;
     authMode?: InputMaybe<AuthMode>;
     authPassword?: InputMaybe<Scalars['String']['input']>;
     authUsername?: InputMaybe<Scalars['String']['input']>;
@@ -2062,6 +3479,23 @@ export type PartialSettingsTypeInput = {
     backupPath?: InputMaybe<Scalars['String']['input']>;
     backupTTL?: InputMaybe<Scalars['Int']['input']>;
     backupTime?: InputMaybe<Scalars['String']['input']>;
+    chapterIntegrityAuditEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    chapterIntegrityAuditIntervalDays?: InputMaybe<Scalars['Int']['input']>;
+    chapterIntegrityAuditItemDelaySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterIntegrityAuditMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
+    chapterIntegrityAuditRecentRevisions?: InputMaybe<Scalars['Int']['input']>;
+    chapterIntegrityAuditRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: InputMaybe<Scalars['Boolean']['input']>;
+    chapterRevisionSweepEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    chapterRevisionSweepIntervalDays?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionSweepItemDelaySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionSweepMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionSweepNewestChapters?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionSweepRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionThumbnailMaxDimension?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionVisualAnalysisMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionVisualAnalysisRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionVisualHashThreshold?: InputMaybe<Scalars['Int']['input']>;
     databasePassword?: InputMaybe<Scalars['String']['input']>;
     databaseType?: InputMaybe<DatabaseType>;
     databaseUrl?: InputMaybe<Scalars['String']['input']>;
@@ -2088,6 +3522,12 @@ export type PartialSettingsTypeInput = {
     jwtRefreshExpiry?: InputMaybe<Scalars['Duration']['input']>;
     jwtTokenExpiry?: InputMaybe<Scalars['Duration']['input']>;
     kcefEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    komgaApiKey?: InputMaybe<Scalars['String']['input']>;
+    komgaBaseUrl?: InputMaybe<Scalars['String']['input']>;
+    komgaLibraryId?: InputMaybe<Scalars['String']['input']>;
+    komgaRequestTimeoutSeconds?: InputMaybe<Scalars['Int']['input']>;
+    komgaRescanDebounceSeconds?: InputMaybe<Scalars['Int']['input']>;
+    komgaRescanRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
     koreaderSyncChecksumMethod?: InputMaybe<KoreaderSyncChecksumMethod>;
     koreaderSyncPercentageTolerance?: InputMaybe<Scalars['Float']['input']>;
     koreaderSyncStrategyBackward?: InputMaybe<KoreaderSyncConflictStrategy>;
@@ -2130,6 +3570,9 @@ export type PartialSettingsTypeInput = {
     webUIFlavor?: InputMaybe<WebUiFlavor>;
     webUIInterface?: InputMaybe<WebUiInterface>;
     webUIUpdateCheckInterval?: InputMaybe<Scalars['Float']['input']>;
+    webViewOpenTimeout?: InputMaybe<Scalars['Int']['input']>;
+    webViewProvider?: InputMaybe<WebViewProvider>;
+    webViewVncUrl?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PlatformInfo = {
@@ -2146,6 +3589,18 @@ export type Preference =
     | ListPreference
     | MultiSelectListPreference
     | SwitchPreference;
+
+export type PromoteCanonicalBindingInput = {
+    bindingId: Scalars['Int']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PromoteCanonicalBindingPayload = {
+    __typename?: 'PromoteCanonicalBindingPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
 
 export type PullKoSyncProgressInput = {
     chapterId: Scalars['Int']['input'];
@@ -2175,9 +3630,50 @@ export type Query = {
     __typename?: 'Query';
     aboutServer: AboutServerPayload;
     aboutWebUI: AboutWebUi;
+    activeChapterRevision?: Maybe<ChapterRevisionType>;
+    approvalBacklog: ChapterRevisionNodeList;
+    archiveBootstrapActiveSession?: Maybe<ArchiveBootstrapSessionType>;
+    archiveBootstrapEffectivePolicy?: Maybe<ArchiveBootstrapItemType>;
+    archiveBootstrapItems: ArchiveBootstrapItemNodeList;
+    archiveBootstrapLatestSession?: Maybe<ArchiveBootstrapSessionType>;
+    archiveBootstrapProgress: ArchiveBootstrapProgressType;
+    archiveBootstrapSession?: Maybe<ArchiveBootstrapSessionType>;
+    archiveBootstrapSessions: ArchiveBootstrapSessionNodeList;
+    archiveBootstrapUnresolvedSources: Array<ArchiveBootstrapUnresolvedSourceType>;
+    backupRestoreAudits: Array<BackupRestoreAuditType>;
+    backupRestoreErrorCounts?: Maybe<BackupRestoreErrorCountsType>;
+    backupRestoreJob?: Maybe<BackupRestoreJobType>;
+    backupRestoreJobs: Array<BackupRestoreJobType>;
+    canonicalBindingForManga?: Maybe<CanonicalSourceBindingType>;
+    canonicalBindingsForWork: CanonicalSourceBindingNodeList;
+    canonicalIdentityStatus: CanonicalIdentityStatusType;
+    canonicalWork?: Maybe<CanonicalWorkType>;
+    canonicalWorkForManga?: Maybe<CanonicalWorkType>;
+    canonicalWorks: CanonicalWorkNodeList;
     categories: CategoryNodeList;
     category: CategoryType;
     chapter: ChapterType;
+    chapterIntegrityAuditActiveSession?: Maybe<ChapterIntegrityAuditSessionType>;
+    chapterIntegrityAuditItems: ChapterIntegrityAuditItemNodeList;
+    chapterIntegrityAuditLatestSession?: Maybe<ChapterIntegrityAuditSessionType>;
+    chapterIntegrityAuditProgress: ChapterIntegrityAuditProgressType;
+    chapterIntegrityAuditSchedule?: Maybe<ChapterIntegrityAuditScheduleType>;
+    chapterIntegrityAuditSession?: Maybe<ChapterIntegrityAuditSessionType>;
+    chapterIntegrityAuditSessions: ChapterIntegrityAuditSessionNodeList;
+    chapterRevision?: Maybe<ChapterRevisionType>;
+    chapterRevisionComparison?: Maybe<ChapterRevisionComparisonType>;
+    chapterRevisionComparisonPages: ChapterRevisionComparisonPageNodeList;
+    chapterRevisionHistory: ChapterRevisionNodeList;
+    chapterRevisionRollbacks: ChapterRevisionRollbackNodeList;
+    chapterRevisionSweepActiveSession?: Maybe<ChapterRevisionSweepSessionType>;
+    chapterRevisionSweepItems: ChapterRevisionSweepItemNodeList;
+    chapterRevisionSweepLatestSession?: Maybe<ChapterRevisionSweepSessionType>;
+    chapterRevisionSweepProgress: ChapterRevisionSweepProgressType;
+    chapterRevisionSweepSchedule?: Maybe<ChapterRevisionSweepScheduleType>;
+    chapterRevisionSweepSession?: Maybe<ChapterRevisionSweepSessionType>;
+    chapterRevisionSweepSessions: ChapterRevisionSweepSessionNodeList;
+    chapterRevisionVisualAnalysisStatus: ChapterRevisionVisualAnalysisStatus;
+    chapterRevisions: ChapterRevisionNodeList;
     chapters: ChapterNodeList;
     checkForServerUpdates: Array<CheckForServerUpdatesPayload>;
     checkForWebUIUpdate: WebUiUpdateCheck;
@@ -2188,6 +3684,7 @@ export type Query = {
     extensions: ExtensionNodeList;
     getWebUIUpdateStatus: WebUiUpdateStatus;
     koSyncStatus: KoSyncStatusPayload;
+    komgaRescanStatus: KomgaRescanStatusType;
     lastSyncStatus?: Maybe<SyncStatus>;
     lastUpdateTimestamp: LastUpdateTimestampPayload;
     libraryUpdateStatus: LibraryUpdateStatus;
@@ -2195,6 +3692,9 @@ export type Query = {
     mangas: MangaNodeList;
     meta: GlobalMetaType;
     metas: GlobalMetaNodeList;
+    pruningBacklog: ChapterRevisionNodeList;
+    publicationBacklog: ChapterRevisionNodeList;
+    queuedBacklog: ChapterRevisionNodeList;
     restoreStatus?: Maybe<BackupRestoreStatus>;
     searchTracker: SearchTrackerPayload;
     settings: SettingsType;
@@ -2207,6 +3707,106 @@ export type Query = {
     /** @deprecated Replaced with libraryUpdateStatus, replace with libraryUpdateStatus */
     updateStatus: UpdateStatus;
     validateBackup: ValidateBackupResult;
+    visualAnalysisBacklog: ChapterRevisionNodeList;
+    webViewTabs: Array<WebViewTabType>;
+};
+
+export type QueryActiveChapterRevisionArgs = {
+    chapterKey: Scalars['String']['input'];
+};
+
+export type QueryApprovalBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryArchiveBootstrapEffectivePolicyArgs = {
+    mangaId: Scalars['Int']['input'];
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryArchiveBootstrapItemsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    mangaId?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ArchiveBootstrapItemOrderInput>>;
+    sessionId: Scalars['Int']['input'];
+    state?: InputMaybe<ArchiveBootstrapItemState>;
+};
+
+export type QueryArchiveBootstrapProgressArgs = {
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryArchiveBootstrapSessionArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type QueryArchiveBootstrapSessionsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ArchiveBootstrapSessionOrderInput>>;
+    state?: InputMaybe<ArchiveBootstrapState>;
+};
+
+export type QueryArchiveBootstrapUnresolvedSourcesArgs = {
+    sampleSize: Scalars['Int']['input'];
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryBackupRestoreAuditsArgs = {
+    level?: InputMaybe<BackupRestoreAuditLevel>;
+    limit: Scalars['Int']['input'];
+    restoreId: Scalars['String']['input'];
+};
+
+export type QueryBackupRestoreErrorCountsArgs = {
+    restoreId: Scalars['String']['input'];
+};
+
+export type QueryBackupRestoreJobArgs = {
+    restoreId: Scalars['String']['input'];
+};
+
+export type QueryBackupRestoreJobsArgs = {
+    limit: Scalars['Int']['input'];
+    state?: InputMaybe<BackupRestoreJobState>;
+};
+
+export type QueryCanonicalBindingForMangaArgs = {
+    mangaId: Scalars['Int']['input'];
+};
+
+export type QueryCanonicalBindingsForWorkArgs = {
+    workId: Scalars['Int']['input'];
+};
+
+export type QueryCanonicalWorkArgs = {
+    workKey: Scalars['String']['input'];
+};
+
+export type QueryCanonicalWorkForMangaArgs = {
+    mangaId: Scalars['Int']['input'];
+};
+
+export type QueryCanonicalWorksArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<CanonicalWorkOrderInput>>;
+    titleContains?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type QueryCategoriesArgs = {
@@ -2226,6 +3826,118 @@ export type QueryCategoryArgs = {
 
 export type QueryChapterArgs = {
     id: Scalars['Int']['input'];
+};
+
+export type QueryChapterIntegrityAuditItemsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    mangaId?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterIntegrityAuditItemOrderInput>>;
+    sessionId: Scalars['Int']['input'];
+    state?: InputMaybe<ChapterIntegrityAuditItemState>;
+};
+
+export type QueryChapterIntegrityAuditProgressArgs = {
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryChapterIntegrityAuditSessionArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type QueryChapterIntegrityAuditSessionsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterIntegrityAuditSessionOrderInput>>;
+    state?: InputMaybe<ChapterIntegrityAuditSessionState>;
+};
+
+export type QueryChapterRevisionArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionComparisonArgs = {
+    revisionId: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionComparisonPagesArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    revisionId: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionHistoryArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    chapterKey: Scalars['String']['input'];
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryChapterRevisionRollbacksArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    chapterKey?: InputMaybe<Scalars['String']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionRollbackOrderInput>>;
+};
+
+export type QueryChapterRevisionSweepItemsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    mangaId?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionSweepItemOrderInput>>;
+    sessionId: Scalars['Int']['input'];
+    state?: InputMaybe<ChapterRevisionSweepItemState>;
+};
+
+export type QueryChapterRevisionSweepProgressArgs = {
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionSweepSessionArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionSweepSessionsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionSweepSessionOrderInput>>;
+    state?: InputMaybe<ChapterRevisionSweepSessionState>;
+};
+
+export type QueryChapterRevisionsArgs = {
+    acquisitionState?: InputMaybe<ChapterAcquisitionState>;
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    archiveState?: InputMaybe<ChapterArchiveState>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    chapterId?: InputMaybe<Scalars['Int']['input']>;
+    chapterKey?: InputMaybe<Scalars['String']['input']>;
+    discoveryReason?: InputMaybe<ChapterRevisionDiscoveryReason>;
+    disposition?: InputMaybe<ChapterRevisionDisposition>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+    publicationState?: InputMaybe<ChapterPublicationState>;
+    retentionState?: InputMaybe<ChapterRetentionState>;
+    signalConfidence?: InputMaybe<ChapterRevisionSignalConfidence>;
 };
 
 export type QueryChaptersArgs = {
@@ -2299,6 +4011,33 @@ export type QueryMetasArgs = {
     order?: InputMaybe<Array<MetaOrderInput>>;
 };
 
+export type QueryPruningBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryPublicationBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryQueuedBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
 export type QueryRestoreStatusArgs = {
     id: Scalars['String']['input'];
 };
@@ -2355,6 +4094,19 @@ export type QueryValidateBackupArgs = {
     input: ValidateBackupInput;
 };
 
+export type QueryVisualAnalysisBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryWebViewTabsArgs = {
+    tab?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type RefreshTokenInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     refreshToken: Scalars['String']['input'];
@@ -2364,6 +4116,28 @@ export type RefreshTokenPayload = {
     __typename?: 'RefreshTokenPayload';
     accessToken: Scalars['String']['output'];
     clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+export type RejectChapterRevisionCandidatesInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RejectChapterRevisionCandidatesPayload = {
+    __typename?: 'RejectChapterRevisionCandidatesPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RejectChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RejectChapterRevisionsPayload = {
+    __typename?: 'RejectChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
 };
 
 export type RemoveExtensionStoreInput = {
@@ -2394,6 +4168,16 @@ export type ReorderChapterDownloadsInput = {
     reorders: Array<ChapterDownloadReorderInput>;
 };
 
+export type RequestKomgaRescanInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type RequestKomgaRescanPayload = {
+    __typename?: 'RequestKomgaRescanPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    rescan: KomgaRescanStatusType;
+};
+
 export type ResetSettingsInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2406,6 +4190,8 @@ export type ResetSettingsPayload = {
 
 export type RestoreBackupInput = {
     backup: Scalars['Upload']['input'];
+    bootstrapCategoryOverrides?: InputMaybe<Array<BootstrapCategoryPolicyInput>>;
+    bootstrapDefaultPolicy?: InputMaybe<MangaAcquisitionPolicy>;
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     flags?: InputMaybe<PartialBackupFlagsInput>;
 };
@@ -2415,6 +4201,127 @@ export type RestoreBackupPayload = {
     clientMutationId?: Maybe<Scalars['String']['output']>;
     id: Scalars['String']['output'];
     status?: Maybe<BackupRestoreStatus>;
+};
+
+export type RetryArchiveBootstrapItemsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    itemIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type RetryArchiveBootstrapItemsPayload = {
+    __typename?: 'RetryArchiveBootstrapItemsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ArchiveBootstrapSessionType>;
+};
+
+export type RetryChapterIntegrityAuditItemsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    itemIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type RetryChapterIntegrityAuditItemsPayload = {
+    __typename?: 'RetryChapterIntegrityAuditItemsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterIntegrityAuditSessionType>;
+};
+
+export type RetryChapterRevisionArchivesInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionArchivesPayload = {
+    __typename?: 'RetryChapterRevisionArchivesPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryChapterRevisionPruningsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionPruningsPayload = {
+    __typename?: 'RetryChapterRevisionPruningsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryChapterRevisionPublicationsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionPublicationsPayload = {
+    __typename?: 'RetryChapterRevisionPublicationsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryChapterRevisionSweepItemsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    itemIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type RetryChapterRevisionSweepItemsPayload = {
+    __typename?: 'RetryChapterRevisionSweepItemsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterRevisionSweepSessionType>;
+};
+
+export type RetryChapterRevisionVisualAnalysesInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionVisualAnalysesPayload = {
+    __typename?: 'RetryChapterRevisionVisualAnalysesPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionsPayload = {
+    __typename?: 'RetryChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryKomgaRescanInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type RetryKomgaRescanPayload = {
+    __typename?: 'RetryKomgaRescanPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    rescan: KomgaRescanStatusType;
+    retried: Scalars['Boolean']['output'];
+};
+
+export type RollbackChapterRevisionInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    revisionId: Scalars['Int']['input'];
+};
+
+export type RollbackChapterRevisionPayload = {
+    __typename?: 'RollbackChapterRevisionPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    replacedRevisionId?: Maybe<Scalars['Int']['output']>;
+    revision?: Maybe<ChapterRevisionType>;
 };
 
 export type SearchTrackerInput = {
@@ -2585,6 +4492,17 @@ export type SetSourceMetasPayload = {
 };
 
 export type Settings = {
+    acceptedRevisionRetention?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapInterItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDefaultAcquisitionPolicy?: Maybe<Scalars['String']['output']>;
+    archiveDirectDeliveryEnabled?: Maybe<Scalars['Boolean']['output']>;
+    archiveDirectDeliveryExpirySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDirectDeliveryFallbackToLocal?: Maybe<Scalars['Boolean']['output']>;
+    archiveDirectDeliveryRequireExpiryEvidence?: Maybe<Scalars['Boolean']['output']>;
+    archiveVerificationRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveVerificationTimeoutSeconds?: Maybe<Scalars['Int']['output']>;
     authMode?: Maybe<AuthMode>;
     authPassword?: Maybe<Scalars['String']['output']>;
     authUsername?: Maybe<Scalars['String']['output']>;
@@ -2610,6 +4528,23 @@ export type Settings = {
     basicAuthPassword?: Maybe<Scalars['String']['output']>;
     /** @deprecated Removed - prefer authUsername, replace with authUsername */
     basicAuthUsername?: Maybe<Scalars['String']['output']>;
+    chapterIntegrityAuditEnabled?: Maybe<Scalars['Boolean']['output']>;
+    chapterIntegrityAuditIntervalDays?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditRecentRevisions?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: Maybe<Scalars['Boolean']['output']>;
+    chapterRevisionSweepEnabled?: Maybe<Scalars['Boolean']['output']>;
+    chapterRevisionSweepIntervalDays?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepNewestChapters?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionThumbnailMaxDimension?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualAnalysisMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualAnalysisRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualHashThreshold?: Maybe<Scalars['Int']['output']>;
     databasePassword?: Maybe<Scalars['String']['output']>;
     databaseType?: Maybe<DatabaseType>;
     databaseUrl?: Maybe<Scalars['String']['output']>;
@@ -2623,7 +4558,7 @@ export type Settings = {
     excludeEntryWithUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
     excludeNotStarted?: Maybe<Scalars['Boolean']['output']>;
     excludeUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
-    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations */
+    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations, replace with extensionStores */
     extensionRepos?: Maybe<Array<Scalars['String']['output']>>;
     flareSolverrAsResponseFallback?: Maybe<Scalars['Boolean']['output']>;
     flareSolverrEnabled?: Maybe<Scalars['Boolean']['output']>;
@@ -2640,6 +4575,12 @@ export type Settings = {
     jwtRefreshExpiry?: Maybe<Scalars['Duration']['output']>;
     jwtTokenExpiry?: Maybe<Scalars['Duration']['output']>;
     kcefEnabled?: Maybe<Scalars['Boolean']['output']>;
+    komgaApiKey?: Maybe<Scalars['String']['output']>;
+    komgaBaseUrl?: Maybe<Scalars['String']['output']>;
+    komgaLibraryId?: Maybe<Scalars['String']['output']>;
+    komgaRequestTimeoutSeconds?: Maybe<Scalars['Int']['output']>;
+    komgaRescanDebounceSeconds?: Maybe<Scalars['Int']['output']>;
+    komgaRescanRetrySeconds?: Maybe<Scalars['Int']['output']>;
     koreaderSyncChecksumMethod?: Maybe<KoreaderSyncChecksumMethod>;
     /** @deprecated Moved to preference store. Is supposed to be random and gets auto generated, replace with MOVE TO PREFERENCES */
     koreaderSyncDeviceId?: Maybe<Scalars['String']['output']>;
@@ -2692,6 +4633,9 @@ export type Settings = {
     webUIFlavor?: Maybe<WebUiFlavor>;
     webUIInterface?: Maybe<WebUiInterface>;
     webUIUpdateCheckInterval?: Maybe<Scalars['Float']['output']>;
+    webViewOpenTimeout?: Maybe<Scalars['Int']['output']>;
+    webViewProvider?: Maybe<WebViewProvider>;
+    webViewVncUrl?: Maybe<Scalars['String']['output']>;
 };
 
 export type SettingsDownloadConversion = {
@@ -2740,6 +4684,17 @@ export type SettingsDownloadConversionTypeInput = {
 
 export type SettingsType = Settings & {
     __typename?: 'SettingsType';
+    acceptedRevisionRetention: Scalars['Int']['output'];
+    archiveBootstrapInterItemDelaySeconds: Scalars['Int']['output'];
+    archiveBootstrapMaxAttempts: Scalars['Int']['output'];
+    archiveBootstrapRetrySeconds: Scalars['Int']['output'];
+    archiveDefaultAcquisitionPolicy: Scalars['String']['output'];
+    archiveDirectDeliveryEnabled: Scalars['Boolean']['output'];
+    archiveDirectDeliveryExpirySeconds: Scalars['Int']['output'];
+    archiveDirectDeliveryFallbackToLocal: Scalars['Boolean']['output'];
+    archiveDirectDeliveryRequireExpiryEvidence: Scalars['Boolean']['output'];
+    archiveVerificationRetrySeconds: Scalars['Int']['output'];
+    archiveVerificationTimeoutSeconds: Scalars['Int']['output'];
     authMode: AuthMode;
     authPassword: Scalars['String']['output'];
     authUsername: Scalars['String']['output'];
@@ -2765,6 +4720,23 @@ export type SettingsType = Settings & {
     basicAuthPassword: Scalars['String']['output'];
     /** @deprecated Removed - prefer authUsername, replace with authUsername */
     basicAuthUsername: Scalars['String']['output'];
+    chapterIntegrityAuditEnabled: Scalars['Boolean']['output'];
+    chapterIntegrityAuditIntervalDays: Scalars['Int']['output'];
+    chapterIntegrityAuditItemDelaySeconds: Scalars['Int']['output'];
+    chapterIntegrityAuditMaxAttempts: Scalars['Int']['output'];
+    chapterIntegrityAuditRecentRevisions: Scalars['Int']['output'];
+    chapterIntegrityAuditRetrySeconds: Scalars['Int']['output'];
+    chapterRevisionAutoDismissVisuallyEquivalent: Scalars['Boolean']['output'];
+    chapterRevisionSweepEnabled: Scalars['Boolean']['output'];
+    chapterRevisionSweepIntervalDays: Scalars['Int']['output'];
+    chapterRevisionSweepItemDelaySeconds: Scalars['Int']['output'];
+    chapterRevisionSweepMaxAttempts: Scalars['Int']['output'];
+    chapterRevisionSweepNewestChapters: Scalars['Int']['output'];
+    chapterRevisionSweepRetrySeconds: Scalars['Int']['output'];
+    chapterRevisionThumbnailMaxDimension: Scalars['Int']['output'];
+    chapterRevisionVisualAnalysisMaxAttempts: Scalars['Int']['output'];
+    chapterRevisionVisualAnalysisRetrySeconds: Scalars['Int']['output'];
+    chapterRevisionVisualHashThreshold: Scalars['Int']['output'];
     databasePassword: Scalars['String']['output'];
     databaseType: DatabaseType;
     databaseUrl: Scalars['String']['output'];
@@ -2778,7 +4750,7 @@ export type SettingsType = Settings & {
     excludeEntryWithUnreadChapters: Scalars['Boolean']['output'];
     excludeNotStarted: Scalars['Boolean']['output'];
     excludeUnreadChapters: Scalars['Boolean']['output'];
-    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations */
+    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations, replace with extensionStores */
     extensionRepos: Array<Scalars['String']['output']>;
     flareSolverrAsResponseFallback: Scalars['Boolean']['output'];
     flareSolverrEnabled: Scalars['Boolean']['output'];
@@ -2795,6 +4767,12 @@ export type SettingsType = Settings & {
     jwtRefreshExpiry: Scalars['Duration']['output'];
     jwtTokenExpiry: Scalars['Duration']['output'];
     kcefEnabled: Scalars['Boolean']['output'];
+    komgaApiKey?: Maybe<Scalars['String']['output']>;
+    komgaBaseUrl: Scalars['String']['output'];
+    komgaLibraryId: Scalars['String']['output'];
+    komgaRequestTimeoutSeconds: Scalars['Int']['output'];
+    komgaRescanDebounceSeconds: Scalars['Int']['output'];
+    komgaRescanRetrySeconds: Scalars['Int']['output'];
     koreaderSyncChecksumMethod: KoreaderSyncChecksumMethod;
     /** @deprecated Moved to preference store. Is supposed to be random and gets auto generated, replace with MOVE TO PREFERENCES */
     koreaderSyncDeviceId: Scalars['String']['output'];
@@ -2847,6 +4825,9 @@ export type SettingsType = Settings & {
     webUIFlavor: WebUiFlavor;
     webUIInterface: WebUiInterface;
     webUIUpdateCheckInterval: Scalars['Float']['output'];
+    webViewOpenTimeout: Scalars['Int']['output'];
+    webViewProvider: WebViewProvider;
+    webViewVncUrl: Scalars['String']['output'];
 };
 
 export type SortFilter = {
@@ -2961,6 +4942,49 @@ export type SourceType = {
     name: Scalars['String']['output'];
     preferences: Array<Preference>;
     supportsLatest: Scalars['Boolean']['output'];
+};
+
+export type StartArchiveBootstrapInput = {
+    categoryPolicies?: InputMaybe<Array<ArchiveBootstrapCategoryPolicyInput>>;
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    defaultPolicy: MangaAcquisitionPolicy;
+    mangaIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type StartArchiveBootstrapPayload = {
+    __typename?: 'StartArchiveBootstrapPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ArchiveBootstrapSessionType>;
+};
+
+export type StartChapterIntegrityAuditInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    kind: ChapterIntegrityAuditKind;
+    mangaIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type StartChapterIntegrityAuditPayload = {
+    __typename?: 'StartChapterIntegrityAuditPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterIntegrityAuditSessionType>;
+};
+
+export type StartChapterRevisionSweepInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    kind: ChapterRevisionSweepKind;
+    mangaIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type StartChapterRevisionSweepPayload = {
+    __typename?: 'StartChapterRevisionSweepPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterRevisionSweepSessionType>;
 };
 
 export type StartDownloaderInput = {
@@ -3343,6 +5367,22 @@ export type UnbindTrackPayload = {
     trackRecord?: Maybe<TrackRecordType>;
 };
 
+export type UpdateCanonicalWorkInput = {
+    clearPreferredScanlator: Scalars['Boolean']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    duplicateStrategy?: InputMaybe<CanonicalDuplicateStrategy>;
+    preferredScanlator?: InputMaybe<Scalars['String']['input']>;
+    title?: InputMaybe<Scalars['String']['input']>;
+    workKey: Scalars['String']['input'];
+};
+
+export type UpdateCanonicalWorkPayload = {
+    __typename?: 'UpdateCanonicalWorkPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+    work?: Maybe<CanonicalWorkType>;
+};
+
 export type UpdateCategoriesInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     ids: Array<Scalars['Int']['input']>;
@@ -3503,7 +5543,11 @@ export type UpdateMangaInput = {
 };
 
 export type UpdateMangaPatchInput = {
+    acceptedRevisionRetention?: InputMaybe<Scalars['Int']['input']>;
+    acquisitionPolicy?: InputMaybe<MangaAcquisitionPolicy>;
     inLibrary?: InputMaybe<Scalars['Boolean']['input']>;
+    inheritAcceptedRevisionRetention: Scalars['Boolean']['input'];
+    inheritAcquisitionPolicy: Scalars['Boolean']['input'];
 };
 
 export type UpdateMangaPayload = {
@@ -3698,4 +5742,16 @@ export type WebUiUpdateStatus = {
     info: WebUiUpdateInfo;
     progress: Scalars['Int']['output'];
     state: UpdateState;
+};
+
+export enum WebViewProvider {
+    Cef = 'CEF',
+    ProwlVnc = 'PROWL_VNC',
+}
+
+export type WebViewTabType = {
+    __typename?: 'WebViewTabType';
+    id: Scalars['String']['output'];
+    title: Scalars['String']['output'];
+    url: Scalars['String']['output'];
 };

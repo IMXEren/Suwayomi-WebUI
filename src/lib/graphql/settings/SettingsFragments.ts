@@ -136,6 +136,11 @@ export const SERVER_SETTINGS = gql`
 
         # WebView
         kcefEnabled
+        # CEF (embedded, default) or PROWL_VNC (the external browser service's browser)
+        webViewProvider
+
+        # Archival
+        archiveDefaultAcquisitionPolicy
 
         # Sync
         syncDataCategories

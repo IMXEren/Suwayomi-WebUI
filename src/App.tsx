@@ -65,6 +65,7 @@ const { ExtensionInfo } = loadable(
     lazyLoadFallback,
 );
 const { Updates } = loadable(() => import('@/features/updates/screens/Updates.tsx'), lazyLoadFallback);
+const { Archive } = loadable(() => import('@/features/archive/screens/Archive.tsx'), lazyLoadFallback);
 const { History } = loadable(() => import('@/features/history/screens/History.tsx'), lazyLoadFallback);
 const { LibrarySettings } = loadable(() => import('@/features/library/screens/LibrarySettings.tsx'), lazyLoadFallback);
 const { DownloadSettings } = loadable(
@@ -105,6 +106,7 @@ const { ExtensionStores } = loadable(
     () => import('@/features/extension/store/screens/ExtensionStores.tsx'),
     lazyLoadFallback,
 );
+const { WebView } = loadable(() => import('@/features/web-view/screens/WebView.tsx'), lazyLoadFallback);
 
 if (import.meta.env.DEV) {
     // Adds messages only in a dev environment
@@ -366,6 +368,7 @@ const MainApp = () => {
                         </Route>
                         <Route path={AppRoutes.library.match} element={<Library />} />
                         <Route path={AppRoutes.updates.match} element={<Updates />} />
+                        <Route path={AppRoutes.archive.match} element={<Archive />} />
                         {!hideHistory && <Route path={AppRoutes.history.match} element={<History />} />}
                         <Route path={AppRoutes.browse.match} element={<Browse />} />
                         <Route path={AppRoutes.browse.match} element={<Browse />} />
@@ -378,6 +381,7 @@ const MainApp = () => {
                             />
                         </Route>
                         <Route path={AppRoutes.tracker.match} element={<TrackerOAuthLogin />} />
+                        <Route path={AppRoutes.webView.match} element={<WebView />} />
                     </Route>
                 </Routes>
             </ErrorBoundary>

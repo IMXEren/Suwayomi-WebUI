@@ -4,6 +4,2628 @@ type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 import type * as Types from './graphql-base.types';
 
+export type ArchiveRevisionRowFragment = {
+    __typename: 'ChapterRevisionType';
+    id: number;
+    name: string;
+    chapterNumber: number;
+    scanlator: string | null;
+    sourceChapterUrl: string;
+    sourceId: string | null;
+    discoveredAt: string;
+    updatedAt: string;
+    discoveryReason: Types.ChapterRevisionDiscoveryReason;
+    signalConfidence: Types.ChapterRevisionSignalConfidence;
+    disposition: Types.ChapterRevisionDisposition;
+    acquisitionState: Types.ChapterAcquisitionState;
+    archiveState: Types.ChapterArchiveState;
+    publicationState: Types.ChapterPublicationState;
+    retentionState: Types.ChapterRetentionState;
+    changedMetadataFields: Array<Types.ChapterRevisionMetadataField>;
+    pageCount: number | null;
+    attempts: number;
+    lastError: string | null;
+    mangaId: number | null;
+    chapterId: number | null;
+    manga: { __typename: 'MangaType'; id: number; title: string } | null;
+};
+
+export type ArchiveInspectorRowFragment = {
+    __typename: 'ChapterRevisionType';
+    id: number;
+    name: string;
+    chapterNumber: number;
+    scanlator: string | null;
+    sourceId: string | null;
+    disposition: Types.ChapterRevisionDisposition;
+    discoveryReason: Types.ChapterRevisionDiscoveryReason;
+    signalConfidence: Types.ChapterRevisionSignalConfidence;
+    acquisitionState: Types.ChapterAcquisitionState;
+    archiveState: Types.ChapterArchiveState;
+    publicationState: Types.ChapterPublicationState;
+    retentionState: Types.ChapterRetentionState;
+    changedMetadataFields: Array<Types.ChapterRevisionMetadataField>;
+    pageCount: number | null;
+    attempts: number;
+    lastAttemptAt: string | null;
+    lastError: string | null;
+    archiveAttempts: number;
+    archiveLastAttemptAt: string | null;
+    publicationAttempts: number;
+    publicationLastAttemptAt: string | null;
+    retentionAttempts: number;
+    retentionLastAttemptAt: string | null;
+    discoveredAt: string;
+    approvedAt: string | null;
+    archivedAt: string | null;
+    publishedAt: string | null;
+    prunedAt: string | null;
+    updatedAt: string;
+    mangaId: number | null;
+    chapterId: number | null;
+    manga: { __typename: 'MangaType'; id: number; title: string } | null;
+};
+
+export type ArchiveReviewRowFragment = {
+    __typename: 'ChapterRevisionType';
+    id: number;
+    chapterKey: string;
+    name: string;
+    chapterNumber: number;
+    scanlator: string | null;
+    sourceChapterUrl: string;
+    sourceId: string | null;
+    discoveredAt: string;
+    updatedAt: string;
+    archivedAt: string | null;
+    disposition: Types.ChapterRevisionDisposition;
+    acquisitionState: Types.ChapterAcquisitionState;
+    archiveState: Types.ChapterArchiveState;
+    publicationState: Types.ChapterPublicationState;
+    retentionState: Types.ChapterRetentionState;
+    discoveryReason: Types.ChapterRevisionDiscoveryReason;
+    signalConfidence: Types.ChapterRevisionSignalConfidence;
+    visualAnalysisState: Types.ChapterVisualAnalysisState;
+    visualAnalysisAttempts: number;
+    visualAnalysisCompletedAt: string | null;
+    visualAnalysisLastError: string | null;
+    pageCount: number | null;
+    mangaId: number | null;
+    chapterId: number | null;
+    manga: { __typename: 'MangaType'; id: number; title: string } | null;
+    chapter: { __typename: 'ChapterType'; id: number; name: string; chapterNumber: number; sourceOrder: number } | null;
+};
+
+export type ArchiveComparisonSummaryFragment = {
+    __typename: 'ChapterRevisionComparisonType';
+    revisionId: number;
+    baselineRevisionId: number | null;
+    baselinePageCount: number;
+    candidatePageCount: number;
+    exactCount: number;
+    visuallyEquivalentCount: number;
+    modifiedCount: number;
+    addedCount: number;
+    removedCount: number;
+    alignedCount: number;
+    hammingThreshold: number;
+    algorithmVersion: string;
+    allPagesVisuallyEquivalent: boolean;
+    hasLimitations: boolean;
+    limitations: string | null;
+    createdAt: string;
+    updatedAt: string;
+};
+
+export type ArchiveComparisonPageFragment = {
+    __typename: 'ChapterRevisionComparisonPageType';
+    ordinal: number;
+    state: Types.ChapterRevisionPageAlignmentState;
+    baselinePageIndex: number | null;
+    candidatePageIndex: number | null;
+    hammingDistance: number | null;
+    baselineWidth: number | null;
+    baselineHeight: number | null;
+    baselineSize: string | null;
+    candidateWidth: number | null;
+    candidateHeight: number | null;
+    candidateSize: string | null;
+    baselinePreviewAvailable: boolean;
+    candidatePreviewAvailable: boolean;
+    baselineThumbnailUrl: string | null;
+    candidateThumbnailUrl: string | null;
+    baselinePageUrl: string | null;
+    candidatePageUrl: string | null;
+};
+
+export type ArchiveSweepScheduleFragment = {
+    __typename: 'ChapterRevisionSweepScheduleType';
+    nextDueAt: string;
+    lastRunAt: string | null;
+    lastSessionId: number | null;
+    updatedAt: string;
+};
+
+export type ArchiveSweepSessionFragment = {
+    __typename: 'ChapterRevisionSweepSessionType';
+    id: number;
+    kind: Types.ChapterRevisionSweepKind;
+    state: Types.ChapterRevisionSweepSessionState;
+    newestPerSeries: number | null;
+    maxAttempts: number;
+    itemDelaySeconds: string;
+    retrySeconds: string;
+    startedAt: string;
+    finishedAt: string | null;
+    pausedAt: string | null;
+    cancelledAt: string | null;
+    nextItemAt: string | null;
+    lastItemAt: string | null;
+    updatedAt: string;
+};
+
+export type ArchiveSweepItemFragment = {
+    __typename: 'ChapterRevisionSweepItemType';
+    id: number;
+    sessionId: number;
+    state: Types.ChapterRevisionSweepItemState;
+    attempts: number;
+    policy: Types.MangaAcquisitionPolicy;
+    mangaId: number | null;
+    chapterId: number | null;
+    sourceId: string | null;
+    seriesTitle: string;
+    chapterName: string;
+    dueAt: string | null;
+    startedAt: string | null;
+    finishedAt: string | null;
+    candidateCount: number | null;
+    lastError: string | null;
+};
+
+export type KomgaRescanStatusFragment = {
+    __typename: 'KomgaRescanStatusType';
+    configured: boolean;
+    configurationError: string | null;
+    state: Types.KomgaScanState | null;
+    generation: string | null;
+    attempts: number | null;
+    requestedAt: string | null;
+    notBeforeAt: string | null;
+    lastAttemptAt: string | null;
+    lastCompletedAt: string | null;
+    lastError: string | null;
+};
+
+export type ArchiveBootstrapSessionFragment = {
+    __typename: 'ArchiveBootstrapSessionType';
+    id: number;
+    state: Types.ArchiveBootstrapState;
+    startedAt: string;
+    finishedAt: string | null;
+    pausedAt: string | null;
+    cancelledAt: string | null;
+    updatedAt: string;
+    nextItemAt: string | null;
+    lastItemAt: string | null;
+    interItemDelaySeconds: string;
+    retrySeconds: string;
+    maxAttempts: number;
+    defaultPolicy: Types.MangaAcquisitionPolicy;
+};
+
+export type BackupRestoreJobFragment = {
+    __typename: 'BackupRestoreJobType';
+    id: number;
+    restoreId: string;
+    state: Types.BackupRestoreJobState;
+    phase: Types.BackupRestorePhase;
+    progress: number;
+    total: number;
+    errorCount: number;
+    handoffState: Types.BackupRestoreHandoffState;
+    handoffSessionId: number | null;
+    handoffError: string | null;
+    stagedPayloadRetained: boolean;
+    lastError: string | null;
+    createdAt: string;
+    startedAt: string | null;
+    finishedAt: string | null;
+    cancelledAt: string | null;
+    updatedAt: string;
+};
+
+export type ArchiveIntegritySessionFragment = {
+    __typename: 'ChapterIntegrityAuditSessionType';
+    id: number;
+    kind: Types.ChapterIntegrityAuditKind;
+    state: Types.ChapterIntegrityAuditSessionState;
+    newestPerManga: number | null;
+    maxAttempts: number;
+    itemDelaySeconds: string;
+    retrySeconds: string;
+    startedAt: string;
+    finishedAt: string | null;
+    pausedAt: string | null;
+    cancelledAt: string | null;
+    nextItemAt: string | null;
+    lastItemAt: string | null;
+    updatedAt: string;
+};
+
+export type ArchiveIntegrityScheduleFragment = {
+    __typename: 'ChapterIntegrityAuditScheduleType';
+    nextDueAt: string;
+    lastRunAt: string | null;
+    lastSessionId: number | null;
+    updatedAt: string;
+};
+
+export type ArchiveIntegrityItemFragment = {
+    __typename: 'ChapterIntegrityAuditItemType';
+    id: number;
+    sessionId: number;
+    state: Types.ChapterIntegrityAuditItemState;
+    attempts: number;
+    revisionId: number | null;
+    mangaId: number | null;
+    chapterId: number | null;
+    seriesTitle: string | null;
+    chapterName: string;
+    dueAt: string | null;
+    startedAt: string | null;
+    finishedAt: string | null;
+    updatedAt: string;
+};
+
+export type CanonicalBindingRowFragment = {
+    __typename: 'CanonicalSourceBindingType';
+    id: number;
+    workId: number;
+    workKey: string;
+    mangaId: number | null;
+    mangaTitle: string | null;
+    mangaUrl: string | null;
+    sourceId: string | null;
+    sourceName: string | null;
+    role: Types.CanonicalBindingRole;
+    priority: number;
+    isPrimary: boolean;
+    acquisitionEligible: boolean;
+    mangaAvailable: boolean;
+    boundAt: string;
+    updatedAt: string;
+};
+
+export type CanonicalWorkRowFragment = {
+    __typename: 'CanonicalWorkType';
+    id: number;
+    workKey: string;
+    title: string;
+    preferredScanlator: string | null;
+    duplicateStrategy: Types.CanonicalDuplicateStrategy;
+    duplicatePolicyApplied: boolean;
+    bindingCount: number;
+    createdAt: string;
+    updatedAt: string;
+    primaryBinding: {
+        __typename: 'CanonicalSourceBindingType';
+        id: number;
+        workId: number;
+        workKey: string;
+        mangaId: number | null;
+        mangaTitle: string | null;
+        mangaUrl: string | null;
+        sourceId: string | null;
+        sourceName: string | null;
+        role: Types.CanonicalBindingRole;
+        priority: number;
+        isPrimary: boolean;
+        acquisitionEligible: boolean;
+        mangaAvailable: boolean;
+        boundAt: string;
+        updatedAt: string;
+    } | null;
+};
+
+export type CanonicalIdentityStatusFragment = {
+    __typename: 'CanonicalIdentityStatusType';
+    workCount: number;
+    bindingCount: number;
+    activeBindingCount: number;
+    fallbackBindingCount: number;
+    disabledBindingCount: number;
+    detachedBindingCount: number;
+    primaryBindingCount: number;
+    duplicatePolicyApplied: boolean;
+};
+
+export type CanonicalIdentityExportFragment = {
+    __typename: 'CanonicalIdentityExportType';
+    schemaVersion: number;
+    workCount: number;
+    bindingCount: number;
+    payload: string;
+};
+
+export type CanonicalIdentityImportFragment = {
+    __typename: 'CanonicalIdentityImportType';
+    worksCreated: number;
+    worksUpdated: number;
+    bindingsBound: number;
+    bindingsRebound: number;
+    bindingsUnresolved: number;
+};
+
+export type ArchiveRevisionHistoryRowFragment = {
+    __typename: 'ChapterRevisionType';
+    id: number;
+    chapterKey: string;
+    name: string;
+    chapterNumber: number;
+    scanlator: string | null;
+    sourceChapterUrl: string;
+    sourceId: string | null;
+    discoveredAt: string;
+    updatedAt: string;
+    archivedAt: string | null;
+    acceptedAt: string | null;
+    supersededAt: string | null;
+    activatedAt: string | null;
+    publishedAt: string | null;
+    prunedAt: string | null;
+    disposition: Types.ChapterRevisionDisposition;
+    acquisitionState: Types.ChapterAcquisitionState;
+    archiveState: Types.ChapterArchiveState;
+    publicationState: Types.ChapterPublicationState;
+    retentionState: Types.ChapterRetentionState;
+    integrityState: Types.ChapterRevisionIntegrityState;
+    integrityLastAuditedAt: string | null;
+    integrityLastAuditSessionId: number | null;
+    isActiveRevision: boolean;
+    downloadUrl: string | null;
+    pageCount: number | null;
+    signalConfidence: Types.ChapterRevisionSignalConfidence;
+    discoveryReason: Types.ChapterRevisionDiscoveryReason;
+    mangaId: number | null;
+    chapterId: number | null;
+};
+
+export type ArchiveRollbackRowFragment = {
+    __typename: 'ChapterRevisionRollbackType';
+    id: number;
+    chapterKey: string;
+    fromRevisionId: number | null;
+    toRevisionId: number | null;
+    rolledBackAt: string;
+};
+
+export type ApproveChapterRevisionsMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type ApproveChapterRevisionsMutation = {
+    __typename: 'Mutation';
+    approveChapterRevisions: {
+        __typename: 'ApproveChapterRevisionsPayload';
+        revisions: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            changedMetadataFields: Array<Types.ChapterRevisionMetadataField>;
+            pageCount: number | null;
+            attempts: number;
+            lastError: string | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+        }>;
+    };
+};
+
+export type RejectChapterRevisionsMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type RejectChapterRevisionsMutation = {
+    __typename: 'Mutation';
+    rejectChapterRevisions: {
+        __typename: 'RejectChapterRevisionsPayload';
+        revisions: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            changedMetadataFields: Array<Types.ChapterRevisionMetadataField>;
+            pageCount: number | null;
+            attempts: number;
+            lastError: string | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+        }>;
+    };
+};
+
+export type RetryChapterRevisionsMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type RetryChapterRevisionsMutation = {
+    __typename: 'Mutation';
+    retryChapterRevisions: {
+        __typename: 'RetryChapterRevisionsPayload';
+        revisions: Array<{ __typename: 'ChapterRevisionType'; id: number }>;
+    };
+};
+
+export type RetryChapterRevisionArchivesMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type RetryChapterRevisionArchivesMutation = {
+    __typename: 'Mutation';
+    retryChapterRevisionArchives: {
+        __typename: 'RetryChapterRevisionArchivesPayload';
+        revisions: Array<{ __typename: 'ChapterRevisionType'; id: number }>;
+    };
+};
+
+export type RetryChapterRevisionPublicationsMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type RetryChapterRevisionPublicationsMutation = {
+    __typename: 'Mutation';
+    retryChapterRevisionPublications: {
+        __typename: 'RetryChapterRevisionPublicationsPayload';
+        revisions: Array<{ __typename: 'ChapterRevisionType'; id: number }>;
+    };
+};
+
+export type RetryChapterRevisionPruningsMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type RetryChapterRevisionPruningsMutation = {
+    __typename: 'Mutation';
+    retryChapterRevisionPrunings: {
+        __typename: 'RetryChapterRevisionPruningsPayload';
+        revisions: Array<{ __typename: 'ChapterRevisionType'; id: number }>;
+    };
+};
+
+export type AcceptChapterRevisionCandidatesMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type AcceptChapterRevisionCandidatesMutation = {
+    __typename: 'Mutation';
+    acceptChapterRevisionCandidates: {
+        __typename: 'AcceptChapterRevisionCandidatesPayload';
+        revisions: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            chapterKey: string;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            archivedAt: string | null;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            visualAnalysisState: Types.ChapterVisualAnalysisState;
+            visualAnalysisAttempts: number;
+            visualAnalysisCompletedAt: string | null;
+            visualAnalysisLastError: string | null;
+            pageCount: number | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+            chapter: {
+                __typename: 'ChapterType';
+                id: number;
+                name: string;
+                chapterNumber: number;
+                sourceOrder: number;
+            } | null;
+        }>;
+    };
+};
+
+export type KeepCurrentChapterRevisionsMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type KeepCurrentChapterRevisionsMutation = {
+    __typename: 'Mutation';
+    keepCurrentChapterRevisions: {
+        __typename: 'KeepCurrentChapterRevisionsPayload';
+        revisions: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            chapterKey: string;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            archivedAt: string | null;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            visualAnalysisState: Types.ChapterVisualAnalysisState;
+            visualAnalysisAttempts: number;
+            visualAnalysisCompletedAt: string | null;
+            visualAnalysisLastError: string | null;
+            pageCount: number | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+            chapter: {
+                __typename: 'ChapterType';
+                id: number;
+                name: string;
+                chapterNumber: number;
+                sourceOrder: number;
+            } | null;
+        }>;
+    };
+};
+
+export type KeepBothChapterRevisionsMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type KeepBothChapterRevisionsMutation = {
+    __typename: 'Mutation';
+    keepBothChapterRevisions: {
+        __typename: 'KeepBothChapterRevisionsPayload';
+        revisions: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            chapterKey: string;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            archivedAt: string | null;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            visualAnalysisState: Types.ChapterVisualAnalysisState;
+            visualAnalysisAttempts: number;
+            visualAnalysisCompletedAt: string | null;
+            visualAnalysisLastError: string | null;
+            pageCount: number | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+            chapter: {
+                __typename: 'ChapterType';
+                id: number;
+                name: string;
+                chapterNumber: number;
+                sourceOrder: number;
+            } | null;
+        }>;
+    };
+};
+
+export type RejectChapterRevisionCandidatesMutationVariables = Exact<{
+    ids: Array<number> | number;
+}>;
+
+export type RejectChapterRevisionCandidatesMutation = {
+    __typename: 'Mutation';
+    rejectChapterRevisionCandidates: {
+        __typename: 'RejectChapterRevisionCandidatesPayload';
+        revisions: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            chapterKey: string;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            archivedAt: string | null;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            visualAnalysisState: Types.ChapterVisualAnalysisState;
+            visualAnalysisAttempts: number;
+            visualAnalysisCompletedAt: string | null;
+            visualAnalysisLastError: string | null;
+            pageCount: number | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+            chapter: {
+                __typename: 'ChapterType';
+                id: number;
+                name: string;
+                chapterNumber: number;
+                sourceOrder: number;
+            } | null;
+        }>;
+    };
+};
+
+export type StartChapterRevisionSweepMutationVariables = Exact<{
+    kind: Types.ChapterRevisionSweepKind;
+    mangaIds?: Array<number> | number | null | undefined;
+}>;
+
+export type StartChapterRevisionSweepMutation = {
+    __typename: 'Mutation';
+    startChapterRevisionSweep: {
+        __typename: 'StartChapterRevisionSweepPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ChapterRevisionSweepSessionType';
+            id: number;
+            kind: Types.ChapterRevisionSweepKind;
+            state: Types.ChapterRevisionSweepSessionState;
+            newestPerSeries: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type PauseChapterRevisionSweepMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type PauseChapterRevisionSweepMutation = {
+    __typename: 'Mutation';
+    pauseChapterRevisionSweep: {
+        __typename: 'ChapterRevisionSweepSessionPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ChapterRevisionSweepSessionType';
+            id: number;
+            kind: Types.ChapterRevisionSweepKind;
+            state: Types.ChapterRevisionSweepSessionState;
+            newestPerSeries: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type ResumeChapterRevisionSweepMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type ResumeChapterRevisionSweepMutation = {
+    __typename: 'Mutation';
+    resumeChapterRevisionSweep: {
+        __typename: 'ChapterRevisionSweepSessionPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ChapterRevisionSweepSessionType';
+            id: number;
+            kind: Types.ChapterRevisionSweepKind;
+            state: Types.ChapterRevisionSweepSessionState;
+            newestPerSeries: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type CancelChapterRevisionSweepMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type CancelChapterRevisionSweepMutation = {
+    __typename: 'Mutation';
+    cancelChapterRevisionSweep: {
+        __typename: 'ChapterRevisionSweepSessionPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ChapterRevisionSweepSessionType';
+            id: number;
+            kind: Types.ChapterRevisionSweepKind;
+            state: Types.ChapterRevisionSweepSessionState;
+            newestPerSeries: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type RetryChapterRevisionSweepItemsMutationVariables = Exact<{
+    sessionId: number;
+    itemIds?: Array<number> | number | null | undefined;
+}>;
+
+export type RetryChapterRevisionSweepItemsMutation = {
+    __typename: 'Mutation';
+    retryChapterRevisionSweepItems: {
+        __typename: 'RetryChapterRevisionSweepItemsPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ChapterRevisionSweepSessionType';
+            id: number;
+            kind: Types.ChapterRevisionSweepKind;
+            state: Types.ChapterRevisionSweepSessionState;
+            newestPerSeries: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type UpdateArchiveSweepSettingsMutationVariables = Exact<{
+    settings: Types.PartialSettingsTypeInput;
+}>;
+
+export type UpdateArchiveSweepSettingsMutation = {
+    __typename: 'Mutation';
+    setSettings: {
+        __typename: 'SetSettingsPayload';
+        settings: {
+            __typename: 'SettingsType';
+            chapterRevisionSweepEnabled: boolean;
+            chapterRevisionSweepIntervalDays: number;
+            chapterRevisionSweepNewestChapters: number;
+        };
+    };
+};
+
+export type RequestKomgaRescanMutationVariables = Exact<{ [key: string]: never }>;
+
+export type RequestKomgaRescanMutation = {
+    __typename: 'Mutation';
+    requestKomgaRescan: {
+        __typename: 'RequestKomgaRescanPayload';
+        rescan: {
+            __typename: 'KomgaRescanStatusType';
+            configured: boolean;
+            configurationError: string | null;
+            state: Types.KomgaScanState | null;
+            generation: string | null;
+            attempts: number | null;
+            requestedAt: string | null;
+            notBeforeAt: string | null;
+            lastAttemptAt: string | null;
+            lastCompletedAt: string | null;
+            lastError: string | null;
+        };
+    };
+};
+
+export type RetryKomgaRescanMutationVariables = Exact<{ [key: string]: never }>;
+
+export type RetryKomgaRescanMutation = {
+    __typename: 'Mutation';
+    retryKomgaRescan: {
+        __typename: 'RetryKomgaRescanPayload';
+        retried: boolean;
+        rescan: {
+            __typename: 'KomgaRescanStatusType';
+            configured: boolean;
+            configurationError: string | null;
+            state: Types.KomgaScanState | null;
+            generation: string | null;
+            attempts: number | null;
+            requestedAt: string | null;
+            notBeforeAt: string | null;
+            lastAttemptAt: string | null;
+            lastCompletedAt: string | null;
+            lastError: string | null;
+        };
+    };
+};
+
+export type PauseArchiveBootstrapMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type PauseArchiveBootstrapMutation = {
+    __typename: 'Mutation';
+    pauseArchiveBootstrap: {
+        __typename: 'ArchiveBootstrapSessionPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ArchiveBootstrapSessionType';
+            id: number;
+            state: Types.ArchiveBootstrapState;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            updatedAt: string;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            interItemDelaySeconds: string;
+            retrySeconds: string;
+            maxAttempts: number;
+            defaultPolicy: Types.MangaAcquisitionPolicy;
+        } | null;
+    };
+};
+
+export type ResumeArchiveBootstrapMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type ResumeArchiveBootstrapMutation = {
+    __typename: 'Mutation';
+    resumeArchiveBootstrap: {
+        __typename: 'ArchiveBootstrapSessionPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ArchiveBootstrapSessionType';
+            id: number;
+            state: Types.ArchiveBootstrapState;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            updatedAt: string;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            interItemDelaySeconds: string;
+            retrySeconds: string;
+            maxAttempts: number;
+            defaultPolicy: Types.MangaAcquisitionPolicy;
+        } | null;
+    };
+};
+
+export type CancelArchiveBootstrapMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type CancelArchiveBootstrapMutation = {
+    __typename: 'Mutation';
+    cancelArchiveBootstrap: {
+        __typename: 'ArchiveBootstrapSessionPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ArchiveBootstrapSessionType';
+            id: number;
+            state: Types.ArchiveBootstrapState;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            updatedAt: string;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            interItemDelaySeconds: string;
+            retrySeconds: string;
+            maxAttempts: number;
+            defaultPolicy: Types.MangaAcquisitionPolicy;
+        } | null;
+    };
+};
+
+export type RetryArchiveBootstrapItemsMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type RetryArchiveBootstrapItemsMutation = {
+    __typename: 'Mutation';
+    retryArchiveBootstrapItems: {
+        __typename: 'RetryArchiveBootstrapItemsPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ArchiveBootstrapSessionType';
+            id: number;
+            state: Types.ArchiveBootstrapState;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            updatedAt: string;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            interItemDelaySeconds: string;
+            retrySeconds: string;
+            maxAttempts: number;
+            defaultPolicy: Types.MangaAcquisitionPolicy;
+        } | null;
+    };
+};
+
+export type RetryBackupRestoreMutationVariables = Exact<{
+    restoreId: string;
+}>;
+
+export type RetryBackupRestoreMutation = {
+    __typename: 'Mutation';
+    retryBackupRestore: {
+        __typename: 'BackupRestoreJobPayload';
+        error: string | null;
+        job: {
+            __typename: 'BackupRestoreJobType';
+            id: number;
+            restoreId: string;
+            state: Types.BackupRestoreJobState;
+            phase: Types.BackupRestorePhase;
+            progress: number;
+            total: number;
+            errorCount: number;
+            handoffState: Types.BackupRestoreHandoffState;
+            handoffSessionId: number | null;
+            handoffError: string | null;
+            stagedPayloadRetained: boolean;
+            lastError: string | null;
+            createdAt: string;
+            startedAt: string | null;
+            finishedAt: string | null;
+            cancelledAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type RetryBackupRestoreHandoffMutationVariables = Exact<{
+    restoreId: string;
+}>;
+
+export type RetryBackupRestoreHandoffMutation = {
+    __typename: 'Mutation';
+    retryBackupRestoreHandoff: {
+        __typename: 'BackupRestoreJobPayload';
+        error: string | null;
+        job: {
+            __typename: 'BackupRestoreJobType';
+            id: number;
+            restoreId: string;
+            state: Types.BackupRestoreJobState;
+            phase: Types.BackupRestorePhase;
+            progress: number;
+            total: number;
+            errorCount: number;
+            handoffState: Types.BackupRestoreHandoffState;
+            handoffSessionId: number | null;
+            handoffError: string | null;
+            stagedPayloadRetained: boolean;
+            lastError: string | null;
+            createdAt: string;
+            startedAt: string | null;
+            finishedAt: string | null;
+            cancelledAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type CancelBackupRestoreMutationVariables = Exact<{
+    restoreId: string;
+}>;
+
+export type CancelBackupRestoreMutation = {
+    __typename: 'Mutation';
+    cancelBackupRestore: {
+        __typename: 'BackupRestoreJobPayload';
+        error: string | null;
+        job: {
+            __typename: 'BackupRestoreJobType';
+            id: number;
+            restoreId: string;
+            state: Types.BackupRestoreJobState;
+            phase: Types.BackupRestorePhase;
+            progress: number;
+            total: number;
+            errorCount: number;
+            handoffState: Types.BackupRestoreHandoffState;
+            handoffSessionId: number | null;
+            handoffError: string | null;
+            stagedPayloadRetained: boolean;
+            lastError: string | null;
+            createdAt: string;
+            startedAt: string | null;
+            finishedAt: string | null;
+            cancelledAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type CleanupBackupRestoreMutationVariables = Exact<{
+    restoreId: string;
+}>;
+
+export type CleanupBackupRestoreMutation = {
+    __typename: 'Mutation';
+    cleanupBackupRestore: {
+        __typename: 'BackupRestoreJobPayload';
+        error: string | null;
+        job: {
+            __typename: 'BackupRestoreJobType';
+            id: number;
+            restoreId: string;
+            state: Types.BackupRestoreJobState;
+            phase: Types.BackupRestorePhase;
+            progress: number;
+            total: number;
+            errorCount: number;
+            handoffState: Types.BackupRestoreHandoffState;
+            handoffSessionId: number | null;
+            handoffError: string | null;
+            stagedPayloadRetained: boolean;
+            lastError: string | null;
+            createdAt: string;
+            startedAt: string | null;
+            finishedAt: string | null;
+            cancelledAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type StartChapterIntegrityAuditMutationVariables = Exact<{
+    kind: Types.ChapterIntegrityAuditKind;
+    mangaIds?: Array<number> | number | null | undefined;
+}>;
+
+export type StartChapterIntegrityAuditMutation = {
+    __typename: 'Mutation';
+    startChapterIntegrityAudit: {
+        __typename: 'StartChapterIntegrityAuditPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ChapterIntegrityAuditSessionType';
+            id: number;
+            kind: Types.ChapterIntegrityAuditKind;
+            state: Types.ChapterIntegrityAuditSessionState;
+            newestPerManga: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type PauseChapterIntegrityAuditMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type PauseChapterIntegrityAuditMutation = {
+    __typename: 'Mutation';
+    pauseChapterIntegrityAudit: {
+        __typename: 'ChapterIntegrityAuditSessionPayload';
+        error: string | null;
+        session: {
+            __typename: 'ChapterIntegrityAuditSessionType';
+            id: number;
+            kind: Types.ChapterIntegrityAuditKind;
+            state: Types.ChapterIntegrityAuditSessionState;
+            newestPerManga: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type ResumeChapterIntegrityAuditMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type ResumeChapterIntegrityAuditMutation = {
+    __typename: 'Mutation';
+    resumeChapterIntegrityAudit: {
+        __typename: 'ChapterIntegrityAuditSessionPayload';
+        error: string | null;
+        session: {
+            __typename: 'ChapterIntegrityAuditSessionType';
+            id: number;
+            kind: Types.ChapterIntegrityAuditKind;
+            state: Types.ChapterIntegrityAuditSessionState;
+            newestPerManga: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type CancelChapterIntegrityAuditMutationVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type CancelChapterIntegrityAuditMutation = {
+    __typename: 'Mutation';
+    cancelChapterIntegrityAudit: {
+        __typename: 'ChapterIntegrityAuditSessionPayload';
+        error: string | null;
+        session: {
+            __typename: 'ChapterIntegrityAuditSessionType';
+            id: number;
+            kind: Types.ChapterIntegrityAuditKind;
+            state: Types.ChapterIntegrityAuditSessionState;
+            newestPerManga: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type RetryChapterIntegrityAuditItemsMutationVariables = Exact<{
+    sessionId: number;
+    itemIds?: Array<number> | number | null | undefined;
+}>;
+
+export type RetryChapterIntegrityAuditItemsMutation = {
+    __typename: 'Mutation';
+    retryChapterIntegrityAuditItems: {
+        __typename: 'RetryChapterIntegrityAuditItemsPayload';
+        error: string | null;
+        itemCount: number | null;
+        session: {
+            __typename: 'ChapterIntegrityAuditSessionType';
+            id: number;
+            kind: Types.ChapterIntegrityAuditKind;
+            state: Types.ChapterIntegrityAuditSessionState;
+            newestPerManga: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type UpdateArchiveIntegritySettingsMutationVariables = Exact<{
+    settings: Types.PartialSettingsTypeInput;
+}>;
+
+export type UpdateArchiveIntegritySettingsMutation = {
+    __typename: 'Mutation';
+    setSettings: {
+        __typename: 'SetSettingsPayload';
+        settings: {
+            __typename: 'SettingsType';
+            chapterIntegrityAuditEnabled: boolean;
+            chapterIntegrityAuditIntervalDays: number;
+            chapterIntegrityAuditRecentRevisions: number;
+        };
+    };
+};
+
+export type CreateCanonicalWorkMutationVariables = Exact<{
+    title: string;
+    duplicateStrategy: Types.CanonicalDuplicateStrategy;
+    preferredScanlator?: string | null | undefined;
+}>;
+
+export type CreateCanonicalWorkMutation = {
+    __typename: 'Mutation';
+    createCanonicalWork: {
+        __typename: 'CreateCanonicalWorkPayload';
+        outcome: Types.CanonicalWriteOutcome;
+        work: {
+            __typename: 'CanonicalWorkType';
+            id: number;
+            workKey: string;
+            title: string;
+            preferredScanlator: string | null;
+            duplicateStrategy: Types.CanonicalDuplicateStrategy;
+            duplicatePolicyApplied: boolean;
+            bindingCount: number;
+            createdAt: string;
+            updatedAt: string;
+            primaryBinding: {
+                __typename: 'CanonicalSourceBindingType';
+                id: number;
+                workId: number;
+                workKey: string;
+                mangaId: number | null;
+                mangaTitle: string | null;
+                mangaUrl: string | null;
+                sourceId: string | null;
+                sourceName: string | null;
+                role: Types.CanonicalBindingRole;
+                priority: number;
+                isPrimary: boolean;
+                acquisitionEligible: boolean;
+                mangaAvailable: boolean;
+                boundAt: string;
+                updatedAt: string;
+            } | null;
+        } | null;
+    };
+};
+
+export type UpdateCanonicalWorkMutationVariables = Exact<{
+    workKey: string;
+    title?: string | null | undefined;
+    duplicateStrategy?: Types.CanonicalDuplicateStrategy | null | undefined;
+    preferredScanlator?: string | null | undefined;
+    clearPreferredScanlator: boolean;
+}>;
+
+export type UpdateCanonicalWorkMutation = {
+    __typename: 'Mutation';
+    updateCanonicalWork: {
+        __typename: 'UpdateCanonicalWorkPayload';
+        outcome: Types.CanonicalWriteOutcome;
+        work: {
+            __typename: 'CanonicalWorkType';
+            id: number;
+            workKey: string;
+            title: string;
+            preferredScanlator: string | null;
+            duplicateStrategy: Types.CanonicalDuplicateStrategy;
+            duplicatePolicyApplied: boolean;
+            bindingCount: number;
+            createdAt: string;
+            updatedAt: string;
+            primaryBinding: {
+                __typename: 'CanonicalSourceBindingType';
+                id: number;
+                workId: number;
+                workKey: string;
+                mangaId: number | null;
+                mangaTitle: string | null;
+                mangaUrl: string | null;
+                sourceId: string | null;
+                sourceName: string | null;
+                role: Types.CanonicalBindingRole;
+                priority: number;
+                isPrimary: boolean;
+                acquisitionEligible: boolean;
+                mangaAvailable: boolean;
+                boundAt: string;
+                updatedAt: string;
+            } | null;
+        } | null;
+    };
+};
+
+export type DeleteCanonicalWorkMutationVariables = Exact<{
+    workKey: string;
+}>;
+
+export type DeleteCanonicalWorkMutation = {
+    __typename: 'Mutation';
+    deleteCanonicalWork: { __typename: 'DeleteCanonicalWorkPayload'; outcome: Types.CanonicalWriteOutcome };
+};
+
+export type AttachMangaToCanonicalWorkMutationVariables = Exact<{
+    workKey: string;
+    mangaId: number;
+    role: Types.CanonicalBindingRole;
+    priority?: number | null | undefined;
+    isPrimary: boolean;
+}>;
+
+export type AttachMangaToCanonicalWorkMutation = {
+    __typename: 'Mutation';
+    attachMangaToCanonicalWork: {
+        __typename: 'AttachMangaToCanonicalWorkPayload';
+        outcome: Types.CanonicalWriteOutcome;
+        binding: {
+            __typename: 'CanonicalSourceBindingType';
+            id: number;
+            workId: number;
+            workKey: string;
+            mangaId: number | null;
+            mangaTitle: string | null;
+            mangaUrl: string | null;
+            sourceId: string | null;
+            sourceName: string | null;
+            role: Types.CanonicalBindingRole;
+            priority: number;
+            isPrimary: boolean;
+            acquisitionEligible: boolean;
+            mangaAvailable: boolean;
+            boundAt: string;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type ChangeCanonicalBindingMutationVariables = Exact<{
+    bindingId: number;
+    role?: Types.CanonicalBindingRole | null | undefined;
+    priority?: number | null | undefined;
+}>;
+
+export type ChangeCanonicalBindingMutation = {
+    __typename: 'Mutation';
+    changeCanonicalBinding: {
+        __typename: 'ChangeCanonicalBindingPayload';
+        outcome: Types.CanonicalWriteOutcome;
+        binding: {
+            __typename: 'CanonicalSourceBindingType';
+            id: number;
+            workId: number;
+            workKey: string;
+            mangaId: number | null;
+            mangaTitle: string | null;
+            mangaUrl: string | null;
+            sourceId: string | null;
+            sourceName: string | null;
+            role: Types.CanonicalBindingRole;
+            priority: number;
+            isPrimary: boolean;
+            acquisitionEligible: boolean;
+            mangaAvailable: boolean;
+            boundAt: string;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type DetachCanonicalBindingMutationVariables = Exact<{
+    bindingId: number;
+}>;
+
+export type DetachCanonicalBindingMutation = {
+    __typename: 'Mutation';
+    detachCanonicalBinding: {
+        __typename: 'DetachCanonicalBindingPayload';
+        outcome: Types.CanonicalWriteOutcome;
+        binding: {
+            __typename: 'CanonicalSourceBindingType';
+            id: number;
+            workId: number;
+            workKey: string;
+            mangaId: number | null;
+            mangaTitle: string | null;
+            mangaUrl: string | null;
+            sourceId: string | null;
+            sourceName: string | null;
+            role: Types.CanonicalBindingRole;
+            priority: number;
+            isPrimary: boolean;
+            acquisitionEligible: boolean;
+            mangaAvailable: boolean;
+            boundAt: string;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type PromoteCanonicalBindingMutationVariables = Exact<{
+    bindingId: number;
+}>;
+
+export type PromoteCanonicalBindingMutation = {
+    __typename: 'Mutation';
+    promoteCanonicalBinding: {
+        __typename: 'PromoteCanonicalBindingPayload';
+        outcome: Types.CanonicalWriteOutcome;
+        binding: {
+            __typename: 'CanonicalSourceBindingType';
+            id: number;
+            workId: number;
+            workKey: string;
+            mangaId: number | null;
+            mangaTitle: string | null;
+            mangaUrl: string | null;
+            sourceId: string | null;
+            sourceName: string | null;
+            role: Types.CanonicalBindingRole;
+            priority: number;
+            isPrimary: boolean;
+            acquisitionEligible: boolean;
+            mangaAvailable: boolean;
+            boundAt: string;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type FailoverCanonicalWorkMutationVariables = Exact<{
+    workKey: string;
+    bindingId: number;
+}>;
+
+export type FailoverCanonicalWorkMutation = {
+    __typename: 'Mutation';
+    failoverCanonicalWork: {
+        __typename: 'FailoverCanonicalWorkPayload';
+        outcome: Types.CanonicalWriteOutcome;
+        binding: {
+            __typename: 'CanonicalSourceBindingType';
+            id: number;
+            workId: number;
+            workKey: string;
+            mangaId: number | null;
+            mangaTitle: string | null;
+            mangaUrl: string | null;
+            sourceId: string | null;
+            sourceName: string | null;
+            role: Types.CanonicalBindingRole;
+            priority: number;
+            isPrimary: boolean;
+            acquisitionEligible: boolean;
+            mangaAvailable: boolean;
+            boundAt: string;
+            updatedAt: string;
+        } | null;
+    };
+};
+
+export type ExportCanonicalIdentityMutationVariables = Exact<{ [key: string]: never }>;
+
+export type ExportCanonicalIdentityMutation = {
+    __typename: 'Mutation';
+    exportCanonicalIdentity: {
+        __typename: 'ExportCanonicalIdentityPayload';
+        export: {
+            __typename: 'CanonicalIdentityExportType';
+            schemaVersion: number;
+            workCount: number;
+            bindingCount: number;
+            payload: string;
+        };
+    };
+};
+
+export type ImportCanonicalIdentityMutationVariables = Exact<{
+    payload: string;
+}>;
+
+export type ImportCanonicalIdentityMutation = {
+    __typename: 'Mutation';
+    importCanonicalIdentity: {
+        __typename: 'ImportCanonicalIdentityPayload';
+        import: {
+            __typename: 'CanonicalIdentityImportType';
+            worksCreated: number;
+            worksUpdated: number;
+            bindingsBound: number;
+            bindingsRebound: number;
+            bindingsUnresolved: number;
+        };
+    };
+};
+
+export type RollbackChapterRevisionMutationVariables = Exact<{
+    revisionId: number;
+}>;
+
+export type RollbackChapterRevisionMutation = {
+    __typename: 'Mutation';
+    rollbackChapterRevision: {
+        __typename: 'RollbackChapterRevisionPayload';
+        error: string | null;
+        replacedRevisionId: number | null;
+        revision: {
+            __typename: 'ChapterRevisionType';
+            id: number;
+            chapterKey: string;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            archivedAt: string | null;
+            acceptedAt: string | null;
+            supersededAt: string | null;
+            activatedAt: string | null;
+            publishedAt: string | null;
+            prunedAt: string | null;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            integrityState: Types.ChapterRevisionIntegrityState;
+            integrityLastAuditedAt: string | null;
+            integrityLastAuditSessionId: number | null;
+            isActiveRevision: boolean;
+            downloadUrl: string | null;
+            pageCount: number | null;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            mangaId: number | null;
+            chapterId: number | null;
+        } | null;
+    };
+};
+
+export type GetArchiveOverviewQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetArchiveOverviewQuery = {
+    __typename: 'Query';
+    approvalBacklog: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    queuedBacklog: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    archiveRemotePending: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    archiveUnconfirmed: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    archiveRemoteConfirmed: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    downloadingRevisions: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    failedDownloads: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    failedValidations: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    publicationBacklog: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    pruningBacklog: { __typename: 'ChapterRevisionNodeList'; totalCount: number };
+    komgaRescanStatus: {
+        __typename: 'KomgaRescanStatusType';
+        configured: boolean;
+        configurationError: string | null;
+        state: Types.KomgaScanState | null;
+        generation: string | null;
+        attempts: number | null;
+        requestedAt: string | null;
+        notBeforeAt: string | null;
+        lastAttemptAt: string | null;
+        lastCompletedAt: string | null;
+        lastError: string | null;
+    };
+    backupRestoreJobs: Array<{
+        __typename: 'BackupRestoreJobType';
+        id: number;
+        restoreId: string;
+        state: Types.BackupRestoreJobState;
+        phase: Types.BackupRestorePhase;
+        progress: number;
+        total: number;
+        errorCount: number;
+        handoffState: Types.BackupRestoreHandoffState;
+        handoffSessionId: number | null;
+        handoffError: string | null;
+        stagedPayloadRetained: boolean;
+        lastError: string | null;
+        createdAt: string;
+        startedAt: string | null;
+        finishedAt: string | null;
+        cancelledAt: string | null;
+        updatedAt: string;
+    }>;
+    archiveBootstrapActiveSession: {
+        __typename: 'ArchiveBootstrapSessionType';
+        id: number;
+        state: Types.ArchiveBootstrapState;
+        startedAt: string;
+        finishedAt: string | null;
+        pausedAt: string | null;
+        cancelledAt: string | null;
+        updatedAt: string;
+        nextItemAt: string | null;
+        lastItemAt: string | null;
+        interItemDelaySeconds: string;
+        retrySeconds: string;
+        maxAttempts: number;
+        defaultPolicy: Types.MangaAcquisitionPolicy;
+    } | null;
+    archiveBootstrapLatestSession: {
+        __typename: 'ArchiveBootstrapSessionType';
+        id: number;
+        state: Types.ArchiveBootstrapState;
+        startedAt: string;
+        finishedAt: string | null;
+        pausedAt: string | null;
+        cancelledAt: string | null;
+        updatedAt: string;
+        nextItemAt: string | null;
+        lastItemAt: string | null;
+        interItemDelaySeconds: string;
+        retrySeconds: string;
+        maxAttempts: number;
+        defaultPolicy: Types.MangaAcquisitionPolicy;
+    } | null;
+};
+
+export type GetArchiveApprovalBacklogQueryVariables = Exact<{
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+}>;
+
+export type GetArchiveApprovalBacklogQuery = {
+    __typename: 'Query';
+    approvalBacklog: {
+        __typename: 'ChapterRevisionNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            changedMetadataFields: Array<Types.ChapterRevisionMetadataField>;
+            pageCount: number | null;
+            attempts: number;
+            lastError: string | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveQueueQueryVariables = Exact<{
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+    acquisitionState?: Types.ChapterAcquisitionState | null | undefined;
+    archiveState?: Types.ChapterArchiveState | null | undefined;
+    publicationState?: Types.ChapterPublicationState | null | undefined;
+    retentionState?: Types.ChapterRetentionState | null | undefined;
+}>;
+
+export type GetArchiveQueueQuery = {
+    __typename: 'Query';
+    chapterRevisions: {
+        __typename: 'ChapterRevisionNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceId: string | null;
+            disposition: Types.ChapterRevisionDisposition;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            changedMetadataFields: Array<Types.ChapterRevisionMetadataField>;
+            pageCount: number | null;
+            attempts: number;
+            lastAttemptAt: string | null;
+            lastError: string | null;
+            archiveAttempts: number;
+            archiveLastAttemptAt: string | null;
+            publicationAttempts: number;
+            publicationLastAttemptAt: string | null;
+            retentionAttempts: number;
+            retentionLastAttemptAt: string | null;
+            discoveredAt: string;
+            approvedAt: string | null;
+            archivedAt: string | null;
+            publishedAt: string | null;
+            prunedAt: string | null;
+            updatedAt: string;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveBootstrapProgressQueryVariables = Exact<{
+    sessionId: number;
+    sampleSize: number;
+}>;
+
+export type GetArchiveBootstrapProgressQuery = {
+    __typename: 'Query';
+    archiveBootstrapProgress: {
+        __typename: 'ArchiveBootstrapProgressType';
+        total: number;
+        pending: number;
+        processing: number;
+        retryWait: number;
+        complete: number;
+        failed: number;
+        skipped: number;
+        cancelled: number;
+        unresolvedSource: number;
+        remaining: number;
+    };
+    archiveBootstrapUnresolvedSources: Array<{
+        __typename: 'ArchiveBootstrapUnresolvedSourceType';
+        sourceId: string | null;
+        mangaCount: number;
+        sampleTitles: Array<string>;
+    }>;
+};
+
+export type GetBackupRestoreDetailQueryVariables = Exact<{
+    restoreId: string;
+}>;
+
+export type GetBackupRestoreDetailQuery = {
+    __typename: 'Query';
+    backupRestoreJob: {
+        __typename: 'BackupRestoreJobType';
+        id: number;
+        restoreId: string;
+        state: Types.BackupRestoreJobState;
+        phase: Types.BackupRestorePhase;
+        progress: number;
+        total: number;
+        errorCount: number;
+        handoffState: Types.BackupRestoreHandoffState;
+        handoffSessionId: number | null;
+        handoffError: string | null;
+        stagedPayloadRetained: boolean;
+        lastError: string | null;
+        createdAt: string;
+        startedAt: string | null;
+        finishedAt: string | null;
+        cancelledAt: string | null;
+        updatedAt: string;
+    } | null;
+    backupRestoreErrorCounts: {
+        __typename: 'BackupRestoreErrorCountsType';
+        mangaErrors: number;
+        missingSources: number;
+    } | null;
+    backupRestoreAudits: Array<{
+        __typename: 'BackupRestoreAuditType';
+        id: number;
+        level: Types.BackupRestoreAuditLevel;
+        phase: Types.BackupRestorePhase;
+        mangaIndex: number | null;
+        message: string;
+        sourceId: string | null;
+        sourceName: string | null;
+        createdAt: string;
+    }>;
+};
+
+export type GetKomgaRescanStatusQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetKomgaRescanStatusQuery = {
+    __typename: 'Query';
+    komgaRescanStatus: {
+        __typename: 'KomgaRescanStatusType';
+        configured: boolean;
+        configurationError: string | null;
+        state: Types.KomgaScanState | null;
+        generation: string | null;
+        attempts: number | null;
+        requestedAt: string | null;
+        notBeforeAt: string | null;
+        lastAttemptAt: string | null;
+        lastCompletedAt: string | null;
+        lastError: string | null;
+    };
+};
+
+export type GetArchiveReviewCandidatesQueryVariables = Exact<{
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+}>;
+
+export type GetArchiveReviewCandidatesQuery = {
+    __typename: 'Query';
+    chapterRevisions: {
+        __typename: 'ChapterRevisionNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            chapterKey: string;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            archivedAt: string | null;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            visualAnalysisState: Types.ChapterVisualAnalysisState;
+            visualAnalysisAttempts: number;
+            visualAnalysisCompletedAt: string | null;
+            visualAnalysisLastError: string | null;
+            pageCount: number | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            manga: { __typename: 'MangaType'; id: number; title: string } | null;
+            chapter: {
+                __typename: 'ChapterType';
+                id: number;
+                name: string;
+                chapterNumber: number;
+                sourceOrder: number;
+            } | null;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveRevisionComparisonQueryVariables = Exact<{
+    revisionId: number;
+}>;
+
+export type GetArchiveRevisionComparisonQuery = {
+    __typename: 'Query';
+    chapterRevisionComparison: {
+        __typename: 'ChapterRevisionComparisonType';
+        revisionId: number;
+        baselineRevisionId: number | null;
+        baselinePageCount: number;
+        candidatePageCount: number;
+        exactCount: number;
+        visuallyEquivalentCount: number;
+        modifiedCount: number;
+        addedCount: number;
+        removedCount: number;
+        alignedCount: number;
+        hammingThreshold: number;
+        algorithmVersion: string;
+        allPagesVisuallyEquivalent: boolean;
+        hasLimitations: boolean;
+        limitations: string | null;
+        createdAt: string;
+        updatedAt: string;
+    } | null;
+};
+
+export type GetArchiveRevisionComparisonPagesQueryVariables = Exact<{
+    revisionId: number;
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+}>;
+
+export type GetArchiveRevisionComparisonPagesQuery = {
+    __typename: 'Query';
+    chapterRevisionComparisonPages: {
+        __typename: 'ChapterRevisionComparisonPageNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterRevisionComparisonPageType';
+            ordinal: number;
+            state: Types.ChapterRevisionPageAlignmentState;
+            baselinePageIndex: number | null;
+            candidatePageIndex: number | null;
+            hammingDistance: number | null;
+            baselineWidth: number | null;
+            baselineHeight: number | null;
+            baselineSize: string | null;
+            candidateWidth: number | null;
+            candidateHeight: number | null;
+            candidateSize: string | null;
+            baselinePreviewAvailable: boolean;
+            candidatePreviewAvailable: boolean;
+            baselineThumbnailUrl: string | null;
+            candidateThumbnailUrl: string | null;
+            baselinePageUrl: string | null;
+            candidatePageUrl: string | null;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveSweepStateQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetArchiveSweepStateQuery = {
+    __typename: 'Query';
+    chapterRevisionSweepSchedule: {
+        __typename: 'ChapterRevisionSweepScheduleType';
+        nextDueAt: string;
+        lastRunAt: string | null;
+        lastSessionId: number | null;
+        updatedAt: string;
+    } | null;
+    chapterRevisionSweepActiveSession: {
+        __typename: 'ChapterRevisionSweepSessionType';
+        id: number;
+        kind: Types.ChapterRevisionSweepKind;
+        state: Types.ChapterRevisionSweepSessionState;
+        newestPerSeries: number | null;
+        maxAttempts: number;
+        itemDelaySeconds: string;
+        retrySeconds: string;
+        startedAt: string;
+        finishedAt: string | null;
+        pausedAt: string | null;
+        cancelledAt: string | null;
+        nextItemAt: string | null;
+        lastItemAt: string | null;
+        updatedAt: string;
+    } | null;
+    chapterRevisionSweepLatestSession: {
+        __typename: 'ChapterRevisionSweepSessionType';
+        id: number;
+        kind: Types.ChapterRevisionSweepKind;
+        state: Types.ChapterRevisionSweepSessionState;
+        newestPerSeries: number | null;
+        maxAttempts: number;
+        itemDelaySeconds: string;
+        retrySeconds: string;
+        startedAt: string;
+        finishedAt: string | null;
+        pausedAt: string | null;
+        cancelledAt: string | null;
+        nextItemAt: string | null;
+        lastItemAt: string | null;
+        updatedAt: string;
+    } | null;
+};
+
+export type GetArchiveSweepProgressQueryVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type GetArchiveSweepProgressQuery = {
+    __typename: 'Query';
+    chapterRevisionSweepProgress: {
+        __typename: 'ChapterRevisionSweepProgressType';
+        total: number;
+        pending: number;
+        processing: number;
+        retryWait: number;
+        complete: number;
+        failed: number;
+        skipped: number;
+        cancelled: number;
+        remaining: number;
+    };
+};
+
+export type GetArchiveSweepItemsQueryVariables = Exact<{
+    sessionId: number;
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+    state?: Types.ChapterRevisionSweepItemState | null | undefined;
+}>;
+
+export type GetArchiveSweepItemsQuery = {
+    __typename: 'Query';
+    chapterRevisionSweepItems: {
+        __typename: 'ChapterRevisionSweepItemNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterRevisionSweepItemType';
+            id: number;
+            sessionId: number;
+            state: Types.ChapterRevisionSweepItemState;
+            attempts: number;
+            policy: Types.MangaAcquisitionPolicy;
+            mangaId: number | null;
+            chapterId: number | null;
+            sourceId: string | null;
+            seriesTitle: string;
+            chapterName: string;
+            dueAt: string | null;
+            startedAt: string | null;
+            finishedAt: string | null;
+            candidateCount: number | null;
+            lastError: string | null;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveSweepHistoryQueryVariables = Exact<{
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+}>;
+
+export type GetArchiveSweepHistoryQuery = {
+    __typename: 'Query';
+    chapterRevisionSweepSessions: {
+        __typename: 'ChapterRevisionSweepSessionNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterRevisionSweepSessionType';
+            id: number;
+            kind: Types.ChapterRevisionSweepKind;
+            state: Types.ChapterRevisionSweepSessionState;
+            newestPerSeries: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveSweepSettingsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetArchiveSweepSettingsQuery = {
+    __typename: 'Query';
+    settings: {
+        __typename: 'SettingsType';
+        chapterRevisionSweepEnabled: boolean;
+        chapterRevisionSweepIntervalDays: number;
+        chapterRevisionSweepNewestChapters: number;
+    };
+};
+
+export type GetArchiveIntegrityStateQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetArchiveIntegrityStateQuery = {
+    __typename: 'Query';
+    chapterIntegrityAuditSchedule: {
+        __typename: 'ChapterIntegrityAuditScheduleType';
+        nextDueAt: string;
+        lastRunAt: string | null;
+        lastSessionId: number | null;
+        updatedAt: string;
+    } | null;
+    chapterIntegrityAuditActiveSession: {
+        __typename: 'ChapterIntegrityAuditSessionType';
+        id: number;
+        kind: Types.ChapterIntegrityAuditKind;
+        state: Types.ChapterIntegrityAuditSessionState;
+        newestPerManga: number | null;
+        maxAttempts: number;
+        itemDelaySeconds: string;
+        retrySeconds: string;
+        startedAt: string;
+        finishedAt: string | null;
+        pausedAt: string | null;
+        cancelledAt: string | null;
+        nextItemAt: string | null;
+        lastItemAt: string | null;
+        updatedAt: string;
+    } | null;
+    chapterIntegrityAuditLatestSession: {
+        __typename: 'ChapterIntegrityAuditSessionType';
+        id: number;
+        kind: Types.ChapterIntegrityAuditKind;
+        state: Types.ChapterIntegrityAuditSessionState;
+        newestPerManga: number | null;
+        maxAttempts: number;
+        itemDelaySeconds: string;
+        retrySeconds: string;
+        startedAt: string;
+        finishedAt: string | null;
+        pausedAt: string | null;
+        cancelledAt: string | null;
+        nextItemAt: string | null;
+        lastItemAt: string | null;
+        updatedAt: string;
+    } | null;
+};
+
+export type GetArchiveIntegrityProgressQueryVariables = Exact<{
+    sessionId: number;
+}>;
+
+export type GetArchiveIntegrityProgressQuery = {
+    __typename: 'Query';
+    chapterIntegrityAuditProgress: {
+        __typename: 'ChapterIntegrityAuditProgressType';
+        total: number;
+        verified: number;
+        missing: number;
+        corrupt: number;
+        failed: number;
+        skipped: number;
+        findings: number;
+        pending: number;
+        checking: number;
+        retryWait: number;
+        remaining: number;
+    };
+};
+
+export type GetArchiveIntegrityItemsQueryVariables = Exact<{
+    sessionId: number;
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+    state?: Types.ChapterIntegrityAuditItemState | null | undefined;
+}>;
+
+export type GetArchiveIntegrityItemsQuery = {
+    __typename: 'Query';
+    chapterIntegrityAuditItems: {
+        __typename: 'ChapterIntegrityAuditItemNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterIntegrityAuditItemType';
+            id: number;
+            sessionId: number;
+            state: Types.ChapterIntegrityAuditItemState;
+            attempts: number;
+            revisionId: number | null;
+            mangaId: number | null;
+            chapterId: number | null;
+            seriesTitle: string | null;
+            chapterName: string;
+            dueAt: string | null;
+            startedAt: string | null;
+            finishedAt: string | null;
+            updatedAt: string;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveIntegrityHistoryQueryVariables = Exact<{
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+}>;
+
+export type GetArchiveIntegrityHistoryQuery = {
+    __typename: 'Query';
+    chapterIntegrityAuditSessions: {
+        __typename: 'ChapterIntegrityAuditSessionNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterIntegrityAuditSessionType';
+            id: number;
+            kind: Types.ChapterIntegrityAuditKind;
+            state: Types.ChapterIntegrityAuditSessionState;
+            newestPerManga: number | null;
+            maxAttempts: number;
+            itemDelaySeconds: string;
+            retrySeconds: string;
+            startedAt: string;
+            finishedAt: string | null;
+            pausedAt: string | null;
+            cancelledAt: string | null;
+            nextItemAt: string | null;
+            lastItemAt: string | null;
+            updatedAt: string;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveIntegritySettingsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetArchiveIntegritySettingsQuery = {
+    __typename: 'Query';
+    settings: {
+        __typename: 'SettingsType';
+        chapterIntegrityAuditEnabled: boolean;
+        chapterIntegrityAuditIntervalDays: number;
+        chapterIntegrityAuditRecentRevisions: number;
+    };
+};
+
+export type GetArchiveDeliverySettingsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetArchiveDeliverySettingsQuery = {
+    __typename: 'Query';
+    settings: {
+        __typename: 'SettingsType';
+        archiveDirectDeliveryEnabled: boolean;
+        archiveDirectDeliveryFallbackToLocal: boolean;
+        archiveDirectDeliveryRequireExpiryEvidence: boolean;
+        archiveDirectDeliveryExpirySeconds: number;
+    };
+};
+
+export type GetCanonicalWorksQueryVariables = Exact<{
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+    titleContains?: string | null | undefined;
+}>;
+
+export type GetCanonicalWorksQuery = {
+    __typename: 'Query';
+    canonicalWorks: {
+        __typename: 'CanonicalWorkNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'CanonicalWorkType';
+            id: number;
+            workKey: string;
+            title: string;
+            preferredScanlator: string | null;
+            duplicateStrategy: Types.CanonicalDuplicateStrategy;
+            duplicatePolicyApplied: boolean;
+            bindingCount: number;
+            createdAt: string;
+            updatedAt: string;
+            primaryBinding: {
+                __typename: 'CanonicalSourceBindingType';
+                id: number;
+                workId: number;
+                workKey: string;
+                mangaId: number | null;
+                mangaTitle: string | null;
+                mangaUrl: string | null;
+                sourceId: string | null;
+                sourceName: string | null;
+                role: Types.CanonicalBindingRole;
+                priority: number;
+                isPrimary: boolean;
+                acquisitionEligible: boolean;
+                mangaAvailable: boolean;
+                boundAt: string;
+                updatedAt: string;
+            } | null;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetCanonicalWorkBindingsQueryVariables = Exact<{
+    workId: number;
+}>;
+
+export type GetCanonicalWorkBindingsQuery = {
+    __typename: 'Query';
+    canonicalBindingsForWork: {
+        __typename: 'CanonicalSourceBindingNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'CanonicalSourceBindingType';
+            id: number;
+            workId: number;
+            workKey: string;
+            mangaId: number | null;
+            mangaTitle: string | null;
+            mangaUrl: string | null;
+            sourceId: string | null;
+            sourceName: string | null;
+            role: Types.CanonicalBindingRole;
+            priority: number;
+            isPrimary: boolean;
+            acquisitionEligible: boolean;
+            mangaAvailable: boolean;
+            boundAt: string;
+            updatedAt: string;
+        }>;
+    };
+};
+
+export type GetCanonicalIdentityStatusQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCanonicalIdentityStatusQuery = {
+    __typename: 'Query';
+    canonicalIdentityStatus: {
+        __typename: 'CanonicalIdentityStatusType';
+        workCount: number;
+        bindingCount: number;
+        activeBindingCount: number;
+        fallbackBindingCount: number;
+        disabledBindingCount: number;
+        detachedBindingCount: number;
+        primaryBindingCount: number;
+        duplicatePolicyApplied: boolean;
+    };
+};
+
+export type GetMangaCanonicalBindingQueryVariables = Exact<{
+    mangaId: number;
+}>;
+
+export type GetMangaCanonicalBindingQuery = {
+    __typename: 'Query';
+    canonicalBindingForManga: {
+        __typename: 'CanonicalSourceBindingType';
+        id: number;
+        workId: number;
+        workKey: string;
+        mangaId: number | null;
+        mangaTitle: string | null;
+        mangaUrl: string | null;
+        sourceId: string | null;
+        sourceName: string | null;
+        role: Types.CanonicalBindingRole;
+        priority: number;
+        isPrimary: boolean;
+        acquisitionEligible: boolean;
+        mangaAvailable: boolean;
+        boundAt: string;
+        updatedAt: string;
+    } | null;
+    canonicalWorkForManga: {
+        __typename: 'CanonicalWorkType';
+        id: number;
+        workKey: string;
+        title: string;
+        preferredScanlator: string | null;
+        duplicateStrategy: Types.CanonicalDuplicateStrategy;
+        duplicatePolicyApplied: boolean;
+        bindingCount: number;
+        createdAt: string;
+        updatedAt: string;
+        primaryBinding: {
+            __typename: 'CanonicalSourceBindingType';
+            id: number;
+            workId: number;
+            workKey: string;
+            mangaId: number | null;
+            mangaTitle: string | null;
+            mangaUrl: string | null;
+            sourceId: string | null;
+            sourceName: string | null;
+            role: Types.CanonicalBindingRole;
+            priority: number;
+            isPrimary: boolean;
+            acquisitionEligible: boolean;
+            mangaAvailable: boolean;
+            boundAt: string;
+            updatedAt: string;
+        } | null;
+    } | null;
+};
+
+export type GetArchiveRevisionHistoryQueryVariables = Exact<{
+    chapterKey: string;
+    first?: number | null | undefined;
+    after?: string | null | undefined;
+}>;
+
+export type GetArchiveRevisionHistoryQuery = {
+    __typename: 'Query';
+    chapterRevisionHistory: {
+        __typename: 'ChapterRevisionNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterRevisionType';
+            id: number;
+            chapterKey: string;
+            name: string;
+            chapterNumber: number;
+            scanlator: string | null;
+            sourceChapterUrl: string;
+            sourceId: string | null;
+            discoveredAt: string;
+            updatedAt: string;
+            archivedAt: string | null;
+            acceptedAt: string | null;
+            supersededAt: string | null;
+            activatedAt: string | null;
+            publishedAt: string | null;
+            prunedAt: string | null;
+            disposition: Types.ChapterRevisionDisposition;
+            acquisitionState: Types.ChapterAcquisitionState;
+            archiveState: Types.ChapterArchiveState;
+            publicationState: Types.ChapterPublicationState;
+            retentionState: Types.ChapterRetentionState;
+            integrityState: Types.ChapterRevisionIntegrityState;
+            integrityLastAuditedAt: string | null;
+            integrityLastAuditSessionId: number | null;
+            isActiveRevision: boolean;
+            downloadUrl: string | null;
+            pageCount: number | null;
+            signalConfidence: Types.ChapterRevisionSignalConfidence;
+            discoveryReason: Types.ChapterRevisionDiscoveryReason;
+            mangaId: number | null;
+            chapterId: number | null;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
+export type GetArchiveRevisionRollbacksQueryVariables = Exact<{
+    chapterKey: string;
+    first?: number | null | undefined;
+}>;
+
+export type GetArchiveRevisionRollbacksQuery = {
+    __typename: 'Query';
+    chapterRevisionRollbacks: {
+        __typename: 'ChapterRevisionRollbackNodeList';
+        totalCount: number;
+        nodes: Array<{
+            __typename: 'ChapterRevisionRollbackType';
+            id: number;
+            chapterKey: string;
+            fromRevisionId: number | null;
+            toRevisionId: number | null;
+            rolledBackAt: string;
+        }>;
+        pageInfo: {
+            __typename: 'PageInfo';
+            endCursor: string | null;
+            hasNextPage: boolean;
+            hasPreviousPage: boolean;
+            startCursor: string | null;
+        };
+    };
+};
+
 export type CreateBackupMutationVariables = Exact<{
     input: Types.CreateBackupInput;
 }>;
@@ -16,6 +2638,12 @@ export type CreateBackupMutation = {
 export type RestoreBackupMutationVariables = Exact<{
     backup: unknown;
     flags?: Types.PartialBackupFlagsInput | null | undefined;
+    bootstrapDefaultPolicy?: Types.MangaAcquisitionPolicy | null | undefined;
+    bootstrapCategoryOverrides?:
+        | Array<Types.BootstrapCategoryPolicyInput>
+        | Types.BootstrapCategoryPolicyInput
+        | null
+        | undefined;
 }>;
 
 export type RestoreBackupMutation = {
@@ -2181,6 +4809,16 @@ export type MangaScreenFieldsFragment = {
     chapters: { __typename: 'ChapterNodeList'; totalCount: number };
 };
 
+export type MangaArchiveSettingsFieldsFragment = {
+    __typename: 'MangaType';
+    id: number;
+    title: string;
+    acquisitionPolicy: Types.MangaAcquisitionPolicy;
+    acquisitionPolicyOverride: Types.MangaAcquisitionPolicy | null;
+    acceptedRevisionRetention: number | null;
+    effectiveAcceptedRevisionRetention: number;
+};
+
 export type MangaLibraryDuplicateScreenFieldsFragment = {
     __typename: 'MangaType';
     description: string | null;
@@ -2469,6 +5107,23 @@ export type UpdateMangaMetadataMutation = {
         __typename: 'SetMangaMetasPayload';
         metas: Array<{ __typename: 'MangaMetaType'; mangaId: number; key: string; value: string }>;
     } | null;
+};
+
+export type GetMangaArchiveSettingsQueryVariables = Exact<{
+    id: number;
+}>;
+
+export type GetMangaArchiveSettingsQuery = {
+    __typename: 'Query';
+    manga: {
+        __typename: 'MangaType';
+        id: number;
+        title: string;
+        acquisitionPolicy: Types.MangaAcquisitionPolicy;
+        acquisitionPolicyOverride: Types.MangaAcquisitionPolicy | null;
+        acceptedRevisionRetention: number | null;
+        effectiveAcceptedRevisionRetention: number;
+    };
 };
 
 export type GetMangaMetaQueryVariables = Exact<{
@@ -3156,6 +5811,8 @@ export type ServerSettingsFragment = {
     databasePassword: string;
     useHikariConnectionPool: boolean;
     kcefEnabled: boolean;
+    webViewProvider: Types.WebViewProvider;
+    archiveDefaultAcquisitionPolicy: string;
     syncDataCategories: boolean;
     syncDataChapters: boolean;
     syncDataHistory: boolean;
@@ -3269,6 +5926,8 @@ export type ResetServerSettingsMutation = {
             databasePassword: string;
             useHikariConnectionPool: boolean;
             kcefEnabled: boolean;
+            webViewProvider: Types.WebViewProvider;
+            archiveDefaultAcquisitionPolicy: string;
             syncDataCategories: boolean;
             syncDataChapters: boolean;
             syncDataHistory: boolean;
@@ -3392,6 +6051,8 @@ export type UpdateServerSettingsMutation = {
             databasePassword: string;
             useHikariConnectionPool: boolean;
             kcefEnabled: boolean;
+            webViewProvider: Types.WebViewProvider;
+            archiveDefaultAcquisitionPolicy: string;
             syncDataCategories: boolean;
             syncDataChapters: boolean;
             syncDataHistory: boolean;
@@ -3511,6 +6172,8 @@ export type GetServerSettingsQuery = {
         databasePassword: string;
         useHikariConnectionPool: boolean;
         kcefEnabled: boolean;
+        webViewProvider: Types.WebViewProvider;
+        archiveDefaultAcquisitionPolicy: string;
         syncDataCategories: boolean;
         syncDataChapters: boolean;
         syncDataHistory: boolean;
@@ -5148,4 +7811,31 @@ export type WebviewClearCacheCookiesMutationVariables = Exact<{ [key: string]: n
 export type WebviewClearCacheCookiesMutation = {
     __typename: 'Mutation';
     clearCookiesAndCache: { __typename: 'ClearCookiesAndCachePayload'; clientMutationId: string | null };
+};
+
+export type OpenWebViewMutationVariables = Exact<{
+    input: Types.OpenWebViewInput;
+}>;
+
+export type OpenWebViewMutation = {
+    __typename: 'Mutation';
+    openWebView: { __typename: 'OpenWebViewPayload'; tab: string; url: string; title: string; status: number };
+};
+
+export type CloseWebViewMutationVariables = Exact<{
+    input: Types.CloseWebViewInput;
+}>;
+
+export type CloseWebViewMutation = {
+    __typename: 'Mutation';
+    closeWebView: { __typename: 'CloseWebViewPayload'; closed: Array<string> };
+};
+
+export type GetWebViewTabsQueryVariables = Exact<{
+    tab?: string | null | undefined;
+}>;
+
+export type GetWebViewTabsQuery = {
+    __typename: 'Query';
+    webViewTabs: Array<{ __typename: 'WebViewTabType'; id: string; title: string; url: string }>;
 };

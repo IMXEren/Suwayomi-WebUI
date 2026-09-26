@@ -9,6 +9,7 @@
 import gql from 'graphql-tag';
 import { PAGE_INFO } from '@/lib/graphql/common/Fragments.ts';
 import {
+    MANGA_ARCHIVE_SETTINGS_FIELDS,
     MANGA_BASE_FIELDS,
     MANGA_LIBRARY_DUPLICATE_SCREEN_FIELDS,
     MANGA_LIBRARY_FIELDS,
@@ -19,6 +20,16 @@ import {
 } from '@/lib/graphql/manga/MangaFragments.ts';
 import { CHAPTER_META_FIELDS } from '@/lib/graphql/chapter/ChapterFragments.ts';
 import { TRACK_RECORD_BIND_FIELDS } from '@/lib/graphql/tracker/TrackRecordFragments.ts';
+
+export const GET_MANGA_ARCHIVE_SETTINGS = gql`
+    ${MANGA_ARCHIVE_SETTINGS_FIELDS}
+
+    query GET_MANGA_ARCHIVE_SETTINGS($id: Int!) {
+        manga(id: $id) {
+            ...MANGA_ARCHIVE_SETTINGS_FIELDS
+        }
+    }
+`;
 
 export const GET_MANGA_META = gql`
     ${MANGA_META_FIELDS}

@@ -36,6 +36,7 @@ import {
     AuthMode,
     CbzMediaType,
     DatabaseType,
+    MangaAcquisitionPolicy,
     SortOrder,
     StartSyncResult,
     SyncState,
@@ -663,6 +664,25 @@ export const ServerSettings = () => {
                         ],
                     ]}
                     handleChange={(value) => updateSetting('opdsCbzMimetype', value)}
+                />
+            </List>
+            <List
+                subheader={
+                    <ListSubheader component="div" id="server-settings-archival">
+                        {t`Archival`}
+                    </ListSubheader>
+                }
+            >
+                <SelectSetting<string>
+                    settingName={t`Default acquisition policy`}
+                    dialogDescription={t`Policy a series applies while it has no per-series override. It is what the archival settings of a series pick up when set to "Use global default".`}
+                    value={serverSettings.archiveDefaultAcquisitionPolicy}
+                    values={[
+                        [MangaAcquisitionPolicy.Auto, { text: t`Automatic` }],
+                        [MangaAcquisitionPolicy.Manual, { text: t`Wait for approval` }],
+                        [MangaAcquisitionPolicy.Paused, { text: t`Paused` }],
+                    ]}
+                    handleChange={(policy) => updateSetting('archiveDefaultAcquisitionPolicy', policy)}
                 />
             </List>
             <KoreaderSyncSettings

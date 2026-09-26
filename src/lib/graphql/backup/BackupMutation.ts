@@ -17,8 +17,20 @@ export const CREATE_BACKUP = gql`
 `;
 
 export const RESTORE_BACKUP = gql`
-    mutation RESTORE_BACKUP($backup: Upload!, $flags: PartialBackupFlagsInput) {
-        restoreBackup(input: { backup: $backup, flags: $flags }) {
+    mutation RESTORE_BACKUP(
+        $backup: Upload!
+        $flags: PartialBackupFlagsInput
+        $bootstrapDefaultPolicy: MangaAcquisitionPolicy
+        $bootstrapCategoryOverrides: [BootstrapCategoryPolicyInput!]
+    ) {
+        restoreBackup(
+            input: {
+                backup: $backup
+                flags: $flags
+                bootstrapDefaultPolicy: $bootstrapDefaultPolicy
+                bootstrapCategoryOverrides: $bootstrapCategoryOverrides
+            }
+        ) {
             id
             status {
                 mangaProgress

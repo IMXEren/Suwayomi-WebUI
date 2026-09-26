@@ -7,7 +7,9 @@
  */
 
 import CheckBoxOutlineBlank from '@mui/icons-material/CheckBoxOutlineBlank';
+import Archive from '@mui/icons-material/Archive';
 import Delete from '@mui/icons-material/Delete';
+import History from '@mui/icons-material/History';
 import Download from '@mui/icons-material/Download';
 import RemoveDone from '@mui/icons-material/RemoveDone';
 import Done from '@mui/icons-material/Done';
@@ -28,10 +30,15 @@ import {
     createShouldShowMenuItem,
 } from '@/base/components/menu/Menu.utils.ts';
 import { defaultPromiseErrorHandler } from '@/lib/DefaultPromiseErrorHandler.ts';
+import { getErrorMessage } from '@/lib/HelperFunctions.ts';
+import { makeToast } from '@/base/utils/Toast.ts';
+import { Confirmation } from '@/base/AppAwaitableComponent.ts';
+import { requestManager } from '@/lib/requests/RequestManager.ts';
 import { TrackManga } from '@/features/tracker/components/TrackManga.tsx';
 import { ChaptersDownloadActionMenuItems } from '@/features/chapter/components/actions/ChaptersDownloadActionMenuItems.tsx';
 import { NestedMenuItem } from '@/base/components/menu/NestedMenuItem.tsx';
 import type { MangaChapterStatFieldsFragment } from '@/lib/graphql/generated/graphql.ts';
+import { ChapterRevisionSweepKind } from '@/lib/graphql/generated/graphql-base.types.ts';
 import type {
     MangaAction,
     MangaDownloadInfo,
@@ -100,6 +107,54 @@ export const MangaActionMenuItems = ({
         onClose();
     };
 
+    // A full sweep re-downloads every chapter; neither sweep changes the series' policy.
+    const startSweep = async (kind: ChapterRevisionSweepKind) => {
+        const mangaIds = isSingleMode ? [manga.id] : Mangas.getIds(selectedMangas);
+        onClose();
+
+        if (kind === ChapterRevisionSweepKind.ManualFull) {
+            try {
+                await Confirmation.show(
+                    {
+                        title: t`Start a full history sweep?`,
+                        message: t`Every chapter of the selected series is re-downloaded to compare its content, which can take a long time.`,
+                        actions: { confirm: { title: t`Start full sweep` } },
+                    },
+                    { id: 'manga-action-sweep-full' },
+                );
+            } catch {
+                return;
+            }
+        }
+
+        try {
+            const response = await requestManager.startChapterRevisionSweep({ kind, mangaIds }).response;
+
+            if (response.error) {
+                makeToast(t`Could not start the sweep`, 'error', getErrorMessage(response.error));
+                return;
+            }
+
+            const payload = response.data?.startChapterRevisionSweep;
+            if (!payload) {
+                makeToast(t`Could not start the sweep`, 'error');
+                return;
+            }
+
+            if (payload.error) {
+                makeToast(t`Could not start the sweep: ${payload.error}`, 'error');
+                return;
+            }
+
+            makeToast(
+                t`Sweep started for ${payload.itemCount ?? 0} chapters. Whether a revision is queued, held for approval or only recorded follows its series' acquisition policy.`,
+                'success',
+            );
+        } catch (e) {
+            makeToast(t`Could not start the sweep`, 'error', getErrorMessage(e));
+        }
+    };
+
     const { downloadableMangas, downloadedMangas, unreadMangas, readMangas } = useMemo(
         () => ({
             downloadableMangas: [
@@ -133,6 +188,20 @@ export const MangaActionMenuItems = ({
                         closeMenu={onClose}
                     />
                 </NestedMenuItem>
+            )}
+            {shouldShowMenuItem(!!(isSingleMode ? manga.inLibrary : selectedMangas.length)) && (
+                <>
+                    <MenuItem
+                        Icon={Archive}
+                        onClick={() => void startSweep(ChapterRevisionSweepKind.ManualRecent)}
+                        title={t`Sweep the newest chapters`}
+                    />
+                    <MenuItem
+                        Icon={History}
+                        onClick={() => void startSweep(ChapterRevisionSweepKind.ManualFull)}
+                        title={t`Sweep the full history`}
+                    />
+                </>
             )}
             {shouldShowMenuItem(hasDownloadedChapters) && (
                 <MenuItem

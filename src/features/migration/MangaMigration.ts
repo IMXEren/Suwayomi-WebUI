@@ -297,7 +297,11 @@ export class MangaMigration {
             copy: () =>
                 [
                     requestManager.updateManga(mangaToMigrateTo.id, {
-                        updateManga: { inLibrary: true },
+                        updateManga: {
+                            inLibrary: true,
+                            inheritAcceptedRevisionRetention: false,
+                            inheritAcquisitionPolicy: false,
+                        },
                         updateMangaCategories: migrateCategories
                             ? {
                                   addToCategories: mangaToMigrateFrom.categories?.nodes.map((category) => category.id),
@@ -328,7 +332,11 @@ export class MangaMigration {
                 mode === 'migrate'
                     ? [
                           requestManager.updateManga(mangaToMigrateFrom.id, {
-                              updateManga: { inLibrary: false },
+                              updateManga: {
+                                  inLibrary: false,
+                                  inheritAcceptedRevisionRetention: false,
+                                  inheritAcquisitionPolicy: false,
+                              },
                               updateMangaCategories: removeMangaFromCategories ? { clearCategories: true } : undefined,
                           }).response,
                       ]

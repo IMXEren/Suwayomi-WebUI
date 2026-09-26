@@ -134,6 +134,195 @@ msgstr "{0} / {1}"
 msgid "{0} / {1}{2}"
 msgstr "{0} / {1}{2}"
 
+#. placeholder {0}: status.activeBindingCount
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "{0} active"
+msgstr "{0} active"
+
+#. placeholder {0}: comparison.addedCount
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "{0} added"
+msgstr "{0} added"
+
+#. placeholder {0}: progress.findings
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} archived revisions were reported as missing or damaged. A finding describes the remote copy, not the revision history: the archive keeps the record either way."
+msgstr "{0} archived revisions were reported as missing or damaged. A finding describes the remote copy, not the revision history: the archive keeps the record either way."
+
+#. placeholder {0}: status.bindingCount
+#. placeholder {0}: work.bindingCount
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "{0} bindings"
+msgstr "{0} bindings"
+
+#. placeholder {0}: progress.cancelled
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} cancelled"
+msgstr "{0} cancelled"
+
+#. placeholder {0}: item.candidateCount
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} candidates"
+msgstr "{0} candidates"
+
+#. placeholder {0}: ids.length
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "{0} candidates will be rejected and will not be archived."
+msgstr "{0} candidates will be rejected and will not be archived."
+
+#. placeholder {0}: progress.total
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} chapters"
+msgstr "{0} chapters"
+
+#. placeholder {0}: progress.failed
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} chapters of this run failed. The next run visits them again."
+msgstr "{0} chapters of this run failed. The next run visits them again."
+
+#. placeholder {0}: progress.checking
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} checking"
+msgstr "{0} checking"
+
+#. placeholder {0}: progress.failed
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} checks failed"
+msgstr "{0} checks failed"
+
+#. placeholder {0}: progress.failed
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} checks of this run could not conclude anything. The next run checks them again."
+msgstr "{0} checks of this run could not conclude anything. The next run checks them again."
+
+#. placeholder {0}: progress.complete
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} complete"
+msgstr "{0} complete"
+
+#. placeholder {0}: progress.corrupt
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} damaged"
+msgstr "{0} damaged"
+
+#. placeholder {0}: status.disabledBindingCount
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "{0} disabled"
+msgstr "{0} disabled"
+
+#. placeholder {0}: comparison.visuallyEquivalentCount
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "{0} equivalent"
+msgstr "{0} equivalent"
+
+#. placeholder {0}: progress.failed
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} failed"
+msgstr "{0} failed"
+
+#. placeholder {0}: status.fallbackBindingCount
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "{0} fallbacks"
+msgstr "{0} fallbacks"
+
+#. placeholder {0}: progress.findings
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} findings"
+msgstr "{0} findings"
+
+#. placeholder {0}: comparison.exactCount
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "{0} identical"
+msgstr "{0} identical"
+
+#. placeholder {0}: progress.verified
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} intact"
+msgstr "{0} intact"
+
+#. placeholder {0}: progress.missing
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} missing"
+msgstr "{0} missing"
+
+#. placeholder {0}: comparison.modifiedCount
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "{0} modified"
+msgstr "{0} modified"
+
+#. placeholder {0}: revision.pageCount
+#. placeholder {0}: row.pageCount
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "{0} pages"
+msgstr "{0} pages"
+
+#. placeholder {0}: progress.pending
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} pending"
+msgstr "{0} pending"
+
+#. placeholder {0}: status.primaryBindingCount
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "{0} preferred copies"
+msgstr "{0} preferred copies"
+
+#. placeholder {0}: progress.processing
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} processing"
+msgstr "{0} processing"
+
+#. placeholder {0}: progress.remaining
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} remaining"
+msgstr "{0} remaining"
+
+#. placeholder {0}: comparison.removedCount
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "{0} removed"
+msgstr "{0} removed"
+
+#. placeholder {0}: progress.total
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "{0} revisions"
+msgstr "{0} revisions"
+
+#. placeholder {0}: progress.skipped
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} skipped"
+msgstr "{0} skipped"
+
+#. placeholder {0}: progress.retryWait
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "{0} waiting to retry"
+msgstr "{0} waiting to retry"
+
+#. placeholder {0}: status.workCount
+#. placeholder {0}: worksRequest.data?.canonicalWorks.totalCount ?? 0
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "{0} works"
+msgstr "{0} works"
+
+#. placeholder {0}: importResult.worksCreated
+#. placeholder {1}: importResult.worksUpdated
+#. placeholder {2}: importResult.bindingsBound
+#. placeholder {3}: importResult.bindingsRebound
+#. placeholder {4}: importResult.bindingsUnresolved
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "{0} works created, {1} updated, {2} bindings attached, {3} rebound, {4} unresolved."
+msgstr "{0} works created, {1} updated, {2} bindings attached, {3} rebound, {4} unresolved."
+
+#. placeholder {0}: ArchiveStateUtil.formatTimestamp(rollbackRow.rolledBackAt)
+#. placeholder {1}: rollbackRow.toRevisionId ?? '-'
+#. placeholder {2}: rollbackRow.fromRevisionId ?? '-'
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "{0}: revision {1} replaced {2}"
+msgstr "{0}: revision {1} replaced {2}"
+
 #. placeholder {0}: updateStatus.progress
 #: src/features/app-updates/components/WebUIUpdateChecker.tsx
 msgid "{0}% | Updating…"
@@ -317,6 +506,10 @@ msgstr "{extensionCount, plural, one {# extension} other {# extensions}}"
 msgid "{extensionStoreCount, plural, one {# extension store} other {# extension stores}}"
 msgstr "{extensionStoreCount, plural, one {# extension store} other {# extension stores}}"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "{failureMessage}: {outcome}"
+msgstr "{failureMessage}: {outcome}"
+
 #: src/features/extension/store/screens/ExtensionStores.tsx
 msgid "{installedExtensionCount, plural, one {# installed} other {# installed}}"
 msgstr "{installedExtensionCount, plural, one {# installed} other {# installed}}"
@@ -339,6 +532,18 @@ msgstr "{otherResultsCount, plural, one {# more match} other {# more matches}}"
 msgid "{progress}% | Updating…"
 msgstr "{progress}% | Updating…"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "{totalCount} candidates awaiting a decision"
+msgstr "{totalCount} candidates awaiting a decision"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "{totalCount} candidates awaiting approval"
+msgstr "{totalCount} candidates awaiting approval"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "{totalCount} revisions"
+msgstr "{totalCount} revisions"
+
 #: src/features/backup/Backup.utils.ts
 msgid "{ttl, plural, one {Delete backups that are older than # day} other {Delete backups that are older than # days}}"
 msgstr "{ttl, plural, one {Delete backups that are older than # day} other {Delete backups that are older than # days}}"
@@ -351,6 +556,14 @@ msgstr "{ttl, plural, one {Delete log files that are older than # day} other {De
 msgid "*: Active setting"
 msgstr "*: Active setting"
 
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "A download address is short-lived and is handed out per request: it is never stored by the server, never shown here, and a revision whose archived file is gone cannot be downloaded."
+msgstr "A download address is short-lived and is handed out per request: it is never stored by the server, never shown here, and a revision whose archived file is gone cannot be downloaded."
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "A fixed number"
+msgstr "A fixed number"
+
 #: src/features/manga/services/Mangas.ts
 msgid "A migration is already in progress"
 msgstr "A migration is already in progress"
@@ -358,6 +571,42 @@ msgstr "A migration is already in progress"
 #: src/features/settings/Settings.constants.ts
 msgid "A preview focused web frontend built with svelte"
 msgstr "A preview focused web frontend built with svelte"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "A reconciliation layer is applying the duplicate strategy recorded on a work."
+msgstr "A reconciliation layer is applying the duplicate strategy recorded on a work."
+
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "A remote that cannot confirm an expiring address is refused"
+msgstr "A remote that cannot confirm an expiring address is refused"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "A revision is downloadable while the archive still holds its CBZ. A revision that was pruned, that an integrity check reported as missing or corrupt, or that was never durably archived has no file to serve."
+msgstr "A revision is downloadable while the archive still holds its CBZ. A revision that was pruned, that an integrity check reported as missing or corrupt, or that was never durably archived has no file to serve."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "A series is attached by its numeric id. Two series are never treated as the same work unless an operator attaches them."
+msgstr "A series is attached by its numeric id. Two series are never treated as the same work unless an operator attaches them."
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "A sweep re-downloads chapters and compares them with the archived revision, because an extension does not announce that a page changed."
+msgstr "A sweep re-downloads chapters and compares them with the archived revision, because an extension does not announce that a page changed."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "A sweep visits every tracked series unless it is started from a series itself."
+msgstr "A sweep visits every tracked series unless it is started from a series itself."
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "A work groups several source copies of one series. Nothing is merged automatically: binding a series to a work is a statement an operator makes."
+msgstr "A work groups several source copies of one series. Nothing is merged automatically: binding a series to a work is a statement an operator makes."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "A work needs a title"
+msgstr "A work needs a title"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "A work with that key already exists"
+msgstr "A work with that key already exists"
 
 #: src/features/library/components/LibraryOptionsPanel.tsx
 msgid "A—Z"
@@ -382,6 +631,30 @@ msgstr "Aborted"
 #: src/features/settings/screens/About.tsx
 msgid "About"
 msgstr "About"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Accept candidate"
+msgstr "Accept candidate"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Accepting publishes the archived content, keeping both keeps it as history, keeping current and rejecting leave the served revision untouched."
+msgstr "Accepting publishes the archived content, keeping both keeps it as history, keeping current and rejecting leave the served revision untouched."
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Acquisition"
+msgstr "Acquisition"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Acquisition policy"
+msgstr "Acquisition policy"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Activated"
+msgstr "Activated"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Active"
+msgstr "Active"
 
 #: src/features/device/screens/DeviceSetting.tsx
 msgid "Active device"
@@ -412,6 +685,10 @@ msgstr "Add a private note about this manga"
 #: src/features/chapter/Chapter.constants.ts
 msgid "Add bookmark"
 msgstr "Add bookmark"
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Add category override"
+msgstr "Add category override"
 
 #: src/features/browse/extensions/Extensions.tsx
 #: src/features/extension/store/screens/ExtensionStores.tsx
@@ -444,6 +721,10 @@ msgstr "Advanced"
 msgid "Advanced search mode"
 msgstr "Advanced search mode"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Advice only"
+msgstr "Advice only"
+
 #: src/features/settings/Settings.constants.ts
 msgid "After changing this setting go to the \"About\" page and check for a webUI update and install it"
 msgstr "After changing this setting go to the \"About\" page and check for a webUI update and install it"
@@ -452,12 +733,23 @@ msgstr "After changing this setting go to the \"About\" page and check for a web
 msgid "Age rating"
 msgstr "Age rating"
 
+#. placeholder {0}: displayPosition(page.ordinal)
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Aligned row {0}"
+msgstr "Aligned row {0}"
+
 #: src/features/backup/Backup.utils.ts
 #: src/features/category/components/CategoriesInclusionSetting.tsx
 #: src/features/chapter/components/actions/ChaptersDownloadActionMenuItems.tsx
 #: src/features/global-search/screens/SearchAll.tsx
 msgid "All"
 msgstr "All"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "All states"
+msgstr "All states"
 
 #: src/features/downloads/screens/DownloadSettings.tsx
 msgid "Allow deleting bookmarked chapters"
@@ -472,6 +764,18 @@ msgstr "Alpha"
 msgid "Also remove from {0}"
 msgstr "Also remove from {0}"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "An audit asks the remote storage about each archived revision. It never downloads a payload and never changes what the archive holds."
+msgstr "An audit asks the remote storage about each archived revision. It never downloads a payload and never changes what the archive holds."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "An export is a versioned JSON document of every work and binding. An import creates or updates the works it names and attaches or moves the bindings it names."
+msgstr "An export is a versioned JSON document of every work and binding. An import creates or updates the works it names and attaches or moves the bindings it names."
+
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "An unconfirmed expiring address is accepted"
+msgstr "An unconfirmed expiring address is accepted"
+
 #: src/features/library/components/LibraryOptionsPanel.tsx
 msgid "and"
 msgstr "and"
@@ -484,6 +788,85 @@ msgstr "Appearance"
 #: src/features/reader/settings/general/components/ReaderSettingSafeAreaInset.tsx
 msgid "Apply safe area padding"
 msgstr "Apply safe area padding"
+
+#: src/features/archive/components/ArchiveDashboard.tsx
+msgid "Approval queue"
+msgstr "Approval queue"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Approve"
+msgstr "Approve"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Approve all"
+msgstr "Approve all"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Approve all pending"
+msgstr "Approve all pending"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Approve every pending candidate?"
+msgstr "Approve every pending candidate?"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Approve selected"
+msgstr "Approve selected"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Approved"
+msgstr "Approved"
+
+#. placeholder {0}: ids.length
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Approved {0} candidates"
+msgstr "Approved {0} candidates"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Approved {approvedTotal} candidates, then stopped at the batch limit; candidates may still be pending"
+msgstr "Approved {approvedTotal} candidates, then stopped at the batch limit; candidates may still be pending"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Approved {approvedTotal} pending candidates"
+msgstr "Approved {approvedTotal} pending candidates"
+
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Archival"
+msgstr "Archival"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Archival queues"
+msgstr "Archival queues"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaToolbarMenu.tsx
+msgid "Archival settings"
+msgstr "Archival settings"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Archival settings saved"
+msgstr "Archival settings saved"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+#: src/features/archive/screens/Archive.tsx
+#: src/features/navigation-bar/NavigationBar.constants.ts
+msgid "Archive"
+msgstr "Archive"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Archive bootstrap"
+msgstr "Archive bootstrap"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Archived"
+msgstr "Archived"
+
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "Archived file downloads"
+msgstr "Archived file downloads"
 
 #: src/features/migration/MigrationManager.ts
 msgid "Are you sure you want to abort the migration?"
@@ -506,6 +889,39 @@ msgstr "Artist"
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Ascending"
 msgstr "Ascending"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Attach"
+msgstr "Attach"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Attach a series"
+msgstr "Attach a series"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Attach to work"
+msgstr "Attach to work"
+
+#. placeholder {0}: audit.attempts
+#. placeholder {0}: item.attempts
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Attempts: {0}"
+msgstr "Attempts: {0}"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Audit settings saved"
+msgstr "Audit settings saved"
+
+#. placeholder {0}: payload?.itemCount ?? 0
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Audit started for {0} revisions"
+msgstr "Audit started for {0} revisions"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Audit updated"
+msgstr "Audit updated"
 
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Authentication"
@@ -550,9 +966,27 @@ msgstr "Auto-download"
 msgid "Automated backup"
 msgstr "Automated backup"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Automatic"
+msgstr "Automatic"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Automatic check"
+msgstr "Automatic check"
+
 #: src/features/reader/overlay/progress-bar/settings/components/ReaderSettingProgressBarPosition.tsx
 msgid "Automatic progress bar vertical position"
 msgstr "Automatic progress bar vertical position"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Automatic queues new revisions right away, manual waits for approval, paused only records them."
+msgstr "Automatic queues new revisions right away, manual waits for approval, paused only records them."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Automatic sweep"
+msgstr "Automatic sweep"
 
 #: src/features/settings/components/globalUpdate/GlobalUpdateSettingsInterval.tsx
 msgid "Automatic update interval"
@@ -594,6 +1028,14 @@ msgstr "Automatically use webtoon mode for entries that are detected to likely u
 msgid "Available"
 msgstr "Available"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Awaiting approval"
+msgstr "Awaiting approval"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Awaiting remote confirmation"
+msgstr "Awaiting remote confirmation"
+
 #: src/features/backup/screens/Backup.tsx
 msgid "Back up library as a Tachiyomi backup"
 msgstr "Back up library as a Tachiyomi backup"
@@ -623,6 +1065,10 @@ msgstr "Backup interval"
 msgid "Backup location"
 msgstr "Backup location"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Backup restore"
+msgstr "Backup restore"
+
 #: src/features/backup/screens/Backup.tsx
 msgid "Backup restored."
 msgstr "Backup restored."
@@ -638,6 +1084,13 @@ msgstr "Backup validation"
 #: src/features/library/components/LibraryOptionsPanel.tsx
 msgid "Badges"
 msgstr "Badges"
+
+#. placeholder {0}: comparison.baselinePageCount
+#. placeholder {1}: comparison.candidatePageCount
+#. placeholder {2}: comparison.hammingThreshold
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Baseline {0} pages, candidate {1} pages, fingerprint threshold {2}."
+msgstr "Baseline {0} pages, candidate {1} pages, fingerprint threshold {2}."
 
 #: src/features/settings/Settings.constants.ts
 msgid "Basic Authentication"
@@ -655,9 +1108,22 @@ msgstr "Binary"
 msgid "Binary file size"
 msgstr "Binary file size"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Binding role"
+msgstr "Binding role"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Binding updated"
+msgstr "Binding updated"
+
 #: src/features/reader/settings/general/components/ReaderSettingBackgroundColor.tsx
 msgid "Black"
 msgstr "Black"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Blend both sides"
+msgstr "Blend both sides"
 
 #: src/features/reader/filters/settings/components/ReaderSettingRGBA.tsx
 msgid "Blue"
@@ -672,6 +1138,18 @@ msgstr "Bookmark selected"
 msgid "Bookmarked"
 msgstr "Bookmarked"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Bootstrap cancelled"
+msgstr "Bootstrap cancelled"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Bootstrap paused"
+msgstr "Bootstrap paused"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Bootstrap resumed"
+msgstr "Bootstrap resumed"
+
 #: src/features/reader/settings/layout/components/ReaderSettingTapZoneInvertMode.tsx
 msgid "Both"
 msgstr "Both"
@@ -680,6 +1158,15 @@ msgstr "Both"
 #: src/features/reader/settings/general/components/ReaderSettingSafeAreaInset.tsx
 msgid "Bottom"
 msgstr "Bottom"
+
+#. placeholder {0}: ArchiveStateUtil.formatTimestamp(binding.boundAt)
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Bound {0}"
+msgstr "Bound {0}"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Bound source copies"
+msgstr "Bound source copies"
 
 #: src/features/migration/components/MigrationBulkSearchOptionsDialog.tsx
 msgid "Breaks down the title into keywords for a wider search"
@@ -764,6 +1251,11 @@ msgstr "Can't migrate an entry to itself"
 #: src/base/components/settings/SelectSetting.tsx
 #: src/base/components/settings/text/TextSettingDialog.tsx
 #: src/base/components/settings/TimeSetting.tsx
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveOverview.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
 #: src/features/backup/component/BackupFlagInclusionDialog.tsx
 #: src/features/backup/component/BackupValidationDialog.tsx
 #: src/features/category/components/CategoriesInclusionSetting.tsx
@@ -789,6 +1281,14 @@ msgstr "Cancel"
 msgid "Cancel all for this series"
 msgstr "Cancel all for this series"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Cancel audit"
+msgstr "Cancel audit"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Cancel bootstrap"
+msgstr "Cancel bootstrap"
+
 #: src/features/chapter/Chapter.constants.ts
 msgid "Cancel download"
 msgstr "Cancel download"
@@ -797,10 +1297,56 @@ msgstr "Cancel download"
 msgid "Cancel downloads of selected"
 msgstr "Cancel downloads of selected"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Cancel restore"
+msgstr "Cancel restore"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Cancel sweep"
+msgstr "Cancel sweep"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Cancel the archive bootstrap?"
+msgstr "Cancel the archive bootstrap?"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Cancel this audit?"
+msgstr "Cancel this audit?"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Cancel this restore?"
+msgstr "Cancel this restore?"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Cancel this sweep?"
+msgstr "Cancel this sweep?"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/manga/Manga.constants.ts
 #: src/features/tracker/Tracker.constants.ts
 msgid "Cancelled"
 msgstr "Cancelled"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "candidate"
+msgstr "candidate"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Candidate"
+msgstr "Candidate"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Canonical identity"
+msgstr "Canonical identity"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Canonical work"
+msgstr "Canonical work"
+
+#: src/features/archive/components/ArchiveDashboard.tsx
+msgid "Canonical works"
+msgstr "Canonical works"
 
 #: src/features/backup/Backup.constants.ts
 #: src/features/library/screens/LibrarySettings.tsx
@@ -813,9 +1359,21 @@ msgstr "Categories"
 msgid "Category"
 msgstr "Category"
 
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Category name"
+msgstr "Category name"
+
 #: src/features/category/components/CreateOrEditCategoryDialog.tsx
 msgid "Category Name"
 msgstr "Category Name"
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Category names must be unique: the first matching override wins, so a later duplicate would never apply."
+msgstr "Category names must be unique: the first matching override wins, so a later duplicate would never apply."
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Category overrides"
+msgstr "Category overrides"
 
 #: src/features/library/screens/LibrarySettings.tsx
 msgid "Category selection dialog"
@@ -833,6 +1391,11 @@ msgstr "Change categories"
 msgid "Change categories of selected"
 msgstr "Change categories of selected"
 
+#. placeholder {0}: row.changedMetadataFields.map((field) => ArchiveStateUtil.prettify(field)).join(', ')
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Changed: {0}"
+msgstr "Changed: {0}"
+
 #: src/features/app-updates/components/ServerUpdateChecker.tsx
 #: src/features/app-updates/components/VersionUpdateInfoDialog.tsx
 #: src/features/app-updates/components/WebUIUpdateChecker.tsx
@@ -847,6 +1410,10 @@ msgstr "Changes the theme colors on the manga page based on the thumbnail"
 msgid "Channel"
 msgstr "Channel"
 
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
 #: src/features/chapter/components/cards/ChapterCard.tsx
 #: src/features/downloads/components/DownloadAheadSetting.tsx
 #: src/features/downloads/screens/DownloadSettings.tsx
@@ -877,6 +1444,10 @@ msgstr "Chapter number"
 msgid "Chapter sort order"
 msgstr "Chapter sort order"
 
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Chapter state"
+msgstr "Chapter state"
+
 #: src/features/reader/services/ReaderControls.ts
 msgid "Chapter transition warning"
 msgstr "Chapter transition warning"
@@ -885,9 +1456,29 @@ msgstr "Chapter transition warning"
 msgid "Chapters"
 msgstr "Chapters"
 
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Chapters that were already swept keep their result. The remaining chapters are not visited."
+msgstr "Chapters that were already swept keep their result. The remaining chapters are not visited."
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Check automatically"
+msgstr "Check automatically"
+
 #: src/features/library/screens/LibraryDuplicates.tsx
 msgid "Check description"
 msgstr "Check description"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Check every archived revision"
+msgstr "Check every archived revision"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Check every archived revision?"
+msgstr "Check every archived revision?"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Check everything"
+msgstr "Check everything"
 
 #: src/features/settings/components/globalUpdate/GlobalUpdateSettings.tsx
 msgid "Check for new cover and details when updating library"
@@ -897,9 +1488,21 @@ msgstr "Check for new cover and details when updating library"
 msgid "Check out"
 msgstr "Check out"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Check the newest revisions"
+msgstr "Check the newest revisions"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Check this series for changed content"
+msgstr "Check this series for changed content"
+
 #: src/features/app-updates/components/VersionInfo.tsx
 msgid "Checking for update"
 msgstr "Checking for update"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Choose a file"
+msgstr "Choose a file"
 
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Choose the order in which chapters are displayed."
@@ -910,6 +1513,7 @@ msgid "Cleanup database"
 msgstr "Cleanup database"
 
 #: src/base/collection/components/SelectableCollectionSelectAll.tsx
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
 msgid "Clear"
 msgstr "Clear"
 
@@ -921,9 +1525,18 @@ msgstr "Clear cache"
 msgid "Clear cookies and cache"
 msgstr "Clear cookies and cache"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Clear filter"
+msgstr "Clear filter"
+
 #: src/features/manga/components/details/MangaNotes.tsx
 msgid "Clear notes"
 msgstr "Clear notes"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Clear selection"
+msgstr "Clear selection"
 
 #: src/features/settings/screens/ImagesSettings.tsx
 msgid "Cleared the cache"
@@ -949,6 +1562,7 @@ msgstr "Client data"
 #: src/base/components/feedback/SnackbarWithDescription.tsx
 #: src/features/app-updates/components/VersionUpdateInfoDialog.tsx
 #: src/features/migration/components/migration-entry/MigrationDestinationEntry.tsx
+#: src/features/web-view/screens/WebView.tsx
 msgid "Close"
 msgstr "Close"
 
@@ -976,6 +1590,15 @@ msgstr "Comic"
 msgid "Compact grid"
 msgstr "Compact grid"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Compare with slider"
+msgstr "Compare with slider"
+
+#. placeholder {0}: comparison.alignedCount
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Comparison of {0} aligned pages"
+msgstr "Comparison of {0} aligned pages"
+
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Compatible"
 msgstr "Compatible"
@@ -987,6 +1610,18 @@ msgstr "Completed"
 #: src/features/settings/components/images/Processing.tsx
 msgid "Compression level"
 msgstr "Compression level"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Configured"
+msgstr "Configured"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Confirm"
+msgstr "Confirm"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Confirmed in remote storage"
+msgstr "Confirmed in remote storage"
 
 #: src/features/settings/components/images/Processing.tsx
 msgid "Connect timeout"
@@ -1060,6 +1695,39 @@ msgstr "Could not add extension store"
 msgid "Could not add manga to library!"
 msgstr "Could not add manga to library!"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Could not apply the decision"
+msgstr "Could not apply the decision"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Could not approve the pending candidates"
+msgstr "Could not approve the pending candidates"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Could not attach the series"
+msgstr "Could not attach the series"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Could not change the audit"
+msgstr "Could not change the audit"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Could not change the audit: {payloadError}"
+msgstr "Could not change the audit: {payloadError}"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not change the binding"
+msgstr "Could not change the binding"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Could not change the sweep"
+msgstr "Could not change the sweep"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Could not change the sweep: {payloadError}"
+msgstr "Could not change the sweep: {payloadError}"
+
 #: src/features/manga/hooks/useManageMangaLibraryState.tsx
 msgid "Could not check for duplicated manga in your library.\n"
 "\n"
@@ -1096,6 +1764,10 @@ msgstr "Could not create backup"
 msgid "Could not create category"
 msgstr "Could not create category"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not create the work"
+msgstr "Could not create the work"
+
 #: src/features/theme/components/CreateThemeDialog.tsx
 msgid "Could not create theme"
 msgstr "Could not create theme"
@@ -1104,14 +1776,38 @@ msgstr "Could not create theme"
 msgid "Could not delete category"
 msgstr "Could not delete category"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not delete the work"
+msgstr "Could not delete the work"
+
 #. placeholder {0}: theme.getName()
 #: src/features/theme/components/ThemeList.tsx
 msgid "Could not delete theme \"{0}\""
 msgstr "Could not delete theme \"{0}\""
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Could not detach the series"
+msgstr "Could not detach the series"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not detach the source copy"
+msgstr "Could not detach the source copy"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not export the canonical identity"
+msgstr "Could not export the canonical identity"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not fail over"
+msgstr "Could not fail over"
+
 #: src/features/manga/components/details/MangaDetails.tsx
 msgid "Could not find source. Check your installed extensions."
 msgstr "Could not find source. Check your installed extensions."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not import the canonical identity"
+msgstr "Could not import the canonical identity"
 
 #: src/features/browse/extensions/Extensions.tsx
 msgid "Could not install the extension"
@@ -1138,6 +1834,45 @@ msgstr "Could not load latest track info from tracker"
 #: src/features/manga/screens/Manga.tsx
 msgid "Could not load manga"
 msgstr "Could not load manga"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Could not load more audits"
+msgstr "Could not load more audits"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Could not load more candidates"
+msgstr "Could not load more candidates"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Could not load more chapters"
+msgstr "Could not load more chapters"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Could not load more pages"
+msgstr "Could not load more pages"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Could not load more revisions"
+msgstr "Could not load more revisions"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not load more works"
+msgstr "Could not load more works"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Could not load the approval queue"
+msgstr "Could not load the approval queue"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Could not load the queue"
+msgstr "Could not load the queue"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Could not load the review queue"
+msgstr "Could not load the review queue"
 
 #: src/features/theme/components/ThemePreview.tsx
 msgid "Could not load theme fonts"
@@ -1169,6 +1904,10 @@ msgstr "Could not log out from {0}"
 msgid "Could not log out from KOReader Sync"
 msgstr "Could not log out from KOReader Sync"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not make it the preferred copy"
+msgstr "Could not make it the preferred copy"
+
 #: src/features/manga/Manga.constants.ts
 msgid "Could not migrate manga"
 msgstr "Could not migrate manga"
@@ -1176,6 +1915,30 @@ msgstr "Could not migrate manga"
 #: src/features/library/components/LibraryToolbarMenu.tsx
 msgid "Could not open random entry"
 msgstr "Could not open random entry"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "Could not open the WebView"
+msgstr "Could not open the WebView"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Could not promote the source copy"
+msgstr "Could not promote the source copy"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not read the selected file"
+msgstr "Could not read the selected file"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Could not refresh the archive overview"
+msgstr "Could not refresh the archive overview"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Could not refresh the audit state"
+msgstr "Could not refresh the audit state"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Could not refresh the sweep state"
+msgstr "Could not refresh the sweep state"
 
 #: src/features/downloads/screens/DownloadQueue.tsx
 msgid "Could not remove all downloads from the queue"
@@ -1209,6 +1972,23 @@ msgstr "Could not retry failed download."
 msgid "Could not retry failed downloads"
 msgstr "Could not retry failed downloads"
 
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Could not retry the selected revisions"
+msgstr "Could not retry the selected revisions"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Could not roll back"
+msgstr "Could not roll back"
+
+#. placeholder {0}: payload.error
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Could not roll back: {0}"
+msgstr "Could not roll back: {0}"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Could not run the action"
+msgstr "Could not run the action"
+
 #: src/features/settings/screens/Appearance.tsx
 msgid "Could not save changes"
 msgstr "Could not save changes"
@@ -1216,6 +1996,14 @@ msgstr "Could not save changes"
 #: src/features/manga/components/details/MangaNotes.tsx
 msgid "Could not save notes"
 msgstr "Could not save notes"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Could not save the archival settings"
+msgstr "Could not save the archival settings"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Could not save the audit settings"
+msgstr "Could not save the audit settings"
 
 #: src/features/category/components/CategorySelect.tsx
 #: src/features/library/components/LibraryOptionsPanel.tsx
@@ -1226,6 +2014,14 @@ msgstr "Could not save the default search settings to the server"
 #: src/features/reader/services/ReaderService.ts
 msgid "Could not save the reader settings to the server"
 msgstr "Could not save the reader settings to the server"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Could not save the sweep settings"
+msgstr "Could not save the sweep settings"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Could not save the work"
+msgstr "Could not save the work"
 
 #: src/features/theme/components/CreateThemeDialog.tsx
 msgid "Could not save theme changes"
@@ -1240,6 +2036,28 @@ msgstr "Could not search source"
 msgid "Could not start sync"
 msgstr "Could not start sync"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Could not start the audit"
+msgstr "Could not start the audit"
+
+#. placeholder {0}: payload.error
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Could not start the audit: {0}"
+msgstr "Could not start the audit: {0}"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Could not start the sweep"
+msgstr "Could not start the sweep"
+
+#. placeholder {0}: payload.error
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Could not start the sweep: {0}"
+msgstr "Could not start the sweep: {0}"
+
 #: src/features/updates/components/UpdateChecker.tsx
 msgid "Could not stop global update"
 msgstr "Could not stop global update"
@@ -1253,6 +2071,14 @@ msgstr "Could not track manga"
 msgid "Could not untrack manga"
 msgstr "Could not untrack manga"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Could not update the binding"
+msgstr "Could not update the binding"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Could not update the candidates"
+msgstr "Could not update the candidates"
+
 #: src/features/app-updates/components/WebUIUpdateChecker.tsx
 msgid "Could not update WebUI"
 msgstr "Could not update WebUI"
@@ -1261,11 +2087,16 @@ msgstr "Could not update WebUI"
 msgid "Could not validate backup"
 msgstr "Could not validate backup"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
 #: src/features/category/components/CategorySelect.tsx
 #: src/features/device/screens/DeviceSetting.tsx
 #: src/features/reader/hotkeys/settings/components/RecordHotkey.tsx
 msgid "Create"
 msgstr "Create"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Create a work"
+msgstr "Create a work"
 
 #: src/features/backup/screens/Backup.tsx
 msgid "Create backup"
@@ -1296,6 +2127,14 @@ msgstr "Creating theme…"
 msgid "Crimson"
 msgstr "Crimson"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "current"
+msgstr "current"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Current"
+msgstr "Current"
+
 #: src/features/migration/components/MigrationDestinationSourceList.tsx
 msgid "Current source"
 msgstr "Current source"
@@ -1303,6 +2142,16 @@ msgstr "Current source"
 #: src/features/reader/viewer/components/ReaderTransitionPage.tsx
 msgid "Current:"
 msgstr "Current:"
+
+#. placeholder {0}: policyLabels[manga.acquisitionPolicy]
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Currently applied: {0}"
+msgstr "Currently applied: {0}"
+
+#. placeholder {0}: formatRetention(manga.effectiveAcceptedRevisionRetention, t`Unlimited`)
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Currently kept: {0}"
+msgstr "Currently kept: {0}"
 
 #: src/features/tracker/Tracker.constants.ts
 msgid "Currently publishing"
@@ -1377,9 +2226,21 @@ msgstr "Database url"
 msgid "Day"
 msgstr "Day"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Days between checks"
+msgstr "Days between checks"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Days between sweeps"
+msgstr "Days between sweeps"
+
 #: src/features/settings/screens/About.tsx
 msgid "Debug information"
 msgstr "Debug information"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Decision applied"
+msgstr "Decision applied"
 
 #: src/features/reader/hotkeys/settings/components/ReaderSettingHotkey.tsx
 msgid "Decrease auto scroll speed"
@@ -1397,9 +2258,17 @@ msgstr "Decrease auto scroll speed"
 msgid "Default"
 msgstr "Default"
 
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Default acquisition policy"
+msgstr "Default acquisition policy"
+
 #: src/features/category/components/CreateOrEditCategoryDialog.tsx
 msgid "Default category when adding new manga to the library"
 msgstr "Default category when adding new manga to the library"
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Default policy"
+msgstr "Default policy"
 
 #: src/base/components/settings/MutableListSetting.tsx
 #: src/features/category/components/CategorySettingsCard.tsx
@@ -1442,10 +2311,22 @@ msgstr "Delete search"
 msgid "Delete selected"
 msgstr "Delete selected"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Delete this work?"
+msgstr "Delete this work?"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Delete work"
+msgstr "Delete work"
+
 #. placeholder {0}: theme.getName()
 #: src/features/theme/components/ThemeList.tsx
 msgid "Deleted theme \"{0}\""
 msgstr "Deleted theme \"{0}\""
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Deleting an archived payload cannot be undone."
+msgstr "Deleting an archived payload cannot be undone."
 
 #. placeholder {0}: theme.getName()
 #: src/features/theme/components/ThemeList.tsx
@@ -1471,6 +2352,19 @@ msgstr "Desktop"
 msgid "Destination — {0}"
 msgstr "Destination — {0}"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Detach"
+msgstr "Detach"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Detach from work"
+msgstr "Detach from work"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Detach this source copy?"
+msgstr "Detach this source copy?"
+
 #: src/features/device/screens/DeviceSetting.tsx
 #: src/features/settings/screens/Settings.tsx
 msgid "Device"
@@ -1480,10 +2374,19 @@ msgstr "Device"
 msgid "Devices"
 msgstr "Devices"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Difference overlay"
+msgstr "Difference overlay"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Dimension"
+msgstr "Dimension"
+
 #: src/features/settings/Settings.constants.ts
 msgid "Disable authentication"
 msgstr "Disable authentication"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
 #: src/features/downloads/components/DeleteChaptersWhileReadingSetting.tsx
 #: src/features/reader/settings/layout/components/ReaderSettingTapZoneLayout.tsx
 #: src/features/settings/Settings.constants.ts
@@ -1502,6 +2405,17 @@ msgstr "Disconnected"
 msgid "Discord"
 msgstr "Discord"
 
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Discovered"
+msgstr "Discovered"
+
+#. placeholder {0}: ArchiveStateUtil.formatTimestamp(row.discoveredAt)
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Discovered {0}"
+msgstr "Discovered {0}"
+
 #: src/base/components/GridLayouts.tsx
 #: src/features/chapter/components/ChapterOptions.tsx
 #: src/features/library/components/LibraryOptionsPanel.tsx
@@ -1516,6 +2430,10 @@ msgstr "Display file sizes in binary (KiB, MiB, GiB) instead of decimal (KB, MB,
 #: src/features/library/components/LibraryOptionsPanel.tsx
 msgid "Display mode"
 msgstr "Display mode"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Distance"
+msgstr "Distance"
 
 #: src/features/settings/components/koreaderSync/KoreaderSyncSettings.tsx
 msgid "Document matching method"
@@ -1560,6 +2478,18 @@ msgstr "Download ahead ({count})"
 msgid "Download badges"
 msgstr "Download badges"
 
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Download CBZ"
+msgstr "Download CBZ"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Download failures"
+msgstr "Download failures"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Download JSON"
+msgstr "Download JSON"
+
 #: src/features/downloads/screens/DownloadSettings.tsx
 msgid "Download location"
 msgstr "Download location"
@@ -1584,6 +2514,7 @@ msgid "Downloaded"
 msgstr "Downloaded"
 
 #: src/base/components/downloads/DownloadStateIndicatorCircular.tsx
+#: src/features/archive/components/ArchiveOverview.tsx
 #: src/features/settings/Settings.constants.ts
 msgid "Downloading"
 msgstr "Downloading"
@@ -1606,6 +2537,16 @@ msgstr "Dune"
 msgid "Duplicate chapters"
 msgstr "Duplicate chapters"
 
+#. placeholder {0}: canonicalWork.duplicateStrategy
+#. placeholder {1}: canonicalWork.duplicatePolicyApplied ? 'yes' : 'no'
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Duplicate policy: {0} (advisory, applied: {1})"
+msgstr "Duplicate policy: {0} (advisory, applied: {1})"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Duplicate strategy"
+msgstr "Duplicate strategy"
+
 #: src/features/library/screens/LibraryDuplicates.tsx
 #: src/features/library/screens/LibrarySettings.tsx
 msgid "Duplicated entries"
@@ -1614,6 +2555,10 @@ msgstr "Duplicated entries"
 #: src/features/settings/screens/Appearance.tsx
 msgid "Dynamic theme colors on manga page"
 msgstr "Dynamic theme colors on manga page"
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Each imported series is refreshed once and its newly discovered revisions are queued according to this policy."
+msgstr "Each imported series is refreshed once and its newly discovered revisions are queued according to this policy."
 
 #: src/features/reader/settings/layout/components/ReaderSettingTapZoneLayout.tsx
 msgid "Edge"
@@ -1679,6 +2624,14 @@ msgstr "Enabled languages"
 msgid "Enabled languages and sources"
 msgstr "Enabled languages and sources"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Enter the key of an existing work"
+msgstr "Enter the key of an existing work"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Enter the numeric id of the series to attach"
+msgstr "Enter the numeric id of the series to attach"
+
 #: src/features/downloads/screens/DownloadSettings.tsx
 msgid "Entries in excluded categories will not be downloaded even if they are also in included categories"
 msgstr "Entries in excluded categories will not be downloaded even if they are also in included categories"
@@ -1706,6 +2659,10 @@ msgstr "Entry \"{id}\" not found"
 msgid "Error"
 msgstr "Error"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Errors"
+msgstr "Errors"
+
 #: src/features/settings/Settings.constants.ts
 msgid "Every 12 hours"
 msgstr "Every 12 hours"
@@ -1722,9 +2679,37 @@ msgstr "Every 30 minutes"
 msgid "Every 6 hours"
 msgstr "Every 6 hours"
 
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Every candidate waiting for approval will be acquired and archived."
+msgstr "Every candidate waiting for approval will be acquired and archived."
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Every category override needs a category name."
+msgstr "Every category override needs a category name."
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Every chapter is re-downloaded to compare its content, which can take a long time."
+msgstr "Every chapter is re-downloaded to compare its content, which can take a long time."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Every chapter of every tracked series is re-downloaded to compare its content. This is the most expensive operation of the archive and can take a long time."
+msgstr "Every chapter of every tracked series is re-downloaded to compare its content. This is the most expensive operation of the archive and can take a long time."
+
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Every chapter of the selected series is re-downloaded to compare its content, which can take a long time."
+msgstr "Every chapter of the selected series is re-downloaded to compare its content, which can take a long time."
+
 #: src/features/settings/Settings.constants.ts
 msgid "Every hour"
 msgstr "Every hour"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Every page of the candidate matches the baseline visually, so no page is marked as different."
+msgstr "Every page of the candidate matches the baseline visually, so no page is marked as different."
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Every revision the archive confirmed is looked up on the remote storage. A large archive means a large number of remote requests and a long run."
+msgstr "Every revision the archive confirmed is looked up on the remote storage. A large archive means a large number of remote requests and a long run."
 
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Example for possible values: 1 (bytes), 1KB (kilobytes), 1MB (megabytes), 1GB (gigabytes)"
@@ -1764,6 +2749,24 @@ msgstr "Exit to manga page"
 msgid "Exit to previous page"
 msgstr "Exit to previous page"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Export"
+msgstr "Export"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Export and import"
+msgstr "Export and import"
+
+#. placeholder {0}: exported.workCount
+#. placeholder {1}: exported.bindingCount
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Exported {0} works and {1} bindings"
+msgstr "Exported {0} works and {1} bindings"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Exported payload"
+msgstr "Exported payload"
+
 #: src/features/browse/screens/Browse.tsx
 msgid "Extension"
 msgstr "Extension"
@@ -1780,6 +2783,26 @@ msgstr "Extension installed"
 #: src/features/extension/store/screens/ExtensionStores.tsx
 msgid "Extension stores"
 msgstr "Extension stores"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Fail over"
+msgstr "Fail over"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Fail over to this source copy?"
+msgstr "Fail over to this source copy?"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Failed"
+msgstr "Failed"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Failed bootstrap items requeued"
+msgstr "Failed bootstrap items requeued"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Failed over"
+msgstr "Failed over"
 
 #: src/features/settings/components/koreaderSync/KoreaderSyncSettings.tsx
 msgid "Failed to connect to KOReader Sync server."
@@ -1821,6 +2844,14 @@ msgstr "Failed to disconnect from KOReader Sync server."
 #: src/features/tracker/screens/TrackingSettings.tsx
 msgid "Failed to save changes"
 msgstr "Failed to save changes"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Fallback"
+msgstr "Fallback"
+
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "Falls back to the local copy"
+msgstr "Falls back to the local copy"
 
 #: src/features/settings/Settings.constants.ts
 msgid "Features and changes in this version might not be completely ready yet and can cause bugs.\n"
@@ -1867,11 +2898,17 @@ msgstr "Filter manga feed to display only chapters you haven’t read yet."
 msgid "Filter mode"
 msgstr "Filter mode"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Find a work"
+msgstr "Find a work"
+
 #: src/features/tracker/components/cards/TrackerActiveCard.tsx
 msgid "Finish date"
 msgstr "Finish date"
 
 #: src/base/components/downloads/DownloadStateIndicatorCircular.tsx
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/tracker/Tracker.constants.ts
 msgid "Finished"
 msgstr "Finished"
@@ -1940,6 +2977,10 @@ msgstr "Forget manga categories"
 msgid "Fourth to last read chapter"
 msgstr "Fourth to last read chapter"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Full pages"
+msgstr "Full pages"
+
 #: src/features/reader/settings/general/ReaderGeneralSettings.tsx
 msgid "Fullscreen"
 msgstr "Fullscreen"
@@ -1995,6 +3036,10 @@ msgstr "h"
 msgid "H2"
 msgstr "H2"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Handoff"
+msgstr "Handoff"
+
 #: src/features/global-search/screens/SearchAll.tsx
 msgid "Has results"
 msgstr "Has results"
@@ -2028,6 +3073,14 @@ msgstr "Hide history"
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Hikari connection pool"
 msgstr "Hikari connection pool"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Historical revisions are kept in addition to the active one."
+msgstr "Historical revisions are kept in addition to the active one."
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Historical revisions to keep"
+msgstr "Historical revisions to keep"
 
 #: src/features/backup/Backup.constants.ts
 #: src/features/history/screens/History.tsx
@@ -2111,6 +3164,18 @@ msgstr "Image serve processing"
 msgid "Images"
 msgstr "Images"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Import"
+msgstr "Import"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Import finished"
+msgstr "Import finished"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Import this canonical identity?"
+msgstr "Import this canonical identity?"
+
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Improves performance, but may cause issues for some installations where data cannot be read from the database"
 msgstr "Improves performance, but may cause issues for some installations where data cannot be read from the database"
@@ -2190,6 +3255,14 @@ msgstr "Installing"
 msgid "Installing extension file…"
 msgstr "Installing extension file…"
 
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Integrity"
+msgstr "Integrity"
+
+#: src/features/archive/components/ArchiveDashboard.tsx
+msgid "Integrity audits"
+msgstr "Integrity audits"
+
 #: src/features/settings/screens/WebUISettings.tsx
 msgid "Interface"
 msgstr "Interface"
@@ -2229,6 +3302,10 @@ msgstr "IP"
 msgid "item"
 msgstr "item"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Items"
+msgstr "Items"
+
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Items per page"
 msgstr "Items per page"
@@ -2244,6 +3321,18 @@ msgstr "JWT audience claim"
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "JWT refresh token expiry"
 msgstr "JWT refresh token expiry"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Keep both"
+msgstr "Keep both"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Keep both revisions?"
+msgstr "Keep both revisions?"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Keep current"
+msgstr "Keep current"
 
 #: src/features/settings/Settings.constants.ts
 msgid "Keep local"
@@ -2261,6 +3350,18 @@ msgstr "Keep remote"
 msgid "Keep screen on"
 msgstr "Keep screen on"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Keep the current revision and discard this candidate?"
+msgstr "Keep the current revision and discard this candidate?"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Kept revisions"
+msgstr "Kept revisions"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Key of an existing work"
+msgstr "Key of an existing work"
+
 #: src/features/reader/settings/ReaderSettings.constants.tsx
 msgid "Keybinds"
 msgstr "Keybinds"
@@ -2268,6 +3369,18 @@ msgstr "Keybinds"
 #: src/features/reader/settings/layout/components/ReaderSettingTapZoneLayout.tsx
 msgid "Kindle"
 msgstr "Kindle"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Komga rescan"
+msgstr "Komga rescan"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Komga rescan requested"
+msgstr "Komga rescan requested"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Komga rescan retried"
+msgstr "Komga rescan retried"
 
 #: src/features/settings/components/koreaderSync/KoreaderSyncSettings.tsx
 msgid "KOReader Sync"
@@ -2290,9 +3403,26 @@ msgstr "Language with code: {code}"
 msgid "Large"
 msgstr "Large"
 
+#. placeholder {0}: ArchiveStateUtil.formatTimestamp(audit.lastAttemptAt)
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Last attempt {0}"
+msgstr "Last attempt {0}"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "last checked"
+msgstr "last checked"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Last completed"
+msgstr "Last completed"
+
 #: src/features/downloads/components/DeleteChaptersWhileReadingSetting.tsx
 msgid "Last read chapter"
 msgstr "Last read chapter"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Last requested"
+msgstr "Last requested"
 
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Last sync: {syncDate}"
@@ -2315,6 +3445,10 @@ msgstr "Latest"
 #: src/features/library/components/LibraryOptionsPanel.tsx
 msgid "Latest fetched chapter"
 msgstr "Latest fetched chapter"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Latest problems"
+msgstr "Latest problems"
 
 #: src/features/library/components/LibraryOptionsPanel.tsx
 msgid "Latest uploaded chapter"
@@ -2391,11 +3525,43 @@ msgstr "Links"
 msgid "List"
 msgstr "List"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Live updates active"
+msgstr "Live updates active"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Load more"
+msgstr "Load more"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Load more chapters"
+msgstr "Load more chapters"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Load more checks"
+msgstr "Load more checks"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Load more pages"
+msgstr "Load more pages"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Load more revisions"
+msgstr "Load more revisions"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Load more works"
+msgstr "Load more works"
+
 #: src/features/theme/components/ThemePreview.tsx
 msgid "Loading theme fonts…"
 msgstr "Loading theme fonts…"
 
 #: src/base/components/settings/SelectSetting.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
 msgid "Loading…"
 msgstr "Loading…"
 
@@ -2451,6 +3617,42 @@ msgstr "Logging in to {trackerName}…"
 msgid "entry-type-detection-long-strip"
 msgstr "Long strip"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Look up archived revisions on the remote storage periodically"
+msgstr "Look up archived revisions on the remote storage periodically"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Make it the preferred copy"
+msgstr "Make it the preferred copy"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Make preferred"
+msgstr "Make preferred"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Make primary"
+msgstr "Make primary"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Make primary copy"
+msgstr "Make primary copy"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Make the archived content the served revision?"
+msgstr "Make the archived content the served revision?"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Make the primary source copy"
+msgstr "Make the primary source copy"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Make this revision the served one again?"
+msgstr "Make this revision the served one again?"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Make this series the primary source copy?"
+msgstr "Make this series the primary source copy?"
+
 #: src/features/device/screens/DeviceSetting.tsx
 msgid "Manage your existing devices.\n"
 "UI specific settings that are stored on the server are per device.\n"
@@ -2470,6 +3672,10 @@ msgstr "Manga"
 #: src/features/manga/Manga.constants.ts
 msgid "entry-type-detection-manga"
 msgstr "Manga"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Manga errors"
+msgstr "Manga errors"
 
 #: src/features/settings/screens/Appearance.tsx
 msgid "Manga item width"
@@ -2499,6 +3705,10 @@ msgstr "Manhwa"
 msgid "entry-type-detection-manhwa"
 msgstr "Manhwa"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Manual check"
+msgstr "Manual check"
+
 #: src/features/migration/MigrationManager.ts
 msgid "Manual migration search for \"{title}\""
 msgstr "Manual migration search for \"{title}\""
@@ -2508,6 +3718,10 @@ msgstr "Manual migration search for \"{title}\""
 #: src/features/migration/components/migration-entry/MigrationEntrySearchExcludeActions.tsx
 msgid "Manual search"
 msgstr "Manual search"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Manual sweep"
+msgstr "Manual sweep"
 
 #: src/features/chapter/components/ChaptersToolbarMenu.tsx
 msgid "Mark all as read"
@@ -2644,6 +3858,10 @@ msgstr "Minute"
 msgid "Misc"
 msgstr "Misc"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Missing sources"
+msgstr "Missing sources"
+
 #. placeholder {0}: entry.missingChapters
 #: src/features/migration/components/migration-entry/MigrationEntryMetadataText.tsx
 msgid "Missing: {0}"
@@ -2665,6 +3883,14 @@ msgstr "More"
 #: src/features/theme/Themes.ts
 msgid "Mountain Sunset"
 msgstr "Mountain Sunset"
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Move override down"
+msgstr "Move override down"
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Move override up"
+msgstr "Move override up"
 
 #: src/features/downloads/components/DownloadQueueChapterCard.tsx
 msgid "Move series to bottom"
@@ -2701,18 +3927,53 @@ msgstr "Name"
 msgid "Never"
 msgstr "Never"
 
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "Never falls back to the local copy"
+msgstr "Never falls back to the local copy"
+
 #: src/features/category/components/CreateOrEditCategoryDialog.tsx
 msgid "New category"
 msgstr "New category"
+
+#. placeholder {0}: displayedSession.newestPerManga
+#. placeholder {0}: displayedSession.newestPerSeries
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Newest {0} per series"
+msgstr "Newest {0} per series"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Newest chapters per series"
+msgstr "Newest chapters per series"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Newest revisions per series"
+msgstr "Newest revisions per series"
 
 #: src/features/reader/tap-zones/ReaderTapZone.constants.ts
 msgid "Next"
 msgstr "Next"
 
+#. placeholder {0}: ArchiveStateUtil.formatTimestamp(schedule.nextDueAt)
+#. placeholder {1}: ArchiveStateUtil.formatTimestamp(schedule.lastRunAt)
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Next automatic check {0}, last run {1}."
+msgstr "Next automatic check {0}, last run {1}."
+
+#. placeholder {0}: ArchiveStateUtil.formatTimestamp(schedule.nextDueAt)
+#. placeholder {1}: ArchiveStateUtil.formatTimestamp(schedule.lastRunAt)
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Next automatic sweep {0}, last run {1}."
+msgstr "Next automatic sweep {0}, last run {1}."
+
 #: src/features/reader/hotkeys/settings/components/ReaderSettingHotkey.tsx
 #: src/features/reader/overlay/navigation/desktop/components/ReaderNavBarDesktopChapterNavigation.tsx
 msgid "Next chapter"
 msgstr "Next chapter"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Next item"
+msgstr "Next item"
 
 #: src/features/reader/hotkeys/settings/components/ReaderSettingHotkey.tsx
 #: src/features/reader/overlay/navigation/desktop/components/ReaderNavBarDesktopPageNavigation.tsx
@@ -2723,6 +3984,34 @@ msgstr "Next page"
 msgid "Next:"
 msgstr "Next:"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "No"
+msgstr "No"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "No archive file is available for this revision."
+msgstr "No archive file is available for this revision."
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "No archived candidate is waiting for a decision"
+msgstr "No archived candidate is waiting for a decision"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "No bootstrap was ever started"
+msgstr "No bootstrap was ever started"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "No canonical work exists yet."
+msgstr "No canonical work exists yet."
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "No category override: every series uses the default policy."
+msgstr "No category override: every series uses the default policy."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "No chapter of this run matches the selected state."
+msgstr "No chapter of this run matches the selected state."
+
 #: src/features/chapter/components/ChapterList.tsx
 msgid "No chapters found"
 msgstr "No chapters found"
@@ -2730,6 +4019,22 @@ msgstr "No chapters found"
 #: src/features/chapter/components/ChapterList.tsx
 msgid "No chapters matching filter"
 msgstr "No chapters matching filter"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "No check has run yet."
+msgstr "No check has run yet."
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "No check is running right now."
+msgstr "No check is running right now."
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "No check is scheduled yet."
+msgstr "No check is scheduled yet."
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "No comparison was needed for this candidate, so there is nothing to preview."
+msgstr "No comparison was needed for this candidate, so there is nothing to preview."
 
 #: src/features/downloads/screens/DownloadQueue.tsx
 msgid "No downloads"
@@ -2755,6 +4060,26 @@ msgstr "No match found"
 msgid "No pages found"
 msgstr "No pages found"
 
+#: src/features/archive/components/ArchiveRevisionPreview.tsx
+msgid "No preview is available for this page"
+msgstr "No preview is available for this page"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "No restore was ever started"
+msgstr "No restore was ever started"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "No revision of this run matches the selected state."
+msgstr "No revision of this run matches the selected state."
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "No revisions match the selected filter"
+msgstr "No revisions match the selected filter"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "No series is bound to this work yet."
+msgstr "No series is bound to this work yet."
+
 #: src/features/migration/components/MigrationDestinationSourceList.tsx
 msgid "No sources available to migrate to"
 msgstr "No sources available to migrate to"
@@ -2767,6 +4092,26 @@ msgstr "No sources found. Install Some extensions first."
 msgid "No sources installed"
 msgstr "No sources installed"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "No stored comparison exists for this candidate, so only the decision and the chapter metadata are available."
+msgstr "No stored comparison exists for this candidate, so only the decision and the chapter metadata are available."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "No sweep has run yet."
+msgstr "No sweep has run yet."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "No sweep is running right now."
+msgstr "No sweep is running right now."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "No sweep is scheduled yet."
+msgstr "No sweep is scheduled yet."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "No work matches that title."
+msgstr "No work matches that title."
+
 #: src/features/backup/Backup.utils.ts
 #: src/features/category/components/CategoriesInclusionSetting.tsx
 #: src/features/downloads/screens/DownloadSettings.tsx
@@ -2775,6 +4120,18 @@ msgstr "No sources installed"
 #: src/features/settings/Settings.constants.ts
 msgid "None"
 msgstr "None"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Not the primary copy"
+msgstr "Not the primary copy"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Not usable for acquisition"
+msgstr "Not usable for acquisition"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Not used for acquisition"
+msgstr "Not used for acquisition"
 
 #: src/features/tracker/Tracker.constants.ts
 msgid "Not yet published"
@@ -2835,6 +4192,7 @@ msgstr "Offset double spreads"
 #: src/base/components/settings/TimeSetting.tsx
 #: src/features/app-updates/components/ServerUpdateChecker.tsx
 #: src/features/app-updates/components/WebUIUpdateChecker.tsx
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
 #: src/features/backup/component/BackupFlagInclusionDialog.tsx
 #: src/features/category/components/CategoriesInclusionSetting.tsx
 #: src/features/category/components/CategorySelect.tsx
@@ -2863,6 +4221,14 @@ msgstr "Ongoing"
 msgid "Only outdated matches found"
 msgstr "Only outdated matches found"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Only pages that differ"
+msgstr "Only pages that differ"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Only the binding is removed. The series, its chapters, its revisions and everything archived stay exactly where they are."
+msgstr "Only the binding is removed. The series, its chapters, its revisions and everything archived stay exactly where they are."
+
 #: src/features/downloads/components/DownloadAheadSetting.tsx
 msgid "Only works if the current chapter plus the next chapter are already downloaded."
 msgstr "Only works if the current chapter plus the next chapter are already downloaded."
@@ -2874,6 +4240,14 @@ msgstr "OPDS"
 #: src/features/reader/services/ReaderControls.ts
 msgid "Open"
 msgstr "Open"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "Open again"
+msgstr "Open again"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Open approval queue"
+msgstr "Open approval queue"
 
 #: src/features/extension/store/screens/ExtensionStores.tsx
 msgid "Open discord"
@@ -2911,6 +4285,10 @@ msgstr "Open the WebUI when starting the server"
 msgid "Open website"
 msgstr "Open website"
 
+#: src/features/web-view/screens/WebView.tsx
+msgid "Opening the browser"
+msgstr "Opening the browser"
+
 #: src/features/chapter/components/cards/ChapterCard.tsx
 #: src/features/manga/components/MangaOptionButton.tsx
 msgid "Options"
@@ -2942,9 +4320,19 @@ msgstr "Overlay"
 msgid "Overlay mode"
 msgstr "Overlay mode"
 
+#: src/features/archive/components/ArchiveDashboard.tsx
+msgid "Overview"
+msgstr "Overview"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
 #: src/features/reader/overlay/navigation/desktop/components/ReaderNavBarDesktopPageNavigation.tsx
 msgid "Page"
 msgstr "Page"
+
+#. placeholder {0}: displayPosition(sliderRow.ordinal)
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Page {0}"
+msgstr "Page {0}"
 
 #: src/features/reader/settings/layout/components/ReaderSettingPageGap.tsx
 msgid "Page gap"
@@ -2959,9 +4347,35 @@ msgstr "Parallel source requests"
 msgid "Password"
 msgstr "Password"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Paste an exported payload or choose a file first"
+msgstr "Paste an exported payload or choose a file first"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveOverview.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Pause"
+msgstr "Pause"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Paused"
+msgstr "Paused"
+
 #: src/features/navigation-bar/NavigationBar.constants.ts
 msgid "Paused — {count} remaining"
 msgstr "Paused — {count} remaining"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Payload to import"
+msgstr "Payload to import"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Pending"
+msgstr "Pending"
 
 #: src/features/migration/Migration.constants.ts
 msgid "Pending…"
@@ -2981,6 +4395,14 @@ msgstr "Pin source"
 msgid "Pinned"
 msgstr "Pinned"
 
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Policy"
+msgstr "Policy"
+
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Policy a series applies while it has no per-series override. It is what the archival settings of a series pick up when set to \"Use global default\"."
+msgstr "Policy a series applies while it has no per-series override. It is what the archival settings of a series pick up when set to \"Use global default\"."
+
 #: src/features/source/browse/screens/SourceMangas.tsx
 msgid "Popular"
 msgstr "Popular"
@@ -2992,6 +4414,22 @@ msgstr "Port"
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "PostgreSQL"
 msgstr "PostgreSQL"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Preferred"
+msgstr "Preferred"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Preferred copy"
+msgstr "Preferred copy"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Preferred copy changed"
+msgstr "Preferred copy changed"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Preferred scanlator"
+msgstr "Preferred scanlator"
 
 #: src/features/reader/settings/behaviour/ReaderBehaviourSettings.tsx
 msgid "Preload images"
@@ -3019,14 +4457,48 @@ msgstr "Previous"
 msgid "Previous chapter"
 msgstr "Previous chapter"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Previous checks"
+msgstr "Previous checks"
+
 #: src/features/reader/hotkeys/settings/components/ReaderSettingHotkey.tsx
 #: src/features/reader/overlay/navigation/desktop/components/ReaderNavBarDesktopPageNavigation.tsx
 msgid "Previous page"
 msgstr "Previous page"
 
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Previous runs"
+msgstr "Previous runs"
+
 #: src/features/reader/viewer/components/ReaderTransitionPage.tsx
 msgid "Previous:"
 msgstr "Previous:"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Primary source copy"
+msgstr "Primary source copy"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Priority"
+msgstr "Priority"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Priority (optional)"
+msgstr "Priority (optional)"
+
+#. placeholder {0}: binding.priority
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Priority {0}"
+msgstr "Priority {0}"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Processing"
+msgstr "Processing"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Progress"
+msgstr "Progress"
 
 #: src/features/reader/overlay/progress-bar/settings/components/ReaderSettingProgressBarPosition.tsx
 msgid "Progress bar position"
@@ -3044,6 +4516,29 @@ msgstr "Progress bar style"
 msgid "Prompt"
 msgstr "Prompt"
 
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Pruned"
+msgstr "Pruned"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Pruning failures"
+msgstr "Pruning failures"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Publication"
+msgstr "Publication"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Publication failures"
+msgstr "Publication failures"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Published"
+msgstr "Published"
+
 #: src/features/manga/Manga.constants.ts
 msgid "Publishing finished"
 msgstr "Publishing finished"
@@ -3057,9 +4552,17 @@ msgstr "Pure black dark mode"
 msgid "px"
 msgstr "px"
 
+#: src/features/archive/components/ArchiveDashboard.tsx
+msgid "Queue inspector"
+msgstr "Queue inspector"
+
 #: src/base/components/downloads/DownloadStateIndicatorCircular.tsx
 msgid "Queued"
 msgstr "Queued"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Queued for acquisition"
+msgstr "Queued for acquisition"
 
 #: src/features/reader/overlay/navigation/mobile/ReaderBottomBarMobile.tsx
 msgid "Quick settings"
@@ -3068,6 +4571,10 @@ msgstr "Quick settings"
 #: src/features/library/components/LibraryOptionsPanel.tsx
 msgid "Random"
 msgstr "Random"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Re-download the newest chapters periodically"
+msgstr "Re-download the newest chapters periodically"
 
 #: src/features/reader/settings/screens/GlobalReaderSettings.tsx
 #: src/features/settings/screens/Settings.tsx
@@ -3104,18 +4611,69 @@ msgstr "Recently read"
 msgid "Record keybind"
 msgstr "Record keybind"
 
+#. placeholder {0}: ArchiveStateUtil.formatTimestamp(comparison.createdAt)
+#. placeholder {1}: comparison.algorithmVersion
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Recorded {0} with {1}."
+msgstr "Recorded {0} with {1}."
+
 #. placeholder {0}: recordedKeys.size ? <Hotkey keys={keys} /> : <Typography>{t`Press keys`}</Typography>
 #: src/features/reader/hotkeys/settings/components/RecordHotkey.tsx
 msgid "Recorded hotkeys: {0}"
 msgstr "Recorded hotkeys: {0}"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Recorded rollbacks"
+msgstr "Recorded rollbacks"
 
 #: src/features/reader/filters/settings/components/ReaderSettingRGBA.tsx
 msgid "Red"
 msgstr "Red"
 
 #: src/features/app-updates/components/WebUIUpdateChecker.tsx
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveOverview.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
 msgid "Refresh"
 msgstr "Refresh"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Refresh history"
+msgstr "Refresh history"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Refresh the archive overview"
+msgstr "Refresh the archive overview"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Reject"
+msgstr "Reject"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Reject candidate"
+msgstr "Reject candidate"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Reject selected"
+msgstr "Reject selected"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Reject the selected candidates?"
+msgstr "Reject the selected candidates?"
+
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Reject this candidate?"
+msgstr "Reject this candidate?"
+
+#. placeholder {0}: ids.length
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Rejected {0} candidates"
+msgstr "Rejected {0} candidates"
 
 #: src/features/tracker/Tracker.constants.ts
 msgid "Releasing"
@@ -3125,11 +4683,20 @@ msgstr "Releasing"
 msgid "Reload data from source"
 msgstr "Reload data from source"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Remaining"
+msgstr "Remaining"
+
 #: src/features/app-updates/components/VersionUpdateInfoDialog.tsx
 msgid "Remind later"
 msgstr "Remind later"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Remote durability unconfirmed"
+msgstr "Remote durability unconfirmed"
+
 #: src/base/components/settings/DateSetting.tsx
+#: src/features/archive/components/ArchiveOverview.tsx
 #: src/features/manga/hooks/useManageMangaLibraryState.tsx
 #: src/features/tracker/components/cards/TrackerActiveCard.tsx
 msgid "Remove"
@@ -3162,13 +4729,37 @@ msgstr "Remove manga from categories when removing them from the library"
 msgid "Remove non library manga from categories"
 msgstr "Remove non library manga from categories"
 
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Remove override"
+msgstr "Remove override"
+
 #: src/features/manga/Manga.constants.ts
 msgid "Remove selected from the library"
 msgstr "Remove selected from the library"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Remove staged backup"
+msgstr "Remove staged backup"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Remove the preferred scanlator"
+msgstr "Remove the preferred scanlator"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Remove the staged backup?"
+msgstr "Remove the staged backup?"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Remove this series from its work?"
+msgstr "Remove this series from its work?"
+
 #: src/features/library/screens/LibrarySettings.tsx
 msgid "Removed non library manga from categories"
 msgstr "Removed non library manga from categories"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Request rescan"
+msgstr "Request rescan"
 
 #: src/base/components/buttons/ResetButton.tsx
 #: src/base/components/settings/CheckboxListSetting.tsx
@@ -3195,6 +4786,18 @@ msgstr "Restore"
 msgid "Restore Backup"
 msgstr "Restore Backup"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Restore cancelled"
+msgstr "Restore cancelled"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Restore handoff retried"
+msgstr "Restore handoff retried"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Restore requeued"
+msgstr "Restore requeued"
+
 #: src/features/settings/Settings.constants.ts
 msgid "Restoring"
 msgstr "Restoring"
@@ -3203,15 +4806,30 @@ msgstr "Restoring"
 msgid "Restoring backup…"
 msgstr "Restoring backup…"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveOverview.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/manga/components/ResumeFAB.tsx
 msgid "Resume"
 msgstr "Resume"
 
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Retention"
+msgstr "Retention"
+
+#. placeholder {0}: selectedIds.length
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Retried {0} revisions"
+msgstr "Retried {0} revisions"
+
 #: src/base/components/feedback/EmptyView.tsx
 #: src/base/components/SpinnerImage.tsx
+#: src/features/archive/components/ArchiveOverview.tsx
 #: src/features/chapter/components/buttons/ChapterDownloadRetryButton.tsx
 #: src/features/manga/hooks/useManageMangaLibraryState.tsx
 #: src/features/migration/components/migration-entry/MigrationDestinationEntry.tsx
+#: src/features/web-view/screens/WebView.tsx
 msgid "Retry"
 msgstr "Retry"
 
@@ -3222,6 +4840,67 @@ msgstr "Retry all"
 #: src/features/reader/overlay/navigation/desktop/components/ReaderNavBarDesktopActions.tsx
 msgid "Retry errored pages"
 msgstr "Retry errored pages"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Retry failed chapters"
+msgstr "Retry failed chapters"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Retry failed checks"
+msgstr "Retry failed checks"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Retry failed items"
+msgstr "Retry failed items"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Retry handoff"
+msgstr "Retry handoff"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Retry pruning"
+msgstr "Retry pruning"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Retry pruning of the selected revisions?"
+msgstr "Retry pruning of the selected revisions?"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Retry rescan"
+msgstr "Retry rescan"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Retry selected"
+msgstr "Retry selected"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Reveal the candidate"
+msgstr "Reveal the candidate"
+
+#. placeholder {0}: item.revisionId
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Revision {0}"
+msgstr "Revision {0}"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Revision history"
+msgstr "Revision history"
+
+#: src/features/archive/components/ArchiveDashboard.tsx
+msgid "Revision review"
+msgstr "Revision review"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Revision state"
+msgstr "Revision state"
+
+#: src/features/archive/components/ArchiveDashboard.tsx
+msgid "Revision sweeps"
+msgstr "Revision sweeps"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Revisions that were already checked keep their result. The remaining revisions are not checked."
+msgstr "Revisions that were already checked keep their result. The remaining revisions are not checked."
 
 #: src/features/reader/overlay/progress-bar/settings/components/ReaderSettingProgressBarPosition.tsx
 #: src/features/reader/settings/general/components/ReaderSettingSafeAreaInset.tsx
@@ -3237,10 +4916,43 @@ msgstr "Right and left"
 msgid "Right to left"
 msgstr "Right to left"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Role"
+msgstr "Role"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Roll back"
+msgstr "Roll back"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Roll back to this"
+msgstr "Roll back to this"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Rolled back to this revision"
+msgstr "Rolled back to this revision"
+
 #: src/features/theme/Themes.ts
 msgid "Rosegold"
 msgstr "Rosegold"
 
+#. placeholder {0}: displayPosition(page.ordinal)
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Row {0}"
+msgstr "Row {0}"
+
+#. placeholder {0}: displayedSession.id
+#. placeholder {0}: session.id
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Run {0}"
+msgstr "Run {0}"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
 #: src/features/manga/components/details/MangaNotes.tsx
 #: src/features/settings/screens/ImageProcessingSetting.tsx
 #: src/features/theme/components/CreateThemeDialog.tsx
@@ -3250,6 +4962,10 @@ msgstr "Save"
 #: src/features/downloads/screens/DownloadSettings.tsx
 msgid "Save as CBZ archive"
 msgstr "Save as CBZ archive"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Save binding"
+msgstr "Save binding"
 
 #: src/features/source/browse/components/SourceOptions.tsx
 msgid "Save current search"
@@ -3281,6 +4997,13 @@ msgstr "Scale type"
 msgid "Scanlator"
 msgstr "Scanlator"
 
+#. placeholder {0}: exportSummary.schemaVersion
+#. placeholder {1}: exportSummary.workCount
+#. placeholder {2}: exportSummary.bindingCount
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Schema version {0}: {1} works and {2} bindings."
+msgstr "Schema version {0}: {1} works and {2} bindings."
+
 #: src/features/tracker/components/cards/TrackerActiveCard.tsx
 #: src/features/tracker/components/cards/TrackerMangaCard.tsx
 msgid "Score"
@@ -3303,6 +5026,7 @@ msgid "Scroll forward"
 msgstr "Scroll forward"
 
 #: src/base/components/AppbarSearch.tsx
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
 #: src/features/migration/components/MigrationBulkSearchOptionsDialog.tsx
 msgid "Search"
 msgstr "Search"
@@ -3347,6 +5071,10 @@ msgstr "Search results"
 msgid "Search results will include manga that do not match the current filters"
 msgstr "Search results will include manga that do not match the current filters"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Searching replaces the list and returns to its first page."
+msgstr "Searching replaces the list and returns to its first page."
+
 #: src/features/migration/Migration.constants.ts
 msgid "Searching…"
 msgstr "Searching…"
@@ -3377,15 +5105,32 @@ msgstr "See the official <0>MUI documentation</0> for how to customize the theme
 msgid "Select"
 msgstr "Select"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Select a candidate to see what changed"
+msgstr "Select a candidate to see what changed"
+
 #: src/features/device/screens/DeviceSetting.tsx
 msgid "Select a device to use its server stored UI settings"
 msgstr "Select a device to use its server stored UI settings"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Select a page below to compare it with the slider."
+msgstr "Select a page below to compare it with the slider."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Select a work to inspect its bindings"
+msgstr "Select a work to inspect its bindings"
 
 #: src/base/collection/components/SelectableCollectionSelectAll.tsx
 #: src/base/collection/components/SelectableCollectionSelectMode.tsx
 #: src/base/components/settings/CheckboxListSetting.tsx
 msgid "Select all"
 msgstr "Select all"
+
+#. placeholder {0}: row.id
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Select candidate {0}"
+msgstr "Select candidate {0}"
 
 #: src/features/migration/screens/MigrationSelectDestinationSources.tsx
 msgid "Select destination sources"
@@ -3395,9 +5140,19 @@ msgstr "Select destination sources"
 msgid "Select enabled sources"
 msgstr "Select enabled sources"
 
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Select loaded"
+msgstr "Select loaded"
+
 #: src/features/migration/screens/MigrationSelectDestinationSources.tsx
 msgid "Select pinned sources"
 msgstr "Select pinned sources"
+
+#. placeholder {0}: row.id
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Select revision {0}"
+msgstr "Select revision {0}"
 
 #: src/features/migration/components/MigrationDestinationSourceList.tsx
 msgid "Selected"
@@ -3407,9 +5162,49 @@ msgstr "Selected"
 msgid "Sepia"
 msgstr "Sepia"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Series"
+msgstr "Series"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Series attached"
+msgstr "Series attached"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Series attached to the work"
+msgstr "Series attached to the work"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Series detached"
+msgstr "Series detached"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Series id"
+msgstr "Series id"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Series missing"
+msgstr "Series missing"
+
 #: src/features/reader/settings/layout/ReaderLayoutSettings.tsx
 msgid "Series settings"
 msgstr "Series settings"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Series that were already processed keep their candidates; the remaining ones are not processed."
+msgstr "Series that were already processed keep their candidates; the remaining ones are not processed."
+
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "Served from the local archive copy."
+msgstr "Served from the local archive copy."
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "Served now"
+msgstr "Served now"
+
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "Served straight from the remote storage."
+msgstr "Served straight from the remote storage."
 
 #: src/features/settings/screens/About.tsx
 #: src/features/settings/screens/ServerSettings.tsx
@@ -3493,11 +5288,19 @@ msgstr "Show all duplicated entries in your library"
 msgid "Show continue reading button"
 msgstr "Show continue reading button"
 
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Show damaged"
+msgstr "Show damaged"
+
 #: src/features/manga/components/cards/MangaCard.tsx
 #: src/features/manga/hooks/useManageMangaLibraryState.tsx
 #: src/features/migration/components/MigrationOptionsDialog.tsx
 msgid "Show entry"
 msgstr "Show entry"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Show full pages"
+msgstr "Show full pages"
 
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Show icon in system tray"
@@ -3511,6 +5314,10 @@ msgstr "Show in sources and extensions lists"
 #: src/features/tracker/components/cards/TrackerMangaCard.tsx
 msgid "Show less"
 msgstr "Show less"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Show missing"
+msgstr "Show missing"
 
 #: src/base/components/feedback/EmptyView.tsx
 #: src/base/components/feedback/SnackbarWithDescription.tsx
@@ -3565,6 +5372,10 @@ msgstr "Shows a dialog in case the version got updated. This dialog will be show
 msgid "Shows a dialog in case the version of the server has changed"
 msgstr "Shows a dialog in case the version of the server has changed"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Side by side"
+msgstr "Side by side"
+
 #: src/features/settings/Settings.constants.ts
 msgid "Simple Login"
 msgstr "Simple Login"
@@ -3588,6 +5399,10 @@ msgstr "Skip filtered chapters"
 #: src/features/settings/components/globalUpdate/GlobalUpdateSettingsEntries.tsx
 msgid "Skip updating entries"
 msgstr "Skip updating entries"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Slider"
+msgstr "Slider"
 
 #: src/features/reader/settings/behaviour/components/ReaderSettingScrollAmount.tsx
 msgid "Small"
@@ -3644,9 +5459,23 @@ msgstr "Sort"
 msgid "Source"
 msgstr "Source"
 
+#. placeholder {0}: source.sourceId
+#. placeholder {1}: source.mangaCount
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Source {0}: {1} series"
+msgstr "Source {0}: {1} series"
+
 #: src/features/source/configuration/screens/SourceConfigure.tsx
 msgid "Source Configuration"
 msgstr "Source Configuration"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Source copy detached"
+msgstr "Source copy detached"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Source copy promoted"
+msgstr "Source copy promoted"
 
 #: src/features/migration/components/migration-entry/MigrationSourceEntry.tsx
 msgid "Source entry — {sourceTitle}"
@@ -3660,9 +5489,21 @@ msgstr "Source title"
 msgid "Sources"
 msgstr "Sources"
 
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Sources without an installed extension"
+msgstr "Sources without an installed extension"
+
 #: src/features/settings/Settings.constants.ts
 msgid "Stable"
 msgstr "Stable"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Staged backup removed"
+msgstr "Staged backup removed"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Staged payload retained"
+msgstr "Staged payload retained"
 
 #: src/features/reader/overlay/progress-bar/settings/components/ReaderSettingProgressBarType.tsx
 msgid "Standard"
@@ -3673,9 +5514,20 @@ msgstr "Standard"
 msgid "Start"
 msgstr "Start"
 
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Start a full history sweep?"
+msgstr "Start a full history sweep?"
+
 #: src/features/tracker/components/cards/TrackerActiveCard.tsx
 msgid "Start date"
 msgstr "Start date"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Start full sweep"
+msgstr "Start full sweep"
 
 #: src/features/migration/screens/MigrationSearch.tsx
 msgid "Start migration"
@@ -3697,11 +5549,22 @@ msgstr "Start Search"
 msgid "Start sync"
 msgstr "Start sync"
 
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Start the archive bootstrap after this restore"
+msgstr "Start the archive bootstrap after this restore"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveSweepPanel.tsx
 #: src/features/library/components/LibraryOptionsPanel.tsx
 #: src/features/settings/Settings.constants.ts
 #: src/features/tracker/components/cards/TrackerMangaCard.tsx
 msgid "Started"
 msgstr "Started"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "State"
+msgstr "State"
 
 #: src/features/reader/overlay/navigation/desktop/ReaderNavBarDesktop.tsx
 msgid "Static navigation"
@@ -3744,6 +5607,51 @@ msgstr "Successfully migrated"
 #: src/features/manga/Manga.constants.ts
 msgid "Successfully migrated manga"
 msgstr "Successfully migrated manga"
+
+#. placeholder {0}: policyLabels[defaultPolicy]
+#. placeholder {1}: overrides.length
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "Summary: the default policy is \"{0}\" with {1} category overrides."
+msgstr "Summary: the default policy is \"{0}\" with {1} category overrides."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Sweep automatically"
+msgstr "Sweep automatically"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Sweep settings saved"
+msgstr "Sweep settings saved"
+
+#. placeholder {0}: payload?.itemCount ?? 0
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Sweep started for {0} chapters"
+msgstr "Sweep started for {0} chapters"
+
+#. placeholder {0}: payload.itemCount ?? 0
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Sweep started for {0} chapters. Whether a revision is queued, held for approval or only recorded follows its series' acquisition policy."
+msgstr "Sweep started for {0} chapters. Whether a revision is queued, held for approval or only recorded follows its series' acquisition policy."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Sweep the full history"
+msgstr "Sweep the full history"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Sweep the full history of this series?"
+msgstr "Sweep the full history of this series?"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/manga/components/MangaActionMenuItems.tsx
+msgid "Sweep the newest chapters"
+msgstr "Sweep the newest chapters"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Sweep updated"
+msgstr "Sweep updated"
 
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Sync"
@@ -3826,17 +5734,108 @@ msgstr "Target mode"
 msgid "That haven't been started"
 msgstr "That haven't been started"
 
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "That priority is already taken in this work"
+msgstr "That priority is already taken in this work"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "That series does not exist"
+msgstr "That series does not exist"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "That series is already bound to a work, or the priority or the preferred copy is already taken"
+msgstr "That series is already bound to a work, or the priority or the preferred copy is already taken"
+
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "The address of the FlareSolverr server"
 msgstr "The address of the FlareSolverr server"
+
+#. placeholder {0}: getErrorMessage(pagesRequest.error)
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The alignment could not be read: {0}"
+msgstr "The alignment could not be read: {0}"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The archived content is confirmed on the remote, but it is not the copy the chapter serves yet."
+msgstr "The archived content is confirmed on the remote, but it is not the copy the chapter serves yet."
+
+#. placeholder {0}: getErrorMessage(historyRequest.error)
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "The audit history could not be read: {0}"
+msgstr "The audit history could not be read: {0}"
+
+#. placeholder {0}: getErrorMessage(settingsRequest.error)
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "The audit settings could not be read, so they are not shown and cannot be saved: {0}"
+msgstr "The audit settings could not be read, so they are not shown and cannot be saved: {0}"
+
+#. placeholder {0}: getErrorMessage(bindingsRequest.error)
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The bindings could not be read: {0}"
+msgstr "The bindings could not be read: {0}"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "The browser did not open within {OPEN_TIMEOUT_SECONDS} seconds"
+msgstr "The browser did not open within {OPEN_TIMEOUT_SECONDS} seconds"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "The browser is no longer open"
+msgstr "The browser is no longer open"
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "The browser service is not reachable"
+msgstr "The browser service is not reachable"
 
 #: src/features/settings/screens/ImagesSettings.tsx
 msgid "The cache of the client (browser, electron) should get cleared alongside it, otherwise, the client cache will keep getting used"
 msgstr "The cache of the client (browser, electron) should get cleared alongside it, otherwise, the client cache will keep getting used"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The candidate is kept as a historical revision instead of being published. Historical revisions are pruned according to the retention settings."
+msgstr "The candidate is kept as a historical revision instead of being published. Historical revisions are pruned according to the retention settings."
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The candidate stops being reviewable and is not published."
+msgstr "The candidate stops being reviewable and is not published."
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The candidate stops being reviewable. Its archived content is not published."
+msgstr "The candidate stops being reviewable. Its archived content is not published."
+
+#. placeholder {0}: getErrorMessage(statusRequest.error)
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The canonical counters could not be read: {0}"
+msgstr "The canonical counters could not be read: {0}"
+
 #: src/features/library/screens/Library.tsx
 msgid "The category is empty"
 msgstr "The category is empty"
+
+#. placeholder {0}: getErrorMessage(itemsRequest.error)
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "The chapters of this run could not be read: {0}"
+msgstr "The chapters of this run could not be read: {0}"
+
+#. placeholder {0}: getErrorMessage(comparisonRequest.error)
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The comparison could not be read: {0}"
+msgstr "The comparison could not be read: {0}"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "The copy that is currently primary becomes an ordinary binding of the same work."
+msgstr "The copy that is currently primary becomes an ordinary binding of the same work."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The duplicate strategy is recorded advice. It never merges or removes a chapter."
+msgstr "The duplicate strategy is recorded advice. It never merges or removes a chapter."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The duplicate strategy recorded on a work is advisory: nothing merges, deletes or hides a duplicate chapter because of it, and no chapter is ever merged automatically."
+msgstr "The duplicate strategy recorded on a work is advisory: nothing merges, deletes or hides a duplicate chapter because of it, and no chapter is ever merged automatically."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The export produced nothing"
+msgstr "The export produced nothing"
 
 #: src/features/backup/component/BackupValidationDialog.tsx
 msgid "The following sources are not installed:"
@@ -3845,6 +5844,26 @@ msgstr "The following sources are not installed:"
 #: src/features/backup/component/BackupValidationDialog.tsx
 msgid "The following trackers are not logged in:"
 msgstr "The following trackers are not logged in:"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The import produced nothing"
+msgstr "The import produced nothing"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "The import stops where it is. Series that were already imported stay imported."
+msgstr "The import stops where it is. Series that were already imported stay imported."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "The interval and the number of chapters have to be at least 1."
+msgstr "The interval and the number of chapters have to be at least 1."
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "The interval and the number of revisions have to be at least 1."
+msgstr "The interval and the number of revisions have to be at least 1."
+
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+msgid "The library is imported as usual and nothing is acquired."
+msgstr "The library is imported as usual and nothing is acquired."
 
 #: src/features/settings/Settings.constants.ts
 msgid "The login will be handled by the client."
@@ -3894,9 +5913,102 @@ msgstr "The previous chapter has a different scanlator then the current one.\n"
 "Previous: {nextScanlator}\n"
 "Current: {currentScanlator}"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "The priority has to be a number"
+msgstr "The priority has to be a number"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The priority has to be a whole number that is not negative"
+msgstr "The priority has to be a whole number that is not negative"
+
+#. placeholder {0}: getErrorMessage(historyRequest.error)
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "The revision history could not be read: {0}"
+msgstr "The revision history could not be read: {0}"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "The revision serving this chapter now becomes historical and is kept according to the retention settings. The archived content of this revision is published again."
+msgstr "The revision serving this chapter now becomes historical and is kept according to the retention settings. The archived content of this revision is published again."
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The revision that currently serves this chapter becomes historical and is kept according to the retention settings."
+msgstr "The revision that currently serves this chapter becomes historical and is kept according to the retention settings."
+
+#. placeholder {0}: getErrorMessage(itemsRequest.error)
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "The revisions of this run could not be read: {0}"
+msgstr "The revisions of this run could not be read: {0}"
+
+#. placeholder {0}: getErrorMessage(rollbacksRequest.error)
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "The rollbacks could not be read: {0}"
+msgstr "The rollbacks could not be read: {0}"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "The schedule, the current check and the history are re-read together."
+msgstr "The schedule, the current check and the history are re-read together."
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "The schedule, the current run and the history are re-read together."
+msgstr "The schedule, the current run and the history are re-read together."
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "The series keeps its chapters and archived revisions; it simply stops being part of the work."
+msgstr "The series keeps its chapters and archived revisions; it simply stops being part of the work."
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "The source copy is no longer available"
+msgstr "The source copy is no longer available"
+
+#. placeholder {0}: getErrorMessage(historyRequest.error)
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "The sweep history could not be read: {0}"
+msgstr "The sweep history could not be read: {0}"
+
+#. placeholder {0}: getErrorMessage(settingsRequest.error)
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "The sweep settings could not be read, so they are not shown and cannot be saved: {0}"
+msgstr "The sweep settings could not be read, so they are not shown and cannot be saved: {0}"
+
 #: src/features/theme/components/CreateThemeDialog.tsx
 msgid "The theme name must be unique and has a limit of 16 characters"
 msgstr "The theme name must be unique and has a limit of 16 characters"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The title and the duplicate strategy are advice, never identity. Deleting a work removes the grouping and its bindings, nothing else."
+msgstr "The title and the duplicate strategy are advice, never identity. Deleting a work removes the grouping and its bindings, nothing else."
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "The uploaded backup copy kept on the server is deleted. This cannot be undone."
+msgstr "The uploaded backup copy kept on the server is deleted. This cannot be undone."
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The visual comparison is still running. It is written before the candidate becomes reviewable, so this state should clear on its own."
+msgstr "The visual comparison is still running. It is written before the candidate becomes reviewable, so this state should clear on its own."
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "The visual comparison of this candidate failed, so its previews may be missing or incomplete. The decision is still available."
+msgstr "The visual comparison of this candidate failed, so its previews may be missing or incomplete. The decision is still available."
+
+#: src/features/web-view/screens/WebView.tsx
+msgid "The WebView url is not valid"
+msgstr "The WebView url is not valid"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The work and its bindings are removed. The series themselves, their chapters and everything archived stay exactly where they are."
+msgstr "The work and its bindings are removed. The series themselves, their chapters and everything archived stay exactly where they are."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The work could not be created"
+msgstr "The work could not be created"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The work could not be saved because it conflicts with its current state"
+msgstr "The work could not be saved because it conflicts with its current state"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "The work list, the bindings of the selected work and the counters are re-read together."
+msgstr "The work list, the bindings of the selected work and the counters are re-read together."
 
 #: src/features/reader/settings/general/components/ReaderSettingBackgroundColor.tsx
 #: src/features/settings/screens/Appearance.tsx
@@ -3908,6 +6020,10 @@ msgstr "Theme"
 msgid "Theme mode"
 msgstr "Theme mode"
 
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "There are no candidates awaiting approval"
+msgstr "There are no candidates awaiting approval"
+
 #: src/features/reader/viewer/components/ReaderTransitionPage.tsx
 msgid "There is no next chapter"
 msgstr "There is no next chapter"
@@ -3916,6 +6032,10 @@ msgstr "There is no next chapter"
 msgid "There is no previous chapter"
 msgstr "There is no previous chapter"
 
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "There was nothing left to approve"
+msgstr "There was nothing left to approve"
+
 #: src/features/migration/components/MigrationBulkSearchOptionsDialog.tsx
 msgid "These options are slow and dangerous and may lead to restrictions from sources"
 msgstr "These options are slow and dangerous and may lead to restrictions from sources"
@@ -3923,6 +6043,19 @@ msgstr "These options are slow and dangerous and may lead to restrictions from s
 #: src/features/downloads/components/DeleteChaptersWhileReadingSetting.tsx
 msgid "Third to last read chapter"
 msgstr "Third to last read chapter"
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "This chapter has never been rolled back."
+msgstr "This chapter has never been rolled back."
+
+#: src/features/archive/components/ArchiveRevisionHistorySection.tsx
+msgid "This chapter has no recorded revisions."
+msgstr "This chapter has no recorded revisions."
+
+#. placeholder {0}: comparison.limitations ?? ''
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "This comparison is degraded: {0}"
+msgstr "This comparison is degraded: {0}"
 
 #: src/features/browse/screens/BrowseSettings.tsx
 msgid "This does not prevent unofficial or potentially incorrectly flagged extensions from surfacing NSFW (18+) content within the app."
@@ -3936,6 +6069,34 @@ msgstr "This icon will be shown on the system that is running the server"
 msgid "This is the latest version"
 msgstr "This is the latest version"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "This page does not exist in the candidate"
+msgstr "This page does not exist in the candidate"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "This page does not exist in the current revision"
+msgstr "This page does not exist in the current revision"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "This row has no preview on both sides in the selected detail level, so it cannot be compared with the slider."
+msgstr "This row has no preview on both sides in the selected detail level, so it cannot be compared with the slider."
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "This series is not bound to a work."
+msgstr "This series is not bound to a work."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "This source copy becomes the preferred one for the work, so new revisions are acquired from it. The copy that is preferred now keeps its place in the work."
+msgstr "This source copy becomes the preferred one for the work, so new revisions are acquired from it. The copy that is preferred now keeps its place in the work."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "This source copy cannot be the preferred one"
+msgstr "This source copy cannot be the preferred one"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "This source copy cannot take over the work"
+msgstr "This source copy cannot take over the work"
+
 #: src/features/source/browse/components/SourceOptions.tsx
 msgid "This will delete the saved search \"{savedSearch}\""
 msgstr "This will delete the saved search \"{savedSearch}\""
@@ -3947,6 +6108,14 @@ msgstr "This will remove the tracking locally."
 #: src/features/reader/settings/behaviour/components/ReaderSettingScrollAmount.tsx
 msgid "Tiny"
 msgstr "Tiny"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Title"
+msgstr "Title"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Title contains"
+msgstr "Title contains"
 
 #: src/base/utils/DateHelper.ts
 msgid "Today"
@@ -4077,6 +6246,34 @@ msgstr "Unable to load extension stores"
 msgid "Unable to load sources"
 msgstr "Unable to load sources"
 
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+msgid "Unable to load the approval queue"
+msgstr "Unable to load the approval queue"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Unable to load the archive overview"
+msgstr "Unable to load the archive overview"
+
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+msgid "Unable to load the audit state"
+msgstr "Unable to load the audit state"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Unable to load the canonical works"
+msgstr "Unable to load the canonical works"
+
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Unable to load the queue"
+msgstr "Unable to load the queue"
+
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Unable to load the review queue"
+msgstr "Unable to load the review queue"
+
+#: src/features/archive/components/ArchiveSweepPanel.tsx
+msgid "Unable to load the sweep state"
+msgstr "Unable to load the sweep state"
+
 #: src/features/migration/MigrationManager.ts
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Understood"
@@ -4098,9 +6295,25 @@ msgstr "Uninstalling"
 msgid "Unknown"
 msgstr "Unknown"
 
+#: src/features/archive/components/ArchiveApprovalQueue.tsx
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+#: src/features/archive/components/ArchiveIntegrityPanel.tsx
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Unknown series"
+msgstr "Unknown series"
+
 #: src/features/migration/MigrationManager.ts
 msgid "Unknown source"
 msgstr "Unknown source"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Unknown work"
+msgstr "Unknown work"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Unlimited"
+msgstr "Unlimited"
 
 #: src/features/browse/sources/components/SourceCard.tsx
 msgid "Unpin source"
@@ -4119,6 +6332,10 @@ msgstr "Unread badges"
 #: src/features/library/components/LibraryOptionsPanel.tsx
 msgid "Unread chapters"
 msgstr "Unread chapters"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Unresolved sources"
+msgstr "Unresolved sources"
 
 #: src/features/tracker/components/cards/TrackerActiveCard.tsx
 msgid "Untracked manga"
@@ -4166,6 +6383,10 @@ msgstr "Update progress after manually marking as read"
 msgid "Update progress after reading"
 msgstr "Update progress after reading"
 
+#: src/features/archive/components/ArchiveQueueInspector.tsx
+msgid "Updated"
+msgstr "Updated"
+
 #: src/features/app-updates/components/ServerUpdateChecker.tsx
 #: src/features/app-updates/components/WebUIUpdateChecker.tsx
 msgid "Updated version"
@@ -4188,11 +6409,19 @@ msgstr "Uploading"
 msgid "URL"
 msgstr "URL"
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Usable for acquisition"
+msgstr "Usable for acquisition"
+
 #: src/features/settings/Settings.constants.ts
 msgid "Use a custom WebUI.\n"
 "To use a custom WebUI replace the content of the \"webUI\" directory in the root directory on the server with the files of the custom WebUI"
 msgstr "Use a custom WebUI.\n"
 "To use a custom WebUI replace the content of the \"webUI\" directory in the root directory on the server with the files of the custom WebUI"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Use global default"
+msgstr "Use global default"
 
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Use SOCKS proxy"
@@ -4214,15 +6443,31 @@ msgstr "Use the latest features and help us get them ready for a stable release.
 msgid "Use the latest released version."
 msgstr "Use the latest released version."
 
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Use the server default"
+msgstr "Use the server default"
+
 #: src/features/settings/Settings.constants.ts
 msgid "Use the version that was delivered with the server release"
 msgstr "Use the version that was delivered with the server release"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Used for acquisition"
+msgstr "Used for acquisition"
 
 #: src/base/components/modals/LoginDialog.tsx
 #: src/features/authentication/screens/LoginPage.tsx
 #: src/features/settings/screens/ServerSettings.tsx
 msgid "Username"
 msgstr "Username"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Validation failures"
+msgstr "Validation failures"
+
+#: src/features/archive/components/ArchiveDeliveryStatusCard.tsx
+msgid "Validity of a delivery"
+msgstr "Validity of a delivery"
 
 #: src/features/settings/components/images/KeyValueItem.tsx
 msgid "Value"
@@ -4240,9 +6485,28 @@ msgstr "Version"
 msgid "Vertical"
 msgstr "Vertical"
 
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "View"
+msgstr "View"
+
+#. placeholder {0}: ArchiveStateUtil.prettify(row.visualAnalysisState)
+#: src/features/archive/components/ArchiveReviewQueue.tsx
+msgid "Visual analysis: {0}"
+msgstr "Visual analysis: {0}"
+
 #: src/features/settings/Settings.constants.ts
 msgid "VUI"
 msgstr "VUI"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+#: src/features/backup/component/BackupBootstrapOptionsDialog.tsx
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Wait for approval"
+msgstr "Wait for approval"
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Waiting to retry"
+msgstr "Waiting to retry"
 
 #: src/base/components/feedback/SnackbarWithDescription.tsx
 msgid "Warning"
@@ -4289,6 +6553,7 @@ msgid "WebUI was updated to version {newVersion} ({0})"
 msgstr "WebUI was updated to version {newVersion} ({0})"
 
 #: src/features/settings/screens/ServerSettings.tsx
+#: src/features/web-view/screens/WebView.tsx
 msgid "WebView"
 msgstr "WebView"
 
@@ -4319,6 +6584,30 @@ msgstr "With \"Completed\" status"
 #: src/features/settings/Settings.constants.ts
 msgid "With unread chapter(s)"
 msgstr "With unread chapter(s)"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Work created"
+msgstr "Work created"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Work deleted"
+msgstr "Work deleted"
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Work saved"
+msgstr "Work saved"
+
+#: src/features/archive/components/MangaArchiveSettingsDialog.tsx
+msgid "Works are created on the archive dashboard, where their key is listed."
+msgstr "Works are created on the archive dashboard, where their key is listed."
+
+#: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
+msgid "Works are created or updated and bindings are attached or moved to the work the payload names. A series that is already bound to another work is rebound to the one the payload says."
+msgstr "Works are created or updated and bindings are attached or moved to the work the payload names. A series that is already bound to another work is rebound to the one the payload says."
+
+#: src/features/archive/components/ArchiveOverview.tsx
+msgid "Yes"
+msgstr "Yes"
 
 #: src/base/utils/DateHelper.ts
 msgid "Yesterday"
