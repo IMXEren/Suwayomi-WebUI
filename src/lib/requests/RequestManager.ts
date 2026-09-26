@@ -570,6 +570,14 @@ import { KO_SYNC_LOGIN, KO_SYNC_LOGOUT } from '@/lib/graphql/koreader/KoreaderSy
 import { GET_KO_SYNC_STATUS } from '@/lib/graphql/koreader/KoreaderSyncQuery.ts';
 import { ImageCache } from '@/lib/service-worker/ImageCache.ts';
 import { Sources } from '@/features/source/services/Sources.ts';
+import type {
+    CloseWebViewMutation,
+    CloseWebViewMutationVariables,
+    GetWebViewTabsQuery,
+    GetWebViewTabsQueryVariables,
+    OpenWebViewMutation,
+    OpenWebViewMutationVariables,
+} from '@/features/web-view/WebView.types.ts';
 import uniqBy from 'lodash/fp/uniqBy';
 import { EXTENSION_STORE_FIELDS } from '@/lib/graphql/extension/store/ExtensionStoreFragments.ts';
 import { ADD_EXTENSION_STORE, REMOVE_EXTENSION_STORE } from '@/lib/graphql/extension/store/ExtensionStoreMutation.ts';
@@ -578,7 +586,8 @@ import { GET_EXTENSION_STORE, GET_EXTENSION_STORES } from '@/lib/graphql/extensi
 import { SYNC_SUBSCRIPTION } from '@/lib/graphql/sync/SyncSubscription.ts';
 import { START_SYNC } from '@/lib/graphql/sync/SyncMutation.ts';
 import { GET_SYNC_STATUS } from '@/lib/graphql/sync/SyncQuery.ts';
-import { WEBVIEW_CLEAR_CACHE_COOKIES } from '@/lib/graphql/web-view/WebViewMutation.ts';
+import { CLOSE_WEB_VIEW, OPEN_WEB_VIEW, WEBVIEW_CLEAR_CACHE_COOKIES } from '@/lib/graphql/web-view/WebViewMutation.ts';
+import { GET_WEB_VIEW_TABS } from '@/lib/graphql/web-view/WebViewQuery.ts';
 
 enum GQLMethod {
     QUERY = 'QUERY',
@@ -761,7 +770,13 @@ export class RequestManager {
     }
 
     public getWebviewUrl(url: string): string {
-        return `${this.getValidUrlFor('webview')}#${url}`;
+        // The WebView page reads the token from the query string and passes it as the WebSocket
+        // subprotocol, because browsers cannot set headers on a WebSocket handshake. Without it
+        // the socket is unauthenticated and the page asks for a login even though the app is
+        // already signed in.
+        const token = AuthManager.getAccessToken();
+        const query = token ? `?token=${encodeURIComponent(token)}` : '';
+        return `${this.getValidUrlFor('webview')}${query}#${url}`;
     }
 
     public clearBrowseCacheFor(sourceId: string) {
@@ -5178,6 +5193,24 @@ export class RequestManager {
         options?: MutationOptions<WebviewClearCacheCookiesMutation, WebviewClearCacheCookiesMutationVariables>,
     ): AbortableApolloUseMutationResponse<WebviewClearCacheCookiesMutation, WebuiUpdateSubscriptionVariables> {
         return this.doRequest(GQLMethod.USE_MUTATION, WEBVIEW_CLEAR_CACHE_COOKIES, {}, options);
+    }
+
+    public useGetWebViewTabs(
+        options?: QueryHookOptions<GetWebViewTabsQuery, GetWebViewTabsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetWebViewTabsQuery, GetWebViewTabsQueryVariables> {
+        return this.doRequest(GQLMethod.USE_QUERY, GET_WEB_VIEW_TABS, {}, options);
+    }
+
+    public useOpenWebView(
+        options?: MutationHookOptions<OpenWebViewMutation, OpenWebViewMutationVariables>,
+    ): AbortableApolloUseMutationResponse<OpenWebViewMutation, OpenWebViewMutationVariables> {
+        return this.doRequest(GQLMethod.USE_MUTATION, OPEN_WEB_VIEW, undefined, options);
+    }
+
+    public useCloseWebView(
+        options?: MutationHookOptions<CloseWebViewMutation, CloseWebViewMutationVariables>,
+    ): AbortableApolloUseMutationResponse<CloseWebViewMutation, CloseWebViewMutationVariables> {
+        return this.doRequest(GQLMethod.USE_MUTATION, CLOSE_WEB_VIEW, undefined, options);
     }
 }
 

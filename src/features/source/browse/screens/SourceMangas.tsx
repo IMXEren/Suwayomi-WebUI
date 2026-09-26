@@ -61,6 +61,7 @@ import { MigrationManager } from '@/features/migration/MigrationManager.ts';
 import { ReactRouter } from '@/lib/react-router/ReactRouter.ts';
 import type { FilterChangeInput } from '@/lib/graphql/generated/graphql-base.types.ts';
 import { OffsetComponent } from '@/base/OffsetComponent.tsx';
+import { useWebViewUrl } from '@/features/web-view/hooks/useWebViewUrl.ts';
 
 const DEFAULT_SOURCE: SourceIdInfo = { id: '-1' };
 
@@ -216,6 +217,7 @@ const useSourceManga = (
 
 export function SourceMangas() {
     const { t } = useLingui();
+    const getWebViewUrl = useWebViewUrl();
 
     const { sourceId } = useParams<{ sourceId: string }>();
 
@@ -431,7 +433,7 @@ export function SourceMangas() {
             <CustomTooltip title={t`Open in WebView`} disabled={!source?.homeUrl}>
                 <IconButton
                     disabled={!source?.homeUrl}
-                    href={source?.homeUrl ? requestManager.getWebviewUrl(source?.homeUrl) : ''}
+                    href={source?.homeUrl ? getWebViewUrl(source?.homeUrl) : ''}
                     rel="noreferrer"
                     target="_blank"
                     color="inherit"

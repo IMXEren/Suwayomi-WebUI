@@ -106,6 +106,7 @@ const { ExtensionStores } = loadable(
     () => import('@/features/extension/store/screens/ExtensionStores.tsx'),
     lazyLoadFallback,
 );
+const { WebView } = loadable(() => import('@/features/web-view/screens/WebView.tsx'), lazyLoadFallback);
 
 if (import.meta.env.DEV) {
     // Adds messages only in a dev environment
@@ -380,6 +381,7 @@ const MainApp = () => {
                             />
                         </Route>
                         <Route path={AppRoutes.tracker.match} element={<TrackerOAuthLogin />} />
+                        <Route path={AppRoutes.webView.match} element={<WebView />} />
                     </Route>
                 </Routes>
             </ErrorBoundary>
