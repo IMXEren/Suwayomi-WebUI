@@ -1,8 +1,4 @@
-* text=auto
-* text eol=lf
-
-# Windows forced line-endings
-/.idea/* text eol=crlf
+* text=auto eol=lf
 
 # Binary files types
 *.webp binary
