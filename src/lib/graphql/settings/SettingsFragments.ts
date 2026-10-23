@@ -134,6 +134,9 @@ export const SERVER_SETTINGS = gql`
         databasePassword
         useHikariConnectionPool
 
+        # Extensions
+        autoUpdateExtensions
+
         # WebView
         kcefEnabled
         # CEF (embedded, default) or PROWL_VNC (the external browser service's browser)

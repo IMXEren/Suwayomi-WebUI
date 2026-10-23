@@ -1020,6 +1020,10 @@ msgstr "Automatically select matches if they have at least the same latest chapt
 msgid "Automatically select matches if they have no missing chapters"
 msgstr "Automatically select matches if they have no missing chapters"
 
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Automatically update extensions"
+msgstr "Automatically update extensions"
+
 #: src/features/reader/settings/behaviour/ReaderBehaviourSettings.tsx
 msgid "Automatically use webtoon mode for entries that are detected to likely use the long strip format"
 msgstr "Automatically use webtoon mode for entries that are detected to likely use the long strip format"
@@ -1463,6 +1467,10 @@ msgstr "Chapters that were already swept keep their result. The remaining chapte
 #: src/features/archive/components/ArchiveIntegrityPanel.tsx
 msgid "Check automatically"
 msgstr "Check automatically"
+
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Check configured stores every 24 hours and install updates for installed extensions"
+msgstr "Check configured stores every 24 hours and install updates for installed extensions"
 
 #: src/features/library/screens/LibraryDuplicates.tsx
 msgid "Check description"
@@ -2783,6 +2791,10 @@ msgstr "Extension installed"
 #: src/features/extension/store/screens/ExtensionStores.tsx
 msgid "Extension stores"
 msgstr "Extension stores"
+
+#: src/features/settings/screens/ServerSettings.tsx
+msgid "Extensions"
+msgstr "Extensions"
 
 #: src/features/archive/components/ArchiveCanonicalWorksPanel.tsx
 msgid "Fail over"

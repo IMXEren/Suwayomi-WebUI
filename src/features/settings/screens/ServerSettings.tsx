@@ -752,6 +752,25 @@ export const ServerSettings = () => {
             </List>
             <List
                 subheader={
+                    <ListSubheader component="div" id="server-settings-extensions">
+                        {t`Extensions`}
+                    </ListSubheader>
+                }
+            >
+                <ListItem>
+                    <ListItemText
+                        primary={t`Automatically update extensions`}
+                        secondary={t`Check configured stores every 24 hours and install updates for installed extensions`}
+                    />
+                    <Switch
+                        edge="end"
+                        checked={serverSettings.autoUpdateExtensions}
+                        onChange={(e) => updateSetting('autoUpdateExtensions', e.target.checked)}
+                    />
+                </ListItem>
+            </List>
+            <List
+                subheader={
                     <ListSubheader component="div" id="server-settings-webview">
                         {t`WebView`}
                     </ListSubheader>

@@ -5756,6 +5756,7 @@ export type ServerSettingsFragment = {
     autoDownloadNewChapters: boolean;
     excludeEntryWithUnreadChapters: boolean;
     autoDownloadNewChaptersLimit: number;
+    autoUpdateExtensions: boolean;
     autoDownloadIgnoreReUploads: boolean;
     maxSourcesInParallel: number;
     excludeUnreadChapters: boolean;
@@ -5871,6 +5872,7 @@ export type ResetServerSettingsMutation = {
             autoDownloadNewChapters: boolean;
             excludeEntryWithUnreadChapters: boolean;
             autoDownloadNewChaptersLimit: number;
+            autoUpdateExtensions: boolean;
             autoDownloadIgnoreReUploads: boolean;
             maxSourcesInParallel: number;
             excludeUnreadChapters: boolean;
@@ -5996,6 +5998,7 @@ export type UpdateServerSettingsMutation = {
             autoDownloadNewChapters: boolean;
             excludeEntryWithUnreadChapters: boolean;
             autoDownloadNewChaptersLimit: number;
+            autoUpdateExtensions: boolean;
             autoDownloadIgnoreReUploads: boolean;
             maxSourcesInParallel: number;
             excludeUnreadChapters: boolean;
@@ -6117,6 +6120,7 @@ export type GetServerSettingsQuery = {
         autoDownloadNewChapters: boolean;
         excludeEntryWithUnreadChapters: boolean;
         autoDownloadNewChaptersLimit: number;
+        autoUpdateExtensions: boolean;
         autoDownloadIgnoreReUploads: boolean;
         maxSourcesInParallel: number;
         excludeUnreadChapters: boolean;

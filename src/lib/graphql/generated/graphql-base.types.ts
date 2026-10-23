@@ -3330,6 +3330,7 @@ export type PartialSettingsType = Settings & {
     autoDownloadIgnoreReUploads?: Maybe<Scalars['Boolean']['output']>;
     autoDownloadNewChapters?: Maybe<Scalars['Boolean']['output']>;
     autoDownloadNewChaptersLimit?: Maybe<Scalars['Int']['output']>;
+    autoUpdateExtensions?: Maybe<Scalars['Boolean']['output']>;
     backupInterval?: Maybe<Scalars['Int']['output']>;
     backupPath?: Maybe<Scalars['String']['output']>;
     backupTTL?: Maybe<Scalars['Int']['output']>;
@@ -3475,6 +3476,7 @@ export type PartialSettingsTypeInput = {
     autoDownloadIgnoreReUploads?: InputMaybe<Scalars['Boolean']['input']>;
     autoDownloadNewChapters?: InputMaybe<Scalars['Boolean']['input']>;
     autoDownloadNewChaptersLimit?: InputMaybe<Scalars['Int']['input']>;
+    autoUpdateExtensions?: InputMaybe<Scalars['Boolean']['input']>;
     backupInterval?: InputMaybe<Scalars['Int']['input']>;
     backupPath?: InputMaybe<Scalars['String']['input']>;
     backupTTL?: InputMaybe<Scalars['Int']['input']>;
@@ -4518,6 +4520,7 @@ export type Settings = {
     autoDownloadIgnoreReUploads?: Maybe<Scalars['Boolean']['output']>;
     autoDownloadNewChapters?: Maybe<Scalars['Boolean']['output']>;
     autoDownloadNewChaptersLimit?: Maybe<Scalars['Int']['output']>;
+    autoUpdateExtensions?: Maybe<Scalars['Boolean']['output']>;
     backupInterval?: Maybe<Scalars['Int']['output']>;
     backupPath?: Maybe<Scalars['String']['output']>;
     backupTTL?: Maybe<Scalars['Int']['output']>;
@@ -4710,6 +4713,7 @@ export type SettingsType = Settings & {
     autoDownloadIgnoreReUploads: Scalars['Boolean']['output'];
     autoDownloadNewChapters: Scalars['Boolean']['output'];
     autoDownloadNewChaptersLimit: Scalars['Int']['output'];
+    autoUpdateExtensions: Scalars['Boolean']['output'];
     backupInterval: Scalars['Int']['output'];
     backupPath: Scalars['String']['output'];
     backupTTL: Scalars['Int']['output'];

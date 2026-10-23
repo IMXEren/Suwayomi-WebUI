@@ -2496,6 +2496,7 @@ export type PartialSettingsTypeKeySpecifier = (
     | 'autoDownloadIgnoreReUploads'
     | 'autoDownloadNewChapters'
     | 'autoDownloadNewChaptersLimit'
+    | 'autoUpdateExtensions'
     | 'backupInterval'
     | 'backupPath'
     | 'backupTTL'
@@ -2632,6 +2633,7 @@ export type PartialSettingsTypeFieldPolicy = {
     autoDownloadIgnoreReUploads?: FieldPolicy<any> | FieldReadFunction<any>;
     autoDownloadNewChapters?: FieldPolicy<any> | FieldReadFunction<any>;
     autoDownloadNewChaptersLimit?: FieldPolicy<any> | FieldReadFunction<any>;
+    autoUpdateExtensions?: FieldPolicy<any> | FieldReadFunction<any>;
     backupInterval?: FieldPolicy<any> | FieldReadFunction<any>;
     backupPath?: FieldPolicy<any> | FieldReadFunction<any>;
     backupTTL?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -3238,6 +3240,7 @@ export type SettingsKeySpecifier = (
     | 'autoDownloadIgnoreReUploads'
     | 'autoDownloadNewChapters'
     | 'autoDownloadNewChaptersLimit'
+    | 'autoUpdateExtensions'
     | 'backupInterval'
     | 'backupPath'
     | 'backupTTL'
@@ -3373,6 +3376,7 @@ export type SettingsFieldPolicy = {
     autoDownloadIgnoreReUploads?: FieldPolicy<any> | FieldReadFunction<any>;
     autoDownloadNewChapters?: FieldPolicy<any> | FieldReadFunction<any>;
     autoDownloadNewChaptersLimit?: FieldPolicy<any> | FieldReadFunction<any>;
+    autoUpdateExtensions?: FieldPolicy<any> | FieldReadFunction<any>;
     backupInterval?: FieldPolicy<any> | FieldReadFunction<any>;
     backupPath?: FieldPolicy<any> | FieldReadFunction<any>;
     backupTTL?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -3560,6 +3564,7 @@ export type SettingsTypeKeySpecifier = (
     | 'autoDownloadIgnoreReUploads'
     | 'autoDownloadNewChapters'
     | 'autoDownloadNewChaptersLimit'
+    | 'autoUpdateExtensions'
     | 'backupInterval'
     | 'backupPath'
     | 'backupTTL'
@@ -3696,6 +3701,7 @@ export type SettingsTypeFieldPolicy = {
     autoDownloadIgnoreReUploads?: FieldPolicy<any> | FieldReadFunction<any>;
     autoDownloadNewChapters?: FieldPolicy<any> | FieldReadFunction<any>;
     autoDownloadNewChaptersLimit?: FieldPolicy<any> | FieldReadFunction<any>;
+    autoUpdateExtensions?: FieldPolicy<any> | FieldReadFunction<any>;
     backupInterval?: FieldPolicy<any> | FieldReadFunction<any>;
     backupPath?: FieldPolicy<any> | FieldReadFunction<any>;
     backupTTL?: FieldPolicy<any> | FieldReadFunction<any>;
