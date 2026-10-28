@@ -8,6 +8,8 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import HistoryIcon from '@mui/icons-material/History';
+import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
@@ -25,8 +27,14 @@ import { useDebounce } from '@/base/hooks/useDebounce.ts';
 import { createFuzzySearch, fuzzySearch } from '@/base/utils/FuzzySearch.ts';
 import { enhancedCleanup, escapeRegex } from '@/base/utils/Strings.ts';
 import { useMetadataServerSettings } from '@/features/settings/services/ServerSettingsMetadata.ts';
+import { useSearchHistory } from '@/base/hooks/useSearchHistory.ts';
 import { useNavBarContext } from '@/features/navigation-bar/NavbarContext.tsx';
 import { MediaQuery } from '@/base/utils/MediaQuery.tsx';
+import { useForceUpdate } from '@mantine/hooks';
+import List from '@mui/material/List';
+import { ListSubheader } from '@/base/components/lists/ListSubheader.tsx';
+import Button from '@mui/material/Button';
+import { OffsetContainer } from '@/base/OffsetComponent.tsx';
 
 /** Enough to be worth scrolling through, few enough to not cover the whole screen on mobile. */
 const MAX_SUGGESTIONS = 8;
@@ -34,21 +42,30 @@ const MAX_SUGGESTIONS = 8;
 /** Short enough to still feel immediate, long enough to rank a large library only once per pause in the typing. */
 const SUGGESTION_DEBOUNCE_MS = 150;
 
+const MAX_HISTORY_SUGGESTIONS = 5;
+
+type SearchSuggestion = {
+    label: string;
+    isFromHistory: boolean;
+};
+
 const getSubstringMatches = (query: string, suggestions: string[]): string[] =>
     suggestions.filter((suggestion) => enhancedCleanup(suggestion).includes(query));
 
 interface IProps {
+    searchHistoryKey: string;
     isClosable?: boolean;
     suggestions?: string[];
 }
 
 export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
-    const { isClosable = true, suggestions = STABLE_EMPTY_ARRAY } = props;
+    const { searchHistoryKey, isClosable = true, suggestions = STABLE_EMPTY_ARRAY } = props;
 
     const theme = useTheme();
     const { t } = useLingui();
     const { setHideTitle, navBarWidth } = useNavBarContext();
     const scrollbarYSize = MediaQuery.useGetScrollbarSize('Y');
+    const forceUpdate = useForceUpdate();
 
     const [prevLocationKey, setPrevLocationKey] = useState<string>();
     const location = useLocation();
@@ -61,10 +78,16 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
     const [liveAutoCompletion, setLiveAutoCompletion] = useState<string>();
 
     const [focused, setFocused] = useState(false);
+    const [hideSuggestions, setHideSuggestions] = useState(isSearchOpen);
 
     const {
         settings: { fuzzySearch: isFuzzySearchEnabled },
     } = useMetadataServerSettings();
+
+    const { history, addToHistory, removeFromHistory, clearHistory } = useSearchHistory(
+        searchHistoryKey,
+        MAX_HISTORY_SUGGESTIONS,
+    );
 
     if (prevLocationKey !== location.key) {
         setPrevLocationKey(location.key);
@@ -74,22 +97,26 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
 
     const isOpen = isSearchOpen || !!query;
 
-    const debouncedSearchString = useDebounce(searchString, SUGGESTION_DEBOUNCE_MS);
+    const debouncedSearchString = useDebounce(searchString, SUGGESTION_DEBOUNCE_MS).trim();
+    const showHistoryOptions = !debouncedSearchString;
 
     const fuzzySearchIndex = useMemo(
         () => (isOpen && isFuzzySearchEnabled ? createFuzzySearch(suggestions, []) : null),
         [isOpen, isFuzzySearchEnabled, suggestions],
     );
 
-    const options = useMemo<string[]>(() => {
-        const trimmedSearchString = debouncedSearchString.trim();
-
+    const { historyOptions, suggestionOptions } = useMemo(() => {
         const matches = fuzzySearchIndex
-            ? fuzzySearch(fuzzySearchIndex, trimmedSearchString, { limit: MAX_SUGGESTIONS })
-            : getSubstringMatches(enhancedCleanup(trimmedSearchString), suggestions);
+            ? fuzzySearch(fuzzySearchIndex, debouncedSearchString, { limit: MAX_SUGGESTIONS })
+            : getSubstringMatches(enhancedCleanup(debouncedSearchString), suggestions);
 
-        return [...new Set(matches)].slice(0, MAX_SUGGESTIONS);
-    }, [isOpen, debouncedSearchString, fuzzySearchIndex, suggestions]);
+        return {
+            historyOptions: history.map((label) => ({ label, isFromHistory: true })),
+            suggestionOptions: [...new Set(matches)]
+                .slice(0, MAX_SUGGESTIONS)
+                .map((label) => ({ label, isFromHistory: false })),
+        };
+    }, [debouncedSearchString, fuzzySearchIndex, suggestions, history]);
 
     const updateSearchOpenState = (open: boolean) => {
         if (!isClosable && !open) {
@@ -111,10 +138,13 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
         if (normalizedQuery === '') {
             return;
         }
+
         setLiveAutoCompletion(undefined);
         setSearchString(normalizedQuery);
+        addToHistory(normalizedQuery);
         setQuery(normalizedQuery);
         updateSearchOpenState(false);
+        setHideSuggestions(true);
     }
 
     const cancelSearch = () => {
@@ -122,6 +152,7 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
         setSearchString('');
         setQuery(undefined);
         updateSearchOpenState(false);
+        setHideSuggestions(false);
     };
     const handleBlur = () => {
         if (!searchString) {
@@ -155,19 +186,37 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
     );
 
     useEffect(() => {
+        if (isOpen) {
+            requestAnimationFrame(() => {
+                forceUpdate();
+            });
+        }
+
         setHideTitle(isOpen);
-        return () => setHideTitle(false);
+        return () => {
+            setHideTitle(false);
+        };
     }, [isOpen]);
 
     if (isOpen) {
         return (
-            <Autocomplete<string, false, true, true>
+            <Autocomplete<SearchSuggestion, false, true, true>
+                open={focused && !hideSuggestions}
                 freeSolo
                 disableClearable
                 forcePopupIcon={false}
+                openOnFocus
                 fullWidth
+                onKeyDown={() => {
+                    if (hideSuggestions) {
+                        setHideSuggestions(false);
+                    }
+                }}
                 onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
+                onBlur={() => {
+                    setFocused(false);
+                    setHideSuggestions(false);
+                }}
                 slotProps={{
                     popper: {
                         placement: 'bottom-start',
@@ -178,15 +227,18 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
                         },
                     },
                 }}
-                options={options}
+                options={showHistoryOptions ? historyOptions : suggestionOptions}
                 // the options are already ranked by relevance, re-filtering them would drop the typo tolerant hits
                 filterOptions={(unfilteredOptions) => unfilteredOptions}
+                getOptionLabel={(option) => (typeof option === 'string' ? option : option.label)}
+                groupBy={(option) => (option.isFromHistory ? t`Recent searches` : '')}
                 inputValue={searchString}
                 onInputChange={(_, value, reason) => {
                     // "reset" fires on mount and after selecting an option, both of which would overwrite the state
                     // that is kept in sync with the query param
                     if (reason === 'input') {
                         setSearchString(value);
+                        setHideSuggestions(false);
 
                         const tmpNormalizedValue = value.trimStart().toLowerCase();
 
@@ -199,17 +251,51 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
                             list.find((item) => item.toLowerCase().startsWith(tmpNormalizedValue));
 
                         const liveAutoCompletionString =
-                            findLiveAutoCompletion(options) ?? findLiveAutoCompletion(suggestions);
+                            findLiveAutoCompletion(suggestionOptions.map(({ label }) => label)) ??
+                            findLiveAutoCompletion(suggestions);
                         setLiveAutoCompletion(liveAutoCompletionString);
                     }
                 }}
                 onChange={(_, value) => {
-                    handleChange(value);
+                    handleChange(typeof value === 'string' ? value : value.label);
                 }}
+                renderGroup={(value) => (
+                    <OffsetContainer initial>
+                        <List
+                            subheader={
+                                value.group && (
+                                    <ListSubheader sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        {value.group}
+                                        <Button onClick={clearHistory}>{t`Delete all`}</Button>
+                                    </ListSubheader>
+                                )
+                            }
+                        >
+                            {value.children}
+                        </List>
+                    </OffsetContainer>
+                )}
                 renderOption={({ key, ...optionProps }, option) => (
                     <Box key={key} component="li" sx={{ gap: 1 }} {...optionProps}>
-                        <SearchIcon fontSize="small" />
-                        <TypographyMaxLines>{option}</TypographyMaxLines>
+                        {option.isFromHistory ? <HistoryIcon /> : <SearchIcon />}
+                        <Box sx={{ flexGrow: 1 }}>
+                            <CustomTooltip title={option.label} placement="right">
+                                <TypographyMaxLines sx={{ width: 'fit-content' }}>{option.label}</TypographyMaxLines>
+                            </CustomTooltip>
+                        </Box>
+                        {option.isFromHistory && (
+                            <CustomTooltip title={t`Delete`} placement="auto">
+                                <IconButton
+                                    edge="end"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        removeFromHistory(option.label);
+                                    }}
+                                >
+                                    <CloseIcon />
+                                </IconButton>
+                            </CustomTooltip>
+                        )}
                     </Box>
                 )}
                 renderInput={(params) => (
@@ -221,6 +307,8 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
                                     display: 'flex',
                                     alignItems: 'center',
                                     height: '100%',
+                                    width: '100%',
+                                    overflow: 'hidden',
                                     color: 'text.secondary',
                                     whiteSpace: 'pre',
                                     pointerEvents: 'none',
@@ -233,27 +321,26 @@ export const AppbarSearch: React.FunctionComponent<IProps> = (props) => {
                         )}
                         <SearchTextField
                             {...params}
+                            onClick={() => setHideSuggestions(false)}
                             autoFocus
                             variant="standard"
                             fullWidth
                             onCancel={cancelSearch}
                             onBlur={handleBlur}
                             inputRef={inputRef}
-                            sx={{
-                                ...theme.applyStyles('light', {
-                                    '& .MuiInput-underline:before': {
-                                        borderBottomColor: 'primary.contrastText', // Default color
-                                    },
-                                    '& .MuiInput-underline:hover:before': {
-                                        borderBottomColor: 'primary.contrastText', // Hover color
-                                    },
-                                    '& .MuiInput-underline:after': {
-                                        borderBottomColor: 'primary.dark', // Focused color
-                                    },
-                                }),
-                            }}
+                            sx={theme.applyStyles('light', {
+                                '& .MuiInput-underline:before': {
+                                    borderBottomColor: 'primary.contrastText', // Default color
+                                },
+                                '& .MuiInput-underline:hover:before': {
+                                    borderBottomColor: 'primary.contrastText', // Hover color
+                                },
+                                '& .MuiInput-underline:after': {
+                                    borderBottomColor: 'primary.dark', // Focused color
+                                },
+                            })}
                             cancelButtonProps={{
-                                sx: { ...theme.applyStyles('light', { color: 'primary.contrastText' }) },
+                                sx: theme.applyStyles('light', { color: 'primary.contrastText' }),
                             }}
                         />
                     </Box>

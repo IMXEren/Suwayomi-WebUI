@@ -15,6 +15,7 @@ import { UrlUtil } from '@/lib/UrlUtil.ts';
 import type { RouteStateSourceBrowse, SourceIdInfo } from '@/features/source/Source.types.ts';
 import type { RouteStateReader } from '@/features/reader/Reader.types.ts';
 import type { RouteStateSourcesSearchAll } from '@/features/global-search/SearchAll.types.ts';
+import { WebViewSearchParam } from '@/features/web-view/WebView.types.ts';
 
 type AppRouteInfo = {
     match: string;
@@ -194,6 +195,10 @@ export const AppRoutes = {
         match: 'updates',
         path: '/updates',
     },
+    archive: {
+        match: 'archive',
+        path: '/archive',
+    },
     history: {
         match: 'history',
         path: '/history',
@@ -213,14 +218,6 @@ export const AppRoutes = {
         match: 'migrate/*',
         path: '/migrate',
         children: {
-            singleMangaSearch: {
-                match: 'source/:sourceId/manga/:mangaId/search',
-                path: (sourceId: SourceIdInfo['id'], mangaId: MangaIdInfo['id'], query?: string | null | undefined) =>
-                    UrlUtil.addQueryParam(`/migrate/source/${sourceId}/manga/${mangaId}/search`, query),
-                state: (state: RouteStateSourcesSearchAll) => ({
-                    ...state,
-                }),
-            },
             manualSearch: {
                 match: 'manual-search/:mangaId',
                 path: (mangaId: MangaIdInfo['id'], query?: string | null | undefined) =>
@@ -242,6 +239,10 @@ export const AppRoutes = {
     more: {
         match: '/more',
         path: '/more',
+    },
+    webView: {
+        match: 'webview',
+        path: (url: string) => UrlUtil.addParams('/webview', { [WebViewSearchParam.URL]: url }),
     },
 } as const satisfies TAppRoutes;
 

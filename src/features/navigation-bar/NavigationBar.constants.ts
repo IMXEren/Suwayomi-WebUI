@@ -17,6 +17,8 @@ import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import GetAppOutlinedIcon from '@mui/icons-material/GetAppOutlined';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import ArchiveIcon from '@mui/icons-material/Archive';
+import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
 import InfoIcon from '@mui/icons-material/Info';
 import { useLingui } from '@lingui/react/macro';
@@ -85,6 +87,14 @@ const NAVIGATION_BAR_BASE_ITEMS = [
                 }),
             };
         },
+    },
+    {
+        path: AppRoutes.archive.path,
+        title: msg`Archive`,
+        SelectedIconComponent: ArchiveIcon,
+        IconComponent: ArchiveOutlinedIcon,
+        show: 'both',
+        moreGroup: NavBarItemMoreGroup.GENERAL,
     },
 ] as const satisfies RestrictedNavBarItem<'both'>[];
 

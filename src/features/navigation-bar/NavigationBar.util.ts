@@ -16,11 +16,13 @@ type NavBarItemDeviceFilterKey = `hide${Capitalize<NavbarItem['show']>}`;
 type FilterSettings = Pick<MetadataHistorySettings, 'hideHistory'> &
     Partial<Record<NavBarItemDeviceFilterKey, boolean>> & {
         hideMore?: boolean;
+        hideArchive?: boolean;
     };
 
 const ITEM_TO_VISIBLE_FILTER: Partial<Record<StaticAppRoute, keyof FilterSettings>> = {
     [AppRoutes.history.path]: 'hideHistory',
     [AppRoutes.more.path]: 'hideMore',
+    [AppRoutes.archive.path]: 'hideArchive',
 };
 
 export class NavigationBarUtil {

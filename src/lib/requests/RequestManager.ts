@@ -8,13 +8,15 @@
 
 import type {
     ApolloClient,
+    ApolloLink,
     DocumentNode,
     InMemoryCache,
     MaybeMasked,
     OperationVariables,
+    SubscriptionObservable,
     TypedDocumentNode,
 } from '@apollo/client/core';
-import { CombinedGraphQLErrors } from '@apollo/client/core';
+import { CombinedGraphQLErrors, Observable } from '@apollo/client/core';
 import { useMutation, useQuery, useSubscription } from '@apollo/client/react';
 import type { Reference } from '@apollo/client/utilities';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -58,8 +60,6 @@ import type {
     GetAboutQueryVariables,
     GetCategoriesSettingsQuery,
     GetCategoriesSettingsQueryVariables,
-    GetCategoryMangasQuery,
-    GetCategoryMangasQueryVariables,
     GetChapterPagesFetchMutation,
     GetChapterPagesFetchMutationVariables,
     GetChaptersHistoryQuery,
@@ -114,6 +114,8 @@ import type {
     KoSyncLoginMutationVariables,
     KoSyncLogoutMutation,
     KoSyncLogoutMutationVariables,
+    RefreshAccessTokenMutation,
+    RefreshAccessTokenMutationVariables,
     RefreshMangaMutation,
     RefreshMangaMutationVariables,
     RemoveExtensionStoreMutation,
@@ -196,14 +198,152 @@ import type {
     UpdateWebuiMutationVariables,
     UserLoginMutation,
     UserLoginMutationVariables,
-    UserRefreshMutation,
-    UserRefreshMutationVariables,
     ValidateBackupQuery,
     ValidateBackupQueryVariables,
     WebuiUpdateSubscription,
     WebuiUpdateSubscriptionVariables,
     WebviewClearCacheCookiesMutation,
     WebviewClearCacheCookiesMutationVariables,
+    ApproveChapterRevisionsMutation,
+    ApproveChapterRevisionsMutationVariables,
+    CancelArchiveBootstrapMutation,
+    CancelArchiveBootstrapMutationVariables,
+    CancelBackupRestoreMutation,
+    CancelBackupRestoreMutationVariables,
+    CleanupBackupRestoreMutation,
+    CleanupBackupRestoreMutationVariables,
+    GetArchiveApprovalBacklogQuery,
+    GetArchiveApprovalBacklogQueryVariables,
+    GetArchiveBootstrapProgressQuery,
+    GetArchiveBootstrapProgressQueryVariables,
+    GetArchiveOverviewQuery,
+    GetArchiveOverviewQueryVariables,
+    GetArchiveQueueQuery,
+    GetArchiveQueueQueryVariables,
+    GetBackupRestoreDetailQuery,
+    GetBackupRestoreDetailQueryVariables,
+    GetKomgaRescanStatusQuery,
+    GetKomgaRescanStatusQueryVariables,
+    GetMangaArchiveSettingsQuery,
+    GetMangaArchiveSettingsQueryVariables,
+    PauseArchiveBootstrapMutation,
+    PauseArchiveBootstrapMutationVariables,
+    RejectChapterRevisionsMutation,
+    RejectChapterRevisionsMutationVariables,
+    RequestKomgaRescanMutation,
+    RequestKomgaRescanMutationVariables,
+    ResumeArchiveBootstrapMutation,
+    ResumeArchiveBootstrapMutationVariables,
+    RetryArchiveBootstrapItemsMutation,
+    RetryArchiveBootstrapItemsMutationVariables,
+    RetryBackupRestoreHandoffMutation,
+    RetryBackupRestoreHandoffMutationVariables,
+    RetryBackupRestoreMutation,
+    RetryBackupRestoreMutationVariables,
+    RetryChapterRevisionArchivesMutation,
+    RetryChapterRevisionArchivesMutationVariables,
+    RetryChapterRevisionPruningsMutation,
+    RetryChapterRevisionPruningsMutationVariables,
+    RetryChapterRevisionPublicationsMutation,
+    RetryChapterRevisionPublicationsMutationVariables,
+    RetryChapterRevisionsMutation,
+    RetryChapterRevisionsMutationVariables,
+    RetryKomgaRescanMutation,
+    RetryKomgaRescanMutationVariables,
+    AcceptChapterRevisionCandidatesMutation,
+    AcceptChapterRevisionCandidatesMutationVariables,
+    CancelChapterRevisionSweepMutation,
+    CancelChapterRevisionSweepMutationVariables,
+    GetArchiveReviewCandidatesQuery,
+    GetArchiveReviewCandidatesQueryVariables,
+    GetArchiveRevisionComparisonPagesQuery,
+    GetArchiveRevisionComparisonPagesQueryVariables,
+    GetArchiveRevisionComparisonQuery,
+    GetArchiveRevisionComparisonQueryVariables,
+    GetArchiveSweepHistoryQuery,
+    GetArchiveSweepHistoryQueryVariables,
+    GetArchiveSweepItemsQuery,
+    GetArchiveSweepItemsQueryVariables,
+    GetArchiveSweepProgressQuery,
+    GetArchiveSweepProgressQueryVariables,
+    GetArchiveSweepSettingsQuery,
+    GetArchiveSweepSettingsQueryVariables,
+    GetArchiveSweepStateQuery,
+    GetArchiveSweepStateQueryVariables,
+    KeepBothChapterRevisionsMutation,
+    KeepBothChapterRevisionsMutationVariables,
+    KeepCurrentChapterRevisionsMutation,
+    KeepCurrentChapterRevisionsMutationVariables,
+    PauseChapterRevisionSweepMutation,
+    PauseChapterRevisionSweepMutationVariables,
+    RejectChapterRevisionCandidatesMutation,
+    RejectChapterRevisionCandidatesMutationVariables,
+    ResumeChapterRevisionSweepMutation,
+    ResumeChapterRevisionSweepMutationVariables,
+    RetryChapterRevisionSweepItemsMutation,
+    RetryChapterRevisionSweepItemsMutationVariables,
+    StartChapterRevisionSweepMutation,
+    StartChapterRevisionSweepMutationVariables,
+    UpdateArchiveSweepSettingsMutation,
+    UpdateArchiveSweepSettingsMutationVariables,
+    CancelChapterIntegrityAuditMutation,
+    CancelChapterIntegrityAuditMutationVariables,
+    GetArchiveDeliverySettingsQuery,
+    GetArchiveDeliverySettingsQueryVariables,
+    GetArchiveIntegrityHistoryQuery,
+    GetArchiveIntegrityHistoryQueryVariables,
+    GetArchiveIntegrityItemsQuery,
+    GetArchiveIntegrityItemsQueryVariables,
+    GetArchiveIntegrityProgressQuery,
+    GetArchiveIntegrityProgressQueryVariables,
+    GetArchiveIntegritySettingsQuery,
+    GetArchiveIntegritySettingsQueryVariables,
+    GetArchiveIntegrityStateQuery,
+    GetArchiveIntegrityStateQueryVariables,
+    GetArchiveRevisionHistoryQuery,
+    GetArchiveRevisionHistoryQueryVariables,
+    GetArchiveRevisionRollbacksQuery,
+    GetArchiveRevisionRollbacksQueryVariables,
+    PauseChapterIntegrityAuditMutation,
+    PauseChapterIntegrityAuditMutationVariables,
+    ResumeChapterIntegrityAuditMutation,
+    ResumeChapterIntegrityAuditMutationVariables,
+    RetryChapterIntegrityAuditItemsMutation,
+    RetryChapterIntegrityAuditItemsMutationVariables,
+    StartChapterIntegrityAuditMutation,
+    StartChapterIntegrityAuditMutationVariables,
+    UpdateArchiveIntegritySettingsMutation,
+    UpdateArchiveIntegritySettingsMutationVariables,
+    AttachMangaToCanonicalWorkMutation,
+    AttachMangaToCanonicalWorkMutationVariables,
+    ChangeCanonicalBindingMutation,
+    ChangeCanonicalBindingMutationVariables,
+    CreateCanonicalWorkMutation,
+    CreateCanonicalWorkMutationVariables,
+    DeleteCanonicalWorkMutation,
+    DeleteCanonicalWorkMutationVariables,
+    DetachCanonicalBindingMutation,
+    DetachCanonicalBindingMutationVariables,
+    ExportCanonicalIdentityMutation,
+    ExportCanonicalIdentityMutationVariables,
+    FailoverCanonicalWorkMutation,
+    FailoverCanonicalWorkMutationVariables,
+    GetCanonicalIdentityStatusQuery,
+    GetCanonicalIdentityStatusQueryVariables,
+    GetCanonicalWorkBindingsQuery,
+    GetCanonicalWorkBindingsQueryVariables,
+    GetCanonicalWorksQuery,
+    GetCanonicalWorksQueryVariables,
+    GetMangaCanonicalBindingQuery,
+    GetMangaCanonicalBindingQueryVariables,
+    ImportCanonicalIdentityMutation,
+    ImportCanonicalIdentityMutationVariables,
+    PromoteCanonicalBindingMutation,
+    PromoteCanonicalBindingMutationVariables,
+    RollbackChapterRevisionMutation,
+    RollbackChapterRevisionMutationVariables,
+    UpdateCanonicalWorkMutation,
+    UpdateCanonicalWorkMutationVariables,
 } from '@/lib/graphql/generated/graphql.ts';
 import type {
     CreateBackupInput,
@@ -263,12 +403,16 @@ import {
     UPDATE_MANGAS,
     UPDATE_MANGAS_CATEGORIES,
 } from '@/lib/graphql/manga/MangaMutation.ts';
-import { GET_MANGA_TO_MIGRATE, GET_MANGA_TRACK_RECORDS, GET_MANGAS_LIBRARY } from '@/lib/graphql/manga/MangaQuery.ts';
+import {
+    GET_MANGA_ARCHIVE_SETTINGS,
+    GET_MANGA_TO_MIGRATE,
+    GET_MANGA_TRACK_RECORDS,
+    GET_MANGAS_LIBRARY,
+} from '@/lib/graphql/manga/MangaQuery.ts';
 import {
     GET_CATEGORIES_BASE,
     GET_CATEGORIES_LIBRARY,
     GET_CATEGORIES_SETTINGS,
-    GET_CATEGORY_MANGAS,
 } from '@/lib/graphql/category/CategoryQuery.ts';
 import {
     GET_SOURCE_MANGAS_FETCH,
@@ -312,6 +456,79 @@ import { GET_LAST_UPDATE_TIMESTAMP, GET_UPDATE_STATUS } from '@/lib/graphql/upda
 import { CustomCache } from '@/lib/storage/CustomCache.ts';
 import { CREATE_BACKUP, RESTORE_BACKUP } from '@/lib/graphql/backup/BackupMutation.ts';
 import { GET_RESTORE_STATUS, VALIDATE_BACKUP } from '@/lib/graphql/backup/BackupQuery.ts';
+import {
+    GET_ARCHIVE_APPROVAL_BACKLOG,
+    GET_ARCHIVE_BOOTSTRAP_PROGRESS,
+    GET_ARCHIVE_DELIVERY_SETTINGS,
+    GET_ARCHIVE_INTEGRITY_HISTORY,
+    GET_ARCHIVE_INTEGRITY_ITEMS,
+    GET_ARCHIVE_INTEGRITY_PROGRESS,
+    GET_ARCHIVE_INTEGRITY_SETTINGS,
+    GET_ARCHIVE_INTEGRITY_STATE,
+    GET_ARCHIVE_OVERVIEW,
+    GET_ARCHIVE_QUEUE,
+    GET_ARCHIVE_REVIEW_CANDIDATES,
+    GET_ARCHIVE_REVISION_COMPARISON,
+    GET_ARCHIVE_REVISION_COMPARISON_PAGES,
+    GET_ARCHIVE_REVISION_HISTORY,
+    GET_ARCHIVE_REVISION_ROLLBACKS,
+    GET_ARCHIVE_SWEEP_HISTORY,
+    GET_ARCHIVE_SWEEP_ITEMS,
+    GET_ARCHIVE_SWEEP_PROGRESS,
+    GET_ARCHIVE_SWEEP_SETTINGS,
+    GET_ARCHIVE_SWEEP_STATE,
+    GET_BACKUP_RESTORE_DETAIL,
+    GET_CANONICAL_IDENTITY_STATUS,
+    GET_CANONICAL_WORKS,
+    GET_CANONICAL_WORK_BINDINGS,
+    GET_KOMGA_RESCAN_STATUS,
+    GET_MANGA_CANONICAL_BINDING,
+} from '@/lib/graphql/archive/ArchiveQuery.ts';
+import {
+    ACCEPT_CHAPTER_REVISION_CANDIDATES,
+    APPROVE_CHAPTER_REVISIONS,
+    ATTACH_MANGA_TO_CANONICAL_WORK,
+    CANCEL_ARCHIVE_BOOTSTRAP,
+    CANCEL_BACKUP_RESTORE,
+    CANCEL_CHAPTER_INTEGRITY_AUDIT,
+    CANCEL_CHAPTER_REVISION_SWEEP,
+    CHANGE_CANONICAL_BINDING,
+    CLEANUP_BACKUP_RESTORE,
+    CREATE_CANONICAL_WORK,
+    DELETE_CANONICAL_WORK,
+    DETACH_CANONICAL_BINDING,
+    EXPORT_CANONICAL_IDENTITY,
+    FAILOVER_CANONICAL_WORK,
+    IMPORT_CANONICAL_IDENTITY,
+    KEEP_BOTH_CHAPTER_REVISIONS,
+    KEEP_CURRENT_CHAPTER_REVISIONS,
+    PAUSE_ARCHIVE_BOOTSTRAP,
+    PAUSE_CHAPTER_INTEGRITY_AUDIT,
+    PAUSE_CHAPTER_REVISION_SWEEP,
+    PROMOTE_CANONICAL_BINDING,
+    REJECT_CHAPTER_REVISION_CANDIDATES,
+    REJECT_CHAPTER_REVISIONS,
+    REQUEST_KOMGA_RESCAN,
+    RESUME_ARCHIVE_BOOTSTRAP,
+    RESUME_CHAPTER_INTEGRITY_AUDIT,
+    RESUME_CHAPTER_REVISION_SWEEP,
+    RETRY_ARCHIVE_BOOTSTRAP_ITEMS,
+    RETRY_BACKUP_RESTORE,
+    RETRY_BACKUP_RESTORE_HANDOFF,
+    RETRY_CHAPTER_INTEGRITY_AUDIT_ITEMS,
+    RETRY_CHAPTER_REVISION_ARCHIVES,
+    RETRY_CHAPTER_REVISION_PRUNINGS,
+    RETRY_CHAPTER_REVISION_PUBLICATIONS,
+    RETRY_CHAPTER_REVISION_SWEEP_ITEMS,
+    RETRY_CHAPTER_REVISIONS,
+    RETRY_KOMGA_RESCAN,
+    ROLLBACK_CHAPTER_REVISION,
+    START_CHAPTER_INTEGRITY_AUDIT,
+    START_CHAPTER_REVISION_SWEEP,
+    UPDATE_ARCHIVE_INTEGRITY_SETTINGS,
+    UPDATE_ARCHIVE_SWEEP_SETTINGS,
+    UPDATE_CANONICAL_WORK,
+} from '@/lib/graphql/archive/ArchiveMutation.ts';
 import { DOWNLOAD_STATUS_SUBSCRIPTION } from '@/lib/graphql/download/DownloaderSubscription.ts';
 import { UPDATER_SUBSCRIPTION } from '@/lib/graphql/updater/UpdaterSubscription.ts';
 import { GET_SERVER_SETTINGS } from '@/lib/graphql/settings/SettingsQuery.ts';
@@ -345,13 +562,21 @@ import { CHAPTER_META_FIELDS } from '@/lib/graphql/chapter/ChapterFragments.ts';
 import type { MetadataMigrationSettings } from '@/features/migration/Migration.types.ts';
 import type { MangaIdInfo } from '@/features/manga/Manga.types.ts';
 import { updateMetadataList } from '@/features/metadata/services/MetadataApolloCacheHandler.ts';
-import { USER_LOGIN, USER_REFRESH } from '@/lib/graphql/user/UserMutation.ts';
+import { USER_LOGIN, REFRESH_ACCESS_TOKEN } from '@/lib/graphql/user/UserMutation.ts';
 import { AuthManager } from '@/features/authentication/AuthManager.ts';
 import { useLocalStorage } from '@/base/hooks/useStorage.tsx';
 import { KO_SYNC_LOGIN, KO_SYNC_LOGOUT } from '@/lib/graphql/koreader/KoreaderSyncMutation.ts';
 import { GET_KO_SYNC_STATUS } from '@/lib/graphql/koreader/KoreaderSyncQuery.ts';
 import { ImageCache } from '@/lib/service-worker/ImageCache.ts';
 import { Sources } from '@/features/source/services/Sources.ts';
+import type {
+    CloseWebViewMutation,
+    CloseWebViewMutationVariables,
+    GetWebViewTabsQuery,
+    GetWebViewTabsQueryVariables,
+    OpenWebViewMutation,
+    OpenWebViewMutationVariables,
+} from '@/features/web-view/WebView.types.ts';
 import uniqBy from 'lodash/fp/uniqBy';
 import { EXTENSION_STORE_FIELDS } from '@/lib/graphql/extension/store/ExtensionStoreFragments.ts';
 import { ADD_EXTENSION_STORE, REMOVE_EXTENSION_STORE } from '@/lib/graphql/extension/store/ExtensionStoreMutation.ts';
@@ -360,7 +585,8 @@ import { GET_EXTENSION_STORE, GET_EXTENSION_STORES } from '@/lib/graphql/extensi
 import { SYNC_SUBSCRIPTION } from '@/lib/graphql/sync/SyncSubscription.ts';
 import { START_SYNC } from '@/lib/graphql/sync/SyncMutation.ts';
 import { GET_SYNC_STATUS } from '@/lib/graphql/sync/SyncQuery.ts';
-import { WEBVIEW_CLEAR_CACHE_COOKIES } from '@/lib/graphql/web-view/WebViewMutation.ts';
+import { CLOSE_WEB_VIEW, OPEN_WEB_VIEW, WEBVIEW_CLEAR_CACHE_COOKIES } from '@/lib/graphql/web-view/WebViewMutation.ts';
+import { GET_WEB_VIEW_TABS } from '@/lib/graphql/web-view/WebViewQuery.ts';
 
 enum GQLMethod {
     QUERY = 'QUERY',
@@ -368,6 +594,7 @@ enum GQLMethod {
     USE_MUTATION = 'USE_MUTATION',
     MUTATION = 'MUTATION',
     USE_SUBSCRIPTION = 'USE_SUBSCRIPTION',
+    SUBSCRIPTION = 'SUBCRIPTION',
 }
 
 type CustomApolloOptions = {
@@ -406,6 +633,10 @@ type ApolloPaginatedMutationOptions<Data = any, Variables extends OperationVaria
 > & { skipRequest?: boolean };
 type SubscriptionHookOptions<Data = any, Variables extends OperationVariables = OperationVariables> = Partial<
     useSubscription.Options<Data, Variables>
+> &
+    Omit<CustomApolloOptions, 'addAbortSignal'> & { addAbortSignal?: never };
+type SubscriptionOptions<Data = any, Variables extends OperationVariables = OperationVariables> = Partial<
+    Omit<ApolloClient.SubscribeOptions<Data, Variables>, 'query'>
 > &
     Omit<CustomApolloOptions, 'addAbortSignal'> & { addAbortSignal?: never };
 
@@ -475,9 +706,9 @@ export const SPECIAL_ED_SOURCES = {
 export class RequestManager {
     public static readonly API_VERSION = '/api/v1/';
 
-    public readonly graphQLClient = new GraphQLClient(this.refreshUser.bind(this));
+    public readonly graphQLClient = new GraphQLClient(this.refreshAccessToken.bind(this));
 
-    private readonly restClient: RestClient = new RestClient(this.refreshUser.bind(this));
+    private readonly restClient: RestClient = new RestClient(this.refreshAccessToken.bind(this));
 
     private readonly cache = new CustomCache();
 
@@ -543,7 +774,13 @@ export class RequestManager {
     }
 
     public getWebviewUrl(url: string): string {
-        return `${this.getValidUrlFor('webview')}#${url}`;
+        // The WebView page reads the token from the query string and passes it as the WebSocket
+        // subprotocol, because browsers cannot set headers on a WebSocket handshake. Without it
+        // the socket is unauthenticated and the page asks for a login even though the app is
+        // already signed in.
+        const token = AuthManager.getAccessToken();
+        const query = token ? `?token=${encodeURIComponent(token)}` : '';
+        return `${this.getValidUrlFor('webview')}${query}#${url}`;
     }
 
     public clearBrowseCacheFor(sourceId: string) {
@@ -1185,6 +1422,13 @@ export class RequestManager {
     ): useSubscription.Result<Data>;
 
     private doRequest<Data, Variables extends OperationVariables = OperationVariables>(
+        method: GQLMethod.SUBSCRIPTION,
+        operation: DocumentNode | TypedDocumentNode<Data, Variables>,
+        variables: Variables | undefined,
+        options?: SubscriptionOptions<Data, Variables>,
+    ): SubscriptionObservable<ApolloClient.SubscribeResult<MaybeMasked<Data>>>;
+
+    private doRequest<Data, Variables extends OperationVariables = OperationVariables>(
         method: GQLMethod,
         operation: DocumentNode | TypedDocumentNode<Data, Variables>,
         variables: Variables | undefined,
@@ -1193,13 +1437,15 @@ export class RequestManager {
             | QueryHookOptions<Data, Variables>
             | MutationHookOptions<Data, Variables>
             | MutationOptions<Data, Variables>
-            | SubscriptionHookOptions<Data, Variables>,
+            | SubscriptionHookOptions<Data, Variables>
+            | SubscriptionOptions<Data, Variables>,
     ):
         | AbortabaleApolloQueryResponse<Data>
         | AbortableApolloUseQueryResponse<Data, Variables>
         | AbortableApolloUseMutationResponse<Data, Variables>
         | AbortableApolloMutationResponse<Data>
-        | useSubscription.Result<Data> {
+        | useSubscription.Result<Data>
+        | SubscriptionObservable<ApolloClient.SubscribeResult<MaybeMasked<Data>>> {
         const { signal, abortRequest } = this.createAbortController();
         switch (method) {
             case GQLMethod.QUERY: {
@@ -1290,6 +1536,17 @@ export class RequestManager {
                 } as useSubscription.Options<Data, Variables>);
 
                 this.graphQLClient.useRestartSubscription(subscription.restart);
+
+                return subscription;
+            }
+            case GQLMethod.SUBSCRIPTION: {
+                const subscription = this.graphQLClient.client.subscribe({
+                    query: operation,
+                    variables,
+                    ...(options as SubscriptionOptions<Data, Variables>),
+                } as ApolloClient.SubscribeOptions<Data, Variables>);
+
+                this.graphQLClient.registerSubscription(subscription.restart);
 
                 return subscription;
             }
@@ -1424,6 +1681,12 @@ export class RequestManager {
         );
     }
 
+    public getAbout(
+        options?: QueryOptions<GetAboutQueryVariables, GetAboutQuery>,
+    ): AbortabaleApolloQueryResponse<GetAboutQuery> {
+        return this.doRequest(GQLMethod.QUERY, GET_ABOUT, {}, options);
+    }
+
     public useGetAbout(
         options?: QueryHookOptions<GetAboutQuery, GetAboutQueryVariables>,
     ): AbortableApolloUseQueryResponse<GetAboutQuery, GetAboutQueryVariables> {
@@ -1534,6 +1797,54 @@ export class RequestManager {
         options?: QueryHookOptions<GetExtensionsQuery, GetExtensionsQueryVariables>,
     ): AbortableApolloUseQueryResponse<GetExtensionsQuery, GetExtensionsQueryVariables> {
         return this.doRequest(GQLMethod.USE_QUERY, GET_EXTENSIONS, {}, options);
+    }
+
+    public getExtensionListFetch(
+        options?: MutationOptions<GetExtensionsFetchMutation, GetExtensionsFetchMutationVariables>,
+    ): AbortableApolloMutationResponse<GetExtensionsFetchMutation> {
+        const request = this.doRequest<GetExtensionsFetchMutation, GetExtensionsFetchMutationVariables>(
+            GQLMethod.MUTATION,
+            GET_EXTENSIONS_FETCH,
+            {},
+            {
+                ...options,
+                refetchQueries: [GET_EXTENSIONS],
+                update(cache, { data: mutationData }) {
+                    if (!mutationData?.fetchExtensions?.extensions) {
+                        return;
+                    }
+
+                    cache.updateQuery<GetExtensionsQuery, GetExtensionsQueryVariables>(
+                        { query: GET_EXTENSIONS },
+                        () => ({
+                            __typename: 'Query',
+                            extensions: {
+                                __typename: 'ExtensionNodeList',
+                                nodes: mutationData?.fetchExtensions?.extensions ?? [],
+                                pageInfo: {
+                                    __typename: 'PageInfo',
+                                    hasNextPage: false,
+                                    hasPreviousPage: false,
+                                    startCursor: null,
+                                    endCursor: null,
+                                },
+                                totalCount: mutationData?.fetchExtensions?.extensions.length ?? 0,
+                            },
+                        }),
+                    );
+                },
+            },
+        );
+
+        request.response.then((result) => {
+            if (!result.data?.fetchExtensions?.extensions) {
+                return;
+            }
+
+            this.cache.cacheResponse(EXTENSION_LIST_CACHE_KEY, undefined, result);
+        });
+
+        return request;
     }
 
     public useExtensionListFetch(
@@ -3062,31 +3373,22 @@ export class RequestManager {
 
     public useGetCategoryMangas(
         id: number,
+        isDefault: boolean,
         options?: QueryHookOptions<GetMangasLibraryQuery, GetMangasLibraryQueryVariables>,
     ): AbortableApolloUseQueryResponse<GetMangasLibraryQuery, GetMangasLibraryQueryVariables> {
-        const isDefaultCategory = id === 0;
-        if (isDefaultCategory) {
-            // hacky way of loading the default category mangas - some stuff won't work but since that is not used anyway, it won't be a problem
-            // can't be loaded via "useGetMangas" because mangas are not actually mapped to the default category in the database
-            const { data, ...result } = this.doRequest<GetCategoryMangasQuery, GetCategoryMangasQueryVariables>(
-                GQLMethod.USE_QUERY,
-                GET_CATEGORY_MANGAS,
-                { id },
-                options as QueryHookOptions<GetCategoryMangasQuery, GetCategoryMangasQueryVariables>,
-            );
-
-            return {
-                ...result,
-                data: data
-                    ? {
-                          ...data?.category,
-                          __typename: 'Query',
-                      }
-                    : undefined,
-            } as unknown as AbortableApolloUseQueryResponse<GetMangasLibraryQuery, GetMangasLibraryQueryVariables>;
-        }
-
-        return this.useGetMangas(GET_MANGAS_LIBRARY, { condition: { inLibrary: true, categoryIds: [id] } }, options);
+        return this.useGetMangas(
+            GET_MANGAS_LIBRARY,
+            {
+                filter: {
+                    inLibrary: { equalTo: true },
+                    categoryId: {
+                        isNull: isDefault,
+                        in: isDefault ? undefined : [id],
+                    },
+                },
+            },
+            options,
+        );
     }
 
     public deleteCategory(
@@ -3316,6 +3618,971 @@ export class RequestManager {
         options?: QueryHookOptions<GetRestoreStatusQuery, GetRestoreStatusQueryVariables>,
     ): AbortableApolloUseQueryResponse<GetRestoreStatusQuery, GetRestoreStatusQueryVariables> {
         return this.doRequest(GQLMethod.USE_QUERY, GET_RESTORE_STATUS, { id }, options);
+    }
+
+    public useGetArchiveOverview(
+        options?: QueryHookOptions<GetArchiveOverviewQuery, GetArchiveOverviewQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveOverviewQuery, GetArchiveOverviewQueryVariables> {
+        return this.doRequest<GetArchiveOverviewQuery, GetArchiveOverviewQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_OVERVIEW,
+            {},
+            options,
+        );
+    }
+
+    public useGetMangaArchiveSettings(
+        variables: GetMangaArchiveSettingsQueryVariables,
+        options?: QueryHookOptions<GetMangaArchiveSettingsQuery, GetMangaArchiveSettingsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetMangaArchiveSettingsQuery, GetMangaArchiveSettingsQueryVariables> {
+        return this.doRequest<GetMangaArchiveSettingsQuery, GetMangaArchiveSettingsQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_MANGA_ARCHIVE_SETTINGS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveApprovalBacklog(
+        variables: GetArchiveApprovalBacklogQueryVariables,
+        options?: QueryHookOptions<GetArchiveApprovalBacklogQuery, GetArchiveApprovalBacklogQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveApprovalBacklogQuery, GetArchiveApprovalBacklogQueryVariables> {
+        return this.doRequest<GetArchiveApprovalBacklogQuery, GetArchiveApprovalBacklogQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_APPROVAL_BACKLOG,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveApprovalBacklogPage(
+        variables: GetArchiveApprovalBacklogQueryVariables,
+        options?: QueryOptions<GetArchiveApprovalBacklogQueryVariables, GetArchiveApprovalBacklogQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveApprovalBacklogQuery> {
+        return this.doRequest<GetArchiveApprovalBacklogQuery, GetArchiveApprovalBacklogQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_APPROVAL_BACKLOG,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveQueue(
+        variables: GetArchiveQueueQueryVariables,
+        options?: QueryHookOptions<GetArchiveQueueQuery, GetArchiveQueueQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveQueueQuery, GetArchiveQueueQueryVariables> {
+        return this.doRequest<GetArchiveQueueQuery, GetArchiveQueueQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_QUEUE,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveQueuePage(
+        variables: GetArchiveQueueQueryVariables,
+        options?: QueryOptions<GetArchiveQueueQueryVariables, GetArchiveQueueQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveQueueQuery> {
+        return this.doRequest<GetArchiveQueueQuery, GetArchiveQueueQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_QUEUE,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveBootstrapProgress(
+        variables: GetArchiveBootstrapProgressQueryVariables,
+        options?: QueryHookOptions<GetArchiveBootstrapProgressQuery, GetArchiveBootstrapProgressQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveBootstrapProgressQuery, GetArchiveBootstrapProgressQueryVariables> {
+        return this.doRequest<GetArchiveBootstrapProgressQuery, GetArchiveBootstrapProgressQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_BOOTSTRAP_PROGRESS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetBackupRestoreDetail(
+        restoreId: string,
+        options?: QueryHookOptions<GetBackupRestoreDetailQuery, GetBackupRestoreDetailQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetBackupRestoreDetailQuery, GetBackupRestoreDetailQueryVariables> {
+        return this.doRequest<GetBackupRestoreDetailQuery, GetBackupRestoreDetailQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_BACKUP_RESTORE_DETAIL,
+            { restoreId },
+            options,
+        );
+    }
+
+    public useGetKomgaRescanStatus(
+        options?: QueryHookOptions<GetKomgaRescanStatusQuery, GetKomgaRescanStatusQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetKomgaRescanStatusQuery, GetKomgaRescanStatusQueryVariables> {
+        return this.doRequest<GetKomgaRescanStatusQuery, GetKomgaRescanStatusQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_KOMGA_RESCAN_STATUS,
+            {},
+            options,
+        );
+    }
+
+    public approveChapterRevisions(
+        ids: number[],
+        options?: MutationOptions<ApproveChapterRevisionsMutation, ApproveChapterRevisionsMutationVariables>,
+    ): AbortableApolloMutationResponse<ApproveChapterRevisionsMutation> {
+        return this.doRequest<ApproveChapterRevisionsMutation, ApproveChapterRevisionsMutationVariables>(
+            GQLMethod.MUTATION,
+            APPROVE_CHAPTER_REVISIONS,
+            { ids },
+            options,
+        );
+    }
+
+    public rejectChapterRevisions(
+        ids: number[],
+        options?: MutationOptions<RejectChapterRevisionsMutation, RejectChapterRevisionsMutationVariables>,
+    ): AbortableApolloMutationResponse<RejectChapterRevisionsMutation> {
+        return this.doRequest<RejectChapterRevisionsMutation, RejectChapterRevisionsMutationVariables>(
+            GQLMethod.MUTATION,
+            REJECT_CHAPTER_REVISIONS,
+            { ids },
+            options,
+        );
+    }
+
+    public retryChapterRevisions(
+        ids: number[],
+        options?: MutationOptions<RetryChapterRevisionsMutation, RetryChapterRevisionsMutationVariables>,
+    ): AbortableApolloMutationResponse<RetryChapterRevisionsMutation> {
+        return this.doRequest<RetryChapterRevisionsMutation, RetryChapterRevisionsMutationVariables>(
+            GQLMethod.MUTATION,
+            RETRY_CHAPTER_REVISIONS,
+            { ids },
+            options,
+        );
+    }
+
+    public retryChapterRevisionArchives(
+        ids: number[],
+        options?: MutationOptions<RetryChapterRevisionArchivesMutation, RetryChapterRevisionArchivesMutationVariables>,
+    ): AbortableApolloMutationResponse<RetryChapterRevisionArchivesMutation> {
+        return this.doRequest<RetryChapterRevisionArchivesMutation, RetryChapterRevisionArchivesMutationVariables>(
+            GQLMethod.MUTATION,
+            RETRY_CHAPTER_REVISION_ARCHIVES,
+            { ids },
+            options,
+        );
+    }
+
+    public retryChapterRevisionPublications(
+        ids: number[],
+        options?: MutationOptions<
+            RetryChapterRevisionPublicationsMutation,
+            RetryChapterRevisionPublicationsMutationVariables
+        >,
+    ): AbortableApolloMutationResponse<RetryChapterRevisionPublicationsMutation> {
+        return this.doRequest<
+            RetryChapterRevisionPublicationsMutation,
+            RetryChapterRevisionPublicationsMutationVariables
+        >(GQLMethod.MUTATION, RETRY_CHAPTER_REVISION_PUBLICATIONS, { ids }, options);
+    }
+
+    public retryChapterRevisionPrunings(
+        ids: number[],
+        options?: MutationOptions<RetryChapterRevisionPruningsMutation, RetryChapterRevisionPruningsMutationVariables>,
+    ): AbortableApolloMutationResponse<RetryChapterRevisionPruningsMutation> {
+        return this.doRequest<RetryChapterRevisionPruningsMutation, RetryChapterRevisionPruningsMutationVariables>(
+            GQLMethod.MUTATION,
+            RETRY_CHAPTER_REVISION_PRUNINGS,
+            { ids },
+            options,
+        );
+    }
+
+    public requestKomgaRescan(
+        options?: MutationOptions<RequestKomgaRescanMutation, RequestKomgaRescanMutationVariables>,
+    ): AbortableApolloMutationResponse<RequestKomgaRescanMutation> {
+        return this.doRequest<RequestKomgaRescanMutation, RequestKomgaRescanMutationVariables>(
+            GQLMethod.MUTATION,
+            REQUEST_KOMGA_RESCAN,
+            {},
+            options,
+        );
+    }
+
+    public retryKomgaRescan(
+        options?: MutationOptions<RetryKomgaRescanMutation, RetryKomgaRescanMutationVariables>,
+    ): AbortableApolloMutationResponse<RetryKomgaRescanMutation> {
+        return this.doRequest<RetryKomgaRescanMutation, RetryKomgaRescanMutationVariables>(
+            GQLMethod.MUTATION,
+            RETRY_KOMGA_RESCAN,
+            {},
+            options,
+        );
+    }
+
+    public useGetArchiveReviewCandidates(
+        variables: GetArchiveReviewCandidatesQueryVariables,
+        options?: QueryHookOptions<GetArchiveReviewCandidatesQuery, GetArchiveReviewCandidatesQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveReviewCandidatesQuery, GetArchiveReviewCandidatesQueryVariables> {
+        return this.doRequest<GetArchiveReviewCandidatesQuery, GetArchiveReviewCandidatesQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_REVIEW_CANDIDATES,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveReviewCandidatesPage(
+        variables: GetArchiveReviewCandidatesQueryVariables,
+        options?: QueryOptions<GetArchiveReviewCandidatesQueryVariables, GetArchiveReviewCandidatesQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveReviewCandidatesQuery> {
+        return this.doRequest<GetArchiveReviewCandidatesQuery, GetArchiveReviewCandidatesQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_REVIEW_CANDIDATES,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveRevisionComparison(
+        variables: GetArchiveRevisionComparisonQueryVariables,
+        options?: QueryHookOptions<GetArchiveRevisionComparisonQuery, GetArchiveRevisionComparisonQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveRevisionComparisonQuery, GetArchiveRevisionComparisonQueryVariables> {
+        return this.doRequest<GetArchiveRevisionComparisonQuery, GetArchiveRevisionComparisonQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_REVISION_COMPARISON,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveRevisionComparisonPages(
+        variables: GetArchiveRevisionComparisonPagesQueryVariables,
+        options?: QueryHookOptions<
+            GetArchiveRevisionComparisonPagesQuery,
+            GetArchiveRevisionComparisonPagesQueryVariables
+        >,
+    ): AbortableApolloUseQueryResponse<
+        GetArchiveRevisionComparisonPagesQuery,
+        GetArchiveRevisionComparisonPagesQueryVariables
+    > {
+        return this.doRequest<GetArchiveRevisionComparisonPagesQuery, GetArchiveRevisionComparisonPagesQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_REVISION_COMPARISON_PAGES,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveRevisionComparisonPagesPage(
+        variables: GetArchiveRevisionComparisonPagesQueryVariables,
+        options?: QueryOptions<GetArchiveRevisionComparisonPagesQueryVariables, GetArchiveRevisionComparisonPagesQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveRevisionComparisonPagesQuery> {
+        return this.doRequest<GetArchiveRevisionComparisonPagesQuery, GetArchiveRevisionComparisonPagesQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_REVISION_COMPARISON_PAGES,
+            variables,
+            options,
+        );
+    }
+
+    public acceptChapterRevisionCandidates(
+        ids: number[],
+        options?: MutationOptions<
+            AcceptChapterRevisionCandidatesMutation,
+            AcceptChapterRevisionCandidatesMutationVariables
+        >,
+    ): AbortableApolloMutationResponse<AcceptChapterRevisionCandidatesMutation> {
+        return this.doRequest<
+            AcceptChapterRevisionCandidatesMutation,
+            AcceptChapterRevisionCandidatesMutationVariables
+        >(GQLMethod.MUTATION, ACCEPT_CHAPTER_REVISION_CANDIDATES, { ids }, options);
+    }
+
+    public keepCurrentChapterRevisions(
+        ids: number[],
+        options?: MutationOptions<KeepCurrentChapterRevisionsMutation, KeepCurrentChapterRevisionsMutationVariables>,
+    ): AbortableApolloMutationResponse<KeepCurrentChapterRevisionsMutation> {
+        return this.doRequest<KeepCurrentChapterRevisionsMutation, KeepCurrentChapterRevisionsMutationVariables>(
+            GQLMethod.MUTATION,
+            KEEP_CURRENT_CHAPTER_REVISIONS,
+            { ids },
+            options,
+        );
+    }
+
+    public keepBothChapterRevisions(
+        ids: number[],
+        options?: MutationOptions<KeepBothChapterRevisionsMutation, KeepBothChapterRevisionsMutationVariables>,
+    ): AbortableApolloMutationResponse<KeepBothChapterRevisionsMutation> {
+        return this.doRequest<KeepBothChapterRevisionsMutation, KeepBothChapterRevisionsMutationVariables>(
+            GQLMethod.MUTATION,
+            KEEP_BOTH_CHAPTER_REVISIONS,
+            { ids },
+            options,
+        );
+    }
+
+    public rejectChapterRevisionCandidates(
+        ids: number[],
+        options?: MutationOptions<
+            RejectChapterRevisionCandidatesMutation,
+            RejectChapterRevisionCandidatesMutationVariables
+        >,
+    ): AbortableApolloMutationResponse<RejectChapterRevisionCandidatesMutation> {
+        return this.doRequest<
+            RejectChapterRevisionCandidatesMutation,
+            RejectChapterRevisionCandidatesMutationVariables
+        >(GQLMethod.MUTATION, REJECT_CHAPTER_REVISION_CANDIDATES, { ids }, options);
+    }
+
+    public useGetArchiveSweepState(
+        options?: QueryHookOptions<GetArchiveSweepStateQuery, GetArchiveSweepStateQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveSweepStateQuery, GetArchiveSweepStateQueryVariables> {
+        return this.doRequest<GetArchiveSweepStateQuery, GetArchiveSweepStateQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_SWEEP_STATE,
+            {},
+            options,
+        );
+    }
+
+    public useGetArchiveSweepProgress(
+        variables: GetArchiveSweepProgressQueryVariables,
+        options?: QueryHookOptions<GetArchiveSweepProgressQuery, GetArchiveSweepProgressQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveSweepProgressQuery, GetArchiveSweepProgressQueryVariables> {
+        return this.doRequest<GetArchiveSweepProgressQuery, GetArchiveSweepProgressQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_SWEEP_PROGRESS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveSweepItems(
+        variables: GetArchiveSweepItemsQueryVariables,
+        options?: QueryHookOptions<GetArchiveSweepItemsQuery, GetArchiveSweepItemsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveSweepItemsQuery, GetArchiveSweepItemsQueryVariables> {
+        return this.doRequest<GetArchiveSweepItemsQuery, GetArchiveSweepItemsQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_SWEEP_ITEMS,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveSweepItemsPage(
+        variables: GetArchiveSweepItemsQueryVariables,
+        options?: QueryOptions<GetArchiveSweepItemsQueryVariables, GetArchiveSweepItemsQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveSweepItemsQuery> {
+        return this.doRequest<GetArchiveSweepItemsQuery, GetArchiveSweepItemsQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_SWEEP_ITEMS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveSweepHistory(
+        variables: GetArchiveSweepHistoryQueryVariables,
+        options?: QueryHookOptions<GetArchiveSweepHistoryQuery, GetArchiveSweepHistoryQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveSweepHistoryQuery, GetArchiveSweepHistoryQueryVariables> {
+        return this.doRequest<GetArchiveSweepHistoryQuery, GetArchiveSweepHistoryQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_SWEEP_HISTORY,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveSweepHistoryPage(
+        variables: GetArchiveSweepHistoryQueryVariables,
+        options?: QueryOptions<GetArchiveSweepHistoryQueryVariables, GetArchiveSweepHistoryQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveSweepHistoryQuery> {
+        return this.doRequest<GetArchiveSweepHistoryQuery, GetArchiveSweepHistoryQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_SWEEP_HISTORY,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveSweepSettings(
+        options?: QueryHookOptions<GetArchiveSweepSettingsQuery, GetArchiveSweepSettingsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveSweepSettingsQuery, GetArchiveSweepSettingsQueryVariables> {
+        return this.doRequest<GetArchiveSweepSettingsQuery, GetArchiveSweepSettingsQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_SWEEP_SETTINGS,
+            {},
+            options,
+        );
+    }
+
+    public updateArchiveSweepSettings(
+        settings: NonNullable<UpdateArchiveSweepSettingsMutationVariables['settings']>,
+        options?: MutationOptions<UpdateArchiveSweepSettingsMutation, UpdateArchiveSweepSettingsMutationVariables>,
+    ): AbortableApolloMutationResponse<UpdateArchiveSweepSettingsMutation> {
+        return this.doRequest<UpdateArchiveSweepSettingsMutation, UpdateArchiveSweepSettingsMutationVariables>(
+            GQLMethod.MUTATION,
+            UPDATE_ARCHIVE_SWEEP_SETTINGS,
+            { settings },
+            options,
+        );
+    }
+
+    public startChapterRevisionSweep(
+        variables: StartChapterRevisionSweepMutationVariables,
+        options?: MutationOptions<StartChapterRevisionSweepMutation, StartChapterRevisionSweepMutationVariables>,
+    ): AbortableApolloMutationResponse<StartChapterRevisionSweepMutation> {
+        return this.doRequest<StartChapterRevisionSweepMutation, StartChapterRevisionSweepMutationVariables>(
+            GQLMethod.MUTATION,
+            START_CHAPTER_REVISION_SWEEP,
+            variables,
+            options,
+        );
+    }
+
+    public pauseChapterRevisionSweep(
+        sessionId: number,
+        options?: MutationOptions<PauseChapterRevisionSweepMutation, PauseChapterRevisionSweepMutationVariables>,
+    ): AbortableApolloMutationResponse<PauseChapterRevisionSweepMutation> {
+        return this.doRequest<PauseChapterRevisionSweepMutation, PauseChapterRevisionSweepMutationVariables>(
+            GQLMethod.MUTATION,
+            PAUSE_CHAPTER_REVISION_SWEEP,
+            { sessionId },
+            options,
+        );
+    }
+
+    public resumeChapterRevisionSweep(
+        sessionId: number,
+        options?: MutationOptions<ResumeChapterRevisionSweepMutation, ResumeChapterRevisionSweepMutationVariables>,
+    ): AbortableApolloMutationResponse<ResumeChapterRevisionSweepMutation> {
+        return this.doRequest<ResumeChapterRevisionSweepMutation, ResumeChapterRevisionSweepMutationVariables>(
+            GQLMethod.MUTATION,
+            RESUME_CHAPTER_REVISION_SWEEP,
+            { sessionId },
+            options,
+        );
+    }
+
+    public cancelChapterRevisionSweep(
+        sessionId: number,
+        options?: MutationOptions<CancelChapterRevisionSweepMutation, CancelChapterRevisionSweepMutationVariables>,
+    ): AbortableApolloMutationResponse<CancelChapterRevisionSweepMutation> {
+        return this.doRequest<CancelChapterRevisionSweepMutation, CancelChapterRevisionSweepMutationVariables>(
+            GQLMethod.MUTATION,
+            CANCEL_CHAPTER_REVISION_SWEEP,
+            { sessionId },
+            options,
+        );
+    }
+
+    public retryChapterRevisionSweepItems(
+        variables: RetryChapterRevisionSweepItemsMutationVariables,
+        options?: MutationOptions<
+            RetryChapterRevisionSweepItemsMutation,
+            RetryChapterRevisionSweepItemsMutationVariables
+        >,
+    ): AbortableApolloMutationResponse<RetryChapterRevisionSweepItemsMutation> {
+        return this.doRequest<RetryChapterRevisionSweepItemsMutation, RetryChapterRevisionSweepItemsMutationVariables>(
+            GQLMethod.MUTATION,
+            RETRY_CHAPTER_REVISION_SWEEP_ITEMS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveIntegrityState(
+        options?: QueryHookOptions<GetArchiveIntegrityStateQuery, GetArchiveIntegrityStateQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveIntegrityStateQuery, GetArchiveIntegrityStateQueryVariables> {
+        return this.doRequest<GetArchiveIntegrityStateQuery, GetArchiveIntegrityStateQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_INTEGRITY_STATE,
+            {},
+            options,
+        );
+    }
+
+    public useGetArchiveIntegrityProgress(
+        variables: GetArchiveIntegrityProgressQueryVariables,
+        options?: QueryHookOptions<GetArchiveIntegrityProgressQuery, GetArchiveIntegrityProgressQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveIntegrityProgressQuery, GetArchiveIntegrityProgressQueryVariables> {
+        return this.doRequest<GetArchiveIntegrityProgressQuery, GetArchiveIntegrityProgressQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_INTEGRITY_PROGRESS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveIntegrityItems(
+        variables: GetArchiveIntegrityItemsQueryVariables,
+        options?: QueryHookOptions<GetArchiveIntegrityItemsQuery, GetArchiveIntegrityItemsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveIntegrityItemsQuery, GetArchiveIntegrityItemsQueryVariables> {
+        return this.doRequest<GetArchiveIntegrityItemsQuery, GetArchiveIntegrityItemsQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_INTEGRITY_ITEMS,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveIntegrityItemsPage(
+        variables: GetArchiveIntegrityItemsQueryVariables,
+        options?: QueryOptions<GetArchiveIntegrityItemsQueryVariables, GetArchiveIntegrityItemsQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveIntegrityItemsQuery> {
+        return this.doRequest<GetArchiveIntegrityItemsQuery, GetArchiveIntegrityItemsQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_INTEGRITY_ITEMS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveIntegrityHistory(
+        variables: GetArchiveIntegrityHistoryQueryVariables,
+        options?: QueryHookOptions<GetArchiveIntegrityHistoryQuery, GetArchiveIntegrityHistoryQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveIntegrityHistoryQuery, GetArchiveIntegrityHistoryQueryVariables> {
+        return this.doRequest<GetArchiveIntegrityHistoryQuery, GetArchiveIntegrityHistoryQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_INTEGRITY_HISTORY,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveIntegrityHistoryPage(
+        variables: GetArchiveIntegrityHistoryQueryVariables,
+        options?: QueryOptions<GetArchiveIntegrityHistoryQueryVariables, GetArchiveIntegrityHistoryQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveIntegrityHistoryQuery> {
+        return this.doRequest<GetArchiveIntegrityHistoryQuery, GetArchiveIntegrityHistoryQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_INTEGRITY_HISTORY,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveIntegritySettings(
+        options?: QueryHookOptions<GetArchiveIntegritySettingsQuery, GetArchiveIntegritySettingsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveIntegritySettingsQuery, GetArchiveIntegritySettingsQueryVariables> {
+        return this.doRequest<GetArchiveIntegritySettingsQuery, GetArchiveIntegritySettingsQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_INTEGRITY_SETTINGS,
+            {},
+            options,
+        );
+    }
+
+    public useGetArchiveDeliverySettings(
+        options?: QueryHookOptions<GetArchiveDeliverySettingsQuery, GetArchiveDeliverySettingsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveDeliverySettingsQuery, GetArchiveDeliverySettingsQueryVariables> {
+        return this.doRequest<GetArchiveDeliverySettingsQuery, GetArchiveDeliverySettingsQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_DELIVERY_SETTINGS,
+            {},
+            options,
+        );
+    }
+
+    public updateArchiveIntegritySettings(
+        settings: NonNullable<UpdateArchiveIntegritySettingsMutationVariables['settings']>,
+        options?: MutationOptions<
+            UpdateArchiveIntegritySettingsMutation,
+            UpdateArchiveIntegritySettingsMutationVariables
+        >,
+    ): AbortableApolloMutationResponse<UpdateArchiveIntegritySettingsMutation> {
+        return this.doRequest<UpdateArchiveIntegritySettingsMutation, UpdateArchiveIntegritySettingsMutationVariables>(
+            GQLMethod.MUTATION,
+            UPDATE_ARCHIVE_INTEGRITY_SETTINGS,
+            { settings },
+            options,
+        );
+    }
+
+    public startChapterIntegrityAudit(
+        variables: StartChapterIntegrityAuditMutationVariables,
+        options?: MutationOptions<StartChapterIntegrityAuditMutation, StartChapterIntegrityAuditMutationVariables>,
+    ): AbortableApolloMutationResponse<StartChapterIntegrityAuditMutation> {
+        return this.doRequest<StartChapterIntegrityAuditMutation, StartChapterIntegrityAuditMutationVariables>(
+            GQLMethod.MUTATION,
+            START_CHAPTER_INTEGRITY_AUDIT,
+            variables,
+            options,
+        );
+    }
+
+    public pauseChapterIntegrityAudit(
+        sessionId: number,
+        options?: MutationOptions<PauseChapterIntegrityAuditMutation, PauseChapterIntegrityAuditMutationVariables>,
+    ): AbortableApolloMutationResponse<PauseChapterIntegrityAuditMutation> {
+        return this.doRequest<PauseChapterIntegrityAuditMutation, PauseChapterIntegrityAuditMutationVariables>(
+            GQLMethod.MUTATION,
+            PAUSE_CHAPTER_INTEGRITY_AUDIT,
+            { sessionId },
+            options,
+        );
+    }
+
+    public resumeChapterIntegrityAudit(
+        sessionId: number,
+        options?: MutationOptions<ResumeChapterIntegrityAuditMutation, ResumeChapterIntegrityAuditMutationVariables>,
+    ): AbortableApolloMutationResponse<ResumeChapterIntegrityAuditMutation> {
+        return this.doRequest<ResumeChapterIntegrityAuditMutation, ResumeChapterIntegrityAuditMutationVariables>(
+            GQLMethod.MUTATION,
+            RESUME_CHAPTER_INTEGRITY_AUDIT,
+            { sessionId },
+            options,
+        );
+    }
+
+    public cancelChapterIntegrityAudit(
+        sessionId: number,
+        options?: MutationOptions<CancelChapterIntegrityAuditMutation, CancelChapterIntegrityAuditMutationVariables>,
+    ): AbortableApolloMutationResponse<CancelChapterIntegrityAuditMutation> {
+        return this.doRequest<CancelChapterIntegrityAuditMutation, CancelChapterIntegrityAuditMutationVariables>(
+            GQLMethod.MUTATION,
+            CANCEL_CHAPTER_INTEGRITY_AUDIT,
+            { sessionId },
+            options,
+        );
+    }
+
+    public retryChapterIntegrityAuditItems(
+        variables: RetryChapterIntegrityAuditItemsMutationVariables,
+        options?: MutationOptions<
+            RetryChapterIntegrityAuditItemsMutation,
+            RetryChapterIntegrityAuditItemsMutationVariables
+        >,
+    ): AbortableApolloMutationResponse<RetryChapterIntegrityAuditItemsMutation> {
+        return this.doRequest<
+            RetryChapterIntegrityAuditItemsMutation,
+            RetryChapterIntegrityAuditItemsMutationVariables
+        >(GQLMethod.MUTATION, RETRY_CHAPTER_INTEGRITY_AUDIT_ITEMS, variables, options);
+    }
+
+    public useGetCanonicalWorks(
+        variables: GetCanonicalWorksQueryVariables,
+        options?: QueryHookOptions<GetCanonicalWorksQuery, GetCanonicalWorksQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetCanonicalWorksQuery, GetCanonicalWorksQueryVariables> {
+        return this.doRequest<GetCanonicalWorksQuery, GetCanonicalWorksQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_CANONICAL_WORKS,
+            variables,
+            options,
+        );
+    }
+
+    public getCanonicalWorksPage(
+        variables: GetCanonicalWorksQueryVariables,
+        options?: QueryOptions<GetCanonicalWorksQueryVariables, GetCanonicalWorksQuery>,
+    ): AbortabaleApolloQueryResponse<GetCanonicalWorksQuery> {
+        return this.doRequest<GetCanonicalWorksQuery, GetCanonicalWorksQueryVariables>(
+            GQLMethod.QUERY,
+            GET_CANONICAL_WORKS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetCanonicalWorkBindings(
+        variables: GetCanonicalWorkBindingsQueryVariables,
+        options?: QueryHookOptions<GetCanonicalWorkBindingsQuery, GetCanonicalWorkBindingsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetCanonicalWorkBindingsQuery, GetCanonicalWorkBindingsQueryVariables> {
+        return this.doRequest<GetCanonicalWorkBindingsQuery, GetCanonicalWorkBindingsQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_CANONICAL_WORK_BINDINGS,
+            variables,
+            options,
+        );
+    }
+
+    public useGetCanonicalIdentityStatus(
+        options?: QueryHookOptions<GetCanonicalIdentityStatusQuery, GetCanonicalIdentityStatusQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetCanonicalIdentityStatusQuery, GetCanonicalIdentityStatusQueryVariables> {
+        return this.doRequest<GetCanonicalIdentityStatusQuery, GetCanonicalIdentityStatusQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_CANONICAL_IDENTITY_STATUS,
+            {},
+            options,
+        );
+    }
+
+    public useGetMangaCanonicalBinding(
+        variables: GetMangaCanonicalBindingQueryVariables,
+        options?: QueryHookOptions<GetMangaCanonicalBindingQuery, GetMangaCanonicalBindingQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetMangaCanonicalBindingQuery, GetMangaCanonicalBindingQueryVariables> {
+        return this.doRequest<GetMangaCanonicalBindingQuery, GetMangaCanonicalBindingQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_MANGA_CANONICAL_BINDING,
+            variables,
+            options,
+        );
+    }
+
+    public createCanonicalWork(
+        variables: CreateCanonicalWorkMutationVariables,
+        options?: MutationOptions<CreateCanonicalWorkMutation, CreateCanonicalWorkMutationVariables>,
+    ): AbortableApolloMutationResponse<CreateCanonicalWorkMutation> {
+        return this.doRequest<CreateCanonicalWorkMutation, CreateCanonicalWorkMutationVariables>(
+            GQLMethod.MUTATION,
+            CREATE_CANONICAL_WORK,
+            variables,
+            options,
+        );
+    }
+
+    public updateCanonicalWork(
+        variables: UpdateCanonicalWorkMutationVariables,
+        options?: MutationOptions<UpdateCanonicalWorkMutation, UpdateCanonicalWorkMutationVariables>,
+    ): AbortableApolloMutationResponse<UpdateCanonicalWorkMutation> {
+        return this.doRequest<UpdateCanonicalWorkMutation, UpdateCanonicalWorkMutationVariables>(
+            GQLMethod.MUTATION,
+            UPDATE_CANONICAL_WORK,
+            variables,
+            options,
+        );
+    }
+
+    public deleteCanonicalWork(
+        workKey: string,
+        options?: MutationOptions<DeleteCanonicalWorkMutation, DeleteCanonicalWorkMutationVariables>,
+    ): AbortableApolloMutationResponse<DeleteCanonicalWorkMutation> {
+        return this.doRequest<DeleteCanonicalWorkMutation, DeleteCanonicalWorkMutationVariables>(
+            GQLMethod.MUTATION,
+            DELETE_CANONICAL_WORK,
+            { workKey },
+            options,
+        );
+    }
+
+    public attachMangaToCanonicalWork(
+        variables: AttachMangaToCanonicalWorkMutationVariables,
+        options?: MutationOptions<AttachMangaToCanonicalWorkMutation, AttachMangaToCanonicalWorkMutationVariables>,
+    ): AbortableApolloMutationResponse<AttachMangaToCanonicalWorkMutation> {
+        return this.doRequest<AttachMangaToCanonicalWorkMutation, AttachMangaToCanonicalWorkMutationVariables>(
+            GQLMethod.MUTATION,
+            ATTACH_MANGA_TO_CANONICAL_WORK,
+            variables,
+            options,
+        );
+    }
+
+    public changeCanonicalBinding(
+        variables: ChangeCanonicalBindingMutationVariables,
+        options?: MutationOptions<ChangeCanonicalBindingMutation, ChangeCanonicalBindingMutationVariables>,
+    ): AbortableApolloMutationResponse<ChangeCanonicalBindingMutation> {
+        return this.doRequest<ChangeCanonicalBindingMutation, ChangeCanonicalBindingMutationVariables>(
+            GQLMethod.MUTATION,
+            CHANGE_CANONICAL_BINDING,
+            variables,
+            options,
+        );
+    }
+
+    public detachCanonicalBinding(
+        bindingId: number,
+        options?: MutationOptions<DetachCanonicalBindingMutation, DetachCanonicalBindingMutationVariables>,
+    ): AbortableApolloMutationResponse<DetachCanonicalBindingMutation> {
+        return this.doRequest<DetachCanonicalBindingMutation, DetachCanonicalBindingMutationVariables>(
+            GQLMethod.MUTATION,
+            DETACH_CANONICAL_BINDING,
+            { bindingId },
+            options,
+        );
+    }
+
+    public promoteCanonicalBinding(
+        bindingId: number,
+        options?: MutationOptions<PromoteCanonicalBindingMutation, PromoteCanonicalBindingMutationVariables>,
+    ): AbortableApolloMutationResponse<PromoteCanonicalBindingMutation> {
+        return this.doRequest<PromoteCanonicalBindingMutation, PromoteCanonicalBindingMutationVariables>(
+            GQLMethod.MUTATION,
+            PROMOTE_CANONICAL_BINDING,
+            { bindingId },
+            options,
+        );
+    }
+
+    public failoverCanonicalWork(
+        variables: FailoverCanonicalWorkMutationVariables,
+        options?: MutationOptions<FailoverCanonicalWorkMutation, FailoverCanonicalWorkMutationVariables>,
+    ): AbortableApolloMutationResponse<FailoverCanonicalWorkMutation> {
+        return this.doRequest<FailoverCanonicalWorkMutation, FailoverCanonicalWorkMutationVariables>(
+            GQLMethod.MUTATION,
+            FAILOVER_CANONICAL_WORK,
+            variables,
+            options,
+        );
+    }
+
+    public exportCanonicalIdentity(
+        options?: MutationOptions<ExportCanonicalIdentityMutation, ExportCanonicalIdentityMutationVariables>,
+    ): AbortableApolloMutationResponse<ExportCanonicalIdentityMutation> {
+        return this.doRequest<ExportCanonicalIdentityMutation, ExportCanonicalIdentityMutationVariables>(
+            GQLMethod.MUTATION,
+            EXPORT_CANONICAL_IDENTITY,
+            {},
+            options,
+        );
+    }
+
+    public importCanonicalIdentity(
+        payload: string,
+        options?: MutationOptions<ImportCanonicalIdentityMutation, ImportCanonicalIdentityMutationVariables>,
+    ): AbortableApolloMutationResponse<ImportCanonicalIdentityMutation> {
+        return this.doRequest<ImportCanonicalIdentityMutation, ImportCanonicalIdentityMutationVariables>(
+            GQLMethod.MUTATION,
+            IMPORT_CANONICAL_IDENTITY,
+            { payload },
+            options,
+        );
+    }
+
+    public useGetArchiveRevisionHistory(
+        variables: GetArchiveRevisionHistoryQueryVariables,
+        options?: QueryHookOptions<GetArchiveRevisionHistoryQuery, GetArchiveRevisionHistoryQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveRevisionHistoryQuery, GetArchiveRevisionHistoryQueryVariables> {
+        return this.doRequest<GetArchiveRevisionHistoryQuery, GetArchiveRevisionHistoryQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_REVISION_HISTORY,
+            variables,
+            options,
+        );
+    }
+
+    public getArchiveRevisionHistoryPage(
+        variables: GetArchiveRevisionHistoryQueryVariables,
+        options?: QueryOptions<GetArchiveRevisionHistoryQueryVariables, GetArchiveRevisionHistoryQuery>,
+    ): AbortabaleApolloQueryResponse<GetArchiveRevisionHistoryQuery> {
+        return this.doRequest<GetArchiveRevisionHistoryQuery, GetArchiveRevisionHistoryQueryVariables>(
+            GQLMethod.QUERY,
+            GET_ARCHIVE_REVISION_HISTORY,
+            variables,
+            options,
+        );
+    }
+
+    public useGetArchiveRevisionRollbacks(
+        variables: GetArchiveRevisionRollbacksQueryVariables,
+        options?: QueryHookOptions<GetArchiveRevisionRollbacksQuery, GetArchiveRevisionRollbacksQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetArchiveRevisionRollbacksQuery, GetArchiveRevisionRollbacksQueryVariables> {
+        return this.doRequest<GetArchiveRevisionRollbacksQuery, GetArchiveRevisionRollbacksQueryVariables>(
+            GQLMethod.USE_QUERY,
+            GET_ARCHIVE_REVISION_ROLLBACKS,
+            variables,
+            options,
+        );
+    }
+
+    public rollbackChapterRevision(
+        revisionId: number,
+        options?: MutationOptions<RollbackChapterRevisionMutation, RollbackChapterRevisionMutationVariables>,
+    ): AbortableApolloMutationResponse<RollbackChapterRevisionMutation> {
+        return this.doRequest<RollbackChapterRevisionMutation, RollbackChapterRevisionMutationVariables>(
+            GQLMethod.MUTATION,
+            ROLLBACK_CHAPTER_REVISION,
+            { revisionId },
+            options,
+        );
+    }
+
+    public pauseArchiveBootstrap(
+        input: { sessionId: number },
+        options?: MutationOptions<PauseArchiveBootstrapMutation, PauseArchiveBootstrapMutationVariables>,
+    ): AbortableApolloMutationResponse<PauseArchiveBootstrapMutation> {
+        return this.doRequest<PauseArchiveBootstrapMutation, PauseArchiveBootstrapMutationVariables>(
+            GQLMethod.MUTATION,
+            PAUSE_ARCHIVE_BOOTSTRAP,
+            input,
+            options,
+        );
+    }
+
+    public resumeArchiveBootstrap(
+        input: { sessionId: number },
+        options?: MutationOptions<ResumeArchiveBootstrapMutation, ResumeArchiveBootstrapMutationVariables>,
+    ): AbortableApolloMutationResponse<ResumeArchiveBootstrapMutation> {
+        return this.doRequest<ResumeArchiveBootstrapMutation, ResumeArchiveBootstrapMutationVariables>(
+            GQLMethod.MUTATION,
+            RESUME_ARCHIVE_BOOTSTRAP,
+            input,
+            options,
+        );
+    }
+
+    public cancelArchiveBootstrap(
+        input: { sessionId: number },
+        options?: MutationOptions<CancelArchiveBootstrapMutation, CancelArchiveBootstrapMutationVariables>,
+    ): AbortableApolloMutationResponse<CancelArchiveBootstrapMutation> {
+        return this.doRequest<CancelArchiveBootstrapMutation, CancelArchiveBootstrapMutationVariables>(
+            GQLMethod.MUTATION,
+            CANCEL_ARCHIVE_BOOTSTRAP,
+            input,
+            options,
+        );
+    }
+
+    public retryArchiveBootstrapItems(
+        input: { sessionId: number },
+        options?: MutationOptions<RetryArchiveBootstrapItemsMutation, RetryArchiveBootstrapItemsMutationVariables>,
+    ): AbortableApolloMutationResponse<RetryArchiveBootstrapItemsMutation> {
+        return this.doRequest<RetryArchiveBootstrapItemsMutation, RetryArchiveBootstrapItemsMutationVariables>(
+            GQLMethod.MUTATION,
+            RETRY_ARCHIVE_BOOTSTRAP_ITEMS,
+            input,
+            options,
+        );
+    }
+
+    public retryBackupRestore(
+        input: { restoreId: string },
+        options?: MutationOptions<RetryBackupRestoreMutation, RetryBackupRestoreMutationVariables>,
+    ): AbortableApolloMutationResponse<RetryBackupRestoreMutation> {
+        return this.doRequest<RetryBackupRestoreMutation, RetryBackupRestoreMutationVariables>(
+            GQLMethod.MUTATION,
+            RETRY_BACKUP_RESTORE,
+            input,
+            options,
+        );
+    }
+
+    public retryBackupRestoreHandoff(
+        input: { restoreId: string },
+        options?: MutationOptions<RetryBackupRestoreHandoffMutation, RetryBackupRestoreHandoffMutationVariables>,
+    ): AbortableApolloMutationResponse<RetryBackupRestoreHandoffMutation> {
+        return this.doRequest<RetryBackupRestoreHandoffMutation, RetryBackupRestoreHandoffMutationVariables>(
+            GQLMethod.MUTATION,
+            RETRY_BACKUP_RESTORE_HANDOFF,
+            input,
+            options,
+        );
+    }
+
+    public cancelBackupRestore(
+        input: { restoreId: string },
+        options?: MutationOptions<CancelBackupRestoreMutation, CancelBackupRestoreMutationVariables>,
+    ): AbortableApolloMutationResponse<CancelBackupRestoreMutation> {
+        return this.doRequest<CancelBackupRestoreMutation, CancelBackupRestoreMutationVariables>(
+            GQLMethod.MUTATION,
+            CANCEL_BACKUP_RESTORE,
+            input,
+            options,
+        );
+    }
+
+    public cleanupBackupRestore(
+        input: { restoreId: string },
+        options?: MutationOptions<CleanupBackupRestoreMutation, CleanupBackupRestoreMutationVariables>,
+    ): AbortableApolloMutationResponse<CleanupBackupRestoreMutation> {
+        return this.doRequest<CleanupBackupRestoreMutation, CleanupBackupRestoreMutationVariables>(
+            GQLMethod.MUTATION,
+            CLEANUP_BACKUP_RESTORE,
+            input,
+            options,
+        );
     }
 
     public startDownloads(
@@ -3617,17 +4884,26 @@ export class RequestManager {
         return this.doRequest(GQLMethod.USE_QUERY, GET_DOWNLOAD_STATUS, {}, options);
     }
 
-    public useDownloadSubscription(
-        options?: SubscriptionHookOptions<DownloadStatusSubscription, DownloadStatusSubscriptionVariables>,
-    ): useSubscription.Result<DownloadStatusSubscription> {
-        return this.doRequest<DownloadStatusSubscription, DownloadStatusSubscriptionVariables>(
-            GQLMethod.USE_SUBSCRIPTION,
+    public getDownloadStatus(
+        options?: QueryOptions<GetDownloadStatusQueryVariables>,
+    ): AbortabaleApolloQueryResponse<GetDownloadStatusQuery> {
+        return this.doRequest(GQLMethod.QUERY, GET_DOWNLOAD_STATUS, {}, options);
+    }
+
+    public downloadSubscription(
+        options?: SubscriptionOptions<DownloadStatusSubscription, DownloadStatusSubscriptionVariables>,
+    ): Observable<ApolloLink.Result<DownloadStatusSubscription>> {
+        const observable = this.doRequest<DownloadStatusSubscription, DownloadStatusSubscriptionVariables>(
+            GQLMethod.SUBSCRIPTION,
             DOWNLOAD_STATUS_SUBSCRIPTION,
             { input: {} },
-            {
-                ...options,
-                onData: (onDataOptions) => {
-                    const downloadChanged = onDataOptions.data.data?.downloadStatusChanged;
+            options,
+        );
+
+        return new Observable((subscriber) => {
+            const subscription = observable.subscribe({
+                next: (result) => {
+                    const downloadChanged = result.data?.downloadStatusChanged;
 
                     const { cache } = this.graphQLClient.client;
 
@@ -3702,22 +4978,31 @@ export class RequestManager {
                             }),
                         });
                     });
+
+                    subscriber.next(result);
                 },
-            } as SubscriptionHookOptions<DownloadStatusSubscription, DownloadStatusSubscriptionVariables>,
-        ) as useSubscription.Result<DownloadStatusSubscription>;
+                error: (error) => subscriber.error(error),
+                complete: () => subscriber.complete(),
+            });
+
+            return () => subscription.unsubscribe();
+        });
     }
 
-    public useUpdaterSubscription(
-        options?: SubscriptionHookOptions<UpdaterSubscription, UpdaterSubscriptionVariables>,
-    ): useSubscription.Result<UpdaterSubscription> {
-        return this.doRequest<UpdaterSubscription, UpdaterSubscriptionVariables>(
-            GQLMethod.USE_SUBSCRIPTION,
+    public updaterSubscription(
+        options?: SubscriptionOptions<UpdaterSubscription, UpdaterSubscriptionVariables>,
+    ): Observable<ApolloLink.Result<UpdaterSubscription>> {
+        const observable = this.doRequest<UpdaterSubscription, UpdaterSubscriptionVariables>(
+            GQLMethod.SUBSCRIPTION,
             UPDATER_SUBSCRIPTION,
             { input: {} },
-            {
-                ...options,
-                onData: (onDataOptions) => {
-                    const updatesChanged = onDataOptions.data.data?.libraryUpdateStatusChanged;
+            options,
+        );
+
+        return new Observable((subscriber) => {
+            const subscription = observable.subscribe({
+                next: (result) => {
+                    const updatesChanged = result.data?.libraryUpdateStatusChanged;
 
                     const cache = this.graphQLClient.client.cache as InMemoryCache;
 
@@ -3730,9 +5015,13 @@ export class RequestManager {
                                 )
                                 .forEach((key) => cache.evict({ fieldName: key })),
                         );
+
+                    subscriber.next(result);
                 },
-            } as SubscriptionHookOptions<UpdaterSubscription, UpdaterSubscriptionVariables>,
-        ) as useSubscription.Result<UpdaterSubscription>;
+            });
+
+            return () => subscription.unsubscribe();
+        });
     }
 
     public getServerSettings(
@@ -3782,10 +5071,10 @@ export class RequestManager {
         return this.doRequest(GQLMethod.USE_MUTATION, CLEAR_SERVER_CACHE, { input: {} }, options);
     }
 
-    public useWebUIUpdateSubscription(
-        options?: SubscriptionHookOptions<WebuiUpdateSubscription, WebuiUpdateSubscriptionVariables>,
-    ): useSubscription.Result<WebuiUpdateSubscription> {
-        return this.doRequest(GQLMethod.USE_SUBSCRIPTION, WEBUI_UPDATE_SUBSCRIPTION, undefined, options);
+    public webUIUpdateSubscription(
+        options?: SubscriptionOptions<WebuiUpdateSubscription, WebuiUpdateSubscriptionVariables>,
+    ): Observable<ApolloLink.Result<WebuiUpdateSubscription>> {
+        return this.doRequest(GQLMethod.SUBSCRIPTION, WEBUI_UPDATE_SUBSCRIPTION, undefined, options);
     }
 
     public resetWebUIUpdateStatus(
@@ -3943,10 +5232,10 @@ export class RequestManager {
         return this.doRequest(GQLMethod.USE_QUERY, GET_SYNC_STATUS, {}, options);
     }
 
-    public useSyncSubscription(
-        options?: SubscriptionHookOptions<SyncSubscription, SyncSubscriptionVariables>,
-    ): useSubscription.Result<SyncSubscription> {
-        return this.doRequest(GQLMethod.USE_SUBSCRIPTION, SYNC_SUBSCRIPTION, undefined, options);
+    public syncSubscription(
+        options?: SubscriptionOptions<SyncSubscription, SyncSubscriptionVariables>,
+    ): Observable<ApolloLink.Result<SyncSubscription>> {
+        return this.doRequest(GQLMethod.SUBSCRIPTION, SYNC_SUBSCRIPTION, undefined, options);
     }
 
     public useKoSyncStatus(
@@ -3979,13 +5268,13 @@ export class RequestManager {
         return this.doRequest(GQLMethod.MUTATION, KO_SYNC_LOGOUT, undefined, options);
     }
 
-    public refreshUser(
+    public refreshAccessToken(
         refreshToken: string,
-        options?: MutationOptions<UserRefreshMutation, UserRefreshMutationVariables>,
-    ): AbortableApolloMutationResponse<UserRefreshMutation> {
-        return this.doRequest<UserRefreshMutation, UserRefreshMutationVariables>(
+        options?: MutationOptions<RefreshAccessTokenMutation, RefreshAccessTokenMutationVariables>,
+    ): AbortableApolloMutationResponse<RefreshAccessTokenMutation> {
+        return this.doRequest<RefreshAccessTokenMutation, RefreshAccessTokenMutationVariables>(
             GQLMethod.MUTATION,
-            USER_REFRESH,
+            REFRESH_ACCESS_TOKEN,
             { refreshToken: refreshToken ?? undefined },
             options,
         );
@@ -3995,6 +5284,24 @@ export class RequestManager {
         options?: MutationOptions<WebviewClearCacheCookiesMutation, WebviewClearCacheCookiesMutationVariables>,
     ): AbortableApolloUseMutationResponse<WebviewClearCacheCookiesMutation, WebuiUpdateSubscriptionVariables> {
         return this.doRequest(GQLMethod.USE_MUTATION, WEBVIEW_CLEAR_CACHE_COOKIES, {}, options);
+    }
+
+    public useGetWebViewTabs(
+        options?: QueryHookOptions<GetWebViewTabsQuery, GetWebViewTabsQueryVariables>,
+    ): AbortableApolloUseQueryResponse<GetWebViewTabsQuery, GetWebViewTabsQueryVariables> {
+        return this.doRequest(GQLMethod.USE_QUERY, GET_WEB_VIEW_TABS, {}, options);
+    }
+
+    public useOpenWebView(
+        options?: MutationHookOptions<OpenWebViewMutation, OpenWebViewMutationVariables>,
+    ): AbortableApolloUseMutationResponse<OpenWebViewMutation, OpenWebViewMutationVariables> {
+        return this.doRequest(GQLMethod.USE_MUTATION, OPEN_WEB_VIEW, undefined, options);
+    }
+
+    public useCloseWebView(
+        options?: MutationHookOptions<CloseWebViewMutation, CloseWebViewMutationVariables>,
+    ): AbortableApolloUseMutationResponse<CloseWebViewMutation, CloseWebViewMutationVariables> {
+        return this.doRequest(GQLMethod.USE_MUTATION, CLOSE_WEB_VIEW, undefined, options);
     }
 }
 

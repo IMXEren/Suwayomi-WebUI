@@ -52,12 +52,12 @@ import type { SourceIdInfo } from '@/features/source/Source.types.ts';
 import { Thumbnail } from '@/features/manga/components/details/Thumbnail.tsx';
 import { DescriptionGenre } from '@/features/manga/components/details/DescriptionGenre.tsx';
 import { SearchLink } from '@/features/manga/components/details/SearchLink.tsx';
-import { requestManager } from '@/lib/requests/RequestManager.ts';
 import { IconBrowser } from '@/assets/icons/IconBrowser.tsx';
 import { IconWebView } from '@/assets/icons/IconWebView.tsx';
 import { MediaQuery } from '@/base/utils/MediaQuery.tsx';
 import { copyToClipboard } from '@/lib/HelperFunctions.ts';
 import { ClipBoardGuard } from '@/base/components/guard/ClipBoardGuard.tsx';
+import { useWebViewUrl } from '@/features/web-view/hooks/useWebViewUrl.ts';
 
 const DetailsWrapper = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -150,6 +150,7 @@ const MangaButtonsContainer = styled('div')(({ theme }) => ({
 
 const OpenSourceButton = ({ url }: { url?: string | null }) => {
     const { t } = useLingui();
+    const getWebViewUrl = useWebViewUrl();
 
     return (
         <ButtonGroup>
@@ -171,7 +172,7 @@ const OpenSourceButton = ({ url }: { url?: string | null }) => {
                     size="medium"
                     disabled={!url}
                     component={Link}
-                    href={url ? requestManager.getWebviewUrl(url) : undefined}
+                    href={url ? getWebViewUrl(url) : undefined}
                     target="_blank"
                     rel="noreferrer"
                     variant="outlined"

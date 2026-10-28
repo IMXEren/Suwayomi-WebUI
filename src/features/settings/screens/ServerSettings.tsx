@@ -12,7 +12,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Switch from '@mui/material/Switch';
-import ListSubheader from '@mui/material/ListSubheader';
 import { d } from 'koration';
 import { Trans, useLingui } from '@lingui/react/macro';
 import { plural, t as translate } from '@lingui/core/macro';
@@ -36,6 +35,7 @@ import {
     AuthMode,
     CbzMediaType,
     DatabaseType,
+    MangaAcquisitionPolicy,
     SortOrder,
     StartSyncResult,
     SyncState,
@@ -63,6 +63,8 @@ import { AwaitableComponent } from 'awaitable-component';
 import { convertToAutoBackupFlags, getAutoBackupFlagsInfo } from '@/features/backup/Backup.utils.ts';
 import type { BackupFlagInclusionState } from '@/features/backup/Backup.types.ts';
 import { getDateString } from '@/base/utils/DateHelper.ts';
+import { ListSubheader } from '@/base/components/lists/ListSubheader.tsx';
+import { useIsArchiveOwner } from '@/features/archive/ArchiveAccess.ts';
 
 const convertSyncDataToBackupFlags = (settings: ServerSettingsType): BackupFlagInclusionState => ({
     includeManga: settings.syncDataManga,
@@ -72,6 +74,7 @@ const convertSyncDataToBackupFlags = (settings: ServerSettingsType): BackupFlagI
     includeTracking: settings.syncDataTracking,
     includeClientData: false,
     includeServerSettings: false,
+    includeUserSettings: false,
 });
 
 const convertBackupFlagsToSyncData = (flags: BackupFlagInclusionState): PartialSettingsTypeInput => ({
@@ -95,6 +98,7 @@ const getLogFilesCleanupDisplayValue = (ttl: number): string => {
 
 export const ServerSettings = () => {
     const { t } = useLingui();
+    const isArchiveOwner = useIsArchiveOwner();
 
     useAppTitle(t`Server`);
 
@@ -665,6 +669,27 @@ export const ServerSettings = () => {
                     handleChange={(value) => updateSetting('opdsCbzMimetype', value)}
                 />
             </List>
+            {isArchiveOwner && (
+                <List
+                    subheader={
+                        <ListSubheader component="div" id="server-settings-archival">
+                            {t`Archival`}
+                        </ListSubheader>
+                    }
+                >
+                    <SelectSetting<string>
+                        settingName={t`Default acquisition policy`}
+                        dialogDescription={t`Policy a series applies while it has no per-series override. It is what the archival settings of a series pick up when set to "Use global default".`}
+                        value={serverSettings.archiveDefaultAcquisitionPolicy}
+                        values={[
+                            [MangaAcquisitionPolicy.Auto, { text: t`Automatic` }],
+                            [MangaAcquisitionPolicy.Manual, { text: t`Wait for approval` }],
+                            [MangaAcquisitionPolicy.Paused, { text: t`Paused` }],
+                        ]}
+                        handleChange={(policy) => updateSetting('archiveDefaultAcquisitionPolicy', policy)}
+                    />
+                </List>
+            )}
             <KoreaderSyncSettings
                 settings={serverSettings}
                 serverAddress={koreaderSyncStatus.serverAddress}
@@ -718,6 +743,12 @@ export const ServerSettings = () => {
                     disabled={isH2Database}
                     isPassword
                 />
+                <TextSetting
+                    settingName={t`Schema`}
+                    value={serverSettings.databaseSchema}
+                    handleChange={(schema) => updateSetting('databaseSchema', schema)}
+                    disabled={isH2Database}
+                />
                 <ListItem>
                     <ListItemText
                         primary={t`Hikari connection pool`}
@@ -727,6 +758,47 @@ export const ServerSettings = () => {
                         edge="end"
                         checked={serverSettings.useHikariConnectionPool}
                         onChange={(e) => updateSetting('useHikariConnectionPool', e.target.checked)}
+                    />
+                </ListItem>
+                <NumberSetting
+                    settingTitle={t`Hikari max pool size`}
+                    settingValue={serverSettings.hikariMaxPoolSize.toString()}
+                    dialogDescription={
+                        <Trans>
+                            The maximum number of actual connections to the database; see{' '}
+                            <Link
+                                href="https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                HikariCP: About-Pool-Sizing
+                            </Link>
+                        </Trans>
+                    }
+                    value={serverSettings.hikariMaxPoolSize}
+                    defaultValue={6}
+                    minValue={1}
+                    valueUnit={t`Connection`}
+                    handleUpdate={(value) => updateSetting('hikariMaxPoolSize', value)}
+                    disabled={!serverSettings.useHikariConnectionPool}
+                />
+            </List>
+            <List
+                subheader={
+                    <ListSubheader component="div" id="server-settings-extensions">
+                        {t`Extensions`}
+                    </ListSubheader>
+                }
+            >
+                <ListItem>
+                    <ListItemText
+                        primary={t`Automatically update extensions`}
+                        secondary={t`Check configured stores every 24 hours and install updates for installed extensions`}
+                    />
+                    <Switch
+                        edge="end"
+                        checked={serverSettings.autoUpdateExtensions}
+                        onChange={(e) => updateSetting('autoUpdateExtensions', e.target.checked)}
                     />
                 </ListItem>
             </List>

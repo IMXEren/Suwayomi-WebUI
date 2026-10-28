@@ -58,6 +58,8 @@ export const SERVER_SETTINGS_METADATA_DEFAULT: MetadataServerSettings = {
     showDownloadBadge: false,
     showUnreadBadge: false,
     gridLayout: GridLayout.Compact,
+    notifyNewChapters: false,
+    notifyNewChaptersLastNotifiedAt: 0,
 
     // client
     devices: [DEFAULT_DEVICE],
@@ -361,6 +363,7 @@ export const SYNC_INTERVAL_SELECT_VALUES_WITH_CUSTOM: SelectSettingValue<string>
 
 export const SYNC_SETTINGS_HIDDEN_BACKUP_FLAGS = [
     'includeServerSettings',
+    'includeUserSettings',
     'includeClientData',
 ] as const satisfies BackupFlag[];
 

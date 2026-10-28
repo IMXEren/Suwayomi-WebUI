@@ -15,3 +15,22 @@ export const WEBVIEW_CLEAR_CACHE_COOKIES = gql`
         }
     }
 `;
+
+export const OPEN_WEB_VIEW = gql`
+    mutation OPEN_WEB_VIEW($input: OpenWebViewInput!) {
+        openWebView(input: $input) {
+            tab
+            url
+            title
+            status
+        }
+    }
+`;
+
+export const CLOSE_WEB_VIEW = gql`
+    mutation CLOSE_WEB_VIEW($input: CloseWebViewInput!) {
+        closeWebView(input: $input) {
+            closed
+        }
+    }
+`;

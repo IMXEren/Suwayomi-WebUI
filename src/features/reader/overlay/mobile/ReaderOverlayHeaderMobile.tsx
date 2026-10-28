@@ -28,7 +28,6 @@ import { ReaderBookmarkButton } from '@/features/reader/overlay/navigation/compo
 import { FALLBACK_CHAPTER } from '@/features/chapter/Chapter.constants.ts';
 import { FALLBACK_MANGA } from '@/features/manga/Manga.constants.ts';
 import { ReaderExitButton } from '@/features/reader/overlay/navigation/components/ReaderExitButton.tsx';
-import { requestManager } from '@/lib/requests/RequestManager.ts';
 import {
     useReaderChaptersStore,
     useReaderScrollbarStore,
@@ -36,11 +35,13 @@ import {
 } from '@/features/reader/stores/ReaderStore.ts';
 import { defaultPromiseErrorHandler } from '@/lib/DefaultPromiseErrorHandler.ts';
 import { ShareGuard } from '@/base/components/guard/ShareGuard.tsx';
+import { useWebViewUrl } from '@/features/web-view/hooks/useWebViewUrl.ts';
 
 const DEFAULT_MANGA = { ...FALLBACK_MANGA, title: '' };
 
 const BaseReaderOverlayHeaderMobile = ({ isVisible, ref }: MobileHeaderProps & { ref?: Ref<HTMLDivElement> }) => {
     const { t } = useLingui();
+    const getWebViewUrl = useWebViewUrl();
     const popupState = usePopupState({ popupId: 'reader-overlay-more-menu', variant: 'popover' });
     const currentChapter = useReaderChaptersStore('currentChapter');
 
@@ -108,7 +109,7 @@ const BaseReaderOverlayHeaderMobile = ({ isVisible, ref }: MobileHeaderProps & {
                     <MenuItem
                         component={Link}
                         disabled={!realUrl}
-                        href={realUrl ? requestManager.getWebviewUrl(realUrl) : ''}
+                        href={realUrl ? getWebViewUrl(realUrl) : ''}
                         rel="noreferrer"
                         target="_blank"
                     >

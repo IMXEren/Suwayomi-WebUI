@@ -21,7 +21,6 @@ import { ReaderBookmarkButton } from '@/features/reader/overlay/navigation/compo
 import { CHAPTER_ACTION_TO_TRANSLATION, FALLBACK_CHAPTER } from '@/features/chapter/Chapter.constants.ts';
 import { IconBrowser } from '@/assets/icons/IconBrowser.tsx';
 import { IconWebView } from '@/assets/icons/IconWebView.tsx';
-import { requestManager } from '@/lib/requests/RequestManager.ts';
 import {
     getReaderPagesStore,
     useReaderChaptersStore,
@@ -32,6 +31,7 @@ import type { ChapterDownloadInfo, ChapterIdInfo } from '@/features/chapter/Chap
 import { defaultPromiseErrorHandler } from '@/lib/DefaultPromiseErrorHandler.ts';
 import ShareIcon from '@mui/icons-material/Share';
 import { ShareGuard } from '@/base/components/guard/ShareGuard.tsx';
+import { useWebViewUrl } from '@/features/web-view/hooks/useWebViewUrl.ts';
 
 const DownloadButton = ({ id = -1, isDownloaded }: ChapterIdInfo & ChapterDownloadInfo) => {
     const { t } = useLingui();
@@ -78,6 +78,7 @@ export const ReaderNavBarDesktopActions = memo(() => {
     }));
 
     const { t } = useLingui();
+    const getWebViewUrl = useWebViewUrl();
     const pageLoadStates = useReaderPagesStore('pageLoadStates');
 
     const pageRetryKeyPrefix = useRef<number>(0);
@@ -118,7 +119,7 @@ export const ReaderNavBarDesktopActions = memo(() => {
             <CustomTooltip title={t`Open in WebView`} disabled={!realUrl}>
                 <IconButton
                     disabled={!realUrl}
-                    href={realUrl ? requestManager.getWebviewUrl(realUrl) : ''}
+                    href={realUrl ? getWebViewUrl(realUrl) : ''}
                     rel="noreferrer"
                     target="_blank"
                     color="inherit"

@@ -7,6 +7,7 @@
  */
 
 import Label from '@mui/icons-material/Label';
+import ArchiveIcon from '@mui/icons-material/Archive';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import Refresh from '@mui/icons-material/Refresh';
 import IconButton from '@mui/material/IconButton';
@@ -15,7 +16,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -23,10 +23,11 @@ import { AwaitableComponent } from 'awaitable-component';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
 import { useLingui } from '@lingui/react/macro';
 import { CustomTooltip } from '@/base/components/CustomTooltip.tsx';
-import { AppRoutes } from '@/base/AppRoute.constants.ts';
 import { CategorySelect } from '@/features/category/components/CategorySelect.tsx';
 import { useMetadataServerSettings } from '@/features/settings/services/ServerSettingsMetadata.ts';
 import { ThemeCreationDialog } from '@/features/theme/components/CreateThemeDialog.tsx';
+import { MangaArchiveSettingsDialog } from '@/features/archive/components/MangaArchiveSettingsDialog.tsx';
+import { useIsArchiveOwner } from '@/features/archive/ArchiveAccess.ts';
 import type {
     MangaIdInfo,
     MangaInLibraryInfo,
@@ -37,6 +38,7 @@ import type {
 import ShareIcon from '@mui/icons-material/Share';
 import { defaultPromiseErrorHandler } from '@/lib/DefaultPromiseErrorHandler.ts';
 import { ShareGuard } from '@/base/components/guard/ShareGuard.tsx';
+import { Mangas } from '@/features/manga/services/Mangas.ts';
 
 interface IProps {
     manga: MangaIdInfo & MangaInLibraryInfo & MangaSourceIdInfo & MangaTitleInfo & MangaUrlInfo;
@@ -50,6 +52,7 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
     const theme = useTheme();
     const isLargeScreen = useMediaQuery(theme.breakpoints.up('sm'));
     const { settings } = useMetadataServerSettings();
+    const isArchiveOwner = useIsArchiveOwner();
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -59,6 +62,11 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
 
     const openCategorySelection = () => {
         AwaitableComponent.show(CategorySelect, { mangaId: manga.id });
+    };
+
+    // the policy only applies to library series, which are the only ones that get revision candidates
+    const openArchiveSettings = () => {
+        AwaitableComponent.show(MangaArchiveSettingsDialog, { mangaId: manga.id });
     };
 
     // oxlint-disable-next-line unicorn/consistent-function-scoping
@@ -111,22 +119,16 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
                     {manga.inLibrary && (
                         <>
                             <CustomTooltip title={t`Migrate`}>
-                                <Link
-                                    to={AppRoutes.migrate.children.singleMangaSearch.path(
-                                        manga.sourceId,
-                                        manga.id,
-                                        manga.title,
-                                    )}
-                                    state={AppRoutes.migrate.children.singleMangaSearch.state({
-                                        title: t`Migrate "${manga.title}"`,
-                                        mode: 'migrate.select.single',
-                                    })}
-                                    style={{ textDecoration: 'none', color: 'inherit' }}
+                                <IconButton
+                                    color="inherit"
+                                    onClick={() => {
+                                        Mangas.migrate([manga.id]).catch(
+                                            defaultPromiseErrorHandler('MangaToolbarMenu::migrate'),
+                                        );
+                                    }}
                                 >
-                                    <IconButton color="inherit">
-                                        <SyncAltIcon />
-                                    </IconButton>
-                                </Link>
+                                    <SyncAltIcon />
+                                </IconButton>
                             </CustomTooltip>
                             <CustomTooltip title={t`Edit manga categories`}>
                                 <IconButton
@@ -138,6 +140,18 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
                                     <Label />
                                 </IconButton>
                             </CustomTooltip>
+                            {isArchiveOwner && (
+                                <CustomTooltip title={t`Archival settings`}>
+                                    <IconButton
+                                        onClick={() => {
+                                            openArchiveSettings();
+                                        }}
+                                        color="inherit"
+                                    >
+                                        <ArchiveIcon />
+                                    </IconButton>
+                                </CustomTooltip>
+                            )}
                         </>
                     )}
                 </>
@@ -188,17 +202,11 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
                         {manga.inLibrary && [
                             <MenuItem
                                 key="migrate"
-                                component={Link}
-                                to={AppRoutes.migrate.children.singleMangaSearch.path(
-                                    manga.sourceId,
-                                    manga.id,
-                                    manga.title,
-                                )}
-                                state={AppRoutes.migrate.children.singleMangaSearch.state({
-                                    title: t`Migrate "${manga.title}"`,
-                                    mode: 'migrate.select.single',
-                                })}
-                                style={{ textDecoration: 'none', color: 'inherit' }}
+                                onClick={() => {
+                                    Mangas.migrate([manga.id]).catch(
+                                        defaultPromiseErrorHandler('MangaToolbarMenu::migrate'),
+                                    );
+                                }}
                             >
                                 <ListItemIcon>
                                     <SyncAltIcon fontSize="small" />
@@ -217,6 +225,20 @@ export const MangaToolbarMenu = ({ manga, onRefresh, refreshing }: IProps) => {
                                 </ListItemIcon>
                                 <ListItemText>{t`Edit manga categories`}</ListItemText>
                             </MenuItem>,
+                            isArchiveOwner && (
+                                <MenuItem
+                                    key="archive-settings"
+                                    onClick={() => {
+                                        openArchiveSettings();
+                                        handleClose();
+                                    }}
+                                >
+                                    <ListItemIcon>
+                                        <ArchiveIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText>{t`Archival settings`}</ListItemText>
+                                </MenuItem>
+                            ),
                         ]}
                         <ShareGuard>
                             <MenuItem

@@ -97,6 +97,7 @@ export const SERVER_SETTINGS = gql`
         autoBackupIncludeHistory
         autoBackupIncludeManga
         autoBackupIncludeServerSettings
+        autoBackupIncludeUserSettings
         autoBackupIncludeTracking
 
         # local source
@@ -132,10 +133,20 @@ export const SERVER_SETTINGS = gql`
         databaseUrl
         databaseUsername
         databasePassword
+        databaseSchema
         useHikariConnectionPool
+        hikariMaxPoolSize
+
+        # Extensions
+        autoUpdateExtensions
 
         # WebView
         kcefEnabled
+        # CEF (embedded, default) or PROWL_VNC (the external browser service's browser)
+        webViewProvider
+
+        # Archival
+        archiveDefaultAcquisitionPolicy
 
         # Sync
         syncDataCategories

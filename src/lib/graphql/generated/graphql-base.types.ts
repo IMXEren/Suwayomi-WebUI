@@ -7,9 +7,13 @@ export type Scalars = {
     Boolean: { input: boolean; output: boolean };
     Int: { input: number; output: number };
     Float: { input: number; output: number };
+    /** A location in a connection that can be used for resuming pagination. */
     Cursor: { input: string; output: string };
+    /** An ISO-8601 encoded duration string */
     Duration: { input: string; output: string };
+    /** A 64-bit signed integer as a String */
     LongString: { input: string; output: string };
+    /** A file part in a multipart request */
     Upload: { input: unknown; output: unknown };
 };
 
@@ -33,6 +37,17 @@ export type AboutWebUi = {
     updateTimestamp: Scalars['LongString']['output'];
 };
 
+export type AcceptChapterRevisionCandidatesInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type AcceptChapterRevisionCandidatesPayload = {
+    __typename?: 'AcceptChapterRevisionCandidatesPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
 export type AddExtensionStoreInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     indexUrl: Scalars['String']['input'];
@@ -44,11 +59,268 @@ export type AddExtensionStorePayload = {
     extensionStore: ExtensionStoreType;
 };
 
+export type ApproveChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type ApproveChapterRevisionsPayload = {
+    __typename?: 'ApproveChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type ArchiveBootstrapCategoryPolicyInput = {
+    categoryId: Scalars['Int']['input'];
+    policy: MangaAcquisitionPolicy;
+};
+
+export type ArchiveBootstrapCategoryPolicyType = {
+    __typename?: 'ArchiveBootstrapCategoryPolicyType';
+    categoryId: Scalars['Int']['output'];
+    policy: MangaAcquisitionPolicy;
+};
+
+export type ArchiveBootstrapItemEdge = {
+    __typename?: 'ArchiveBootstrapItemEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ArchiveBootstrapItemType;
+};
+
+export type ArchiveBootstrapItemNodeList = {
+    __typename?: 'ArchiveBootstrapItemNodeList';
+    edges: Array<ArchiveBootstrapItemEdge>;
+    nodes: Array<ArchiveBootstrapItemType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ArchiveBootstrapItemOrderBy {
+    Id = 'ID',
+}
+
+export type ArchiveBootstrapItemOrderInput = {
+    by: ArchiveBootstrapItemOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum ArchiveBootstrapItemState {
+    Cancelled = 'CANCELLED',
+    Complete = 'COMPLETE',
+    Failed = 'FAILED',
+    Pending = 'PENDING',
+    Processing = 'PROCESSING',
+    RetryWait = 'RETRY_WAIT',
+    Skipped = 'SKIPPED',
+    UnresolvedSource = 'UNRESOLVED_SOURCE',
+}
+
+export type ArchiveBootstrapItemType = {
+    __typename?: 'ArchiveBootstrapItemType';
+    attempts: Scalars['Int']['output'];
+    candidateCount?: Maybe<Scalars['Int']['output']>;
+    categoryIds: Array<Scalars['Int']['output']>;
+    dueAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    lastError?: Maybe<Scalars['String']['output']>;
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    mangaUrl?: Maybe<Scalars['String']['output']>;
+    policy: MangaAcquisitionPolicy;
+    sessionId: Scalars['Int']['output'];
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    startedAt?: Maybe<Scalars['LongString']['output']>;
+    state: ArchiveBootstrapItemState;
+    title: Scalars['String']['output'];
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export type ArchiveBootstrapProgressType = {
+    __typename?: 'ArchiveBootstrapProgressType';
+    cancelled: Scalars['Int']['output'];
+    complete: Scalars['Int']['output'];
+    failed: Scalars['Int']['output'];
+    pending: Scalars['Int']['output'];
+    processing: Scalars['Int']['output'];
+    remaining: Scalars['Int']['output'];
+    retryWait: Scalars['Int']['output'];
+    skipped: Scalars['Int']['output'];
+    total: Scalars['Int']['output'];
+    unresolvedSource: Scalars['Int']['output'];
+};
+
+export type ArchiveBootstrapSessionEdge = {
+    __typename?: 'ArchiveBootstrapSessionEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ArchiveBootstrapSessionType;
+};
+
+export type ArchiveBootstrapSessionInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type ArchiveBootstrapSessionNodeList = {
+    __typename?: 'ArchiveBootstrapSessionNodeList';
+    edges: Array<ArchiveBootstrapSessionEdge>;
+    nodes: Array<ArchiveBootstrapSessionType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ArchiveBootstrapSessionOrderBy {
+    Id = 'ID',
+    StartedAt = 'STARTED_AT',
+}
+
+export type ArchiveBootstrapSessionOrderInput = {
+    by: ArchiveBootstrapSessionOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type ArchiveBootstrapSessionPayload = {
+    __typename?: 'ArchiveBootstrapSessionPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ArchiveBootstrapSessionType>;
+};
+
+export type ArchiveBootstrapSessionType = {
+    __typename?: 'ArchiveBootstrapSessionType';
+    cancelledAt?: Maybe<Scalars['LongString']['output']>;
+    categoryPolicies: Array<ArchiveBootstrapCategoryPolicyType>;
+    defaultPolicy: MangaAcquisitionPolicy;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    interItemDelaySeconds: Scalars['LongString']['output'];
+    lastItemAt?: Maybe<Scalars['LongString']['output']>;
+    maxAttempts: Scalars['Int']['output'];
+    nextItemAt?: Maybe<Scalars['LongString']['output']>;
+    pausedAt?: Maybe<Scalars['LongString']['output']>;
+    retrySeconds: Scalars['LongString']['output'];
+    startedAt: Scalars['LongString']['output'];
+    state: ArchiveBootstrapState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export enum ArchiveBootstrapState {
+    Cancelled = 'CANCELLED',
+    Completed = 'COMPLETED',
+    CompletedWithErrors = 'COMPLETED_WITH_ERRORS',
+    Paused = 'PAUSED',
+    Running = 'RUNNING',
+}
+
+export type ArchiveBootstrapUnresolvedSourceType = {
+    __typename?: 'ArchiveBootstrapUnresolvedSourceType';
+    mangaCount: Scalars['Int']['output'];
+    sampleTitles: Array<Scalars['String']['output']>;
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+};
+
+export type AttachMangaToCanonicalWorkInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    isPrimary: Scalars['Boolean']['input'];
+    mangaId: Scalars['Int']['input'];
+    priority?: InputMaybe<Scalars['Int']['input']>;
+    role: CanonicalBindingRole;
+    workKey: Scalars['String']['input'];
+};
+
+export type AttachMangaToCanonicalWorkPayload = {
+    __typename?: 'AttachMangaToCanonicalWorkPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
+
 export enum AuthMode {
     BasicAuth = 'BASIC_AUTH',
     None = 'NONE',
     SimpleLogin = 'SIMPLE_LOGIN',
     UiLogin = 'UI_LOGIN',
+}
+
+export enum BackupRestoreAuditLevel {
+    MangaError = 'MANGA_ERROR',
+    MissingSource = 'MISSING_SOURCE',
+}
+
+export type BackupRestoreAuditType = {
+    __typename?: 'BackupRestoreAuditType';
+    createdAt: Scalars['LongString']['output'];
+    id: Scalars['Int']['output'];
+    level: BackupRestoreAuditLevel;
+    mangaIndex?: Maybe<Scalars['Int']['output']>;
+    message: Scalars['String']['output'];
+    phase: BackupRestorePhase;
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    sourceName?: Maybe<Scalars['String']['output']>;
+};
+
+export type BackupRestoreErrorCountsType = {
+    __typename?: 'BackupRestoreErrorCountsType';
+    mangaErrors: Scalars['Int']['output'];
+    missingSources: Scalars['Int']['output'];
+};
+
+export enum BackupRestoreHandoffState {
+    Blocked = 'BLOCKED',
+    Failed = 'FAILED',
+    None = 'NONE',
+    Pending = 'PENDING',
+    Started = 'STARTED',
+}
+
+export type BackupRestoreJobInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    restoreId: Scalars['String']['input'];
+};
+
+export type BackupRestoreJobPayload = {
+    __typename?: 'BackupRestoreJobPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    job?: Maybe<BackupRestoreJobType>;
+};
+
+export enum BackupRestoreJobState {
+    Cancelled = 'CANCELLED',
+    Failure = 'FAILURE',
+    Queued = 'QUEUED',
+    Running = 'RUNNING',
+    Success = 'SUCCESS',
+}
+
+export type BackupRestoreJobType = {
+    __typename?: 'BackupRestoreJobType';
+    cancelledAt?: Maybe<Scalars['LongString']['output']>;
+    createdAt: Scalars['LongString']['output'];
+    errorCount: Scalars['Int']['output'];
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    handoffError?: Maybe<Scalars['String']['output']>;
+    handoffSessionId?: Maybe<Scalars['Int']['output']>;
+    handoffState: BackupRestoreHandoffState;
+    id: Scalars['Int']['output'];
+    lastError?: Maybe<Scalars['String']['output']>;
+    phase: BackupRestorePhase;
+    progress: Scalars['Int']['output'];
+    restoreId: Scalars['String']['output'];
+    stagedPayloadRetained: Scalars['Boolean']['output'];
+    startedAt?: Maybe<Scalars['LongString']['output']>;
+    state: BackupRestoreJobState;
+    total: Scalars['Int']['output'];
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export enum BackupRestorePhase {
+    Categories = 'CATEGORIES',
+    Completed = 'COMPLETED',
+    Manga = 'MANGA',
+    Meta = 'META',
+    Pending = 'PENDING',
+    Settings = 'SETTINGS',
 }
 
 export enum BackupRestoreState {
@@ -58,6 +330,7 @@ export enum BackupRestoreState {
     RestoringManga = 'RESTORING_MANGA',
     RestoringMeta = 'RESTORING_META',
     RestoringSettings = 'RESTORING_SETTINGS',
+    RestoringUserSettings = 'RESTORING_USER_SETTINGS',
     Success = 'SUCCESS',
 }
 
@@ -113,9 +386,137 @@ export type BooleanFilterInput = {
     notIn?: InputMaybe<Array<Scalars['Boolean']['input']>>;
 };
 
+export type BootstrapCategoryPolicyInput = {
+    categoryName: Scalars['String']['input'];
+    policy: MangaAcquisitionPolicy;
+};
+
+export enum CanonicalBindingRole {
+    Active = 'ACTIVE',
+    Disabled = 'DISABLED',
+    Fallback = 'FALLBACK',
+}
+
+export enum CanonicalDuplicateStrategy {
+    KeepAll = 'KEEP_ALL',
+    PreferPrimarySource = 'PREFER_PRIMARY_SOURCE',
+    PreferScanlator = 'PREFER_SCANLATOR',
+}
+
+export type CanonicalIdentityExportType = {
+    __typename?: 'CanonicalIdentityExportType';
+    bindingCount: Scalars['Int']['output'];
+    payload: Scalars['String']['output'];
+    schemaVersion: Scalars['Int']['output'];
+    workCount: Scalars['Int']['output'];
+};
+
+export type CanonicalIdentityImportType = {
+    __typename?: 'CanonicalIdentityImportType';
+    bindingsBound: Scalars['Int']['output'];
+    bindingsRebound: Scalars['Int']['output'];
+    bindingsUnresolved: Scalars['Int']['output'];
+    worksCreated: Scalars['Int']['output'];
+    worksUpdated: Scalars['Int']['output'];
+};
+
+export type CanonicalIdentityStatusType = {
+    __typename?: 'CanonicalIdentityStatusType';
+    activeBindingCount: Scalars['Int']['output'];
+    bindingCount: Scalars['Int']['output'];
+    detachedBindingCount: Scalars['Int']['output'];
+    disabledBindingCount: Scalars['Int']['output'];
+    duplicatePolicyApplied: Scalars['Boolean']['output'];
+    fallbackBindingCount: Scalars['Int']['output'];
+    primaryBindingCount: Scalars['Int']['output'];
+    workCount: Scalars['Int']['output'];
+};
+
+export type CanonicalSourceBindingEdge = Edge & {
+    __typename?: 'CanonicalSourceBindingEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: CanonicalSourceBindingType;
+};
+
+export type CanonicalSourceBindingNodeList = NodeList & {
+    __typename?: 'CanonicalSourceBindingNodeList';
+    edges: Array<CanonicalSourceBindingEdge>;
+    nodes: Array<CanonicalSourceBindingType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export type CanonicalSourceBindingType = {
+    __typename?: 'CanonicalSourceBindingType';
+    acquisitionEligible: Scalars['Boolean']['output'];
+    boundAt: Scalars['LongString']['output'];
+    id: Scalars['Int']['output'];
+    isPrimary: Scalars['Boolean']['output'];
+    manga?: Maybe<MangaType>;
+    mangaAvailable: Scalars['Boolean']['output'];
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    mangaTitle?: Maybe<Scalars['String']['output']>;
+    mangaUrl?: Maybe<Scalars['String']['output']>;
+    priority: Scalars['Int']['output'];
+    role: CanonicalBindingRole;
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    sourceName?: Maybe<Scalars['String']['output']>;
+    updatedAt: Scalars['LongString']['output'];
+    work?: Maybe<CanonicalWorkType>;
+    workId: Scalars['Int']['output'];
+    workKey: Scalars['String']['output'];
+};
+
+export type CanonicalWorkEdge = Edge & {
+    __typename?: 'CanonicalWorkEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: CanonicalWorkType;
+};
+
+export type CanonicalWorkNodeList = NodeList & {
+    __typename?: 'CanonicalWorkNodeList';
+    edges: Array<CanonicalWorkEdge>;
+    nodes: Array<CanonicalWorkType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum CanonicalWorkOrderBy {
+    CreatedAt = 'CREATED_AT',
+    Id = 'ID',
+    UpdatedAt = 'UPDATED_AT',
+}
+
+export type CanonicalWorkOrderInput = {
+    by: CanonicalWorkOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type CanonicalWorkType = {
+    __typename?: 'CanonicalWorkType';
+    bindingCount: Scalars['Int']['output'];
+    bindings: CanonicalSourceBindingNodeList;
+    createdAt: Scalars['LongString']['output'];
+    duplicatePolicyApplied: Scalars['Boolean']['output'];
+    duplicateStrategy: CanonicalDuplicateStrategy;
+    id: Scalars['Int']['output'];
+    preferredScanlator?: Maybe<Scalars['String']['output']>;
+    primaryBinding?: Maybe<CanonicalSourceBindingType>;
+    title: Scalars['String']['output'];
+    updatedAt: Scalars['LongString']['output'];
+    workKey: Scalars['String']['output'];
+};
+
+export enum CanonicalWriteOutcome {
+    Applied = 'APPLIED',
+    Conflict = 'CONFLICT',
+    NotFound = 'NOT_FOUND',
+}
+
 export type CategoryConditionInput = {
     default?: InputMaybe<Scalars['Boolean']['input']>;
     id?: InputMaybe<Scalars['Int']['input']>;
+    isDefaultCategory?: InputMaybe<Scalars['Boolean']['input']>;
     name?: InputMaybe<Scalars['String']['input']>;
     order?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -130,6 +531,7 @@ export type CategoryFilterInput = {
     and?: InputMaybe<Array<CategoryFilterInput>>;
     default?: InputMaybe<BooleanFilterInput>;
     id?: InputMaybe<IntFilterInput>;
+    isDefaultCategory?: InputMaybe<BooleanFilterInput>;
     name?: InputMaybe<StringFilterInput>;
     not?: InputMaybe<CategoryFilterInput>;
     or?: InputMaybe<Array<CategoryFilterInput>>;
@@ -180,6 +582,7 @@ export type CategoryType = {
     id: Scalars['Int']['output'];
     includeInDownload: IncludeOrExclude;
     includeInUpdate: IncludeOrExclude;
+    isDefaultCategory: Scalars['Boolean']['output'];
     mangas: MangaNodeList;
     meta: Array<CategoryMetaType>;
     name: Scalars['String']['output'];
@@ -196,6 +599,42 @@ export enum CbzMediaType {
     Compatible = 'COMPATIBLE',
     Legacy = 'LEGACY',
     Modern = 'MODERN',
+}
+
+export type ChangeCanonicalBindingInput = {
+    bindingId: Scalars['Int']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    priority?: InputMaybe<Scalars['Int']['input']>;
+    role?: InputMaybe<CanonicalBindingRole>;
+};
+
+export type ChangeCanonicalBindingPayload = {
+    __typename?: 'ChangeCanonicalBindingPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
+
+export enum ChapterAcquisitionState {
+    Approved = 'APPROVED',
+    Complete = 'COMPLETE',
+    Discovered = 'DISCOVERED',
+    DownloadedLocal = 'DOWNLOADED_LOCAL',
+    Downloading = 'DOWNLOADING',
+    DownloadFailed = 'DOWNLOAD_FAILED',
+    PendingApproval = 'PENDING_APPROVAL',
+    Queued = 'QUEUED',
+    Validating = 'VALIDATING',
+    ValidationFailed = 'VALIDATION_FAILED',
+}
+
+export enum ChapterArchiveState {
+    ArchiveUnconfirmed = 'ARCHIVE_UNCONFIRMED',
+    Committing = 'COMMITTING',
+    CommitFailed = 'COMMIT_FAILED',
+    NotCommitted = 'NOT_COMMITTED',
+    RemoteConfirmed = 'REMOTE_CONFIRMED',
+    RemotePending = 'REMOTE_PENDING',
 }
 
 export type ChapterConditionInput = {
@@ -251,6 +690,151 @@ export type ChapterFilterInput = {
     url?: InputMaybe<StringFilterInput>;
 };
 
+export type ChapterIntegrityAuditItemEdge = {
+    __typename?: 'ChapterIntegrityAuditItemEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterIntegrityAuditItemType;
+};
+
+export type ChapterIntegrityAuditItemNodeList = {
+    __typename?: 'ChapterIntegrityAuditItemNodeList';
+    edges: Array<ChapterIntegrityAuditItemEdge>;
+    nodes: Array<ChapterIntegrityAuditItemType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterIntegrityAuditItemOrderBy {
+    Id = 'ID',
+}
+
+export type ChapterIntegrityAuditItemOrderInput = {
+    by: ChapterIntegrityAuditItemOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum ChapterIntegrityAuditItemState {
+    Checking = 'CHECKING',
+    Corrupt = 'CORRUPT',
+    Failed = 'FAILED',
+    Missing = 'MISSING',
+    Pending = 'PENDING',
+    RetryWait = 'RETRY_WAIT',
+    Skipped = 'SKIPPED',
+    Verified = 'VERIFIED',
+}
+
+export type ChapterIntegrityAuditItemType = {
+    __typename?: 'ChapterIntegrityAuditItemType';
+    attempts: Scalars['Int']['output'];
+    candidateKey: Scalars['String']['output'];
+    chapterId?: Maybe<Scalars['Int']['output']>;
+    chapterKey: Scalars['String']['output'];
+    chapterName: Scalars['String']['output'];
+    dueAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    lastError?: Maybe<Scalars['String']['output']>;
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    revisionId?: Maybe<Scalars['Int']['output']>;
+    seriesTitle?: Maybe<Scalars['String']['output']>;
+    sessionId: Scalars['Int']['output'];
+    startedAt?: Maybe<Scalars['LongString']['output']>;
+    state: ChapterIntegrityAuditItemState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export enum ChapterIntegrityAuditKind {
+    ManualFull = 'MANUAL_FULL',
+    ManualRecent = 'MANUAL_RECENT',
+    Scheduled = 'SCHEDULED',
+}
+
+export type ChapterIntegrityAuditProgressType = {
+    __typename?: 'ChapterIntegrityAuditProgressType';
+    checking: Scalars['Int']['output'];
+    corrupt: Scalars['Int']['output'];
+    failed: Scalars['Int']['output'];
+    findings: Scalars['Int']['output'];
+    missing: Scalars['Int']['output'];
+    pending: Scalars['Int']['output'];
+    remaining: Scalars['Int']['output'];
+    retryWait: Scalars['Int']['output'];
+    skipped: Scalars['Int']['output'];
+    total: Scalars['Int']['output'];
+    verified: Scalars['Int']['output'];
+};
+
+export type ChapterIntegrityAuditScheduleType = {
+    __typename?: 'ChapterIntegrityAuditScheduleType';
+    lastRunAt?: Maybe<Scalars['LongString']['output']>;
+    lastSessionId?: Maybe<Scalars['Int']['output']>;
+    nextDueAt: Scalars['LongString']['output'];
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export type ChapterIntegrityAuditSessionEdge = {
+    __typename?: 'ChapterIntegrityAuditSessionEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterIntegrityAuditSessionType;
+};
+
+export type ChapterIntegrityAuditSessionInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type ChapterIntegrityAuditSessionNodeList = {
+    __typename?: 'ChapterIntegrityAuditSessionNodeList';
+    edges: Array<ChapterIntegrityAuditSessionEdge>;
+    nodes: Array<ChapterIntegrityAuditSessionType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterIntegrityAuditSessionOrderBy {
+    Id = 'ID',
+    StartedAt = 'STARTED_AT',
+}
+
+export type ChapterIntegrityAuditSessionOrderInput = {
+    by: ChapterIntegrityAuditSessionOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type ChapterIntegrityAuditSessionPayload = {
+    __typename?: 'ChapterIntegrityAuditSessionPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    session?: Maybe<ChapterIntegrityAuditSessionType>;
+};
+
+export enum ChapterIntegrityAuditSessionState {
+    Cancelled = 'CANCELLED',
+    Completed = 'COMPLETED',
+    CompletedWithErrors = 'COMPLETED_WITH_ERRORS',
+    Paused = 'PAUSED',
+    Running = 'RUNNING',
+}
+
+export type ChapterIntegrityAuditSessionType = {
+    __typename?: 'ChapterIntegrityAuditSessionType';
+    cancelledAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    itemDelaySeconds: Scalars['LongString']['output'];
+    kind: ChapterIntegrityAuditKind;
+    lastItemAt?: Maybe<Scalars['LongString']['output']>;
+    maxAttempts: Scalars['Int']['output'];
+    newestPerManga?: Maybe<Scalars['Int']['output']>;
+    nextItemAt?: Maybe<Scalars['LongString']['output']>;
+    pausedAt?: Maybe<Scalars['LongString']['output']>;
+    retrySeconds: Scalars['LongString']['output'];
+    startedAt: Scalars['LongString']['output'];
+    state: ChapterIntegrityAuditSessionState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
 export type ChapterMetaType = MetaType & {
     __typename?: 'ChapterMetaType';
     chapter: ChapterType;
@@ -288,15 +872,427 @@ export type ChapterOrderInput = {
     byType?: InputMaybe<SortOrder>;
 };
 
+export enum ChapterPublicationState {
+    NotPublished = 'NOT_PUBLISHED',
+    PublicationFailed = 'PUBLICATION_FAILED',
+    Published = 'PUBLISHED',
+    Publishing = 'PUBLISHING',
+}
+
+export enum ChapterRetentionState {
+    Deleting = 'DELETING',
+    Pruned = 'PRUNED',
+    PruneFailed = 'PRUNE_FAILED',
+    PruneQueued = 'PRUNE_QUEUED',
+    RemoteDeletePending = 'REMOTE_DELETE_PENDING',
+    Retained = 'RETAINED',
+}
+
+export type ChapterRevisionComparisonPageEdge = Edge & {
+    __typename?: 'ChapterRevisionComparisonPageEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionComparisonPageType;
+};
+
+export type ChapterRevisionComparisonPageNodeList = NodeList & {
+    __typename?: 'ChapterRevisionComparisonPageNodeList';
+    edges: Array<ChapterRevisionComparisonPageEdge>;
+    nodes: Array<ChapterRevisionComparisonPageType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export type ChapterRevisionComparisonPageType = {
+    __typename?: 'ChapterRevisionComparisonPageType';
+    baselineHeight?: Maybe<Scalars['Int']['output']>;
+    baselinePageIndex?: Maybe<Scalars['Int']['output']>;
+    baselinePageUrl?: Maybe<Scalars['String']['output']>;
+    baselinePreviewAvailable: Scalars['Boolean']['output'];
+    baselineSize?: Maybe<Scalars['LongString']['output']>;
+    baselineThumbnailUrl?: Maybe<Scalars['String']['output']>;
+    baselineWidth?: Maybe<Scalars['Int']['output']>;
+    candidateHeight?: Maybe<Scalars['Int']['output']>;
+    candidatePageIndex?: Maybe<Scalars['Int']['output']>;
+    candidatePageUrl?: Maybe<Scalars['String']['output']>;
+    candidatePreviewAvailable: Scalars['Boolean']['output'];
+    candidateSize?: Maybe<Scalars['LongString']['output']>;
+    candidateThumbnailUrl?: Maybe<Scalars['String']['output']>;
+    candidateWidth?: Maybe<Scalars['Int']['output']>;
+    hammingDistance?: Maybe<Scalars['Int']['output']>;
+    ordinal: Scalars['Int']['output'];
+    state: ChapterRevisionPageAlignmentState;
+};
+
+export type ChapterRevisionComparisonType = {
+    __typename?: 'ChapterRevisionComparisonType';
+    addedCount: Scalars['Int']['output'];
+    algorithmVersion: Scalars['String']['output'];
+    alignedCount: Scalars['Int']['output'];
+    allPagesVisuallyEquivalent: Scalars['Boolean']['output'];
+    baselinePageCount: Scalars['Int']['output'];
+    baselineRevisionId?: Maybe<Scalars['Int']['output']>;
+    candidatePageCount: Scalars['Int']['output'];
+    createdAt: Scalars['LongString']['output'];
+    exactCount: Scalars['Int']['output'];
+    hammingThreshold: Scalars['Int']['output'];
+    hasLimitations: Scalars['Boolean']['output'];
+    limitations?: Maybe<Scalars['String']['output']>;
+    modifiedCount: Scalars['Int']['output'];
+    removedCount: Scalars['Int']['output'];
+    revisionId: Scalars['Int']['output'];
+    updatedAt: Scalars['LongString']['output'];
+    visuallyEquivalentCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionDiscoveryReason {
+    BootstrapImport = 'BOOTSTRAP_IMPORT',
+    ManualSweep = 'MANUAL_SWEEP',
+    MetadataChange = 'METADATA_CHANGE',
+    NewChapter = 'NEW_CHAPTER',
+    PeriodicSweep = 'PERIODIC_SWEEP',
+}
+
+export enum ChapterRevisionDisposition {
+    Accepted = 'ACCEPTED',
+    Candidate = 'CANDIDATE',
+    Rejected = 'REJECTED',
+    Superseded = 'SUPERSEDED',
+    Unchanged = 'UNCHANGED',
+}
+
+export type ChapterRevisionEdge = Edge & {
+    __typename?: 'ChapterRevisionEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionType;
+};
+
+export enum ChapterRevisionIntegrityState {
+    AuditFailed = 'AUDIT_FAILED',
+    Corrupt = 'CORRUPT',
+    Missing = 'MISSING',
+    NeverAudited = 'NEVER_AUDITED',
+    Verified = 'VERIFIED',
+}
+
+export enum ChapterRevisionMetadataField {
+    ChapterNumber = 'CHAPTER_NUMBER',
+    Memo = 'MEMO',
+    Name = 'NAME',
+    Scanlator = 'SCANLATOR',
+    UploadDate = 'UPLOAD_DATE',
+}
+
+export type ChapterRevisionNodeList = NodeList & {
+    __typename?: 'ChapterRevisionNodeList';
+    edges: Array<ChapterRevisionEdge>;
+    nodes: Array<ChapterRevisionType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionOrderBy {
+    DiscoveredAt = 'DISCOVERED_AT',
+    Id = 'ID',
+    UpdatedAt = 'UPDATED_AT',
+}
+
+export type ChapterRevisionOrderInput = {
+    by: ChapterRevisionOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum ChapterRevisionPageAlignmentState {
+    Added = 'ADDED',
+    Exact = 'EXACT',
+    Modified = 'MODIFIED',
+    Removed = 'REMOVED',
+    VisuallyEquivalent = 'VISUALLY_EQUIVALENT',
+}
+
+export type ChapterRevisionRollbackEdge = {
+    __typename?: 'ChapterRevisionRollbackEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionRollbackType;
+};
+
+export type ChapterRevisionRollbackNodeList = {
+    __typename?: 'ChapterRevisionRollbackNodeList';
+    edges: Array<ChapterRevisionRollbackEdge>;
+    nodes: Array<ChapterRevisionRollbackType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionRollbackOrderBy {
+    Id = 'ID',
+}
+
+export type ChapterRevisionRollbackOrderInput = {
+    by: ChapterRevisionRollbackOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type ChapterRevisionRollbackType = {
+    __typename?: 'ChapterRevisionRollbackType';
+    chapterKey: Scalars['String']['output'];
+    fromRevisionId?: Maybe<Scalars['Int']['output']>;
+    id: Scalars['Int']['output'];
+    rolledBackAt: Scalars['LongString']['output'];
+    toRevisionId?: Maybe<Scalars['Int']['output']>;
+};
+
+export enum ChapterRevisionSignalConfidence {
+    ContentProof = 'CONTENT_PROOF',
+    ManifestHint = 'MANIFEST_HINT',
+    MetadataHint = 'METADATA_HINT',
+}
+
+export type ChapterRevisionSweepItemEdge = {
+    __typename?: 'ChapterRevisionSweepItemEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionSweepItemType;
+};
+
+export type ChapterRevisionSweepItemNodeList = {
+    __typename?: 'ChapterRevisionSweepItemNodeList';
+    edges: Array<ChapterRevisionSweepItemEdge>;
+    nodes: Array<ChapterRevisionSweepItemType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionSweepItemOrderBy {
+    Id = 'ID',
+}
+
+export type ChapterRevisionSweepItemOrderInput = {
+    by: ChapterRevisionSweepItemOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum ChapterRevisionSweepItemState {
+    Cancelled = 'CANCELLED',
+    Complete = 'COMPLETE',
+    Failed = 'FAILED',
+    Pending = 'PENDING',
+    Processing = 'PROCESSING',
+    RetryWait = 'RETRY_WAIT',
+    Skipped = 'SKIPPED',
+}
+
+export type ChapterRevisionSweepItemType = {
+    __typename?: 'ChapterRevisionSweepItemType';
+    attempts: Scalars['Int']['output'];
+    candidateCount?: Maybe<Scalars['Int']['output']>;
+    chapterId?: Maybe<Scalars['Int']['output']>;
+    chapterKey: Scalars['String']['output'];
+    chapterName: Scalars['String']['output'];
+    dueAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    lastError?: Maybe<Scalars['String']['output']>;
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    policy: MangaAcquisitionPolicy;
+    seriesTitle: Scalars['String']['output'];
+    sessionId: Scalars['Int']['output'];
+    sourceChapterUrl: Scalars['String']['output'];
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    startedAt?: Maybe<Scalars['LongString']['output']>;
+    state: ChapterRevisionSweepItemState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export enum ChapterRevisionSweepKind {
+    ManualFull = 'MANUAL_FULL',
+    ManualRecent = 'MANUAL_RECENT',
+    Scheduled = 'SCHEDULED',
+}
+
+export type ChapterRevisionSweepProgressType = {
+    __typename?: 'ChapterRevisionSweepProgressType';
+    cancelled: Scalars['Int']['output'];
+    complete: Scalars['Int']['output'];
+    failed: Scalars['Int']['output'];
+    pending: Scalars['Int']['output'];
+    processing: Scalars['Int']['output'];
+    remaining: Scalars['Int']['output'];
+    retryWait: Scalars['Int']['output'];
+    skipped: Scalars['Int']['output'];
+    total: Scalars['Int']['output'];
+};
+
+export type ChapterRevisionSweepScheduleType = {
+    __typename?: 'ChapterRevisionSweepScheduleType';
+    lastRunAt?: Maybe<Scalars['LongString']['output']>;
+    lastSessionId?: Maybe<Scalars['Int']['output']>;
+    nextDueAt: Scalars['LongString']['output'];
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export type ChapterRevisionSweepSessionEdge = {
+    __typename?: 'ChapterRevisionSweepSessionEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: ChapterRevisionSweepSessionType;
+};
+
+export type ChapterRevisionSweepSessionInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type ChapterRevisionSweepSessionNodeList = {
+    __typename?: 'ChapterRevisionSweepSessionNodeList';
+    edges: Array<ChapterRevisionSweepSessionEdge>;
+    nodes: Array<ChapterRevisionSweepSessionType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum ChapterRevisionSweepSessionOrderBy {
+    Id = 'ID',
+    StartedAt = 'STARTED_AT',
+}
+
+export type ChapterRevisionSweepSessionOrderInput = {
+    by: ChapterRevisionSweepSessionOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export type ChapterRevisionSweepSessionPayload = {
+    __typename?: 'ChapterRevisionSweepSessionPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterRevisionSweepSessionType>;
+};
+
+export enum ChapterRevisionSweepSessionState {
+    Cancelled = 'CANCELLED',
+    Completed = 'COMPLETED',
+    CompletedWithErrors = 'COMPLETED_WITH_ERRORS',
+    Paused = 'PAUSED',
+    Running = 'RUNNING',
+}
+
+export type ChapterRevisionSweepSessionType = {
+    __typename?: 'ChapterRevisionSweepSessionType';
+    cancelledAt?: Maybe<Scalars['LongString']['output']>;
+    finishedAt?: Maybe<Scalars['LongString']['output']>;
+    id: Scalars['Int']['output'];
+    itemDelaySeconds: Scalars['LongString']['output'];
+    kind: ChapterRevisionSweepKind;
+    lastItemAt?: Maybe<Scalars['LongString']['output']>;
+    maxAttempts: Scalars['Int']['output'];
+    newestPerSeries?: Maybe<Scalars['Int']['output']>;
+    nextItemAt?: Maybe<Scalars['LongString']['output']>;
+    pausedAt?: Maybe<Scalars['LongString']['output']>;
+    retrySeconds: Scalars['LongString']['output'];
+    startedAt: Scalars['LongString']['output'];
+    state: ChapterRevisionSweepSessionState;
+    updatedAt: Scalars['LongString']['output'];
+};
+
+export type ChapterRevisionType = {
+    __typename?: 'ChapterRevisionType';
+    acceptedAt?: Maybe<Scalars['LongString']['output']>;
+    acquisitionState: ChapterAcquisitionState;
+    activatedAt?: Maybe<Scalars['LongString']['output']>;
+    activeCbzHash?: Maybe<Scalars['String']['output']>;
+    activeCbzPath?: Maybe<Scalars['String']['output']>;
+    activeCbzSize?: Maybe<Scalars['LongString']['output']>;
+    approvedAt?: Maybe<Scalars['LongString']['output']>;
+    archiveAttempts: Scalars['Int']['output'];
+    archiveCbzHash?: Maybe<Scalars['String']['output']>;
+    archiveCbzPath?: Maybe<Scalars['String']['output']>;
+    archiveCbzSize?: Maybe<Scalars['LongString']['output']>;
+    archiveLastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    archiveLastError?: Maybe<Scalars['String']['output']>;
+    archiveLastVerificationAt?: Maybe<Scalars['LongString']['output']>;
+    archiveManifestHash?: Maybe<Scalars['String']['output']>;
+    archiveManifestPath?: Maybe<Scalars['String']['output']>;
+    archiveManifestSize?: Maybe<Scalars['LongString']['output']>;
+    archiveNextVerificationAt?: Maybe<Scalars['LongString']['output']>;
+    archiveState: ChapterArchiveState;
+    archiveVerificationAttempts: Scalars['Int']['output'];
+    archivedAt?: Maybe<Scalars['LongString']['output']>;
+    attempts: Scalars['Int']['output'];
+    candidateKey: Scalars['String']['output'];
+    candidatePath?: Maybe<Scalars['String']['output']>;
+    changedMetadataFields: Array<ChapterRevisionMetadataField>;
+    chapter?: Maybe<ChapterType>;
+    chapterId?: Maybe<Scalars['Int']['output']>;
+    chapterKey: Scalars['String']['output'];
+    chapterNumber: Scalars['Float']['output'];
+    contentHash?: Maybe<Scalars['String']['output']>;
+    deletedAt?: Maybe<Scalars['LongString']['output']>;
+    discoveredAt: Scalars['LongString']['output'];
+    discoveryReason: ChapterRevisionDiscoveryReason;
+    disposition: ChapterRevisionDisposition;
+    downloadUrl?: Maybe<Scalars['String']['output']>;
+    id: Scalars['Int']['output'];
+    integrityLastAuditSessionId?: Maybe<Scalars['Int']['output']>;
+    integrityLastAuditedAt?: Maybe<Scalars['LongString']['output']>;
+    integrityLastError?: Maybe<Scalars['String']['output']>;
+    integrityState: ChapterRevisionIntegrityState;
+    isActiveRevision: Scalars['Boolean']['output'];
+    lastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    lastError?: Maybe<Scalars['String']['output']>;
+    manga?: Maybe<MangaType>;
+    mangaId?: Maybe<Scalars['Int']['output']>;
+    name: Scalars['String']['output'];
+    pageCount?: Maybe<Scalars['Int']['output']>;
+    prunedAt?: Maybe<Scalars['LongString']['output']>;
+    publicationAttempts: Scalars['Int']['output'];
+    publicationLastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    publicationLastError?: Maybe<Scalars['String']['output']>;
+    publicationState: ChapterPublicationState;
+    publishedAt?: Maybe<Scalars['LongString']['output']>;
+    retentionAttempts: Scalars['Int']['output'];
+    retentionLastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    retentionLastError?: Maybe<Scalars['String']['output']>;
+    retentionNextVerificationAt?: Maybe<Scalars['LongString']['output']>;
+    retentionQueuedAt?: Maybe<Scalars['LongString']['output']>;
+    retentionState: ChapterRetentionState;
+    scanlator?: Maybe<Scalars['String']['output']>;
+    signalConfidence: ChapterRevisionSignalConfidence;
+    sourceChapterUrl: Scalars['String']['output'];
+    sourceId?: Maybe<Scalars['LongString']['output']>;
+    sourceMangaUrl?: Maybe<Scalars['String']['output']>;
+    supersededAt?: Maybe<Scalars['LongString']['output']>;
+    updatedAt: Scalars['LongString']['output'];
+    uploadDate: Scalars['LongString']['output'];
+    visualAnalysisAttempts: Scalars['Int']['output'];
+    visualAnalysisCompletedAt?: Maybe<Scalars['LongString']['output']>;
+    visualAnalysisLastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    visualAnalysisLastError?: Maybe<Scalars['String']['output']>;
+    visualAnalysisNextAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    visualAnalysisState: ChapterVisualAnalysisState;
+};
+
+export type ChapterRevisionVisualAnalysisStatus = {
+    __typename?: 'ChapterRevisionVisualAnalysisStatus';
+    analyzing: Scalars['Int']['output'];
+    complete: Scalars['Int']['output'];
+    completeWithLimitations: Scalars['Int']['output'];
+    failed: Scalars['Int']['output'];
+    notRequired: Scalars['Int']['output'];
+    queued: Scalars['Int']['output'];
+};
+
 export type ChapterType = {
     __typename?: 'ChapterType';
     chapterNumber: Scalars['Float']['output'];
     fetchedAt: Scalars['LongString']['output'];
     id: Scalars['Int']['output'];
+    /** @deprecated Use user.isBookmarked instead */
     isBookmarked: Scalars['Boolean']['output'];
+    /** @deprecated Use user.isDownloaded instead */
     isDownloaded: Scalars['Boolean']['output'];
+    /** @deprecated Use user.isRead instead */
     isRead: Scalars['Boolean']['output'];
+    /** @deprecated Use user.lastPageRead instead */
     lastPageRead: Scalars['Int']['output'];
+    /** @deprecated Use user.lastReadAt instead */
     lastReadAt: Scalars['LongString']['output'];
     manga: MangaType;
     mangaId: Scalars['Int']['output'];
@@ -308,7 +1304,27 @@ export type ChapterType = {
     sourceOrder: Scalars['Int']['output'];
     uploadDate: Scalars['LongString']['output'];
     url: Scalars['String']['output'];
+    user: ChapterUserType;
 };
+
+export type ChapterUserType = {
+    __typename?: 'ChapterUserType';
+    chapterId: Scalars['Int']['output'];
+    isBookmarked: Scalars['Boolean']['output'];
+    isDownloaded: Scalars['Boolean']['output'];
+    isRead: Scalars['Boolean']['output'];
+    lastPageRead: Scalars['Int']['output'];
+    lastReadAt: Scalars['LongString']['output'];
+};
+
+export enum ChapterVisualAnalysisState {
+    Analyzing = 'ANALYZING',
+    Complete = 'COMPLETE',
+    CompleteWithLimitations = 'COMPLETE_WITH_LIMITATIONS',
+    Failed = 'FAILED',
+    NotRequired = 'NOT_REQUIRED',
+    Queued = 'QUEUED',
+}
 
 export type CheckBoxFilter = {
     __typename?: 'CheckBoxFilter';
@@ -368,6 +1384,17 @@ export type ClearDownloaderPayload = {
     downloadStatus: DownloadStatus;
 };
 
+export type CloseWebViewInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    tab?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CloseWebViewPayload = {
+    __typename?: 'CloseWebViewPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    closed: Array<Scalars['String']['output']>;
+};
+
 export type ConnectKoSyncAccountInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     password: Scalars['String']['input'];
@@ -402,12 +1429,38 @@ export type ContentWarningFilterInput = {
 export type CreateBackupInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     flags?: InputMaybe<PartialBackupFlagsInput>;
+    /** @deprecated Will get removed, replace with flags */
+    includeCategories?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Will get removed, replace with flags */
+    includeChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Will get removed, replace with flags */
+    includeClientData?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Will get removed, replace with flags */
+    includeHistory?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Will get removed, replace with flags */
+    includeServerSettings?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Will get removed, replace with flags */
+    includeTracking?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type CreateBackupPayload = {
     __typename?: 'CreateBackupPayload';
     clientMutationId?: Maybe<Scalars['String']['output']>;
     url: Scalars['String']['output'];
+};
+
+export type CreateCanonicalWorkInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    duplicateStrategy: CanonicalDuplicateStrategy;
+    preferredScanlator?: InputMaybe<Scalars['String']['input']>;
+    title: Scalars['String']['input'];
+};
+
+export type CreateCanonicalWorkPayload = {
+    __typename?: 'CreateCanonicalWorkPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+    work?: Maybe<CanonicalWorkType>;
 };
 
 export type CreateCategoryInput = {
@@ -425,10 +1478,45 @@ export type CreateCategoryPayload = {
     clientMutationId?: Maybe<Scalars['String']['output']>;
 };
 
+export type CreateRecoveryCodeInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    userId: Scalars['Int']['input'];
+};
+
+export type CreateRecoveryCodePayload = {
+    __typename?: 'CreateRecoveryCodePayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    code: Scalars['String']['output'];
+    expiresAt: Scalars['LongString']['output'];
+};
+
+export type CreateRegistrationCodeInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    permissions?: InputMaybe<Array<UserPermission>>;
+};
+
+export type CreateRegistrationCodePayload = {
+    __typename?: 'CreateRegistrationCodePayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    code: Scalars['String']['output'];
+    expiresAt: Scalars['LongString']['output'];
+};
+
 export enum DatabaseType {
     H2 = 'H2',
     Postgresql = 'POSTGRESQL',
 }
+
+export type DeleteCanonicalWorkInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    workKey: Scalars['String']['input'];
+};
+
+export type DeleteCanonicalWorkPayload = {
+    __typename?: 'DeleteCanonicalWorkPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
 
 export type DeleteCategoryInput = {
     categoryId: Scalars['Int']['input'];
@@ -633,6 +1721,18 @@ export type DequeueChapterDownloadsPayload = {
     downloadStatus: DownloadStatus;
 };
 
+export type DetachCanonicalBindingInput = {
+    bindingId: Scalars['Int']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DetachCanonicalBindingPayload = {
+    __typename?: 'DetachCanonicalBindingPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
+
 export type DoubleFilterInput = {
     distinctFrom?: InputMaybe<Scalars['Float']['input']>;
     distinctFromAll?: InputMaybe<Array<Scalars['Float']['input']>>;
@@ -652,7 +1752,10 @@ export type DoubleFilterInput = {
 };
 
 export type DownloadChangedInput = {
-    /** Sets a max number of updates that can be contained in a download update message.Everything above this limit will be omitted and the "downloadStatus" should be re-fetched via the corresponding query. Due to the graphql subscription execution strategy not supporting batching for data loaders, the data loaders run into the n+1 problem, which can cause the server to get unresponsive until the status update has been handled. This is an issue e.g. when mass en- or dequeuing downloads. */
+    /**
+     * Sets a max number of updates that can be contained in a download update message.Everything above this limit will be omitted and the "downloadStatus" should be re-fetched via the corresponding query. Due to the graphql subscription execution strategy not supporting batching for data loaders, the data loaders run into the n+1 problem, which can cause the server to get unresponsive until the status update has been handled. This is an issue e.g. when mass en- or dequeuing downloads.
+     * @deprecated Removed - has no effect
+     */
     maxUpdates?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -714,7 +1817,10 @@ export type DownloadUpdates = {
     __typename?: 'DownloadUpdates';
     /** The current download queue at the time of sending initial message. Is null for all following messages */
     initial?: Maybe<Array<DownloadType>>;
-    /** Indicates whether updates have been omitted based on the "maxUpdates" subscription variable. In case updates have been omitted, the "downloadStatus" query should be re-fetched. */
+    /**
+     * Indicates whether updates have been omitted based on the "maxUpdates" subscription variable. In case updates have been omitted, the "downloadStatus" query should be re-fetched.
+     * @deprecated Removed - has no effect anymore, is always false
+     */
     omittedUpdates: Scalars['Boolean']['output'];
     state: DownloaderState;
     updates: Array<DownloadUpdate>;
@@ -768,6 +1874,12 @@ export type EnqueueChapterDownloadsPayload = {
     downloadStatus: DownloadStatus;
 };
 
+export type ExportCanonicalIdentityPayload = {
+    __typename?: 'ExportCanonicalIdentityPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    export: CanonicalIdentityExportType;
+};
+
 export type ExtensionConditionInput = {
     apkName?: InputMaybe<Scalars['String']['input']>;
     apkUrl?: InputMaybe<Scalars['String']['input']>;
@@ -776,11 +1888,15 @@ export type ExtensionConditionInput = {
     hasUpdate?: InputMaybe<Scalars['Boolean']['input']>;
     iconUrl?: InputMaybe<Scalars['String']['input']>;
     isInstalled?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated , replace with contentWarning */
+    isNsfw?: InputMaybe<Scalars['Boolean']['input']>;
     isObsolete?: InputMaybe<Scalars['Boolean']['input']>;
     jarUrl?: InputMaybe<Scalars['String']['input']>;
     lang?: InputMaybe<Scalars['String']['input']>;
     name?: InputMaybe<Scalars['String']['input']>;
     pkgName?: InputMaybe<Scalars['String']['input']>;
+    /** @deprecated , replace with storeIndexUrl */
+    repo?: InputMaybe<Scalars['String']['input']>;
     storeIndexUrl?: InputMaybe<Scalars['String']['input']>;
     versionCode?: InputMaybe<Scalars['Int']['input']>;
     versionCodeLong?: InputMaybe<Scalars['LongString']['input']>;
@@ -802,6 +1918,8 @@ export type ExtensionFilterInput = {
     hasUpdate?: InputMaybe<BooleanFilterInput>;
     iconUrl?: InputMaybe<StringFilterInput>;
     isInstalled?: InputMaybe<BooleanFilterInput>;
+    /** @deprecated , replace with contentWarning */
+    isNsfw?: InputMaybe<BooleanFilterInput>;
     isObsolete?: InputMaybe<BooleanFilterInput>;
     jarUrl?: InputMaybe<StringFilterInput>;
     lang?: InputMaybe<StringFilterInput>;
@@ -809,7 +1927,11 @@ export type ExtensionFilterInput = {
     not?: InputMaybe<ExtensionFilterInput>;
     or?: InputMaybe<Array<ExtensionFilterInput>>;
     pkgName?: InputMaybe<StringFilterInput>;
+    /** @deprecated , replace with storeIndexUrl */
+    repo?: InputMaybe<StringFilterInput>;
     storeIndexUrl?: InputMaybe<StringFilterInput>;
+    /** @deprecated , replace with versionCodeLong */
+    versionCode?: InputMaybe<IntFilterInput>;
     versionCodeLong?: InputMaybe<LongFilterInput>;
     versionName?: InputMaybe<StringFilterInput>;
 };
@@ -911,6 +2033,19 @@ export type ExtensionType = {
     versionCode: Scalars['Int']['output'];
     versionCodeLong: Scalars['LongString']['output'];
     versionName: Scalars['String']['output'];
+};
+
+export type FailoverCanonicalWorkInput = {
+    bindingId: Scalars['Int']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    workKey: Scalars['String']['input'];
+};
+
+export type FailoverCanonicalWorkPayload = {
+    __typename?: 'FailoverCanonicalWorkPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
 };
 
 export type FetchChapterPagesInput = {
@@ -1057,6 +2192,17 @@ export type HeaderFilter = {
     name: Scalars['String']['output'];
 };
 
+export type ImportCanonicalIdentityInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    payload: Scalars['String']['input'];
+};
+
+export type ImportCanonicalIdentityPayload = {
+    __typename?: 'ImportCanonicalIdentityPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    import: CanonicalIdentityImportType;
+};
+
 export enum IncludeOrExclude {
     Exclude = 'EXCLUDE',
     Include = 'INCLUDE',
@@ -1100,6 +2246,28 @@ export type JvmInfo = {
     vmVersion: Scalars['String']['output'];
 };
 
+export type KeepBothChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type KeepBothChapterRevisionsPayload = {
+    __typename?: 'KeepBothChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type KeepCurrentChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type KeepCurrentChapterRevisionsPayload = {
+    __typename?: 'KeepCurrentChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
 export type KoSyncConnectPayload = {
     __typename?: 'KoSyncConnectPayload';
     clientMutationId?: Maybe<Scalars['String']['output']>;
@@ -1113,6 +2281,27 @@ export type KoSyncStatusPayload = {
     serverAddress?: Maybe<Scalars['String']['output']>;
     username?: Maybe<Scalars['String']['output']>;
 };
+
+export type KomgaRescanStatusType = {
+    __typename?: 'KomgaRescanStatusType';
+    attempts?: Maybe<Scalars['Int']['output']>;
+    configurationError?: Maybe<Scalars['String']['output']>;
+    configured: Scalars['Boolean']['output'];
+    generation?: Maybe<Scalars['LongString']['output']>;
+    lastAttemptAt?: Maybe<Scalars['LongString']['output']>;
+    lastCompletedAt?: Maybe<Scalars['LongString']['output']>;
+    lastError?: Maybe<Scalars['String']['output']>;
+    notBeforeAt?: Maybe<Scalars['LongString']['output']>;
+    requestedAt?: Maybe<Scalars['LongString']['output']>;
+    state?: Maybe<KomgaScanState>;
+};
+
+export enum KomgaScanState {
+    Complete = 'COMPLETE',
+    Failed = 'FAILED',
+    Pending = 'PENDING',
+    Running = 'RUNNING',
+}
 
 export enum KoreaderSyncChecksumMethod {
     Binary = 'BINARY',
@@ -1147,7 +2336,10 @@ export type LibraryUpdateStatus = {
 };
 
 export type LibraryUpdateStatusChangedInput = {
-    /** Sets a max number of updates that can be contained in a updater update message.Everything above this limit will be omitted and the "updateStatus" should be re-fetched via the corresponding query. Due to the graphql subscription execution strategy not supporting batching for data loaders, the data loaders run into the n+1 problem, which can cause the server to get unresponsive until the status update has been handled. This is an issue e.g. when starting an update. */
+    /**
+     * Sets a max number of updates that can be contained in a updater update message.Everything above this limit will be omitted and the "updateStatus" should be re-fetched via the corresponding query. Due to the graphql subscription execution strategy not supporting batching for data loaders, the data loaders run into the n+1 problem, which can cause the server to get unresponsive until the status update has been handled. This is an issue e.g. when starting an update.
+     * @deprecated Removed - has no effect
+     */
     maxUpdates?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -1243,6 +2435,12 @@ export type LongFilterInput = {
     notEqualToAny?: InputMaybe<Array<Scalars['LongString']['input']>>;
     notIn?: InputMaybe<Array<Scalars['LongString']['input']>>;
 };
+
+export enum MangaAcquisitionPolicy {
+    Auto = 'AUTO',
+    Manual = 'MANUAL',
+    Paused = 'PAUSED',
+}
 
 export type MangaConditionInput = {
     artist?: InputMaybe<Scalars['String']['input']>;
@@ -1365,27 +2563,40 @@ export type MangaStatusFilterInput = {
 
 export type MangaType = {
     __typename?: 'MangaType';
+    acceptedRevisionRetention?: Maybe<Scalars['Int']['output']>;
+    acquisitionPolicy: MangaAcquisitionPolicy;
+    acquisitionPolicyOverride?: Maybe<MangaAcquisitionPolicy>;
     age?: Maybe<Scalars['LongString']['output']>;
     artist?: Maybe<Scalars['String']['output']>;
     author?: Maybe<Scalars['String']['output']>;
+    /** @deprecated Use user.bookmarkCount instead */
     bookmarkCount: Scalars['Int']['output'];
+    canonicalAcquisitionEligible: Scalars['Boolean']['output'];
+    canonicalBinding?: Maybe<CanonicalSourceBindingType>;
     categories: CategoryNodeList;
     chapters: ChapterNodeList;
     chaptersAge?: Maybe<Scalars['LongString']['output']>;
     chaptersLastFetchedAt?: Maybe<Scalars['LongString']['output']>;
     description?: Maybe<Scalars['String']['output']>;
+    /** @deprecated Use user.downloadCount instead */
     downloadCount: Scalars['Int']['output'];
+    effectiveAcceptedRevisionRetention: Scalars['Int']['output'];
+    /** @deprecated Use user.firstUnreadChapter instead */
     firstUnreadChapter?: Maybe<ChapterType>;
     genre: Array<Scalars['String']['output']>;
     hasDuplicateChapters: Scalars['Boolean']['output'];
     highestNumberedChapter?: Maybe<ChapterType>;
     id: Scalars['Int']['output'];
+    /** @deprecated Use user.inLibrary instead */
     inLibrary: Scalars['Boolean']['output'];
+    /** @deprecated Use user.inLibraryAt instead */
     inLibraryAt: Scalars['LongString']['output'];
     initialized: Scalars['Boolean']['output'];
     lastFetchedAt?: Maybe<Scalars['LongString']['output']>;
+    /** @deprecated Use user.lastReadChapter instead */
     lastReadChapter?: Maybe<ChapterType>;
     latestFetchedChapter?: Maybe<ChapterType>;
+    /** @deprecated Use user.latestReadChapter instead */
     latestReadChapter?: Maybe<ChapterType>;
     latestUploadedChapter?: Maybe<ChapterType>;
     meta: Array<MangaMetaType>;
@@ -1397,15 +2608,30 @@ export type MangaType = {
     thumbnailUrlLastFetched?: Maybe<Scalars['LongString']['output']>;
     title: Scalars['String']['output'];
     trackRecords: TrackRecordNodeList;
+    /** @deprecated Use user.unreadCount instead */
     unreadCount: Scalars['Int']['output'];
     updateStrategy: UpdateStrategy;
     url: Scalars['String']['output'];
+    user: MangaUserType;
 };
 
 export type MangaUpdateType = {
     __typename?: 'MangaUpdateType';
     manga: MangaType;
     status: MangaJobStatus;
+};
+
+export type MangaUserType = {
+    __typename?: 'MangaUserType';
+    bookmarkCount: Scalars['Int']['output'];
+    downloadCount: Scalars['Int']['output'];
+    firstUnreadChapter?: Maybe<ChapterType>;
+    inLibrary: Scalars['Boolean']['output'];
+    inLibraryAt: Scalars['LongString']['output'];
+    lastReadChapter?: Maybe<ChapterType>;
+    latestReadChapter?: Maybe<ChapterType>;
+    mangaId: Scalars['Int']['output'];
+    unreadCount: Scalars['Int']['output'];
 };
 
 export type MetaConditionInput = {
@@ -1464,15 +2690,31 @@ export type MultiSelectListPreference = {
 
 export type Mutation = {
     __typename?: 'Mutation';
+    acceptChapterRevisionCandidates: AcceptChapterRevisionCandidatesPayload;
     addExtensionStore?: Maybe<AddExtensionStorePayload>;
+    approveChapterRevisions: ApproveChapterRevisionsPayload;
+    attachMangaToCanonicalWork: AttachMangaToCanonicalWorkPayload;
     bindTrack: BindTrackPayload;
     bindTrackRecord?: Maybe<BindTrackRecordPayload>;
+    cancelArchiveBootstrap: ArchiveBootstrapSessionPayload;
+    cancelBackupRestore: BackupRestoreJobPayload;
+    cancelChapterIntegrityAudit: ChapterIntegrityAuditSessionPayload;
+    cancelChapterRevisionSweep: ChapterRevisionSweepSessionPayload;
+    changeCanonicalBinding: ChangeCanonicalBindingPayload;
+    cleanupBackupRestore: BackupRestoreJobPayload;
     clearCachedImages: ClearCachedImagesPayload;
     clearCookiesAndCache: ClearCookiesAndCachePayload;
     clearDownloader?: Maybe<ClearDownloaderPayload>;
+    closeWebView: CloseWebViewPayload;
     connectKoSyncAccount: KoSyncConnectPayload;
     createBackup: CreateBackupPayload;
+    createCanonicalWork: CreateCanonicalWorkPayload;
     createCategory?: Maybe<CreateCategoryPayload>;
+    /** Issues a one-time recovery code bound to CreateRecoveryCodeInput.userId. */
+    createRecoveryCode: CreateRecoveryCodePayload;
+    /** Issues a one-time registration code. */
+    createRegistrationCode: CreateRegistrationCodePayload;
+    deleteCanonicalWork: DeleteCanonicalWorkPayload;
     deleteCategory?: Maybe<DeleteCategoryPayload>;
     deleteCategoryMeta?: Maybe<DeleteCategoryMetaPayload>;
     deleteCategoryMetas?: Maybe<DeleteCategoryMetasPayload>;
@@ -1488,8 +2730,11 @@ export type Mutation = {
     deleteSourceMetas?: Maybe<DeleteSourceMetasPayload>;
     dequeueChapterDownload?: Maybe<DequeueChapterDownloadPayload>;
     dequeueChapterDownloads?: Maybe<DequeueChapterDownloadsPayload>;
+    detachCanonicalBinding: DetachCanonicalBindingPayload;
     enqueueChapterDownload?: Maybe<EnqueueChapterDownloadPayload>;
     enqueueChapterDownloads?: Maybe<EnqueueChapterDownloadsPayload>;
+    exportCanonicalIdentity: ExportCanonicalIdentityPayload;
+    failoverCanonicalWork: FailoverCanonicalWorkPayload;
     fetchChapterPages?: Maybe<FetchChapterPagesPayload>;
     /** @deprecated Deprecated in Tachiyomix 1.6, replace with fetchMangaAndChapters */
     fetchChapters?: Maybe<FetchChaptersPayload>;
@@ -1499,21 +2744,55 @@ export type Mutation = {
     fetchMangaAndChapters?: Maybe<FetchMangaAndChaptersPayload>;
     fetchSourceManga?: Maybe<FetchSourceMangaPayload>;
     fetchTrack: FetchTrackPayload;
+    importCanonicalIdentity: ImportCanonicalIdentityPayload;
     installExternalExtension?: Maybe<InstallExternalExtensionPayload>;
+    keepBothChapterRevisions: KeepBothChapterRevisionsPayload;
+    keepCurrentChapterRevisions: KeepCurrentChapterRevisionsPayload;
     login: LoginPayload;
     loginTrackerCredentials: LoginTrackerCredentialsPayload;
     loginTrackerOAuth: LoginTrackerOAuthPayload;
     logoutKoSyncAccount: LogoutKoSyncAccountPayload;
     logoutTracker: LogoutTrackerPayload;
+    openWebView: OpenWebViewPayload;
+    pauseArchiveBootstrap: ArchiveBootstrapSessionPayload;
+    pauseChapterIntegrityAudit: ChapterIntegrityAuditSessionPayload;
+    pauseChapterRevisionSweep: ChapterRevisionSweepSessionPayload;
+    promoteCanonicalBinding: PromoteCanonicalBindingPayload;
     pullKoSyncProgress?: Maybe<PullKoSyncProgressPayload>;
     pushKoSyncProgress?: Maybe<PushKoSyncProgressPayload>;
+    /** Redeems a recovery code with a self-chosen new password. */
+    redeemRecoveryCode: RedeemRecoveryCodePayload;
+    /** Redeems a registration code with a username and a self-chosen password. */
+    redeemRegistrationCode: RedeemRegistrationCodePayload;
     refreshToken: RefreshTokenPayload;
+    register: RegisterPayload;
+    rejectChapterRevisionCandidates: RejectChapterRevisionCandidatesPayload;
+    rejectChapterRevisions: RejectChapterRevisionsPayload;
     removeExtensionStore?: Maybe<RemoveExtensionStorePayload>;
     reorderChapterDownload?: Maybe<ReorderChapterDownloadPayload>;
     reorderChapterDownloads?: Maybe<ReorderChapterDownloadPayload>;
+    requestKomgaRescan: RequestKomgaRescanPayload;
     resetSettings: ResetSettingsPayload;
+    resetUserSettings: ResetUserSettingsPayload;
     resetWebUIUpdateStatus?: Maybe<WebUiUpdateStatus>;
     restoreBackup: RestoreBackupPayload;
+    resumeArchiveBootstrap: ArchiveBootstrapSessionPayload;
+    resumeChapterIntegrityAudit: ChapterIntegrityAuditSessionPayload;
+    resumeChapterRevisionSweep: ChapterRevisionSweepSessionPayload;
+    retryArchiveBootstrapItems: RetryArchiveBootstrapItemsPayload;
+    retryBackupRestore: BackupRestoreJobPayload;
+    retryBackupRestoreHandoff: BackupRestoreJobPayload;
+    retryChapterIntegrityAuditItems: RetryChapterIntegrityAuditItemsPayload;
+    retryChapterRevisionArchives: RetryChapterRevisionArchivesPayload;
+    retryChapterRevisionPrunings: RetryChapterRevisionPruningsPayload;
+    retryChapterRevisionPublications: RetryChapterRevisionPublicationsPayload;
+    retryChapterRevisionSweepItems: RetryChapterRevisionSweepItemsPayload;
+    retryChapterRevisionVisualAnalyses: RetryChapterRevisionVisualAnalysesPayload;
+    retryChapterRevisions: RetryChapterRevisionsPayload;
+    retryKomgaRescan: RetryKomgaRescanPayload;
+    /** Revokes an outstanding user code. */
+    revokeUserCode: RevokeUserCodePayload;
+    rollbackChapterRevision: RollbackChapterRevisionPayload;
     setCategoryMeta?: Maybe<SetCategoryMetaPayload>;
     setCategoryMetas?: Maybe<SetCategoryMetasPayload>;
     setChapterMeta?: Maybe<SetChapterMetaPayload>;
@@ -1522,14 +2801,20 @@ export type Mutation = {
     setGlobalMetas?: Maybe<SetGlobalMetasPayload>;
     setMangaMeta?: Maybe<SetMangaMetaPayload>;
     setMangaMetas?: Maybe<SetMangaMetasPayload>;
+    setPassword: SetPasswordPayload;
     setSettings: SetSettingsPayload;
     setSourceMeta?: Maybe<SetSourceMetaPayload>;
     setSourceMetas?: Maybe<SetSourceMetasPayload>;
+    setUserSettings: SetUserSettingsPayload;
+    startArchiveBootstrap: StartArchiveBootstrapPayload;
+    startChapterIntegrityAudit: StartChapterIntegrityAuditPayload;
+    startChapterRevisionSweep: StartChapterRevisionSweepPayload;
     startDownloader?: Maybe<StartDownloaderPayload>;
     startSync: StartSyncPayload;
     stopDownloader?: Maybe<StopDownloaderPayload>;
     trackProgress?: Maybe<TrackProgressPayload>;
     unbindTrack: UnbindTrackPayload;
+    updateCanonicalWork: UpdateCanonicalWorkPayload;
     updateCategories?: Maybe<UpdateCategoriesPayload>;
     updateCategory?: Maybe<UpdateCategoryPayload>;
     updateCategoryManga?: Maybe<UpdateCategoryMangaPayload>;
@@ -1547,11 +2832,24 @@ export type Mutation = {
     updateSourcePreference?: Maybe<UpdateSourcePreferencePayload>;
     updateStop: UpdateStopPayload;
     updateTrack: UpdateTrackPayload;
+    updateUser: UpdateUserPayload;
     updateWebUI?: Maybe<WebUiUpdatePayload>;
+};
+
+export type MutationAcceptChapterRevisionCandidatesArgs = {
+    input: AcceptChapterRevisionCandidatesInput;
 };
 
 export type MutationAddExtensionStoreArgs = {
     input: AddExtensionStoreInput;
+};
+
+export type MutationApproveChapterRevisionsArgs = {
+    input: ApproveChapterRevisionsInput;
+};
+
+export type MutationAttachMangaToCanonicalWorkArgs = {
+    input: AttachMangaToCanonicalWorkInput;
 };
 
 export type MutationBindTrackArgs = {
@@ -1560,6 +2858,30 @@ export type MutationBindTrackArgs = {
 
 export type MutationBindTrackRecordArgs = {
     input: BindTrackRecordInput;
+};
+
+export type MutationCancelArchiveBootstrapArgs = {
+    input: ArchiveBootstrapSessionInput;
+};
+
+export type MutationCancelBackupRestoreArgs = {
+    input: BackupRestoreJobInput;
+};
+
+export type MutationCancelChapterIntegrityAuditArgs = {
+    input: ChapterIntegrityAuditSessionInput;
+};
+
+export type MutationCancelChapterRevisionSweepArgs = {
+    input: ChapterRevisionSweepSessionInput;
+};
+
+export type MutationChangeCanonicalBindingArgs = {
+    input: ChangeCanonicalBindingInput;
+};
+
+export type MutationCleanupBackupRestoreArgs = {
+    input: BackupRestoreJobInput;
 };
 
 export type MutationClearCachedImagesArgs = {
@@ -1574,6 +2896,10 @@ export type MutationClearDownloaderArgs = {
     input: ClearDownloaderInput;
 };
 
+export type MutationCloseWebViewArgs = {
+    input?: InputMaybe<CloseWebViewInput>;
+};
+
 export type MutationConnectKoSyncAccountArgs = {
     input: ConnectKoSyncAccountInput;
 };
@@ -1582,8 +2908,24 @@ export type MutationCreateBackupArgs = {
     input?: InputMaybe<CreateBackupInput>;
 };
 
+export type MutationCreateCanonicalWorkArgs = {
+    input: CreateCanonicalWorkInput;
+};
+
 export type MutationCreateCategoryArgs = {
     input: CreateCategoryInput;
+};
+
+export type MutationCreateRecoveryCodeArgs = {
+    input: CreateRecoveryCodeInput;
+};
+
+export type MutationCreateRegistrationCodeArgs = {
+    input: CreateRegistrationCodeInput;
+};
+
+export type MutationDeleteCanonicalWorkArgs = {
+    input: DeleteCanonicalWorkInput;
 };
 
 export type MutationDeleteCategoryArgs = {
@@ -1646,12 +2988,24 @@ export type MutationDequeueChapterDownloadsArgs = {
     input: DequeueChapterDownloadsInput;
 };
 
+export type MutationDetachCanonicalBindingArgs = {
+    input: DetachCanonicalBindingInput;
+};
+
 export type MutationEnqueueChapterDownloadArgs = {
     input: EnqueueChapterDownloadInput;
 };
 
 export type MutationEnqueueChapterDownloadsArgs = {
     input: EnqueueChapterDownloadsInput;
+};
+
+export type MutationExportCanonicalIdentityArgs = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type MutationFailoverCanonicalWorkArgs = {
+    input: FailoverCanonicalWorkInput;
 };
 
 export type MutationFetchChapterPagesArgs = {
@@ -1682,8 +3036,20 @@ export type MutationFetchTrackArgs = {
     input: FetchTrackInput;
 };
 
+export type MutationImportCanonicalIdentityArgs = {
+    input: ImportCanonicalIdentityInput;
+};
+
 export type MutationInstallExternalExtensionArgs = {
     input: InstallExternalExtensionInput;
+};
+
+export type MutationKeepBothChapterRevisionsArgs = {
+    input: KeepBothChapterRevisionsInput;
+};
+
+export type MutationKeepCurrentChapterRevisionsArgs = {
+    input: KeepCurrentChapterRevisionsInput;
 };
 
 export type MutationLoginArgs = {
@@ -1706,6 +3072,26 @@ export type MutationLogoutTrackerArgs = {
     input: LogoutTrackerInput;
 };
 
+export type MutationOpenWebViewArgs = {
+    input: OpenWebViewInput;
+};
+
+export type MutationPauseArchiveBootstrapArgs = {
+    input: ArchiveBootstrapSessionInput;
+};
+
+export type MutationPauseChapterIntegrityAuditArgs = {
+    input: ChapterIntegrityAuditSessionInput;
+};
+
+export type MutationPauseChapterRevisionSweepArgs = {
+    input: ChapterRevisionSweepSessionInput;
+};
+
+export type MutationPromoteCanonicalBindingArgs = {
+    input: PromoteCanonicalBindingInput;
+};
+
 export type MutationPullKoSyncProgressArgs = {
     input: PullKoSyncProgressInput;
 };
@@ -1714,8 +3100,28 @@ export type MutationPushKoSyncProgressArgs = {
     input: PushKoSyncProgressInput;
 };
 
+export type MutationRedeemRecoveryCodeArgs = {
+    input: RedeemRecoveryCodeInput;
+};
+
+export type MutationRedeemRegistrationCodeArgs = {
+    input: RedeemRegistrationCodeInput;
+};
+
 export type MutationRefreshTokenArgs = {
     input: RefreshTokenInput;
+};
+
+export type MutationRegisterArgs = {
+    input: RegisterInput;
+};
+
+export type MutationRejectChapterRevisionCandidatesArgs = {
+    input: RejectChapterRevisionCandidatesInput;
+};
+
+export type MutationRejectChapterRevisionsArgs = {
+    input: RejectChapterRevisionsInput;
 };
 
 export type MutationRemoveExtensionStoreArgs = {
@@ -1730,12 +3136,84 @@ export type MutationReorderChapterDownloadsArgs = {
     input: ReorderChapterDownloadsInput;
 };
 
+export type MutationRequestKomgaRescanArgs = {
+    input: RequestKomgaRescanInput;
+};
+
 export type MutationResetSettingsArgs = {
     input: ResetSettingsInput;
 };
 
+export type MutationResetUserSettingsArgs = {
+    input: ResetUserSettingsInput;
+};
+
 export type MutationRestoreBackupArgs = {
     input: RestoreBackupInput;
+};
+
+export type MutationResumeArchiveBootstrapArgs = {
+    input: ArchiveBootstrapSessionInput;
+};
+
+export type MutationResumeChapterIntegrityAuditArgs = {
+    input: ChapterIntegrityAuditSessionInput;
+};
+
+export type MutationResumeChapterRevisionSweepArgs = {
+    input: ChapterRevisionSweepSessionInput;
+};
+
+export type MutationRetryArchiveBootstrapItemsArgs = {
+    input: RetryArchiveBootstrapItemsInput;
+};
+
+export type MutationRetryBackupRestoreArgs = {
+    input: BackupRestoreJobInput;
+};
+
+export type MutationRetryBackupRestoreHandoffArgs = {
+    input: BackupRestoreJobInput;
+};
+
+export type MutationRetryChapterIntegrityAuditItemsArgs = {
+    input: RetryChapterIntegrityAuditItemsInput;
+};
+
+export type MutationRetryChapterRevisionArchivesArgs = {
+    input: RetryChapterRevisionArchivesInput;
+};
+
+export type MutationRetryChapterRevisionPruningsArgs = {
+    input: RetryChapterRevisionPruningsInput;
+};
+
+export type MutationRetryChapterRevisionPublicationsArgs = {
+    input: RetryChapterRevisionPublicationsInput;
+};
+
+export type MutationRetryChapterRevisionSweepItemsArgs = {
+    input: RetryChapterRevisionSweepItemsInput;
+};
+
+export type MutationRetryChapterRevisionVisualAnalysesArgs = {
+    input: RetryChapterRevisionVisualAnalysesInput;
+};
+
+export type MutationRetryChapterRevisionsArgs = {
+    input: RetryChapterRevisionsInput;
+};
+
+export type MutationRetryKomgaRescanArgs = {
+    input: RetryKomgaRescanInput;
+};
+
+export type MutationRevokeUserCodeArgs = {
+    input: RevokeUserCodeInput;
+};
+
+export type MutationRollbackChapterRevisionArgs = {
+    input: RollbackChapterRevisionInput;
 };
 
 export type MutationSetCategoryMetaArgs = {
@@ -1770,6 +3248,10 @@ export type MutationSetMangaMetasArgs = {
     input: SetMangaMetasInput;
 };
 
+export type MutationSetPasswordArgs = {
+    input: SetPasswordInput;
+};
+
 export type MutationSetSettingsArgs = {
     input: SetSettingsInput;
 };
@@ -1780,6 +3262,22 @@ export type MutationSetSourceMetaArgs = {
 
 export type MutationSetSourceMetasArgs = {
     input: SetSourceMetasInput;
+};
+
+export type MutationSetUserSettingsArgs = {
+    input: SetUserSettingsInput;
+};
+
+export type MutationStartArchiveBootstrapArgs = {
+    input: StartArchiveBootstrapInput;
+};
+
+export type MutationStartChapterIntegrityAuditArgs = {
+    input: StartChapterIntegrityAuditInput;
+};
+
+export type MutationStartChapterRevisionSweepArgs = {
+    input: StartChapterRevisionSweepInput;
 };
 
 export type MutationStartDownloaderArgs = {
@@ -1800,6 +3298,10 @@ export type MutationTrackProgressArgs = {
 
 export type MutationUnbindTrackArgs = {
     input: UnbindTrackInput;
+};
+
+export type MutationUpdateCanonicalWorkArgs = {
+    input: UpdateCanonicalWorkInput;
 };
 
 export type MutationUpdateCategoriesArgs = {
@@ -1870,15 +3372,24 @@ export type MutationUpdateTrackArgs = {
     input: UpdateTrackInput;
 };
 
+export type MutationUpdateUserArgs = {
+    input: UpdateUserInput;
+};
+
 export type MutationUpdateWebUiArgs = {
     input: WebUiUpdateInput;
 };
 
 export type Node =
+    | CanonicalSourceBindingType
+    | CanonicalWorkType
     | CategoryMetaType
     | CategoryType
     | ChapterMetaType
+    | ChapterRevisionComparisonPageType
+    | ChapterRevisionType
     | ChapterType
+    | ChapterUserType
     | DownloadType
     | DownloadUpdate
     | ExtensionStoreType
@@ -1886,12 +3397,16 @@ export type Node =
     | GlobalMetaType
     | MangaMetaType
     | MangaType
+    | MangaUserType
     | PartialSettingsType
+    | PartialUserSettingsType
     | SettingsType
     | SourceMetaType
     | SourceType
     | TrackRecordType
-    | TrackerType;
+    | TrackerType
+    | UserSettingsType
+    | UserType;
 
 export type NodeList = {
     /** A list of edges which contains the [T] and cursor to aid in pagination. */
@@ -1909,6 +3424,20 @@ export type OsInfo = {
     build?: Maybe<Scalars['String']['output']>;
     name: Scalars['String']['output'];
     version: Scalars['String']['output'];
+};
+
+export type OpenWebViewInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    url: Scalars['String']['input'];
+};
+
+export type OpenWebViewPayload = {
+    __typename?: 'OpenWebViewPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    status: Scalars['Int']['output'];
+    tab: Scalars['String']['output'];
+    title: Scalars['String']['output'];
+    url: Scalars['String']['output'];
 };
 
 export type PageInfo = {
@@ -1931,10 +3460,22 @@ export type PartialBackupFlagsInput = {
     includeManga?: InputMaybe<Scalars['Boolean']['input']>;
     includeServerSettings?: InputMaybe<Scalars['Boolean']['input']>;
     includeTracking?: InputMaybe<Scalars['Boolean']['input']>;
+    includeUserSettings?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PartialSettingsType = Settings & {
     __typename?: 'PartialSettingsType';
+    acceptedRevisionRetention?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapInterItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDefaultAcquisitionPolicy?: Maybe<Scalars['String']['output']>;
+    archiveDirectDeliveryEnabled?: Maybe<Scalars['Boolean']['output']>;
+    archiveDirectDeliveryExpirySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDirectDeliveryFallbackToLocal?: Maybe<Scalars['Boolean']['output']>;
+    archiveDirectDeliveryRequireExpiryEvidence?: Maybe<Scalars['Boolean']['output']>;
+    archiveVerificationRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveVerificationTimeoutSeconds?: Maybe<Scalars['Int']['output']>;
     authMode?: Maybe<AuthMode>;
     authPassword?: Maybe<Scalars['String']['output']>;
     authUsername?: Maybe<Scalars['String']['output']>;
@@ -1945,11 +3486,16 @@ export type PartialSettingsType = Settings & {
     autoBackupIncludeManga?: Maybe<Scalars['Boolean']['output']>;
     autoBackupIncludeServerSettings?: Maybe<Scalars['Boolean']['output']>;
     autoBackupIncludeTracking?: Maybe<Scalars['Boolean']['output']>;
+    autoBackupIncludeUserSettings?: Maybe<Scalars['Boolean']['output']>;
     /** @deprecated Replaced with autoDownloadNewChaptersLimit, replace with autoDownloadNewChaptersLimit */
     autoDownloadAheadLimit?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     autoDownloadIgnoreReUploads?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     autoDownloadNewChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     autoDownloadNewChaptersLimit?: Maybe<Scalars['Int']['output']>;
+    autoUpdateExtensions?: Maybe<Scalars['Boolean']['output']>;
     backupInterval?: Maybe<Scalars['Int']['output']>;
     backupPath?: Maybe<Scalars['String']['output']>;
     backupTTL?: Maybe<Scalars['Int']['output']>;
@@ -1960,7 +3506,25 @@ export type PartialSettingsType = Settings & {
     basicAuthPassword?: Maybe<Scalars['String']['output']>;
     /** @deprecated Removed - prefer authUsername, replace with authUsername */
     basicAuthUsername?: Maybe<Scalars['String']['output']>;
+    chapterIntegrityAuditEnabled?: Maybe<Scalars['Boolean']['output']>;
+    chapterIntegrityAuditIntervalDays?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditRecentRevisions?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: Maybe<Scalars['Boolean']['output']>;
+    chapterRevisionSweepEnabled?: Maybe<Scalars['Boolean']['output']>;
+    chapterRevisionSweepIntervalDays?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepNewestChapters?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionThumbnailMaxDimension?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualAnalysisMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualAnalysisRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualHashThreshold?: Maybe<Scalars['Int']['output']>;
     databasePassword?: Maybe<Scalars['String']['output']>;
+    databaseSchema?: Maybe<Scalars['String']['output']>;
     databaseType?: Maybe<DatabaseType>;
     databaseUrl?: Maybe<Scalars['String']['output']>;
     databaseUsername?: Maybe<Scalars['String']['output']>;
@@ -1969,11 +3533,15 @@ export type PartialSettingsType = Settings & {
     downloadConversions?: Maybe<Array<SettingsDownloadConversionType>>;
     downloadsPath?: Maybe<Scalars['String']['output']>;
     electronPath?: Maybe<Scalars['String']['output']>;
+    /** @deprecated Now per-user */
     excludeCompleted?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     excludeEntryWithUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     excludeNotStarted?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     excludeUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
-    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations */
+    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations, replace with extensionStores */
     extensionRepos?: Maybe<Array<Scalars['String']['output']>>;
     flareSolverrAsResponseFallback?: Maybe<Scalars['Boolean']['output']>;
     flareSolverrEnabled?: Maybe<Scalars['Boolean']['output']>;
@@ -1984,21 +3552,32 @@ export type PartialSettingsType = Settings & {
     globalUpdateInterval?: Maybe<Scalars['Float']['output']>;
     /** @deprecated Removed - does not do anything */
     gqlDebugLogsEnabled?: Maybe<Scalars['Boolean']['output']>;
+    hikariMaxPoolSize?: Maybe<Scalars['Int']['output']>;
     initialOpenInBrowserEnabled?: Maybe<Scalars['Boolean']['output']>;
     ip?: Maybe<Scalars['String']['output']>;
     jwtAudience?: Maybe<Scalars['String']['output']>;
     jwtRefreshExpiry?: Maybe<Scalars['Duration']['output']>;
     jwtTokenExpiry?: Maybe<Scalars['Duration']['output']>;
     kcefEnabled?: Maybe<Scalars['Boolean']['output']>;
+    komgaApiKey?: Maybe<Scalars['String']['output']>;
+    komgaBaseUrl?: Maybe<Scalars['String']['output']>;
+    komgaLibraryId?: Maybe<Scalars['String']['output']>;
+    komgaRequestTimeoutSeconds?: Maybe<Scalars['Int']['output']>;
+    komgaRescanDebounceSeconds?: Maybe<Scalars['Int']['output']>;
+    komgaRescanRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     koreaderSyncChecksumMethod?: Maybe<KoreaderSyncChecksumMethod>;
     /** @deprecated Moved to preference store. Is supposed to be random and gets auto generated, replace with MOVE TO PREFERENCES */
     koreaderSyncDeviceId?: Maybe<Scalars['String']['output']>;
+    /** @deprecated Now per-user */
     koreaderSyncPercentageTolerance?: Maybe<Scalars['Float']['output']>;
     /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
     koreaderSyncServerUrl?: Maybe<Scalars['String']['output']>;
     /** @deprecated Replaced with koreaderSyncStrategyForward and koreaderSyncStrategyBackward, replace with koreaderSyncStrategyForward, koreaderSyncStrategyBackward */
     koreaderSyncStrategy?: Maybe<KoreaderSyncLegacyStrategy>;
+    /** @deprecated Now per-user */
     koreaderSyncStrategyBackward?: Maybe<KoreaderSyncConflictStrategy>;
+    /** @deprecated Now per-user */
     koreaderSyncStrategyForward?: Maybe<KoreaderSyncConflictStrategy>;
     /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
     koreaderSyncUserkey?: Maybe<Scalars['String']['output']>;
@@ -2009,16 +3588,26 @@ export type PartialSettingsType = Settings & {
     maxLogFiles?: Maybe<Scalars['Int']['output']>;
     maxLogFolderSize?: Maybe<Scalars['String']['output']>;
     maxSourcesInParallel?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     opdsCbzMimetype?: Maybe<CbzMediaType>;
+    /** @deprecated Now per-user */
     opdsChapterSortOrder?: Maybe<SortOrder>;
+    /** @deprecated Now per-user */
     opdsEnablePageReadProgress?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsItemsPerPage?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     opdsMarkAsReadOnDownload?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsShowOnlyDownloadedChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsShowOnlyUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsSkipChapterMetadataFeed?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsUseBinaryFileSizes?: Maybe<Scalars['Boolean']['output']>;
     port?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     serveConversions?: Maybe<Array<SettingsDownloadConversionType>>;
     socksProxyEnabled?: Maybe<Scalars['Boolean']['output']>;
     socksProxyHost?: Maybe<Scalars['String']['output']>;
@@ -2026,25 +3615,49 @@ export type PartialSettingsType = Settings & {
     socksProxyPort?: Maybe<Scalars['String']['output']>;
     socksProxyUsername?: Maybe<Scalars['String']['output']>;
     socksProxyVersion?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     syncDataCategories?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncDataChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncDataHistory?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncDataManga?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncDataTracking?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncInterval?: Maybe<Scalars['Duration']['output']>;
+    /** @deprecated Now per-user */
     syncYomiApiKey?: Maybe<Scalars['String']['output']>;
+    /** @deprecated Now per-user */
     syncYomiEnabled?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncYomiHost?: Maybe<Scalars['String']['output']>;
     systemTrayEnabled?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     updateMangas?: Maybe<Scalars['Boolean']['output']>;
     useHikariConnectionPool?: Maybe<Scalars['Boolean']['output']>;
     webUIChannel?: Maybe<WebUiChannel>;
     webUIFlavor?: Maybe<WebUiFlavor>;
     webUIInterface?: Maybe<WebUiInterface>;
     webUIUpdateCheckInterval?: Maybe<Scalars['Float']['output']>;
+    webViewOpenTimeout?: Maybe<Scalars['Int']['output']>;
+    webViewProvider?: Maybe<WebViewProvider>;
+    webViewVncUrl?: Maybe<Scalars['String']['output']>;
 };
 
 export type PartialSettingsTypeInput = {
+    acceptedRevisionRetention?: InputMaybe<Scalars['Int']['input']>;
+    archiveBootstrapInterItemDelaySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveBootstrapMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
+    archiveBootstrapRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveDefaultAcquisitionPolicy?: InputMaybe<Scalars['String']['input']>;
+    archiveDirectDeliveryEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    archiveDirectDeliveryExpirySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveDirectDeliveryFallbackToLocal?: InputMaybe<Scalars['Boolean']['input']>;
+    archiveDirectDeliveryRequireExpiryEvidence?: InputMaybe<Scalars['Boolean']['input']>;
+    archiveVerificationRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    archiveVerificationTimeoutSeconds?: InputMaybe<Scalars['Int']['input']>;
     authMode?: InputMaybe<AuthMode>;
     authPassword?: InputMaybe<Scalars['String']['input']>;
     authUsername?: InputMaybe<Scalars['String']['input']>;
@@ -2055,14 +3668,45 @@ export type PartialSettingsTypeInput = {
     autoBackupIncludeManga?: InputMaybe<Scalars['Boolean']['input']>;
     autoBackupIncludeServerSettings?: InputMaybe<Scalars['Boolean']['input']>;
     autoBackupIncludeTracking?: InputMaybe<Scalars['Boolean']['input']>;
+    autoBackupIncludeUserSettings?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Replaced with autoDownloadNewChaptersLimit, replace with autoDownloadNewChaptersLimit */
+    autoDownloadAheadLimit?: InputMaybe<Scalars['Int']['input']>;
+    /** @deprecated Now per-user */
     autoDownloadIgnoreReUploads?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
     autoDownloadNewChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
     autoDownloadNewChaptersLimit?: InputMaybe<Scalars['Int']['input']>;
+    autoUpdateExtensions?: InputMaybe<Scalars['Boolean']['input']>;
     backupInterval?: InputMaybe<Scalars['Int']['input']>;
     backupPath?: InputMaybe<Scalars['String']['input']>;
     backupTTL?: InputMaybe<Scalars['Int']['input']>;
     backupTime?: InputMaybe<Scalars['String']['input']>;
+    /** @deprecated Removed - prefer authMode, replace with authMode */
+    basicAuthEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Removed - prefer authPassword, replace with authPassword */
+    basicAuthPassword?: InputMaybe<Scalars['String']['input']>;
+    /** @deprecated Removed - prefer authUsername, replace with authUsername */
+    basicAuthUsername?: InputMaybe<Scalars['String']['input']>;
+    chapterIntegrityAuditEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    chapterIntegrityAuditIntervalDays?: InputMaybe<Scalars['Int']['input']>;
+    chapterIntegrityAuditItemDelaySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterIntegrityAuditMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
+    chapterIntegrityAuditRecentRevisions?: InputMaybe<Scalars['Int']['input']>;
+    chapterIntegrityAuditRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: InputMaybe<Scalars['Boolean']['input']>;
+    chapterRevisionSweepEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    chapterRevisionSweepIntervalDays?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionSweepItemDelaySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionSweepMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionSweepNewestChapters?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionSweepRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionThumbnailMaxDimension?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionVisualAnalysisMaxAttempts?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionVisualAnalysisRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    chapterRevisionVisualHashThreshold?: InputMaybe<Scalars['Int']['input']>;
     databasePassword?: InputMaybe<Scalars['String']['input']>;
+    databaseSchema?: InputMaybe<Scalars['String']['input']>;
     databaseType?: InputMaybe<DatabaseType>;
     databaseUrl?: InputMaybe<Scalars['String']['input']>;
     databaseUsername?: InputMaybe<Scalars['String']['input']>;
@@ -2071,10 +3715,16 @@ export type PartialSettingsTypeInput = {
     downloadConversions?: InputMaybe<Array<SettingsDownloadConversionTypeInput>>;
     downloadsPath?: InputMaybe<Scalars['String']['input']>;
     electronPath?: InputMaybe<Scalars['String']['input']>;
+    /** @deprecated Now per-user */
     excludeCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
     excludeEntryWithUnreadChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
     excludeNotStarted?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
     excludeUnreadChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations, replace with extensionStores */
+    extensionRepos?: InputMaybe<Array<Scalars['String']['input']>>;
     flareSolverrAsResponseFallback?: InputMaybe<Scalars['Boolean']['input']>;
     flareSolverrEnabled?: InputMaybe<Scalars['Boolean']['input']>;
     flareSolverrSessionName?: InputMaybe<Scalars['String']['input']>;
@@ -2082,21 +3732,149 @@ export type PartialSettingsTypeInput = {
     flareSolverrTimeout?: InputMaybe<Scalars['Int']['input']>;
     flareSolverrUrl?: InputMaybe<Scalars['String']['input']>;
     globalUpdateInterval?: InputMaybe<Scalars['Float']['input']>;
+    /** @deprecated Removed - does not do anything */
+    gqlDebugLogsEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    hikariMaxPoolSize?: InputMaybe<Scalars['Int']['input']>;
     initialOpenInBrowserEnabled?: InputMaybe<Scalars['Boolean']['input']>;
     ip?: InputMaybe<Scalars['String']['input']>;
     jwtAudience?: InputMaybe<Scalars['String']['input']>;
     jwtRefreshExpiry?: InputMaybe<Scalars['Duration']['input']>;
     jwtTokenExpiry?: InputMaybe<Scalars['Duration']['input']>;
     kcefEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    komgaApiKey?: InputMaybe<Scalars['String']['input']>;
+    komgaBaseUrl?: InputMaybe<Scalars['String']['input']>;
+    komgaLibraryId?: InputMaybe<Scalars['String']['input']>;
+    komgaRequestTimeoutSeconds?: InputMaybe<Scalars['Int']['input']>;
+    komgaRescanDebounceSeconds?: InputMaybe<Scalars['Int']['input']>;
+    komgaRescanRetrySeconds?: InputMaybe<Scalars['Int']['input']>;
+    /** @deprecated Now per-user */
     koreaderSyncChecksumMethod?: InputMaybe<KoreaderSyncChecksumMethod>;
+    /** @deprecated Moved to preference store. Is supposed to be random and gets auto generated, replace with MOVE TO PREFERENCES */
+    koreaderSyncDeviceId?: InputMaybe<Scalars['String']['input']>;
+    /** @deprecated Now per-user */
     koreaderSyncPercentageTolerance?: InputMaybe<Scalars['Float']['input']>;
+    /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
+    koreaderSyncServerUrl?: InputMaybe<Scalars['String']['input']>;
+    /** @deprecated Replaced with koreaderSyncStrategyForward and koreaderSyncStrategyBackward, replace with koreaderSyncStrategyForward, koreaderSyncStrategyBackward */
+    koreaderSyncStrategy?: InputMaybe<KoreaderSyncLegacyStrategy>;
+    /** @deprecated Now per-user */
     koreaderSyncStrategyBackward?: InputMaybe<KoreaderSyncConflictStrategy>;
+    /** @deprecated Now per-user */
     koreaderSyncStrategyForward?: InputMaybe<KoreaderSyncConflictStrategy>;
+    /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
+    koreaderSyncUserkey?: InputMaybe<Scalars['String']['input']>;
+    /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
+    koreaderSyncUsername?: InputMaybe<Scalars['String']['input']>;
     localSourcePath?: InputMaybe<Scalars['String']['input']>;
     maxLogFileSize?: InputMaybe<Scalars['String']['input']>;
     maxLogFiles?: InputMaybe<Scalars['Int']['input']>;
     maxLogFolderSize?: InputMaybe<Scalars['String']['input']>;
     maxSourcesInParallel?: InputMaybe<Scalars['Int']['input']>;
+    /** @deprecated Now per-user */
+    opdsCbzMimetype?: InputMaybe<CbzMediaType>;
+    /** @deprecated Now per-user */
+    opdsChapterSortOrder?: InputMaybe<SortOrder>;
+    /** @deprecated Now per-user */
+    opdsEnablePageReadProgress?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    opdsItemsPerPage?: InputMaybe<Scalars['Int']['input']>;
+    /** @deprecated Now per-user */
+    opdsMarkAsReadOnDownload?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    opdsShowOnlyDownloadedChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    opdsShowOnlyUnreadChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    opdsSkipChapterMetadataFeed?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    opdsUseBinaryFileSizes?: InputMaybe<Scalars['Boolean']['input']>;
+    port?: InputMaybe<Scalars['Int']['input']>;
+    /** @deprecated Now per-user */
+    serveConversions?: InputMaybe<Array<SettingsDownloadConversionTypeInput>>;
+    socksProxyEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    socksProxyHost?: InputMaybe<Scalars['String']['input']>;
+    socksProxyPassword?: InputMaybe<Scalars['String']['input']>;
+    socksProxyPort?: InputMaybe<Scalars['String']['input']>;
+    socksProxyUsername?: InputMaybe<Scalars['String']['input']>;
+    socksProxyVersion?: InputMaybe<Scalars['Int']['input']>;
+    /** @deprecated Now per-user */
+    syncDataCategories?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    syncDataChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    syncDataHistory?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    syncDataManga?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    syncDataTracking?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    syncInterval?: InputMaybe<Scalars['Duration']['input']>;
+    /** @deprecated Now per-user */
+    syncYomiApiKey?: InputMaybe<Scalars['String']['input']>;
+    /** @deprecated Now per-user */
+    syncYomiEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    syncYomiHost?: InputMaybe<Scalars['String']['input']>;
+    systemTrayEnabled?: InputMaybe<Scalars['Boolean']['input']>;
+    /** @deprecated Now per-user */
+    updateMangas?: InputMaybe<Scalars['Boolean']['input']>;
+    useHikariConnectionPool?: InputMaybe<Scalars['Boolean']['input']>;
+    webUIChannel?: InputMaybe<WebUiChannel>;
+    webUIFlavor?: InputMaybe<WebUiFlavor>;
+    webUIInterface?: InputMaybe<WebUiInterface>;
+    webUIUpdateCheckInterval?: InputMaybe<Scalars['Float']['input']>;
+    webViewOpenTimeout?: InputMaybe<Scalars['Int']['input']>;
+    webViewProvider?: InputMaybe<WebViewProvider>;
+    webViewVncUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PartialUserSettingsType = UserSettings & {
+    __typename?: 'PartialUserSettingsType';
+    autoDownloadIgnoreReUploads?: Maybe<Scalars['Boolean']['output']>;
+    autoDownloadNewChapters?: Maybe<Scalars['Boolean']['output']>;
+    autoDownloadNewChaptersLimit?: Maybe<Scalars['Int']['output']>;
+    excludeCompleted?: Maybe<Scalars['Boolean']['output']>;
+    excludeEntryWithUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    excludeNotStarted?: Maybe<Scalars['Boolean']['output']>;
+    excludeUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    koreaderSyncChecksumMethod?: Maybe<KoreaderSyncChecksumMethod>;
+    koreaderSyncPercentageTolerance?: Maybe<Scalars['Float']['output']>;
+    koreaderSyncStrategyBackward?: Maybe<KoreaderSyncConflictStrategy>;
+    koreaderSyncStrategyForward?: Maybe<KoreaderSyncConflictStrategy>;
+    opdsCbzMimetype?: Maybe<CbzMediaType>;
+    opdsChapterSortOrder?: Maybe<SortOrder>;
+    opdsEnablePageReadProgress?: Maybe<Scalars['Boolean']['output']>;
+    opdsItemsPerPage?: Maybe<Scalars['Int']['output']>;
+    opdsMarkAsReadOnDownload?: Maybe<Scalars['Boolean']['output']>;
+    opdsShowOnlyDownloadedChapters?: Maybe<Scalars['Boolean']['output']>;
+    opdsShowOnlyUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    opdsSkipChapterMetadataFeed?: Maybe<Scalars['Boolean']['output']>;
+    opdsUseBinaryFileSizes?: Maybe<Scalars['Boolean']['output']>;
+    serveConversions?: Maybe<Array<SettingsDownloadConversionType>>;
+    syncDataCategories?: Maybe<Scalars['Boolean']['output']>;
+    syncDataChapters?: Maybe<Scalars['Boolean']['output']>;
+    syncDataHistory?: Maybe<Scalars['Boolean']['output']>;
+    syncDataManga?: Maybe<Scalars['Boolean']['output']>;
+    syncDataTracking?: Maybe<Scalars['Boolean']['output']>;
+    syncInterval?: Maybe<Scalars['Duration']['output']>;
+    syncYomiApiKey?: Maybe<Scalars['String']['output']>;
+    syncYomiEnabled?: Maybe<Scalars['Boolean']['output']>;
+    syncYomiHost?: Maybe<Scalars['String']['output']>;
+    updateMangas?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PartialUserSettingsTypeInput = {
+    autoDownloadIgnoreReUploads?: InputMaybe<Scalars['Boolean']['input']>;
+    autoDownloadNewChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    autoDownloadNewChaptersLimit?: InputMaybe<Scalars['Int']['input']>;
+    excludeCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+    excludeEntryWithUnreadChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    excludeNotStarted?: InputMaybe<Scalars['Boolean']['input']>;
+    excludeUnreadChapters?: InputMaybe<Scalars['Boolean']['input']>;
+    koreaderSyncChecksumMethod?: InputMaybe<KoreaderSyncChecksumMethod>;
+    koreaderSyncPercentageTolerance?: InputMaybe<Scalars['Float']['input']>;
+    koreaderSyncStrategyBackward?: InputMaybe<KoreaderSyncConflictStrategy>;
+    koreaderSyncStrategyForward?: InputMaybe<KoreaderSyncConflictStrategy>;
     opdsCbzMimetype?: InputMaybe<CbzMediaType>;
     opdsChapterSortOrder?: InputMaybe<SortOrder>;
     opdsEnablePageReadProgress?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2106,14 +3884,7 @@ export type PartialSettingsTypeInput = {
     opdsShowOnlyUnreadChapters?: InputMaybe<Scalars['Boolean']['input']>;
     opdsSkipChapterMetadataFeed?: InputMaybe<Scalars['Boolean']['input']>;
     opdsUseBinaryFileSizes?: InputMaybe<Scalars['Boolean']['input']>;
-    port?: InputMaybe<Scalars['Int']['input']>;
     serveConversions?: InputMaybe<Array<SettingsDownloadConversionTypeInput>>;
-    socksProxyEnabled?: InputMaybe<Scalars['Boolean']['input']>;
-    socksProxyHost?: InputMaybe<Scalars['String']['input']>;
-    socksProxyPassword?: InputMaybe<Scalars['String']['input']>;
-    socksProxyPort?: InputMaybe<Scalars['String']['input']>;
-    socksProxyUsername?: InputMaybe<Scalars['String']['input']>;
-    socksProxyVersion?: InputMaybe<Scalars['Int']['input']>;
     syncDataCategories?: InputMaybe<Scalars['Boolean']['input']>;
     syncDataChapters?: InputMaybe<Scalars['Boolean']['input']>;
     syncDataHistory?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2123,13 +3894,21 @@ export type PartialSettingsTypeInput = {
     syncYomiApiKey?: InputMaybe<Scalars['String']['input']>;
     syncYomiEnabled?: InputMaybe<Scalars['Boolean']['input']>;
     syncYomiHost?: InputMaybe<Scalars['String']['input']>;
-    systemTrayEnabled?: InputMaybe<Scalars['Boolean']['input']>;
     updateMangas?: InputMaybe<Scalars['Boolean']['input']>;
-    useHikariConnectionPool?: InputMaybe<Scalars['Boolean']['input']>;
-    webUIChannel?: InputMaybe<WebUiChannel>;
-    webUIFlavor?: InputMaybe<WebUiFlavor>;
-    webUIInterface?: InputMaybe<WebUiInterface>;
-    webUIUpdateCheckInterval?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type PermissionsFilterInput = {
+    distinctFrom?: InputMaybe<UserPermission>;
+    distinctFromAll?: InputMaybe<Array<UserPermission>>;
+    distinctFromAny?: InputMaybe<Array<UserPermission>>;
+    equalTo?: InputMaybe<UserPermission>;
+    in?: InputMaybe<Array<UserPermission>>;
+    isNull?: InputMaybe<Scalars['Boolean']['input']>;
+    notDistinctFrom?: InputMaybe<UserPermission>;
+    notEqualTo?: InputMaybe<UserPermission>;
+    notEqualToAll?: InputMaybe<Array<UserPermission>>;
+    notEqualToAny?: InputMaybe<Array<UserPermission>>;
+    notIn?: InputMaybe<Array<UserPermission>>;
 };
 
 export type PlatformInfo = {
@@ -2146,6 +3925,18 @@ export type Preference =
     | ListPreference
     | MultiSelectListPreference
     | SwitchPreference;
+
+export type PromoteCanonicalBindingInput = {
+    bindingId: Scalars['Int']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PromoteCanonicalBindingPayload = {
+    __typename?: 'PromoteCanonicalBindingPayload';
+    binding?: Maybe<CanonicalSourceBindingType>;
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+};
 
 export type PullKoSyncProgressInput = {
     chapterId: Scalars['Int']['input'];
@@ -2175,9 +3966,50 @@ export type Query = {
     __typename?: 'Query';
     aboutServer: AboutServerPayload;
     aboutWebUI: AboutWebUi;
+    activeChapterRevision?: Maybe<ChapterRevisionType>;
+    approvalBacklog: ChapterRevisionNodeList;
+    archiveBootstrapActiveSession?: Maybe<ArchiveBootstrapSessionType>;
+    archiveBootstrapEffectivePolicy?: Maybe<ArchiveBootstrapItemType>;
+    archiveBootstrapItems: ArchiveBootstrapItemNodeList;
+    archiveBootstrapLatestSession?: Maybe<ArchiveBootstrapSessionType>;
+    archiveBootstrapProgress: ArchiveBootstrapProgressType;
+    archiveBootstrapSession?: Maybe<ArchiveBootstrapSessionType>;
+    archiveBootstrapSessions: ArchiveBootstrapSessionNodeList;
+    archiveBootstrapUnresolvedSources: Array<ArchiveBootstrapUnresolvedSourceType>;
+    backupRestoreAudits: Array<BackupRestoreAuditType>;
+    backupRestoreErrorCounts?: Maybe<BackupRestoreErrorCountsType>;
+    backupRestoreJob?: Maybe<BackupRestoreJobType>;
+    backupRestoreJobs: Array<BackupRestoreJobType>;
+    canonicalBindingForManga?: Maybe<CanonicalSourceBindingType>;
+    canonicalBindingsForWork: CanonicalSourceBindingNodeList;
+    canonicalIdentityStatus: CanonicalIdentityStatusType;
+    canonicalWork?: Maybe<CanonicalWorkType>;
+    canonicalWorkForManga?: Maybe<CanonicalWorkType>;
+    canonicalWorks: CanonicalWorkNodeList;
     categories: CategoryNodeList;
     category: CategoryType;
     chapter: ChapterType;
+    chapterIntegrityAuditActiveSession?: Maybe<ChapterIntegrityAuditSessionType>;
+    chapterIntegrityAuditItems: ChapterIntegrityAuditItemNodeList;
+    chapterIntegrityAuditLatestSession?: Maybe<ChapterIntegrityAuditSessionType>;
+    chapterIntegrityAuditProgress: ChapterIntegrityAuditProgressType;
+    chapterIntegrityAuditSchedule?: Maybe<ChapterIntegrityAuditScheduleType>;
+    chapterIntegrityAuditSession?: Maybe<ChapterIntegrityAuditSessionType>;
+    chapterIntegrityAuditSessions: ChapterIntegrityAuditSessionNodeList;
+    chapterRevision?: Maybe<ChapterRevisionType>;
+    chapterRevisionComparison?: Maybe<ChapterRevisionComparisonType>;
+    chapterRevisionComparisonPages: ChapterRevisionComparisonPageNodeList;
+    chapterRevisionHistory: ChapterRevisionNodeList;
+    chapterRevisionRollbacks: ChapterRevisionRollbackNodeList;
+    chapterRevisionSweepActiveSession?: Maybe<ChapterRevisionSweepSessionType>;
+    chapterRevisionSweepItems: ChapterRevisionSweepItemNodeList;
+    chapterRevisionSweepLatestSession?: Maybe<ChapterRevisionSweepSessionType>;
+    chapterRevisionSweepProgress: ChapterRevisionSweepProgressType;
+    chapterRevisionSweepSchedule?: Maybe<ChapterRevisionSweepScheduleType>;
+    chapterRevisionSweepSession?: Maybe<ChapterRevisionSweepSessionType>;
+    chapterRevisionSweepSessions: ChapterRevisionSweepSessionNodeList;
+    chapterRevisionVisualAnalysisStatus: ChapterRevisionVisualAnalysisStatus;
+    chapterRevisions: ChapterRevisionNodeList;
     chapters: ChapterNodeList;
     checkForServerUpdates: Array<CheckForServerUpdatesPayload>;
     checkForWebUIUpdate: WebUiUpdateCheck;
@@ -2188,6 +4020,7 @@ export type Query = {
     extensions: ExtensionNodeList;
     getWebUIUpdateStatus: WebUiUpdateStatus;
     koSyncStatus: KoSyncStatusPayload;
+    komgaRescanStatus: KomgaRescanStatusType;
     lastSyncStatus?: Maybe<SyncStatus>;
     lastUpdateTimestamp: LastUpdateTimestampPayload;
     libraryUpdateStatus: LibraryUpdateStatus;
@@ -2195,6 +4028,9 @@ export type Query = {
     mangas: MangaNodeList;
     meta: GlobalMetaType;
     metas: GlobalMetaNodeList;
+    pruningBacklog: ChapterRevisionNodeList;
+    publicationBacklog: ChapterRevisionNodeList;
+    queuedBacklog: ChapterRevisionNodeList;
     restoreStatus?: Maybe<BackupRestoreStatus>;
     searchTracker: SearchTrackerPayload;
     settings: SettingsType;
@@ -2206,7 +4042,112 @@ export type Query = {
     trackers: TrackerNodeList;
     /** @deprecated Replaced with libraryUpdateStatus, replace with libraryUpdateStatus */
     updateStatus: UpdateStatus;
+    user: UserType;
+    /** Outstanding (unconsumed, unexpired) user codes. */
+    userCodes: Array<UserCodeType>;
+    userSettings: UserSettingsType;
+    users: UserNodeList;
     validateBackup: ValidateBackupResult;
+    visualAnalysisBacklog: ChapterRevisionNodeList;
+    webViewTabs: Array<WebViewTabType>;
+};
+
+export type QueryActiveChapterRevisionArgs = {
+    chapterKey: Scalars['String']['input'];
+};
+
+export type QueryApprovalBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryArchiveBootstrapEffectivePolicyArgs = {
+    mangaId: Scalars['Int']['input'];
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryArchiveBootstrapItemsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    mangaId?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ArchiveBootstrapItemOrderInput>>;
+    sessionId: Scalars['Int']['input'];
+    state?: InputMaybe<ArchiveBootstrapItemState>;
+};
+
+export type QueryArchiveBootstrapProgressArgs = {
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryArchiveBootstrapSessionArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type QueryArchiveBootstrapSessionsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ArchiveBootstrapSessionOrderInput>>;
+    state?: InputMaybe<ArchiveBootstrapState>;
+};
+
+export type QueryArchiveBootstrapUnresolvedSourcesArgs = {
+    sampleSize: Scalars['Int']['input'];
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryBackupRestoreAuditsArgs = {
+    level?: InputMaybe<BackupRestoreAuditLevel>;
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    restoreId: Scalars['String']['input'];
+};
+
+export type QueryBackupRestoreErrorCountsArgs = {
+    restoreId: Scalars['String']['input'];
+};
+
+export type QueryBackupRestoreJobArgs = {
+    restoreId: Scalars['String']['input'];
+};
+
+export type QueryBackupRestoreJobsArgs = {
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    state?: InputMaybe<BackupRestoreJobState>;
+};
+
+export type QueryCanonicalBindingForMangaArgs = {
+    mangaId: Scalars['Int']['input'];
+};
+
+export type QueryCanonicalBindingsForWorkArgs = {
+    workId: Scalars['Int']['input'];
+};
+
+export type QueryCanonicalWorkArgs = {
+    workKey: Scalars['String']['input'];
+};
+
+export type QueryCanonicalWorkForMangaArgs = {
+    mangaId: Scalars['Int']['input'];
+};
+
+export type QueryCanonicalWorksArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<CanonicalWorkOrderInput>>;
+    titleContains?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type QueryCategoriesArgs = {
@@ -2218,6 +4159,8 @@ export type QueryCategoriesArgs = {
     last?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     order?: InputMaybe<Array<CategoryOrderInput>>;
+    orderBy?: InputMaybe<CategoryOrderBy>;
+    orderByType?: InputMaybe<SortOrder>;
 };
 
 export type QueryCategoryArgs = {
@@ -2226,6 +4169,118 @@ export type QueryCategoryArgs = {
 
 export type QueryChapterArgs = {
     id: Scalars['Int']['input'];
+};
+
+export type QueryChapterIntegrityAuditItemsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    mangaId?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterIntegrityAuditItemOrderInput>>;
+    sessionId: Scalars['Int']['input'];
+    state?: InputMaybe<ChapterIntegrityAuditItemState>;
+};
+
+export type QueryChapterIntegrityAuditProgressArgs = {
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryChapterIntegrityAuditSessionArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type QueryChapterIntegrityAuditSessionsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterIntegrityAuditSessionOrderInput>>;
+    state?: InputMaybe<ChapterIntegrityAuditSessionState>;
+};
+
+export type QueryChapterRevisionArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionComparisonArgs = {
+    revisionId: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionComparisonPagesArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    revisionId: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionHistoryArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    chapterKey: Scalars['String']['input'];
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryChapterRevisionRollbacksArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    chapterKey?: InputMaybe<Scalars['String']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionRollbackOrderInput>>;
+};
+
+export type QueryChapterRevisionSweepItemsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    mangaId?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionSweepItemOrderInput>>;
+    sessionId: Scalars['Int']['input'];
+    state?: InputMaybe<ChapterRevisionSweepItemState>;
+};
+
+export type QueryChapterRevisionSweepProgressArgs = {
+    sessionId: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionSweepSessionArgs = {
+    id: Scalars['Int']['input'];
+};
+
+export type QueryChapterRevisionSweepSessionsArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionSweepSessionOrderInput>>;
+    state?: InputMaybe<ChapterRevisionSweepSessionState>;
+};
+
+export type QueryChapterRevisionsArgs = {
+    acquisitionState?: InputMaybe<ChapterAcquisitionState>;
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    archiveState?: InputMaybe<ChapterArchiveState>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    chapterId?: InputMaybe<Scalars['Int']['input']>;
+    chapterKey?: InputMaybe<Scalars['String']['input']>;
+    discoveryReason?: InputMaybe<ChapterRevisionDiscoveryReason>;
+    disposition?: InputMaybe<ChapterRevisionDisposition>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+    publicationState?: InputMaybe<ChapterPublicationState>;
+    retentionState?: InputMaybe<ChapterRetentionState>;
+    signalConfidence?: InputMaybe<ChapterRevisionSignalConfidence>;
 };
 
 export type QueryChaptersArgs = {
@@ -2237,6 +4292,8 @@ export type QueryChaptersArgs = {
     last?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     order?: InputMaybe<Array<ChapterOrderInput>>;
+    orderBy?: InputMaybe<ChapterOrderBy>;
+    orderByType?: InputMaybe<SortOrder>;
 };
 
 export type QueryExtensionArgs = {
@@ -2267,6 +4324,8 @@ export type QueryExtensionsArgs = {
     last?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     order?: InputMaybe<Array<ExtensionOrderInput>>;
+    orderBy?: InputMaybe<ExtensionOrderBy>;
+    orderByType?: InputMaybe<SortOrder>;
 };
 
 export type QueryMangaArgs = {
@@ -2282,6 +4341,8 @@ export type QueryMangasArgs = {
     last?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     order?: InputMaybe<Array<MangaOrderInput>>;
+    orderBy?: InputMaybe<MangaOrderBy>;
+    orderByType?: InputMaybe<SortOrder>;
 };
 
 export type QueryMetaArgs = {
@@ -2297,6 +4358,35 @@ export type QueryMetasArgs = {
     last?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     order?: InputMaybe<Array<MetaOrderInput>>;
+    orderBy?: InputMaybe<MetaOrderBy>;
+    orderByType?: InputMaybe<SortOrder>;
+};
+
+export type QueryPruningBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryPublicationBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryQueuedBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
 };
 
 export type QueryRestoreStatusArgs = {
@@ -2320,6 +4410,8 @@ export type QuerySourcesArgs = {
     last?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     order?: InputMaybe<Array<SourceOrderInput>>;
+    orderBy?: InputMaybe<SourceOrderBy>;
+    orderByType?: InputMaybe<SortOrder>;
 };
 
 export type QueryTrackRecordArgs = {
@@ -2335,6 +4427,8 @@ export type QueryTrackRecordsArgs = {
     last?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     order?: InputMaybe<Array<TrackRecordOrderInput>>;
+    orderBy?: InputMaybe<TrackRecordOrderBy>;
+    orderByType?: InputMaybe<SortOrder>;
 };
 
 export type QueryTrackerArgs = {
@@ -2349,10 +4443,73 @@ export type QueryTrackersArgs = {
     last?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     order?: InputMaybe<Array<TrackerOrderInput>>;
+    orderBy?: InputMaybe<TrackerOrderBy>;
+    orderByType?: InputMaybe<SortOrder>;
+};
+
+export type QueryUserArgs = {
+    id?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type QueryUserCodesArgs = {
+    forUserId?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type QueryUsersArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    condition?: InputMaybe<UserConditionInput>;
+    filter?: InputMaybe<UserFilterInput>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<UserOrderInput>>;
 };
 
 export type QueryValidateBackupArgs = {
     input: ValidateBackupInput;
+};
+
+export type QueryVisualAnalysisBacklogArgs = {
+    after?: InputMaybe<Scalars['Cursor']['input']>;
+    before?: InputMaybe<Scalars['Cursor']['input']>;
+    first?: InputMaybe<Scalars['Int']['input']>;
+    last?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    order?: InputMaybe<Array<ChapterRevisionOrderInput>>;
+};
+
+export type QueryWebViewTabsArgs = {
+    tab?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type RedeemRecoveryCodeInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    code: Scalars['String']['input'];
+    newPassword: Scalars['String']['input'];
+};
+
+export type RedeemRecoveryCodePayload = {
+    __typename?: 'RedeemRecoveryCodePayload';
+    accessToken: Scalars['String']['output'];
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    refreshToken: Scalars['String']['output'];
+    user: UserType;
+};
+
+export type RedeemRegistrationCodeInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    code: Scalars['String']['input'];
+    password: Scalars['String']['input'];
+    username: Scalars['String']['input'];
+};
+
+export type RedeemRegistrationCodePayload = {
+    __typename?: 'RedeemRegistrationCodePayload';
+    accessToken: Scalars['String']['output'];
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    refreshToken: Scalars['String']['output'];
+    user: UserType;
 };
 
 export type RefreshTokenInput = {
@@ -2364,6 +4521,40 @@ export type RefreshTokenPayload = {
     __typename?: 'RefreshTokenPayload';
     accessToken: Scalars['String']['output'];
     clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+export type RegisterInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    password: Scalars['String']['input'];
+    userPermissions?: InputMaybe<Array<UserPermission>>;
+    username: Scalars['String']['input'];
+};
+
+export type RegisterPayload = {
+    __typename?: 'RegisterPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+export type RejectChapterRevisionCandidatesInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RejectChapterRevisionCandidatesPayload = {
+    __typename?: 'RejectChapterRevisionCandidatesPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RejectChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RejectChapterRevisionsPayload = {
+    __typename?: 'RejectChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
 };
 
 export type RemoveExtensionStoreInput = {
@@ -2394,6 +4585,16 @@ export type ReorderChapterDownloadsInput = {
     reorders: Array<ChapterDownloadReorderInput>;
 };
 
+export type RequestKomgaRescanInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type RequestKomgaRescanPayload = {
+    __typename?: 'RequestKomgaRescanPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    rescan: KomgaRescanStatusType;
+};
+
 export type ResetSettingsInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2404,8 +4605,20 @@ export type ResetSettingsPayload = {
     settings: SettingsType;
 };
 
+export type ResetUserSettingsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResetUserSettingsPayload = {
+    __typename?: 'ResetUserSettingsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    userSettings: UserSettingsType;
+};
+
 export type RestoreBackupInput = {
     backup: Scalars['Upload']['input'];
+    bootstrapCategoryOverrides?: InputMaybe<Array<BootstrapCategoryPolicyInput>>;
+    bootstrapDefaultPolicy?: InputMaybe<MangaAcquisitionPolicy>;
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     flags?: InputMaybe<PartialBackupFlagsInput>;
 };
@@ -2415,6 +4628,137 @@ export type RestoreBackupPayload = {
     clientMutationId?: Maybe<Scalars['String']['output']>;
     id: Scalars['String']['output'];
     status?: Maybe<BackupRestoreStatus>;
+};
+
+export type RetryArchiveBootstrapItemsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    itemIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type RetryArchiveBootstrapItemsPayload = {
+    __typename?: 'RetryArchiveBootstrapItemsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ArchiveBootstrapSessionType>;
+};
+
+export type RetryChapterIntegrityAuditItemsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    itemIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type RetryChapterIntegrityAuditItemsPayload = {
+    __typename?: 'RetryChapterIntegrityAuditItemsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterIntegrityAuditSessionType>;
+};
+
+export type RetryChapterRevisionArchivesInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionArchivesPayload = {
+    __typename?: 'RetryChapterRevisionArchivesPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryChapterRevisionPruningsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionPruningsPayload = {
+    __typename?: 'RetryChapterRevisionPruningsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryChapterRevisionPublicationsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionPublicationsPayload = {
+    __typename?: 'RetryChapterRevisionPublicationsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryChapterRevisionSweepItemsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    itemIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+    sessionId: Scalars['Int']['input'];
+};
+
+export type RetryChapterRevisionSweepItemsPayload = {
+    __typename?: 'RetryChapterRevisionSweepItemsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterRevisionSweepSessionType>;
+};
+
+export type RetryChapterRevisionVisualAnalysesInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionVisualAnalysesPayload = {
+    __typename?: 'RetryChapterRevisionVisualAnalysesPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryChapterRevisionsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    ids: Array<Scalars['Int']['input']>;
+};
+
+export type RetryChapterRevisionsPayload = {
+    __typename?: 'RetryChapterRevisionsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    revisions: Array<ChapterRevisionType>;
+};
+
+export type RetryKomgaRescanInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type RetryKomgaRescanPayload = {
+    __typename?: 'RetryKomgaRescanPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    rescan: KomgaRescanStatusType;
+    retried: Scalars['Boolean']['output'];
+};
+
+export type RevokeUserCodeInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    id: Scalars['Int']['input'];
+};
+
+export type RevokeUserCodePayload = {
+    __typename?: 'RevokeUserCodePayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
+export type RollbackChapterRevisionInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    revisionId: Scalars['Int']['input'];
+};
+
+export type RollbackChapterRevisionPayload = {
+    __typename?: 'RollbackChapterRevisionPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    replacedRevisionId?: Maybe<Scalars['Int']['output']>;
+    revision?: Maybe<ChapterRevisionType>;
 };
 
 export type SearchTrackerInput = {
@@ -2545,6 +4889,17 @@ export type SetMangaMetasPayload = {
     metas: Array<MangaMetaType>;
 };
 
+export type SetPasswordInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    newPassword: Scalars['String']['input'];
+    oldPassword: Scalars['String']['input'];
+};
+
+export type SetPasswordPayload = {
+    __typename?: 'SetPasswordPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+};
+
 export type SetSettingsInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     settings: PartialSettingsTypeInput;
@@ -2584,7 +4939,29 @@ export type SetSourceMetasPayload = {
     sources: Array<SourceType>;
 };
 
+export type SetUserSettingsInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    userSettings: PartialUserSettingsTypeInput;
+};
+
+export type SetUserSettingsPayload = {
+    __typename?: 'SetUserSettingsPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    userSettings: UserSettingsType;
+};
+
 export type Settings = {
+    acceptedRevisionRetention?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapInterItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    archiveBootstrapRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDefaultAcquisitionPolicy?: Maybe<Scalars['String']['output']>;
+    archiveDirectDeliveryEnabled?: Maybe<Scalars['Boolean']['output']>;
+    archiveDirectDeliveryExpirySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveDirectDeliveryFallbackToLocal?: Maybe<Scalars['Boolean']['output']>;
+    archiveDirectDeliveryRequireExpiryEvidence?: Maybe<Scalars['Boolean']['output']>;
+    archiveVerificationRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    archiveVerificationTimeoutSeconds?: Maybe<Scalars['Int']['output']>;
     authMode?: Maybe<AuthMode>;
     authPassword?: Maybe<Scalars['String']['output']>;
     authUsername?: Maybe<Scalars['String']['output']>;
@@ -2595,11 +4972,16 @@ export type Settings = {
     autoBackupIncludeManga?: Maybe<Scalars['Boolean']['output']>;
     autoBackupIncludeServerSettings?: Maybe<Scalars['Boolean']['output']>;
     autoBackupIncludeTracking?: Maybe<Scalars['Boolean']['output']>;
+    autoBackupIncludeUserSettings?: Maybe<Scalars['Boolean']['output']>;
     /** @deprecated Replaced with autoDownloadNewChaptersLimit, replace with autoDownloadNewChaptersLimit */
     autoDownloadAheadLimit?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     autoDownloadIgnoreReUploads?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     autoDownloadNewChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     autoDownloadNewChaptersLimit?: Maybe<Scalars['Int']['output']>;
+    autoUpdateExtensions?: Maybe<Scalars['Boolean']['output']>;
     backupInterval?: Maybe<Scalars['Int']['output']>;
     backupPath?: Maybe<Scalars['String']['output']>;
     backupTTL?: Maybe<Scalars['Int']['output']>;
@@ -2610,7 +4992,25 @@ export type Settings = {
     basicAuthPassword?: Maybe<Scalars['String']['output']>;
     /** @deprecated Removed - prefer authUsername, replace with authUsername */
     basicAuthUsername?: Maybe<Scalars['String']['output']>;
+    chapterIntegrityAuditEnabled?: Maybe<Scalars['Boolean']['output']>;
+    chapterIntegrityAuditIntervalDays?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditRecentRevisions?: Maybe<Scalars['Int']['output']>;
+    chapterIntegrityAuditRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionAutoDismissVisuallyEquivalent?: Maybe<Scalars['Boolean']['output']>;
+    chapterRevisionSweepEnabled?: Maybe<Scalars['Boolean']['output']>;
+    chapterRevisionSweepIntervalDays?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepItemDelaySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepNewestChapters?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionSweepRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionThumbnailMaxDimension?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualAnalysisMaxAttempts?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualAnalysisRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    chapterRevisionVisualHashThreshold?: Maybe<Scalars['Int']['output']>;
     databasePassword?: Maybe<Scalars['String']['output']>;
+    databaseSchema?: Maybe<Scalars['String']['output']>;
     databaseType?: Maybe<DatabaseType>;
     databaseUrl?: Maybe<Scalars['String']['output']>;
     databaseUsername?: Maybe<Scalars['String']['output']>;
@@ -2619,11 +5019,15 @@ export type Settings = {
     downloadConversions?: Maybe<Array<SettingsDownloadConversion>>;
     downloadsPath?: Maybe<Scalars['String']['output']>;
     electronPath?: Maybe<Scalars['String']['output']>;
+    /** @deprecated Now per-user */
     excludeCompleted?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     excludeEntryWithUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     excludeNotStarted?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     excludeUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
-    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations */
+    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations, replace with extensionStores */
     extensionRepos?: Maybe<Array<Scalars['String']['output']>>;
     flareSolverrAsResponseFallback?: Maybe<Scalars['Boolean']['output']>;
     flareSolverrEnabled?: Maybe<Scalars['Boolean']['output']>;
@@ -2634,21 +5038,32 @@ export type Settings = {
     globalUpdateInterval?: Maybe<Scalars['Float']['output']>;
     /** @deprecated Removed - does not do anything */
     gqlDebugLogsEnabled?: Maybe<Scalars['Boolean']['output']>;
+    hikariMaxPoolSize?: Maybe<Scalars['Int']['output']>;
     initialOpenInBrowserEnabled?: Maybe<Scalars['Boolean']['output']>;
     ip?: Maybe<Scalars['String']['output']>;
     jwtAudience?: Maybe<Scalars['String']['output']>;
     jwtRefreshExpiry?: Maybe<Scalars['Duration']['output']>;
     jwtTokenExpiry?: Maybe<Scalars['Duration']['output']>;
     kcefEnabled?: Maybe<Scalars['Boolean']['output']>;
+    komgaApiKey?: Maybe<Scalars['String']['output']>;
+    komgaBaseUrl?: Maybe<Scalars['String']['output']>;
+    komgaLibraryId?: Maybe<Scalars['String']['output']>;
+    komgaRequestTimeoutSeconds?: Maybe<Scalars['Int']['output']>;
+    komgaRescanDebounceSeconds?: Maybe<Scalars['Int']['output']>;
+    komgaRescanRetrySeconds?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     koreaderSyncChecksumMethod?: Maybe<KoreaderSyncChecksumMethod>;
     /** @deprecated Moved to preference store. Is supposed to be random and gets auto generated, replace with MOVE TO PREFERENCES */
     koreaderSyncDeviceId?: Maybe<Scalars['String']['output']>;
+    /** @deprecated Now per-user */
     koreaderSyncPercentageTolerance?: Maybe<Scalars['Float']['output']>;
     /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
     koreaderSyncServerUrl?: Maybe<Scalars['String']['output']>;
     /** @deprecated Replaced with koreaderSyncStrategyForward and koreaderSyncStrategyBackward, replace with koreaderSyncStrategyForward, koreaderSyncStrategyBackward */
     koreaderSyncStrategy?: Maybe<KoreaderSyncLegacyStrategy>;
+    /** @deprecated Now per-user */
     koreaderSyncStrategyBackward?: Maybe<KoreaderSyncConflictStrategy>;
+    /** @deprecated Now per-user */
     koreaderSyncStrategyForward?: Maybe<KoreaderSyncConflictStrategy>;
     /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
     koreaderSyncUserkey?: Maybe<Scalars['String']['output']>;
@@ -2659,16 +5074,26 @@ export type Settings = {
     maxLogFiles?: Maybe<Scalars['Int']['output']>;
     maxLogFolderSize?: Maybe<Scalars['String']['output']>;
     maxSourcesInParallel?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     opdsCbzMimetype?: Maybe<CbzMediaType>;
+    /** @deprecated Now per-user */
     opdsChapterSortOrder?: Maybe<SortOrder>;
+    /** @deprecated Now per-user */
     opdsEnablePageReadProgress?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsItemsPerPage?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     opdsMarkAsReadOnDownload?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsShowOnlyDownloadedChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsShowOnlyUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsSkipChapterMetadataFeed?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     opdsUseBinaryFileSizes?: Maybe<Scalars['Boolean']['output']>;
     port?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     serveConversions?: Maybe<Array<SettingsDownloadConversion>>;
     socksProxyEnabled?: Maybe<Scalars['Boolean']['output']>;
     socksProxyHost?: Maybe<Scalars['String']['output']>;
@@ -2676,22 +5101,35 @@ export type Settings = {
     socksProxyPort?: Maybe<Scalars['String']['output']>;
     socksProxyUsername?: Maybe<Scalars['String']['output']>;
     socksProxyVersion?: Maybe<Scalars['Int']['output']>;
+    /** @deprecated Now per-user */
     syncDataCategories?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncDataChapters?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncDataHistory?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncDataManga?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncDataTracking?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncInterval?: Maybe<Scalars['Duration']['output']>;
+    /** @deprecated Now per-user */
     syncYomiApiKey?: Maybe<Scalars['String']['output']>;
+    /** @deprecated Now per-user */
     syncYomiEnabled?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     syncYomiHost?: Maybe<Scalars['String']['output']>;
     systemTrayEnabled?: Maybe<Scalars['Boolean']['output']>;
+    /** @deprecated Now per-user */
     updateMangas?: Maybe<Scalars['Boolean']['output']>;
     useHikariConnectionPool?: Maybe<Scalars['Boolean']['output']>;
     webUIChannel?: Maybe<WebUiChannel>;
     webUIFlavor?: Maybe<WebUiFlavor>;
     webUIInterface?: Maybe<WebUiInterface>;
     webUIUpdateCheckInterval?: Maybe<Scalars['Float']['output']>;
+    webViewOpenTimeout?: Maybe<Scalars['Int']['output']>;
+    webViewProvider?: Maybe<WebViewProvider>;
+    webViewVncUrl?: Maybe<Scalars['String']['output']>;
 };
 
 export type SettingsDownloadConversion = {
@@ -2740,6 +5178,17 @@ export type SettingsDownloadConversionTypeInput = {
 
 export type SettingsType = Settings & {
     __typename?: 'SettingsType';
+    acceptedRevisionRetention: Scalars['Int']['output'];
+    archiveBootstrapInterItemDelaySeconds: Scalars['Int']['output'];
+    archiveBootstrapMaxAttempts: Scalars['Int']['output'];
+    archiveBootstrapRetrySeconds: Scalars['Int']['output'];
+    archiveDefaultAcquisitionPolicy: Scalars['String']['output'];
+    archiveDirectDeliveryEnabled: Scalars['Boolean']['output'];
+    archiveDirectDeliveryExpirySeconds: Scalars['Int']['output'];
+    archiveDirectDeliveryFallbackToLocal: Scalars['Boolean']['output'];
+    archiveDirectDeliveryRequireExpiryEvidence: Scalars['Boolean']['output'];
+    archiveVerificationRetrySeconds: Scalars['Int']['output'];
+    archiveVerificationTimeoutSeconds: Scalars['Int']['output'];
     authMode: AuthMode;
     authPassword: Scalars['String']['output'];
     authUsername: Scalars['String']['output'];
@@ -2750,11 +5199,16 @@ export type SettingsType = Settings & {
     autoBackupIncludeManga: Scalars['Boolean']['output'];
     autoBackupIncludeServerSettings: Scalars['Boolean']['output'];
     autoBackupIncludeTracking: Scalars['Boolean']['output'];
+    autoBackupIncludeUserSettings: Scalars['Boolean']['output'];
     /** @deprecated Replaced with autoDownloadNewChaptersLimit, replace with autoDownloadNewChaptersLimit */
     autoDownloadAheadLimit: Scalars['Int']['output'];
+    /** @deprecated Now per-user */
     autoDownloadIgnoreReUploads: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     autoDownloadNewChapters: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     autoDownloadNewChaptersLimit: Scalars['Int']['output'];
+    autoUpdateExtensions: Scalars['Boolean']['output'];
     backupInterval: Scalars['Int']['output'];
     backupPath: Scalars['String']['output'];
     backupTTL: Scalars['Int']['output'];
@@ -2765,7 +5219,25 @@ export type SettingsType = Settings & {
     basicAuthPassword: Scalars['String']['output'];
     /** @deprecated Removed - prefer authUsername, replace with authUsername */
     basicAuthUsername: Scalars['String']['output'];
+    chapterIntegrityAuditEnabled: Scalars['Boolean']['output'];
+    chapterIntegrityAuditIntervalDays: Scalars['Int']['output'];
+    chapterIntegrityAuditItemDelaySeconds: Scalars['Int']['output'];
+    chapterIntegrityAuditMaxAttempts: Scalars['Int']['output'];
+    chapterIntegrityAuditRecentRevisions: Scalars['Int']['output'];
+    chapterIntegrityAuditRetrySeconds: Scalars['Int']['output'];
+    chapterRevisionAutoDismissVisuallyEquivalent: Scalars['Boolean']['output'];
+    chapterRevisionSweepEnabled: Scalars['Boolean']['output'];
+    chapterRevisionSweepIntervalDays: Scalars['Int']['output'];
+    chapterRevisionSweepItemDelaySeconds: Scalars['Int']['output'];
+    chapterRevisionSweepMaxAttempts: Scalars['Int']['output'];
+    chapterRevisionSweepNewestChapters: Scalars['Int']['output'];
+    chapterRevisionSweepRetrySeconds: Scalars['Int']['output'];
+    chapterRevisionThumbnailMaxDimension: Scalars['Int']['output'];
+    chapterRevisionVisualAnalysisMaxAttempts: Scalars['Int']['output'];
+    chapterRevisionVisualAnalysisRetrySeconds: Scalars['Int']['output'];
+    chapterRevisionVisualHashThreshold: Scalars['Int']['output'];
     databasePassword: Scalars['String']['output'];
+    databaseSchema: Scalars['String']['output'];
     databaseType: DatabaseType;
     databaseUrl: Scalars['String']['output'];
     databaseUsername: Scalars['String']['output'];
@@ -2774,11 +5246,15 @@ export type SettingsType = Settings & {
     downloadConversions: Array<SettingsDownloadConversionType>;
     downloadsPath: Scalars['String']['output'];
     electronPath: Scalars['String']['output'];
+    /** @deprecated Now per-user */
     excludeCompleted: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     excludeEntryWithUnreadChapters: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     excludeNotStarted: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     excludeUnreadChapters: Scalars['Boolean']['output'];
-    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations */
+    /** @deprecated Replaced with addExtensionStore and removeExtensionStore mutations, replace with extensionStores */
     extensionRepos: Array<Scalars['String']['output']>;
     flareSolverrAsResponseFallback: Scalars['Boolean']['output'];
     flareSolverrEnabled: Scalars['Boolean']['output'];
@@ -2789,21 +5265,32 @@ export type SettingsType = Settings & {
     globalUpdateInterval: Scalars['Float']['output'];
     /** @deprecated Removed - does not do anything */
     gqlDebugLogsEnabled: Scalars['Boolean']['output'];
+    hikariMaxPoolSize: Scalars['Int']['output'];
     initialOpenInBrowserEnabled: Scalars['Boolean']['output'];
     ip: Scalars['String']['output'];
     jwtAudience: Scalars['String']['output'];
     jwtRefreshExpiry: Scalars['Duration']['output'];
     jwtTokenExpiry: Scalars['Duration']['output'];
     kcefEnabled: Scalars['Boolean']['output'];
+    komgaApiKey?: Maybe<Scalars['String']['output']>;
+    komgaBaseUrl: Scalars['String']['output'];
+    komgaLibraryId: Scalars['String']['output'];
+    komgaRequestTimeoutSeconds: Scalars['Int']['output'];
+    komgaRescanDebounceSeconds: Scalars['Int']['output'];
+    komgaRescanRetrySeconds: Scalars['Int']['output'];
+    /** @deprecated Now per-user */
     koreaderSyncChecksumMethod: KoreaderSyncChecksumMethod;
     /** @deprecated Moved to preference store. Is supposed to be random and gets auto generated, replace with MOVE TO PREFERENCES */
     koreaderSyncDeviceId: Scalars['String']['output'];
+    /** @deprecated Now per-user */
     koreaderSyncPercentageTolerance: Scalars['Float']['output'];
     /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
     koreaderSyncServerUrl: Scalars['String']['output'];
     /** @deprecated Replaced with koreaderSyncStrategyForward and koreaderSyncStrategyBackward, replace with koreaderSyncStrategyForward, koreaderSyncStrategyBackward */
     koreaderSyncStrategy: KoreaderSyncLegacyStrategy;
+    /** @deprecated Now per-user */
     koreaderSyncStrategyBackward: KoreaderSyncConflictStrategy;
+    /** @deprecated Now per-user */
     koreaderSyncStrategyForward: KoreaderSyncConflictStrategy;
     /** @deprecated Moved to preference store. User is supposed to use a login/logout mutation, replace with MOVE TO PREFERENCES */
     koreaderSyncUserkey: Scalars['String']['output'];
@@ -2814,16 +5301,26 @@ export type SettingsType = Settings & {
     maxLogFiles: Scalars['Int']['output'];
     maxLogFolderSize: Scalars['String']['output'];
     maxSourcesInParallel: Scalars['Int']['output'];
+    /** @deprecated Now per-user */
     opdsCbzMimetype: CbzMediaType;
+    /** @deprecated Now per-user */
     opdsChapterSortOrder: SortOrder;
+    /** @deprecated Now per-user */
     opdsEnablePageReadProgress: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     opdsItemsPerPage: Scalars['Int']['output'];
+    /** @deprecated Now per-user */
     opdsMarkAsReadOnDownload: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     opdsShowOnlyDownloadedChapters: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     opdsShowOnlyUnreadChapters: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     opdsSkipChapterMetadataFeed: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     opdsUseBinaryFileSizes: Scalars['Boolean']['output'];
     port: Scalars['Int']['output'];
+    /** @deprecated Now per-user */
     serveConversions: Array<SettingsDownloadConversionType>;
     socksProxyEnabled: Scalars['Boolean']['output'];
     socksProxyHost: Scalars['String']['output'];
@@ -2831,22 +5328,35 @@ export type SettingsType = Settings & {
     socksProxyPort: Scalars['String']['output'];
     socksProxyUsername: Scalars['String']['output'];
     socksProxyVersion: Scalars['Int']['output'];
+    /** @deprecated Now per-user */
     syncDataCategories: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     syncDataChapters: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     syncDataHistory: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     syncDataManga: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     syncDataTracking: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     syncInterval: Scalars['Duration']['output'];
+    /** @deprecated Now per-user */
     syncYomiApiKey: Scalars['String']['output'];
+    /** @deprecated Now per-user */
     syncYomiEnabled: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     syncYomiHost: Scalars['String']['output'];
     systemTrayEnabled: Scalars['Boolean']['output'];
+    /** @deprecated Now per-user */
     updateMangas: Scalars['Boolean']['output'];
     useHikariConnectionPool: Scalars['Boolean']['output'];
     webUIChannel: WebUiChannel;
     webUIFlavor: WebUiFlavor;
     webUIInterface: WebUiInterface;
     webUIUpdateCheckInterval: Scalars['Float']['output'];
+    webViewOpenTimeout: Scalars['Int']['output'];
+    webViewProvider: WebViewProvider;
+    webViewVncUrl: Scalars['String']['output'];
 };
 
 export type SortFilter = {
@@ -2879,6 +5389,8 @@ export type SortSelectionInput = {
 export type SourceConditionInput = {
     contentWarning?: InputMaybe<ContentWarning>;
     id?: InputMaybe<Scalars['LongString']['input']>;
+    /** @deprecated replace with contentWarning == ContentRating.MIXED, replace with contentWarning */
+    isNsfw?: InputMaybe<Scalars['Boolean']['input']>;
     lang?: InputMaybe<Scalars['String']['input']>;
     name?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2893,6 +5405,8 @@ export type SourceFilterInput = {
     and?: InputMaybe<Array<SourceFilterInput>>;
     contentWarning?: InputMaybe<ContentWarningFilterInput>;
     id?: InputMaybe<LongFilterInput>;
+    /** @deprecated replace with contentWarning, replace with contentWarning */
+    isNsfw?: InputMaybe<BooleanFilterInput>;
     lang?: InputMaybe<StringFilterInput>;
     name?: InputMaybe<StringFilterInput>;
     not?: InputMaybe<SourceFilterInput>;
@@ -2961,6 +5475,49 @@ export type SourceType = {
     name: Scalars['String']['output'];
     preferences: Array<Preference>;
     supportsLatest: Scalars['Boolean']['output'];
+};
+
+export type StartArchiveBootstrapInput = {
+    categoryPolicies?: InputMaybe<Array<ArchiveBootstrapCategoryPolicyInput>>;
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    defaultPolicy: MangaAcquisitionPolicy;
+    mangaIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type StartArchiveBootstrapPayload = {
+    __typename?: 'StartArchiveBootstrapPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ArchiveBootstrapSessionType>;
+};
+
+export type StartChapterIntegrityAuditInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    kind: ChapterIntegrityAuditKind;
+    mangaIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type StartChapterIntegrityAuditPayload = {
+    __typename?: 'StartChapterIntegrityAuditPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterIntegrityAuditSessionType>;
+};
+
+export type StartChapterRevisionSweepInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    kind: ChapterRevisionSweepKind;
+    mangaIds?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type StartChapterRevisionSweepPayload = {
+    __typename?: 'StartChapterRevisionSweepPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    error?: Maybe<Scalars['String']['output']>;
+    itemCount?: Maybe<Scalars['Int']['output']>;
+    session?: Maybe<ChapterRevisionSweepSessionType>;
 };
 
 export type StartDownloaderInput = {
@@ -3343,6 +5900,22 @@ export type UnbindTrackPayload = {
     trackRecord?: Maybe<TrackRecordType>;
 };
 
+export type UpdateCanonicalWorkInput = {
+    clearPreferredScanlator: Scalars['Boolean']['input'];
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    duplicateStrategy?: InputMaybe<CanonicalDuplicateStrategy>;
+    preferredScanlator?: InputMaybe<Scalars['String']['input']>;
+    title?: InputMaybe<Scalars['String']['input']>;
+    workKey: Scalars['String']['input'];
+};
+
+export type UpdateCanonicalWorkPayload = {
+    __typename?: 'UpdateCanonicalWorkPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    outcome: CanonicalWriteOutcome;
+    work?: Maybe<CanonicalWorkType>;
+};
+
 export type UpdateCategoriesInput = {
     clientMutationId?: InputMaybe<Scalars['String']['input']>;
     ids: Array<Scalars['Int']['input']>;
@@ -3503,7 +6076,11 @@ export type UpdateMangaInput = {
 };
 
 export type UpdateMangaPatchInput = {
+    acceptedRevisionRetention?: InputMaybe<Scalars['Int']['input']>;
+    acquisitionPolicy?: InputMaybe<MangaAcquisitionPolicy>;
     inLibrary?: InputMaybe<Scalars['Boolean']['input']>;
+    inheritAcceptedRevisionRetention?: InputMaybe<Scalars['Boolean']['input']>;
+    inheritAcquisitionPolicy?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type UpdateMangaPayload = {
@@ -3604,12 +6181,27 @@ export type UpdateTrackInput = {
     /** This will only work if the tracker of the track record supports reading dates */
     startDate?: InputMaybe<Scalars['LongString']['input']>;
     status?: InputMaybe<Scalars['Int']['input']>;
+    /** @deprecated Replaced with "unbindTrack" mutation, replace with unbindTrack */
+    unbind?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type UpdateTrackPayload = {
     __typename?: 'UpdateTrackPayload';
     clientMutationId?: Maybe<Scalars['String']['output']>;
     trackRecord?: Maybe<TrackRecordType>;
+};
+
+export type UpdateUserInput = {
+    clientMutationId?: InputMaybe<Scalars['String']['input']>;
+    permissions?: InputMaybe<Array<UserPermission>>;
+    role?: InputMaybe<UserRole>;
+    userId: Scalars['Int']['input'];
+};
+
+export type UpdateUserPayload = {
+    __typename?: 'UpdateUserPayload';
+    clientMutationId?: Maybe<Scalars['String']['output']>;
+    user: UserType;
 };
 
 export type UpdaterJobsInfoType = {
@@ -3628,8 +6220,164 @@ export type UpdaterUpdates = {
     initial?: Maybe<LibraryUpdateStatus>;
     jobsInfo: UpdaterJobsInfoType;
     mangaUpdates: Array<MangaUpdateType>;
-    /** Indicates whether updates have been omitted based on the "maxUpdates" subscription variable. In case updates have been omitted, the "updateStatus" query should be re-fetched. */
+    /**
+     * Indicates whether updates have been omitted based on the "maxUpdates" subscription variable. In case updates have been omitted, the "updateStatus" query should be re-fetched.
+     * @deprecated Removed - has no effect anymore, is always false
+     */
     omittedUpdates: Scalars['Boolean']['output'];
+};
+
+export enum UserCodePurpose {
+    Recovery = 'RECOVERY',
+    Registration = 'REGISTRATION',
+}
+
+export type UserCodeType = {
+    __typename?: 'UserCodeType';
+    createdAt: Scalars['LongString']['output'];
+    createdBy: UserType;
+    expiresAt: Scalars['LongString']['output'];
+    id: Scalars['Int']['output'];
+    permissions?: Maybe<Array<UserPermission>>;
+    purpose: UserCodePurpose;
+    user?: Maybe<UserType>;
+};
+
+export type UserConditionInput = {
+    id?: InputMaybe<Scalars['Int']['input']>;
+    permission?: InputMaybe<UserPermission>;
+    role?: InputMaybe<Scalars['String']['input']>;
+    username?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UserEdge = Edge & {
+    __typename?: 'UserEdge';
+    cursor: Scalars['Cursor']['output'];
+    node: UserType;
+};
+
+export type UserFilterInput = {
+    and?: InputMaybe<Array<UserFilterInput>>;
+    id?: InputMaybe<IntFilterInput>;
+    not?: InputMaybe<UserFilterInput>;
+    or?: InputMaybe<Array<UserFilterInput>>;
+    permission?: InputMaybe<PermissionsFilterInput>;
+    role?: InputMaybe<StringFilterInput>;
+    username?: InputMaybe<StringFilterInput>;
+};
+
+export type UserNodeList = NodeList & {
+    __typename?: 'UserNodeList';
+    edges: Array<UserEdge>;
+    nodes: Array<UserType>;
+    pageInfo: PageInfo;
+    totalCount: Scalars['Int']['output'];
+};
+
+export enum UserOrderBy {
+    Id = 'ID',
+    Username = 'USERNAME',
+}
+
+export type UserOrderInput = {
+    by: UserOrderBy;
+    byType?: InputMaybe<SortOrder>;
+};
+
+export enum UserPermission {
+    AccessNsfw = 'ACCESS_NSFW',
+    DownloadChapters = 'DOWNLOAD_CHAPTERS',
+    InstallExtensions = 'INSTALL_EXTENSIONS',
+    InstallExternalExtensions = 'INSTALL_EXTERNAL_EXTENSIONS',
+    ManageCache = 'MANAGE_CACHE',
+    ManageExtensionStores = 'MANAGE_EXTENSION_STORES',
+    ManageSettings = 'MANAGE_SETTINGS',
+    ManageSourcePreferences = 'MANAGE_SOURCE_PREFERENCES',
+    ManageUsers = 'MANAGE_USERS',
+    UninstallExtensions = 'UNINSTALL_EXTENSIONS',
+}
+
+export enum UserRole {
+    Admin = 'ADMIN',
+    User = 'USER',
+    Visitor = 'VISITOR',
+}
+
+export type UserSettings = {
+    autoDownloadIgnoreReUploads?: Maybe<Scalars['Boolean']['output']>;
+    autoDownloadNewChapters?: Maybe<Scalars['Boolean']['output']>;
+    autoDownloadNewChaptersLimit?: Maybe<Scalars['Int']['output']>;
+    excludeCompleted?: Maybe<Scalars['Boolean']['output']>;
+    excludeEntryWithUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    excludeNotStarted?: Maybe<Scalars['Boolean']['output']>;
+    excludeUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    koreaderSyncChecksumMethod?: Maybe<KoreaderSyncChecksumMethod>;
+    koreaderSyncPercentageTolerance?: Maybe<Scalars['Float']['output']>;
+    koreaderSyncStrategyBackward?: Maybe<KoreaderSyncConflictStrategy>;
+    koreaderSyncStrategyForward?: Maybe<KoreaderSyncConflictStrategy>;
+    opdsCbzMimetype?: Maybe<CbzMediaType>;
+    opdsChapterSortOrder?: Maybe<SortOrder>;
+    opdsEnablePageReadProgress?: Maybe<Scalars['Boolean']['output']>;
+    opdsItemsPerPage?: Maybe<Scalars['Int']['output']>;
+    opdsMarkAsReadOnDownload?: Maybe<Scalars['Boolean']['output']>;
+    opdsShowOnlyDownloadedChapters?: Maybe<Scalars['Boolean']['output']>;
+    opdsShowOnlyUnreadChapters?: Maybe<Scalars['Boolean']['output']>;
+    opdsSkipChapterMetadataFeed?: Maybe<Scalars['Boolean']['output']>;
+    opdsUseBinaryFileSizes?: Maybe<Scalars['Boolean']['output']>;
+    serveConversions?: Maybe<Array<SettingsDownloadConversion>>;
+    syncDataCategories?: Maybe<Scalars['Boolean']['output']>;
+    syncDataChapters?: Maybe<Scalars['Boolean']['output']>;
+    syncDataHistory?: Maybe<Scalars['Boolean']['output']>;
+    syncDataManga?: Maybe<Scalars['Boolean']['output']>;
+    syncDataTracking?: Maybe<Scalars['Boolean']['output']>;
+    syncInterval?: Maybe<Scalars['Duration']['output']>;
+    syncYomiApiKey?: Maybe<Scalars['String']['output']>;
+    syncYomiEnabled?: Maybe<Scalars['Boolean']['output']>;
+    syncYomiHost?: Maybe<Scalars['String']['output']>;
+    updateMangas?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type UserSettingsType = UserSettings & {
+    __typename?: 'UserSettingsType';
+    autoDownloadIgnoreReUploads: Scalars['Boolean']['output'];
+    autoDownloadNewChapters: Scalars['Boolean']['output'];
+    autoDownloadNewChaptersLimit: Scalars['Int']['output'];
+    excludeCompleted: Scalars['Boolean']['output'];
+    excludeEntryWithUnreadChapters: Scalars['Boolean']['output'];
+    excludeNotStarted: Scalars['Boolean']['output'];
+    excludeUnreadChapters: Scalars['Boolean']['output'];
+    koreaderSyncChecksumMethod: KoreaderSyncChecksumMethod;
+    koreaderSyncPercentageTolerance: Scalars['Float']['output'];
+    koreaderSyncStrategyBackward: KoreaderSyncConflictStrategy;
+    koreaderSyncStrategyForward: KoreaderSyncConflictStrategy;
+    opdsCbzMimetype: CbzMediaType;
+    opdsChapterSortOrder: SortOrder;
+    opdsEnablePageReadProgress: Scalars['Boolean']['output'];
+    opdsItemsPerPage: Scalars['Int']['output'];
+    opdsMarkAsReadOnDownload: Scalars['Boolean']['output'];
+    opdsShowOnlyDownloadedChapters: Scalars['Boolean']['output'];
+    opdsShowOnlyUnreadChapters: Scalars['Boolean']['output'];
+    opdsSkipChapterMetadataFeed: Scalars['Boolean']['output'];
+    opdsUseBinaryFileSizes: Scalars['Boolean']['output'];
+    serveConversions: Array<SettingsDownloadConversionType>;
+    syncDataCategories: Scalars['Boolean']['output'];
+    syncDataChapters: Scalars['Boolean']['output'];
+    syncDataHistory: Scalars['Boolean']['output'];
+    syncDataManga: Scalars['Boolean']['output'];
+    syncDataTracking: Scalars['Boolean']['output'];
+    syncInterval: Scalars['Duration']['output'];
+    syncYomiApiKey: Scalars['String']['output'];
+    syncYomiEnabled: Scalars['Boolean']['output'];
+    syncYomiHost: Scalars['String']['output'];
+    updateMangas: Scalars['Boolean']['output'];
+};
+
+export type UserType = {
+    __typename?: 'UserType';
+    id: Scalars['Int']['output'];
+    permissions: Array<UserPermission>;
+    roles: Array<UserRole>;
+    username: Scalars['String']['output'];
 };
 
 export type ValidateBackupInput = {
@@ -3698,4 +6446,16 @@ export type WebUiUpdateStatus = {
     info: WebUiUpdateInfo;
     progress: Scalars['Int']['output'];
     state: UpdateState;
+};
+
+export enum WebViewProvider {
+    Cef = 'CEF',
+    ProwlVnc = 'PROWL_VNC',
+}
+
+export type WebViewTabType = {
+    __typename?: 'WebViewTabType';
+    id: Scalars['String']['output'];
+    title: Scalars['String']['output'];
+    url: Scalars['String']['output'];
 };
