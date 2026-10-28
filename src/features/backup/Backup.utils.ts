@@ -22,6 +22,7 @@ export const convertToAutoBackupFlags = (flags: BackupFlagInclusionState): AutoB
     autoBackupIncludeHistory: flags.includeHistory,
     autoBackupIncludeManga: flags.includeManga,
     autoBackupIncludeServerSettings: flags.includeServerSettings,
+    autoBackupIncludeUserSettings: flags.includeUserSettings,
     autoBackupIncludeTracking: flags.includeTracking,
 });
 
@@ -32,6 +33,7 @@ export const convertToBackupFlags = (flags: AutoBackupFlagInclusionState): Backu
     includeHistory: flags.autoBackupIncludeHistory,
     includeManga: flags.autoBackupIncludeManga,
     includeServerSettings: flags.autoBackupIncludeServerSettings,
+    includeUserSettings: flags.autoBackupIncludeUserSettings,
     includeTracking: flags.autoBackupIncludeTracking,
 });
 

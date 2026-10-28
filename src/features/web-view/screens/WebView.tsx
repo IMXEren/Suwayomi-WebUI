@@ -65,6 +65,7 @@ export const WebView = () => {
     const [searchParams] = useSearchParams();
     const url = searchParams.get(WebViewSearchParam.URL) ?? '';
     const { accessToken } = AuthManager.useSession();
+    const vncAccessToken = accessToken?.token ?? null;
 
     const [openWebView] = requestManager.useOpenWebView();
     const [closeWebView] = requestManager.useCloseWebView();
@@ -129,7 +130,7 @@ export const WebView = () => {
     );
 
     // The socket URL must identify the opened tab for disconnect cleanup.
-    const vncClientUrl = useMemo(() => (tab ? getVncClientUrl(accessToken, tab) : null), [accessToken, tab]);
+    const vncClientUrl = useMemo(() => (tab ? getVncClientUrl(vncAccessToken, tab) : null), [vncAccessToken, tab]);
 
     // Polling touches only the displayed tab; abandoned tabs must still time out.
     const { data: tabsData } = requestManager.useGetWebViewTabs({
@@ -288,7 +289,7 @@ export const WebView = () => {
         // so the client page is asked for directly before it is shown.
         let cancelled = false;
         setIsVncReachable(null);
-        isVncClientReachable(vncClientUrl, accessToken)
+        isVncClientReachable(vncClientUrl, vncAccessToken)
             .then((reachable) => {
                 if (!cancelled) {
                     setIsVncReachable(reachable);
@@ -303,7 +304,7 @@ export const WebView = () => {
         return () => {
             cancelled = true;
         };
-    }, [tab, vncClientUrl, accessToken]);
+    }, [tab, vncClientUrl, vncAccessToken]);
 
     const retry = () => {
         closeOpenTab();

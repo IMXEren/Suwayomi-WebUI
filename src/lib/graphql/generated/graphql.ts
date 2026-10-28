@@ -5783,7 +5783,6 @@ export type ServerSettingsFragment = {
     autoDownloadNewChapters: boolean;
     excludeEntryWithUnreadChapters: boolean;
     autoDownloadNewChaptersLimit: number;
-    autoUpdateExtensions: boolean;
     autoDownloadIgnoreReUploads: boolean;
     maxSourcesInParallel: number;
     excludeUnreadChapters: boolean;
@@ -5812,6 +5811,7 @@ export type ServerSettingsFragment = {
     autoBackupIncludeHistory: boolean;
     autoBackupIncludeManga: boolean;
     autoBackupIncludeServerSettings: boolean;
+    autoBackupIncludeUserSettings: boolean;
     autoBackupIncludeTracking: boolean;
     localSourcePath: string;
     flareSolverrEnabled: boolean;
@@ -5840,6 +5840,7 @@ export type ServerSettingsFragment = {
     databaseSchema: string;
     useHikariConnectionPool: boolean;
     hikariMaxPoolSize: number;
+    autoUpdateExtensions: boolean;
     kcefEnabled: boolean;
     webViewProvider: Types.WebViewProvider;
     archiveDefaultAcquisitionPolicy: string;
@@ -5901,7 +5902,6 @@ export type ResetServerSettingsMutation = {
             autoDownloadNewChapters: boolean;
             excludeEntryWithUnreadChapters: boolean;
             autoDownloadNewChaptersLimit: number;
-            autoUpdateExtensions: boolean;
             autoDownloadIgnoreReUploads: boolean;
             maxSourcesInParallel: number;
             excludeUnreadChapters: boolean;
@@ -5930,6 +5930,7 @@ export type ResetServerSettingsMutation = {
             autoBackupIncludeHistory: boolean;
             autoBackupIncludeManga: boolean;
             autoBackupIncludeServerSettings: boolean;
+            autoBackupIncludeUserSettings: boolean;
             autoBackupIncludeTracking: boolean;
             localSourcePath: string;
             flareSolverrEnabled: boolean;
@@ -5958,6 +5959,7 @@ export type ResetServerSettingsMutation = {
             databaseSchema: string;
             useHikariConnectionPool: boolean;
             hikariMaxPoolSize: number;
+            autoUpdateExtensions: boolean;
             kcefEnabled: boolean;
             webViewProvider: Types.WebViewProvider;
             archiveDefaultAcquisitionPolicy: string;
@@ -6029,7 +6031,6 @@ export type UpdateServerSettingsMutation = {
             autoDownloadNewChapters: boolean;
             excludeEntryWithUnreadChapters: boolean;
             autoDownloadNewChaptersLimit: number;
-            autoUpdateExtensions: boolean;
             autoDownloadIgnoreReUploads: boolean;
             maxSourcesInParallel: number;
             excludeUnreadChapters: boolean;
@@ -6058,6 +6059,7 @@ export type UpdateServerSettingsMutation = {
             autoBackupIncludeHistory: boolean;
             autoBackupIncludeManga: boolean;
             autoBackupIncludeServerSettings: boolean;
+            autoBackupIncludeUserSettings: boolean;
             autoBackupIncludeTracking: boolean;
             localSourcePath: string;
             flareSolverrEnabled: boolean;
@@ -6086,6 +6088,7 @@ export type UpdateServerSettingsMutation = {
             databaseSchema: string;
             useHikariConnectionPool: boolean;
             hikariMaxPoolSize: number;
+            autoUpdateExtensions: boolean;
             kcefEnabled: boolean;
             webViewProvider: Types.WebViewProvider;
             archiveDefaultAcquisitionPolicy: string;
@@ -6153,7 +6156,6 @@ export type GetServerSettingsQuery = {
         autoDownloadNewChapters: boolean;
         excludeEntryWithUnreadChapters: boolean;
         autoDownloadNewChaptersLimit: number;
-        autoUpdateExtensions: boolean;
         autoDownloadIgnoreReUploads: boolean;
         maxSourcesInParallel: number;
         excludeUnreadChapters: boolean;
@@ -6182,6 +6184,7 @@ export type GetServerSettingsQuery = {
         autoBackupIncludeHistory: boolean;
         autoBackupIncludeManga: boolean;
         autoBackupIncludeServerSettings: boolean;
+        autoBackupIncludeUserSettings: boolean;
         autoBackupIncludeTracking: boolean;
         localSourcePath: string;
         flareSolverrEnabled: boolean;
@@ -6210,6 +6213,7 @@ export type GetServerSettingsQuery = {
         databaseSchema: string;
         useHikariConnectionPool: boolean;
         hikariMaxPoolSize: number;
+        autoUpdateExtensions: boolean;
         kcefEnabled: boolean;
         webViewProvider: Types.WebViewProvider;
         archiveDefaultAcquisitionPolicy: string;

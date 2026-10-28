@@ -6528,6 +6528,10 @@ msgstr "Use the version that was delivered with the server release"
 msgid "Used for acquisition"
 msgstr "Used for acquisition"
 
+#: src/features/backup/Backup.constants.ts
+msgid "User settings"
+msgstr "User settings"
+
 #: src/base/components/modals/LoginDialog.tsx
 #: src/features/authentication/screens/LoginPage.tsx
 #: src/features/settings/screens/ServerSettings.tsx

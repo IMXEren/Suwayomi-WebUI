@@ -74,6 +74,7 @@ const convertSyncDataToBackupFlags = (settings: ServerSettingsType): BackupFlagI
     includeTracking: settings.syncDataTracking,
     includeClientData: false,
     includeServerSettings: false,
+    includeUserSettings: false,
 });
 
 const convertBackupFlagsToSyncData = (flags: BackupFlagInclusionState): PartialSettingsTypeInput => ({

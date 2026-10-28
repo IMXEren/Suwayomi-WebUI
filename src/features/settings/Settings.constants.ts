@@ -363,6 +363,7 @@ export const SYNC_INTERVAL_SELECT_VALUES_WITH_CUSTOM: SelectSettingValue<string>
 
 export const SYNC_SETTINGS_HIDDEN_BACKUP_FLAGS = [
     'includeServerSettings',
+    'includeUserSettings',
     'includeClientData',
 ] as const satisfies BackupFlag[];
 
