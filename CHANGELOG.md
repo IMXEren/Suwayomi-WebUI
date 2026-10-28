@@ -8,7 +8,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- (**Library**) Add setting to notify about new chapters of library entries
+- (**Manga**) Show the reading progress of partially read chapters in the chapter list
+- (**Settings**) Add `databaseSchema`, `hikariMaxPoolSize` settings
+
+### Changed
+
+- (**Global**) Force the navigation bar to be collapsed on smaller devices
+- (**Global/Manga/Chapter**) Show app context menu on the first right click and the native context menu on the second right click
+- (**Manga**) Show the `Default` category in the category selection dialog
+- (**Migration**) Use the bulk migration flow for single entry migrations
+- (**Settings**) Show settings as "two-pane layout" on large screens
+
+### Fixed
+
+- (**Source**) Fix potential white screen when opening the language/source filter in the browse source page
+- (**Source**) Fix crash when selecting a saved search with filters that was saved before r3518
+- (**Manga**) Fix incorrect markdown parsing of descriptions (e.g., \~text\~ being shown as ~~text~~)
+- (**Reader**) Fix entering fullscreen when opening the reader from the library continue read button
+- (**Reader**) Fix reader trying to open/opening the previous/next chapter randomly when first opening the reader or changing the page via the progress bar with a continuous vertical reading mode and original image scale type
+
+## [20260929.01] (r3518) - 2026-09-29
+
+### Added
+
 - (**Global/Search**) Increase appbar search width when active
+- (**Global/Search**) Remember submitted searches and offer them in the search bar, each removable from the dropdown
 - (**Manga**) Add per-manga notes
 - (**Download**) Add button to retry all failed downloads
 - (**Reader**) Add fullscreen setting (does nothing on iOS)
@@ -48,6 +73,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - (**Reader**) Fix invisible transition page text
 - (**Category**) Fix being unable to type a trailing space while editing the category name
 - (**Migration**) Fix not respecting the next higher priority source for match selection
+
+### Translations
+
+Feel free to translate the project on [Weblate](https://hosted.weblate.org/projects/suwayomi/suwayomi-webui/)
+
+Thanks to everyone that contributed to the translation of this project.
+
+#### Added
+
+- Catalan (by Kisnov)
+
+#### Updated
+
+- Indonesian (by Arif Budiman)
+- Hebrew (by CyberMageIL)
+- French (by Damien O'Neil)
+- German (by Constantin Piber)
+- Portuguese (by Herta)
+- Chinese (Simplified) (by 無情天)
+- Polish (by UnknownSkyrimPasserby)
+- Russian (by Sazuru)
+- Vietnamese (by Durin)
+- Chinese (Traditional) (by js850604)
+
+### Contributors
+
+Thanks to everyone that contributed to this release
+
+@schroda, @weblate, @cpiber, @Daemonhellz, @Kisnov, @leollo98, @js850604, @kofzhanganguo, @Aryan795, @github-actions[bot], @CyberMageIL, @Sazuru, @Durin-Code, @aitiotekt, @kaiserbh, @dollproxy, @UnknownSkyrimPasserby, @Seanstoppable, @web-flow, @Copilot, @manilkadev3-max, @arifpedia, @NagaYZ
 
 ## [20260726.01] (r3379) - 2026-07-26
 
@@ -976,7 +1030,8 @@ Thanks to everyone that contributed to this release
 
 @schroda, @jesusFx, @QuietBlade, @anvstin, @guohuageng, @plum7x, @HiyoriTUK, @aizhimoran, @JiPaix, @Yuhyeong, @a18ccms, @chancez, @rickymcmuffin, @zmmx, @alexandrejournet, @ibaraki-douji, @nitezs, @misaka10843, @Becods, @skrewde, @xconkhi9x, @cnmorocho, @Wip-Sama, @Kefir2105, @RafieHardinur, @SuperMario229, @Alexandre-P-J, @AriaMoradi, @NathanBnm, @FumoVite, @JoHena, @bandysharif, @DevCoz, @comradekingu, @Zereef, @akabhirav
 
-[unreleased]: https://github.com/suwayomi/suwayomi-webui/compare/v20260726.01...HEAD
+[unreleased]: https://github.com/suwayomi/suwayomi-webui/compare/v20260929.01...HEAD
+[20260929.01]: https://github.com/suwayomi/suwayomi-webui/compare/v20260726.01...v20260929.01
 [20260726.01]: https://github.com/suwayomi/suwayomi-webui/compare/v20260722.01...v20260726.01
 [20260722.01]: https://github.com/suwayomi/suwayomi-webui/compare/v20260509.01...v20260722.01
 [20260509.01]: https://github.com/suwayomi/suwayomi-webui/compare/v20260508.01...v20260509.01

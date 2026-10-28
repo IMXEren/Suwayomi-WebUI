@@ -132,7 +132,9 @@ export const SERVER_SETTINGS = gql`
         databaseUrl
         databaseUsername
         databasePassword
+        databaseSchema
         useHikariConnectionPool
+        hikariMaxPoolSize
 
         # Extensions
         autoUpdateExtensions

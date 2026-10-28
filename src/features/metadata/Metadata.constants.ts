@@ -23,7 +23,7 @@ import { coerceIn, jsonSaveParse } from '@/lib/HelperFunctions.ts';
 import { DOWNLOAD_AHEAD } from '@/features/downloads/Downloads.constants.ts';
 import { MANGA_GRID_WIDTH } from '@/features/settings/Settings.constants.ts';
 import type { SortSettings } from '@/features/migration/Migration.types.ts';
-import type { ISourceMetadata } from '@/features/source/Source.types.ts';
+import type { IPos, ISourceMetadata } from '@/features/source/Source.types.ts';
 import type { LibraryOptions } from '@/features/library/Library.types.ts';
 import type { MetadataThemeSettings } from '@/features/theme/AppTheme.types.ts';
 import type { TapZoneInvertMode } from '@/features/reader/tap-zones/TapZoneLayout.types.ts';
@@ -176,6 +176,12 @@ export const APP_METADATA: Record<
     },
     gridLayout: {
         convert: convertToNumber, // GridLayout (enum)
+    },
+    notifyNewChapters: {
+        convert: convertToBoolean,
+    },
+    notifyNewChaptersLastNotifiedAt: {
+        convert: convertToNumber,
     },
     sortBy: {
         convert: convertToStringNullAndUndefined, // LibrarySortMode
@@ -444,6 +450,7 @@ export const GLOBAL_METADATA_KEYS: AppMetadataKeys[] = [
     'fuzzySearch',
     'removeMangaFromCategories',
     'showTabSize',
+    'notifyNewChaptersLastNotifiedAt',
 
     // library category options
     // filter
@@ -782,6 +789,41 @@ export const METADATA_MIGRATIONS: IMetadataMigration[] = [
                     };
 
                     return JSON.stringify(migratedHasTrackerBinding);
+                },
+            },
+        ],
+    },
+    {
+        values: [
+            {
+                key: 'savedSearches',
+                // filters saved before the "positions" format stored "position" and "group"
+                oldValue: /"position":/,
+                newValue: (savedSearchesValue) => {
+                    type LegacyFilter = Omit<IPos, 'positions'> & { position: number; group?: number };
+
+                    const savedSearches = convertToObject<
+                        Record<string, { query?: string; filters?: (IPos | LegacyFilter)[] }>
+                    >(savedSearchesValue, {});
+
+                    const migratedSavedSearches = Object.fromEntries(
+                        Object.entries(savedSearches).map(([name, savedSearch]) => [
+                            name,
+                            {
+                                ...savedSearch,
+                                filters: savedSearch.filters?.map((filter): IPos => {
+                                    if ('positions' in filter) {
+                                        return filter;
+                                    }
+
+                                    const { position, group, ...rest } = filter;
+                                    return { ...rest, positions: group != null ? [group, position] : [position] };
+                                }),
+                            },
+                        ]),
+                    );
+
+                    return JSON.stringify(migratedSavedSearches);
                 },
             },
         ],

@@ -26,6 +26,7 @@ import { MobileBottomBar } from '@/features/navigation-bar/components/MobileBott
 import { useNavBarContext } from '@/features/navigation-bar/NavbarContext.tsx';
 import { useMetadataServerSettings } from '@/features/settings/services/ServerSettingsMetadata.ts';
 import { NAVIGATION_BAR_ITEMS } from '@/features/navigation-bar/NavigationBar.constants.ts';
+import { useIsArchiveOwner } from '@/features/archive/ArchiveAccess.ts';
 import { NavigationBarUtil } from '@/features/navigation-bar/NavigationBar.util.ts';
 
 export function DefaultNavBar() {
@@ -46,12 +47,16 @@ export function DefaultNavBar() {
     const { pathname } = useLocation();
     const handleBack = useBackButton();
     const isMobileWidth = MediaQuery.useIsMobileWidth();
+    const isTabletWidth = MediaQuery.useIsTabletWidth();
+    const isArchiveOwner = useIsArchiveOwner();
 
     const {
         settings: { hideHistory },
     } = useMetadataServerSettings();
 
     const appBarRef = useRef<HTMLDivElement | null>(null);
+
+    const isNavBarCollapsible = !isMobileWidth && !isTabletWidth;
 
     const isMainRoute = NAVIGATION_BAR_ITEMS.some(({ path, show }) => {
         if (isMobileWidth && show === 'desktop') {
@@ -64,17 +69,18 @@ export function DefaultNavBar() {
 
         return path === pathname;
     });
-    const actualNavBarWidth = isMobileWidth || isCollapsed ? 0 : navBarWidth;
+    const actualNavBarWidth = isMobileWidth || isTabletWidth || isCollapsed ? 0 : navBarWidth;
 
     const visibleNavBarItems = useMemo(
         () =>
             NavigationBarUtil.filterItems(NAVIGATION_BAR_ITEMS, {
                 hideHistory,
+                hideArchive: !isArchiveOwner,
                 hideBoth: false,
                 hideDesktop: isMobileWidth,
                 hideMobile: !isMobileWidth,
             }),
-        [isMobileWidth, hideHistory],
+        [isMobileWidth, hideHistory, isArchiveOwner],
     );
     const NavBarComponent = useMemo(() => (isMobileWidth ? MobileBottomBar : DesktopSideBar), [isMobileWidth]);
 
@@ -129,7 +135,7 @@ export function DefaultNavBar() {
                 }}
             >
                 <Toolbar sx={{ position: 'relative' }}>
-                    {!isMobileWidth && (
+                    {isNavBarCollapsible && (
                         <Stack
                             sx={{
                                 position: 'absolute',
@@ -146,8 +152,8 @@ export function DefaultNavBar() {
                     )}
                     <Stack
                         sx={{
-                            ml: `${isCollapsed ? navBarWidth : 0}px`,
-                            width: `calc(100% - (${isCollapsed ? navBarWidth : 0}px + env(safe-area-inset-left)))`,
+                            ml: `${isNavBarCollapsible && isCollapsed ? navBarWidth : 0}px`,
+                            width: `calc(100% - (${isNavBarCollapsible && isCollapsed ? navBarWidth : 0}px + env(safe-area-inset-left)))`,
                             flexDirection: 'row',
                             alignItems: 'center',
                         }}
